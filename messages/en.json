@@ -1,0 +1,16 @@
+{
+  "meta": {
+    "title": "Tre Fratelli — Technical foundation",
+    "description": "Tre Fratelli. Technical foundation, phase 01."
+  },
+  "foundation": {
+    "heading": "Tre Fratelli",
+    "status": "Phase 01 — Technical foundation. Website design follows in the next phase.",
+    "imageProof": "Responsive image check — technical sample.",
+    "motionProof": "Subtle motion check. Static with reduced motion."
+  },
+  "accessibility": {
+    "skipToContent": "Skip to main content",
+    "languageSwitcher": "Choose language"
+  }
+}

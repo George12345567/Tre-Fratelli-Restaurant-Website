@@ -1,0 +1,283 @@
+/* ============================================================
+   DESIGN TOKENS — Tre Fratelli Restaurant Website
+   ============================================================
+   All color values are defined here as CSS custom properties.
+   Never use raw hex values in components — always reference these
+   semantic tokens. Palette tokens are the source of truth;
+   semantic tokens map meaning to palette values.
+   ============================================================ */
+
+@import "tailwindcss";
+
+/* ── Palette tokens (raw brand colors) ─────────────────────── */
+:root {
+  --palette-warm-ivory:    #F5EFE6;
+  --palette-italian-red:   #7A2E2A;
+  --palette-olive-green:   #6B6F46;
+  --palette-espresso:      #2B1F1A;
+  --palette-stone-beige:   #D6C3A3;
+  --palette-aged-brass:    #B08A57;
+
+  /* Derived shades for future flexibility */
+  --palette-italian-red-dark:  #5c2320;
+  --palette-italian-red-light: #9a3c37;
+  --palette-espresso-light:    #3d2d27;
+  --palette-stone-beige-light: #e8d9c0;
+}
+
+/* ── Semantic tokens (light mode / default) ─────────────────── */
+:root {
+  /* Page surfaces */
+  --background:          var(--palette-warm-ivory);
+  --foreground:          var(--palette-espresso);
+
+  /* Card / section surfaces */
+  --surface:             #ffffff;
+  --surface-muted:       var(--palette-stone-beige-light);
+
+  /* Primary action — Italian Red */
+  --primary:             var(--palette-italian-red);
+  --primary-foreground:  var(--palette-warm-ivory);
+  --primary-hover:       var(--palette-italian-red-dark);
+
+  /* Secondary — Olive Green */
+  --secondary:           var(--palette-olive-green);
+  --secondary-foreground: var(--palette-warm-ivory);
+
+  /* Accent — Aged Brass */
+  --accent:              var(--palette-aged-brass);
+  --accent-foreground:   var(--palette-espresso);
+
+  /* Muted text / UI elements */
+  --muted:               var(--palette-stone-beige);
+  --muted-foreground:    #6b5a4e;
+
+  /* Borders and dividers */
+  --border:              var(--palette-stone-beige);
+  --border-strong:       var(--palette-aged-brass);
+
+  /* Input fields (future) */
+  --input:               var(--palette-stone-beige-light);
+  --ring:                var(--palette-aged-brass);
+
+  /* Status (placeholders — revisit in feature phases) */
+  --destructive:         #c0392b;
+  --destructive-foreground: #ffffff;
+}
+
+/* ── Tailwind v4 theme integration ──────────────────────────── */
+@theme inline {
+  --color-background:         var(--background);
+  --color-foreground:         var(--foreground);
+  --color-surface:            var(--surface);
+  --color-surface-muted:      var(--surface-muted);
+  --color-primary:            var(--primary);
+  --color-primary-fg:         var(--primary-foreground);
+  --color-secondary:          var(--secondary);
+  --color-secondary-fg:       var(--secondary-foreground);
+  --color-accent:             var(--accent);
+  --color-accent-fg:          var(--accent-foreground);
+  --color-muted:              var(--muted);
+  --color-muted-foreground:   var(--muted-foreground);
+  --color-muted-fg:           var(--muted-foreground);
+  --color-border:             var(--border);
+  --color-border-strong:      var(--border-strong);
+  --color-input:              var(--input);
+  --color-ring:               var(--ring);
+
+  /* Font families — injected by next/font via CSS variables */
+  --font-heading:  var(--font-playfair), Georgia, serif;
+  --font-body:     var(--font-montserrat), system-ui, sans-serif;
+
+  /* Spacing scale extension */
+  --spacing-safe-top:    env(safe-area-inset-top, 0px);
+  --spacing-safe-bottom: env(safe-area-inset-bottom, 0px);
+  --spacing-safe-left:   env(safe-area-inset-left, 0px);
+  --spacing-safe-right:  env(safe-area-inset-right, 0px);
+}
+
+/* ── Base styles ────────────────────────────────────────────── */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    /* Prevents layout shift from scrollbar appearing */
+    scrollbar-gutter: stable;
+    /* Smooth scroll for anchor navigation (NOT hijacking) */
+    scroll-behavior: smooth;
+    /* Improve text rendering on high-DPI screens */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  .skip-link {
+    position: fixed;
+    left: 1rem;
+    top: 1rem;
+    z-index: 50;
+    transform: translateY(-200%);
+    border-radius: 0.25rem;
+    background: var(--primary);
+    color: var(--primary-foreground);
+    padding: 0.625rem 0.875rem;
+    font-weight: 600;
+  }
+
+  .skip-link:focus-visible {
+    transform: translateY(0);
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    min-height: 100dvh;
+    /* Safe area padding for mobile devices with notches */
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    padding-left: env(safe-area-inset-left, 0px);
+    padding-right: env(safe-area-inset-right, 0px);
+  }
+
+  /* ── Typography scale (clamp for fluid responsive type) ──── */
+  h1 {
+    font-family: var(--font-heading);
+    font-size: clamp(2.5rem, 5vw + 1rem, 5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  h2 {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 3.5vw + 0.75rem, 3.5rem);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+  }
+
+  h3 {
+    font-family: var(--font-heading);
+    font-size: clamp(1.5rem, 2.5vw + 0.5rem, 2.25rem);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+
+  h4 {
+    font-family: var(--font-heading);
+    font-size: clamp(1.25rem, 1.5vw + 0.5rem, 1.75rem);
+    font-weight: 500;
+    line-height: 1.3;
+  }
+
+  h5, h6 {
+    font-family: var(--font-body);
+    font-size: clamp(1rem, 1vw + 0.25rem, 1.25rem);
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  p {
+    font-size: clamp(1rem, 0.5vw + 0.875rem, 1.125rem);
+    line-height: 1.7;
+    max-width: 70ch;
+  }
+
+  /* Visible focus ring — accessible, on-brand */
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Remove default focus ring (replaced by :focus-visible above) */
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  /* Minimum touch target for interactive elements */
+  button,
+  a,
+  [role="button"],
+  [role="link"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Images: prevent layout shift */
+  img,
+  video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* ── Reduced motion: global override ─────────────────────── */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* ── Selection color ─────────────────────────────────────── */
+  ::selection {
+    background-color: var(--accent);
+    color: var(--accent-foreground);
+  }
+
+  /* ── Scrollbar styling (Webkit) ──────────────────────────── */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--background);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--muted);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+  }
+}
+
+/* ── Utility classes ────────────────────────────────────────── */
+@layer utilities {
+  /* Visually hidden but accessible to screen readers */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  /* Container with responsive horizontal padding */
+  .container-padding {
+    padding-left: clamp(1rem, 5vw, 5rem);
+    padding-right: clamp(1rem, 5vw, 5rem);
+  }
+}

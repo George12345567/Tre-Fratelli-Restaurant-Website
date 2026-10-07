@@ -1,0 +1,16 @@
+{
+  "meta": {
+    "title": "Tre Fratelli — Fondazione tecnica",
+    "description": "Tre Fratelli. Fondazione tecnica, fase 01."
+  },
+  "foundation": {
+    "heading": "Tre Fratelli",
+    "status": "Fase 01 — Fondazione tecnica. Il design del sito seguirà nella prossima fase.",
+    "imageProof": "Verifica immagine responsive — campione tecnico.",
+    "motionProof": "Verifica movimento discreto. Statico con movimento ridotto."
+  },
+  "accessibility": {
+    "skipToContent": "Vai al contenuto principale",
+    "languageSwitcher": "Scegli la lingua"
+  }
+}
