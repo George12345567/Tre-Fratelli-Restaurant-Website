@@ -4,11 +4,8 @@ import { useState, useRef, useEffect, useCallback } from 'react';
 import { CalendarDays, ArrowRight, Volume2, VolumeX } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 
-const HERO_VIDEOS = [
-  '/video/tre-fratelli-feast-cinematic.mp4',
-  '/video/tre-fratelli-dishes-showcase.mp4',
-  '/video/tre-fratelli-delicacies-montage.mp4',
-] as const;
+const HERO_VIDEO_SRC = '/video/tre-fratelli-hero.mp4';
+const HERO_POSTER_SRC = '/images/hero-poster.webp';
 
 interface Props {
   locale?: string;
@@ -22,98 +19,140 @@ interface Props {
   };
 }
 
-export function HeroSection({
-  isRtl,
-  translations,
-}: Props) {
-  const [activeIndex, setActiveIndex] = useState(0);
+export function HeroSection({ isRtl, translations }: Props) {
   const [isMuted, setIsMuted] = useState(true);
-  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+  const [isVideoReady, setIsVideoReady] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
-  const playActiveVideo = useCallback((index: number, mutedState: boolean) => {
-    const video = videoRefs.current[index];
+  const safePlay = useCallback(() => {
+    const video = videoRef.current;
     if (!video) return;
-    video.muted = mutedState;
-    video.defaultMuted = mutedState;
-    video.playsInline = true;
+    video.muted = isMuted;
     const playPromise = video.play();
     if (playPromise !== undefined) {
       playPromise.catch(() => {
-        // Fallback if browser restricts initial autoplay
+        // Fallback if browser autoplay restrictions apply before user interaction
       });
+    }
+  }, [isMuted]);
+
+  const safePause = useCallback(() => {
+    const video = videoRef.current;
+    if (video && !video.paused) {
+      video.pause();
     }
   }, []);
 
+  // ── 1. Smart Intersection Observer: Auto-play when visible, Pause when scrolled away ──
   useEffect(() => {
-    playActiveVideo(activeIndex, isMuted);
+    const section = sectionRef.current;
+    const video = videoRef.current;
+    if (!section || !video) return;
 
-    const onUserInteraction = () => {
-      const currentVideo = videoRefs.current[activeIndex];
-      if (currentVideo && currentVideo.paused) {
-        playActiveVideo(activeIndex, isMuted);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        if (entry.isIntersecting) {
+          safePlay();
+        } else {
+          safePause();
+        }
+      },
+      {
+        threshold: 0.08,
+      }
+    );
+
+    observer.observe(section);
+
+    // Tab visibility handling (pause when tab hidden, resume when active)
+    const onVisibilityChange = () => {
+      if (document.hidden) {
+        safePause();
+      } else {
+        const rect = section.getBoundingClientRect();
+        const inViewport = rect.bottom > 0 && rect.top < window.innerHeight;
+        if (inViewport) {
+          safePlay();
+        }
       }
     };
 
-    window.addEventListener('pointerdown', onUserInteraction, { once: true, passive: true });
-    window.addEventListener('touchstart', onUserInteraction, { once: true, passive: true });
-    window.addEventListener('scroll', onUserInteraction, { once: true, passive: true });
-    window.addEventListener('keydown', onUserInteraction, { once: true, passive: true });
+    // User gesture listener to unlock autoplay on mobile if restricted initially
+    const onFirstInteraction = () => {
+      const rect = section.getBoundingClientRect();
+      const inViewport = rect.bottom > 0 && rect.top < window.innerHeight;
+      if (inViewport && video.paused) {
+        safePlay();
+      }
+    };
+
+    document.addEventListener('visibilitychange', onVisibilityChange);
+    window.addEventListener('pointerdown', onFirstInteraction, { once: true, passive: true });
+    window.addEventListener('touchstart', onFirstInteraction, { once: true, passive: true });
+    window.addEventListener('scroll', onFirstInteraction, { once: true, passive: true });
 
     return () => {
-      window.removeEventListener('pointerdown', onUserInteraction);
-      window.removeEventListener('touchstart', onUserInteraction);
-      window.removeEventListener('scroll', onUserInteraction);
-      window.removeEventListener('keydown', onUserInteraction);
+      observer.disconnect();
+      document.removeEventListener('visibilitychange', onVisibilityChange);
+      window.removeEventListener('pointerdown', onFirstInteraction);
+      window.removeEventListener('touchstart', onFirstInteraction);
+      window.removeEventListener('scroll', onFirstInteraction);
     };
-  }, [activeIndex, isMuted, playActiveVideo]);
-
-  const handleVideoEnded = (endedIndex: number) => {
-    const nextIndex = (endedIndex + 1) % HERO_VIDEOS.length;
-    const nextVideo = videoRefs.current[nextIndex];
-    if (nextVideo) {
-      nextVideo.currentTime = 0;
-      nextVideo.muted = isMuted;
-      nextVideo.play().catch(() => {});
-    }
-    setActiveIndex(nextIndex);
-  };
+  }, [safePlay, safePause]);
 
   const toggleMute = () => {
     const nextMuted = !isMuted;
     setIsMuted(nextMuted);
-    videoRefs.current.forEach((video) => {
-      if (video) {
-        video.muted = nextMuted;
+    if (videoRef.current) {
+      videoRef.current.muted = nextMuted;
+      if (!nextMuted && videoRef.current.paused) {
+        safePlay();
       }
-    });
+    }
   };
 
   return (
-    <section className="relative -mt-20 sm:-mt-24 h-screen min-h-[640px] w-full overflow-hidden bg-black text-white select-none">
-      {/* ── 1. Unified Continuous 3-Part Video Background (Pure Cinematic Clarity) ── */}
-      {HERO_VIDEOS.map((src, idx) => {
-        const isCurrent = idx === activeIndex;
-        return (
-          <video
-            key={src}
-            ref={(el) => {
-              videoRefs.current[idx] = el;
-            }}
-            src={src}
-            playsInline
-            autoPlay={isCurrent}
-            muted={isMuted}
-            preload="auto"
-            onEnded={() => handleVideoEnded(idx)}
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
-              isCurrent ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
-            }`}
-            aria-hidden="true"
-          />
-        );
-      })}
+    <section
+      ref={sectionRef}
+      className="relative -mt-20 sm:-mt-24 h-screen min-h-[640px] w-full overflow-hidden bg-black text-white select-none"
+    >
+      {/* ── Layer 1: Instant Poster Frame Background (Zero Black Screen / Zero Flash) ── */}
+      <div
+        className="absolute inset-0 w-full h-full bg-cover bg-center z-0 transition-opacity duration-700 scale-100"
+        style={{ backgroundImage: `url('${HERO_POSTER_SRC}')` }}
+        aria-hidden="true"
+      />
 
-      {/* ── 2. Screen-Filling Grand Typography (Top/Center Area, Zero Box) ── */}
+      {/* ── Layer 2: Main Continuous Video (Faststart Streaming with Pause-on-Scroll) ── */}
+      <video
+        ref={videoRef}
+        src={HERO_VIDEO_SRC}
+        poster={HERO_POSTER_SRC}
+        playsInline
+        autoPlay
+        loop
+        muted={isMuted}
+        preload="auto"
+        onCanPlay={() => setIsVideoReady(true)}
+        className={`absolute inset-0 w-full h-full object-cover z-10 transition-opacity duration-700 ${
+          isVideoReady ? 'opacity-100' : 'opacity-0'
+        }`}
+        aria-hidden="true"
+      />
+
+      {/* ── Layer 3: Contrast Protection Ambient Gradient Overlays ── */}
+      <div
+        className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/60 z-15 pointer-events-none"
+        aria-hidden="true"
+      />
+      <div
+        className="absolute inset-0 bg-radial-gradient from-transparent via-transparent to-black/60 z-15 pointer-events-none"
+        aria-hidden="true"
+      />
+
+      {/* ── Layer 4: Screen-Filling Grand Typography (Top/Center Area) ── */}
       <div className="absolute top-24 sm:top-32 lg:top-36 inset-x-0 px-5 sm:px-10 lg:px-16 z-20 pointer-events-auto">
         <div className="max-w-4xl lg:max-w-5xl text-start space-y-3 sm:space-y-4">
           {/* Animated Cool Brand Wordmark & Milano Badge */}
@@ -140,9 +179,9 @@ export function HeroSection({
         </div>
       </div>
 
-      {/* ── 3. Bottom Action Row: Sleek Buttons + Sound Control (Very Bottom) ── */}
+      {/* ── Layer 5: Bottom Action Row: Sleek Buttons + Sound Control ── */}
       <div className="absolute bottom-6 sm:bottom-8 lg:bottom-10 inset-x-0 px-5 sm:px-10 lg:px-16 z-20 flex items-center justify-between gap-4 pointer-events-auto">
-        {/* The Two Action Buttons (Sleek, Unobtrusive, Liquid-Glass) */}
+        {/* The Two Action Buttons (Sleek, Liquid-Glass) */}
         <div className="flex flex-wrap items-center gap-2.5 sm:gap-3.5">
           <Link
             href="/location"
@@ -165,7 +204,7 @@ export function HeroSection({
           </Link>
         </div>
 
-        {/* Small Audio Control Button (Bottom-End Corner) */}
+        {/* Audio Control Button (Bottom-End Corner) */}
         <button
           type="button"
           onClick={toggleMute}
