@@ -28,9 +28,9 @@ export default async function LocationPage({ params }: PageProps) {
   const t = await getTranslations({ locale });
 
   return (
-    <main id="main-content" tabIndex={-1} className="pt-6 sm:pt-12 pb-14 sm:pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto focus:outline-none">
+    <main id="main-content" tabIndex={-1} className="pt-10 sm:pt-14 pb-14 sm:pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto focus:outline-none">
       {/* ── Page Header ── */}
-      <div className="text-center max-w-2xl mx-auto mb-6 sm:mb-12 space-y-2">
+      <div className="text-center max-w-2xl mx-auto mb-6 sm:mb-10 space-y-2.5">
         <span className="text-xs uppercase tracking-widest font-bold text-[var(--palette-italian-red)] bg-[var(--palette-italian-red)]/10 px-3 py-1 rounded-full inline-block">
           {t('location.subtitle')}
         </span>

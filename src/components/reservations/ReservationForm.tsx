@@ -52,6 +52,14 @@ const dinnerSlots = [
   '22:30',
 ];
 
+function format12h(time24: string, locale: Locale): string {
+  const [hStr, mStr] = time24.split(':');
+  const h = parseInt(hStr, 10);
+  const period = h >= 12 ? (locale === 'ar' ? 'م' : 'PM') : (locale === 'ar' ? 'ص' : 'AM');
+  const h12 = h % 12 || 12;
+  return `${h12}:${mStr} ${period}`;
+}
+
 export function ReservationForm({ locale }: ReservationFormProps) {
   const t = useTranslations();
   const isRtl = locale === 'ar';
@@ -59,9 +67,9 @@ export function ReservationForm({ locale }: ReservationFormProps) {
   const [step, setStep] = useState(0);
   const [submitted, setSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const [nameError, setNameError] = useState('');
   const [phoneError, setPhoneError] = useState('');
   const [emailError, setEmailError] = useState('');
-  const [nameError, setNameError] = useState('');
 
   // Default to tomorrow's date
   const tomorrowIso = useMemo(() => {
@@ -90,9 +98,9 @@ export function ReservationForm({ locale }: ReservationFormProps) {
   const updateField = (field: keyof FormFields, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
     setErrorMessage('');
+    if (field === 'name') setNameError('');
     if (field === 'phone') setPhoneError('');
     if (field === 'email') setEmailError('');
-    if (field === 'name') setNameError('');
   };
 
   const selectService = (service: 'lunch' | 'dinner') => {
@@ -130,12 +138,13 @@ export function ReservationForm({ locale }: ReservationFormProps) {
     } else if (currentStep === 2) {
       let valid = true;
 
+      // Full Name is MANDATORY
       if (!formData.name.trim() || formData.name.trim().length < 2) {
         setNameError(t('location.form.validation'));
         valid = false;
       }
 
-      // PHONE NUMBER IS STRICTLY MANDATORY
+      // Phone Number is STRICTLY MANDATORY
       const cleanedPhone = formData.phone.trim();
       const phoneDigits = cleanedPhone.replace(/\D/g, '');
       if (!cleanedPhone || phoneDigits.length < 8) {
@@ -143,7 +152,8 @@ export function ReservationForm({ locale }: ReservationFormProps) {
         valid = false;
       }
 
-      if (!formData.email.trim() || !/^\S+@\S+\.\S+$/.test(formData.email.trim())) {
+      // Email is OPTIONAL: only validate format if provided
+      if (formData.email.trim() && !/^\S+@\S+\.\S+$/.test(formData.email.trim())) {
         setEmailError(t('location.form.validation'));
         valid = false;
       }
@@ -164,9 +174,9 @@ export function ReservationForm({ locale }: ReservationFormProps) {
 
   const handlePrev = () => {
     setErrorMessage('');
+    setNameError('');
     setPhoneError('');
     setEmailError('');
-    setNameError('');
     setStep((prev) => Math.max(prev - 1, 0));
   };
 
@@ -193,7 +203,7 @@ export function ReservationForm({ locale }: ReservationFormProps) {
           </p>
         </div>
 
-        {/* Confirmed Reservation Voucher Card */}
+        {/* Voucher Preview Card */}
         <div className="bg-gradient-to-br from-[var(--palette-warm-ivory)]/70 to-white p-5 sm:p-6 rounded-2xl border border-[var(--palette-aged-brass)]/40 max-w-md mx-auto text-start space-y-3 shadow-xs">
           <div className="flex items-center justify-between pb-3 border-b border-black/5">
             <span className="font-serif text-xs font-bold uppercase tracking-wider text-[var(--palette-aged-brass)]">
@@ -233,10 +243,19 @@ export function ReservationForm({ locale }: ReservationFormProps) {
                 {t('location.form.time')} &amp; {t('location.form.guests')}
               </span>
               <strong className="block">
-                {formData.time} · {formData.guests} {locale === 'it' ? 'Ospiti' : locale === 'ar' ? 'ضيوف' : 'Guests'}
+                {formData.time} ({format12h(formData.time, locale)}) · {formData.guests} {locale === 'it' ? 'Ospiti' : locale === 'ar' ? 'ضيوف' : 'Guests'}
               </strong>
             </div>
           </div>
+
+          {formData.email && (
+            <div className="text-xs text-stone-600">
+              <span className="text-[10px] uppercase font-semibold text-stone-400 block">
+                {t('location.form.email')}:
+              </span>
+              <span>{formData.email}</span>
+            </div>
+          )}
 
           {formData.notes && (
             <div className="pt-2 border-t border-black/5 text-xs text-stone-600">
@@ -444,7 +463,7 @@ export function ReservationForm({ locale }: ReservationFormProps) {
         </div>
       )}
 
-      {/* ── STEP 1: Orario e Servizio (Time Slots & Service) ── */}
+      {/* ── STEP 1: Orario e Servizio (Time Slots with 24h & 12h AM/PM) ── */}
       {step === 1 && (
         <div className="space-y-6 animate-fade-in">
           {/* Lunch vs Dinner Service Switcher */}
@@ -476,33 +495,43 @@ export function ReservationForm({ locale }: ReservationFormProps) {
             </button>
           </div>
 
-          {/* Time Slot Chips Grid */}
+          {/* Time Slot Chips with 24h + 12h Dual Display */}
           <div className="space-y-2">
             <div className="flex items-center justify-between text-xs font-semibold text-stone-500">
               <span className="flex items-center gap-1">
                 <Clock size={13} className="text-[var(--palette-aged-brass)]" />
                 <span>{t('location.form.time')}</span>
               </span>
-              <span className="text-[var(--palette-italian-red)] font-bold font-mono text-sm">
-                {formData.time}
+              <span className="text-[var(--palette-italian-red)] font-bold text-xs sm:text-sm">
+                <strong className="font-mono">{formData.time}</strong>{' '}
+                <span className="text-stone-500 font-sans font-normal">({format12h(formData.time, locale)})</span>
               </span>
             </div>
 
             <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
               {(formData.service === 'lunch' ? lunchSlots : dinnerSlots).map((slot) => {
                 const isSelected = formData.time === slot;
+                const time12 = format12h(slot, locale);
+
                 return (
                   <button
                     key={slot}
                     type="button"
                     onClick={() => updateField('time', slot)}
-                    className={`py-3 rounded-xl text-xs font-bold transition-all cursor-pointer font-mono active:scale-95 ${
+                    className={`py-2.5 px-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer active:scale-95 flex flex-col items-center justify-center gap-0.5 ${
                       isSelected
                         ? 'bg-[var(--palette-italian-red)] text-white shadow-md ring-2 ring-[var(--palette-italian-red)]/30'
                         : 'bg-stone-50 hover:bg-stone-100 text-[var(--palette-espresso)] border border-stone-200/80 hover:border-stone-300'
                     }`}
                   >
-                    {slot}
+                    <span className="font-mono text-sm font-bold leading-tight">{slot}</span>
+                    <span
+                      className={`text-[10px] font-sans font-medium tracking-tight ${
+                        isSelected ? 'text-white/85' : 'text-stone-400'
+                      }`}
+                    >
+                      {time12}
+                    </span>
                   </button>
                 );
               })}
@@ -525,7 +554,7 @@ export function ReservationForm({ locale }: ReservationFormProps) {
         </div>
       )}
 
-      {/* ── STEP 2: Dati di Contatto & Preferenze (Guest Details) ── */}
+      {/* ── STEP 2: Dati di Contatto & Preferenze (Name & Phone Mandatory, Email Optional) ── */}
       {step === 2 && (
         <div className="space-y-5 animate-fade-in">
           {/* Summary Banner */}
@@ -536,11 +565,11 @@ export function ReservationForm({ locale }: ReservationFormProps) {
             <div className="flex flex-wrap items-center gap-x-4 gap-y-1 font-semibold text-[var(--palette-espresso)]">
               <span>👥 {formData.guests} {locale === 'it' ? 'Ospiti' : locale === 'ar' ? 'ضيوف' : 'Guests'}</span>
               <span>📅 {formattedDate}</span>
-              <span>⏰ {formData.time} ({formData.service === 'lunch' ? t('location.form.lunch') : t('location.form.dinner')})</span>
+              <span>⏰ {formData.time} ({format12h(formData.time, locale)})</span>
             </div>
           </div>
 
-          {/* Full Name */}
+          {/* Full Name — MANDATORY */}
           <div className="space-y-1">
             <label className="text-xs font-bold uppercase tracking-wider text-[var(--palette-espresso)] flex items-center justify-between">
               <span className="flex items-center gap-1.5">
@@ -606,18 +635,17 @@ export function ReservationForm({ locale }: ReservationFormProps) {
             )}
           </div>
 
-          {/* Email Address */}
+          {/* Email Address — OPTIONAL (اختياري) */}
           <div className="space-y-1">
             <label className="text-xs font-bold uppercase tracking-wider text-[var(--palette-espresso)] flex items-center justify-between">
               <span className="flex items-center gap-1.5">
-                <Mail size={13} className="text-[var(--palette-italian-red)]" />
-                <span>{t('location.form.email')} *</span>
+                <Mail size={13} className="text-stone-400" />
+                <span>{t('location.form.email')}</span>
               </span>
-              <span className="text-[10px] text-red-600 font-semibold">{t('location.form.requiredTag')}</span>
+              <span className="text-[10px] text-stone-500 font-semibold">{t('location.form.optionalTag')}</span>
             </label>
             <input
               type="email"
-              required
               inputMode="email"
               autoComplete="email"
               value={formData.email}
@@ -632,7 +660,7 @@ export function ReservationForm({ locale }: ReservationFormProps) {
             {emailError && <p className="text-[11px] text-red-600 font-medium">{emailError}</p>}
           </div>
 
-          {/* Special Occasion & Special Notes */}
+          {/* Expanded Special Occasions (Proposal, Anniversary, Romantic, etc.) */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
             <div>
               <label className="block text-[11px] font-bold uppercase tracking-wider text-[var(--palette-espresso)] mb-1">
@@ -644,8 +672,12 @@ export function ReservationForm({ locale }: ReservationFormProps) {
                 className="w-full py-2.5 px-3 rounded-xl border border-stone-300 bg-stone-50/60 text-xs font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-[var(--palette-aged-brass)]"
               >
                 <option value="none">{t('location.form.occasionNone')}</option>
-                <option value="birthday">{t('location.form.occasionBirthday')}</option>
+                <option value="proposal">{t('location.form.occasionProposal')}</option>
+                <option value="romantic">{t('location.form.occasionRomantic')}</option>
                 <option value="anniversary">{t('location.form.occasionAnniversary')}</option>
+                <option value="birthday">{t('location.form.occasionBirthday')}</option>
+                <option value="graduation">{t('location.form.occasionGraduation')}</option>
+                <option value="family">{t('location.form.occasionFamily')}</option>
                 <option value="business">{t('location.form.occasionBusiness')}</option>
               </select>
             </div>
@@ -674,7 +706,7 @@ export function ReservationForm({ locale }: ReservationFormProps) {
               rows={2}
               value={formData.notes}
               onChange={(e) => updateField('notes', e.target.value)}
-              placeholder="e.g. Quiet corner table, allergy to shellfish, anniversary..."
+              placeholder="e.g. Quiet corner table, allergy to shellfish, romantic flowers, high chair..."
               className="w-full py-2.5 px-3 rounded-xl border border-stone-300 bg-stone-50/60 text-xs font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-[var(--palette-aged-brass)]"
             />
           </div>
