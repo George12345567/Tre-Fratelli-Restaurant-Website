@@ -32,7 +32,6 @@ type FormFields = {
   name: string;
   phone: string;
   email: string;
-  language: Locale;
   occasion: string;
   notes: string;
 };
@@ -90,7 +89,6 @@ export function ReservationForm({ locale }: ReservationFormProps) {
     name: '',
     phone: '',
     email: '',
-    language: locale,
     occasion: 'none',
     notes: '',
   }));
@@ -280,7 +278,6 @@ export function ReservationForm({ locale }: ReservationFormProps) {
               name: '',
               phone: '',
               email: '',
-              language: locale,
               occasion: 'none',
               notes: '',
             });
@@ -661,41 +658,24 @@ export function ReservationForm({ locale }: ReservationFormProps) {
           </div>
 
           {/* Expanded Special Occasions (Proposal, Anniversary, Romantic, etc.) */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-            <div>
-              <label className="block text-[11px] font-bold uppercase tracking-wider text-[var(--palette-espresso)] mb-1">
-                {t('location.form.occasion')}
-              </label>
-              <select
-                value={formData.occasion}
-                onChange={(e) => updateField('occasion', e.target.value)}
-                className="w-full py-2.5 px-3 rounded-xl border border-stone-300 bg-stone-50/60 text-xs font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-[var(--palette-aged-brass)]"
-              >
-                <option value="none">{t('location.form.occasionNone')}</option>
-                <option value="proposal">{t('location.form.occasionProposal')}</option>
-                <option value="romantic">{t('location.form.occasionRomantic')}</option>
-                <option value="anniversary">{t('location.form.occasionAnniversary')}</option>
-                <option value="birthday">{t('location.form.occasionBirthday')}</option>
-                <option value="graduation">{t('location.form.occasionGraduation')}</option>
-                <option value="family">{t('location.form.occasionFamily')}</option>
-                <option value="business">{t('location.form.occasionBusiness')}</option>
-              </select>
-            </div>
-
-            <div>
-              <label className="block text-[11px] font-bold uppercase tracking-wider text-[var(--palette-espresso)] mb-1">
-                {t('location.form.language')}
-              </label>
-              <select
-                value={formData.language}
-                onChange={(e) => updateField('language', e.target.value as Locale)}
-                className="w-full py-2.5 px-3 rounded-xl border border-stone-300 bg-stone-50/60 text-xs font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-[var(--palette-aged-brass)]"
-              >
-                <option value="it">Italiano</option>
-                <option value="en">English</option>
-                <option value="ar">العربية</option>
-              </select>
-            </div>
+          <div className="pt-2">
+            <label className="block text-[11px] font-bold uppercase tracking-wider text-[var(--palette-espresso)] mb-1">
+              {t('location.form.occasion')}
+            </label>
+            <select
+              value={formData.occasion}
+              onChange={(e) => updateField('occasion', e.target.value)}
+              className="w-full py-2.5 px-3 rounded-xl border border-stone-300 bg-stone-50/60 text-xs font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-[var(--palette-aged-brass)]"
+            >
+              <option value="none">{t('location.form.occasionNone')}</option>
+              <option value="proposal">{t('location.form.occasionProposal')}</option>
+              <option value="romantic">{t('location.form.occasionRomantic')}</option>
+              <option value="anniversary">{t('location.form.occasionAnniversary')}</option>
+              <option value="birthday">{t('location.form.occasionBirthday')}</option>
+              <option value="graduation">{t('location.form.occasionGraduation')}</option>
+              <option value="family">{t('location.form.occasionFamily')}</option>
+              <option value="business">{t('location.form.occasionBusiness')}</option>
+            </select>
           </div>
 
           <div>
