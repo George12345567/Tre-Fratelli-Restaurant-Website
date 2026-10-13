@@ -81,34 +81,40 @@ export function MobileSideDrawer({
       }`}
       aria-hidden={!isOpen}
     >
-      {/* ── Dark Backdrop Overlay ── */}
+      {/* ── Dark Translucent Backdrop Overlay ── */}
       <div
         onClick={onClose}
-        className={`fixed inset-0 bg-black/65 backdrop-blur-xs transition-opacity duration-300 ${
+        className={`fixed inset-0 bg-black/45 backdrop-blur-xs transition-opacity duration-300 ${
           isOpen ? 'opacity-100' : 'opacity-0'
         }`}
         aria-hidden="true"
       />
 
-      {/* ── Solid High-Legibility Off-Canvas Drawer ── */}
+      {/* ── Liquid Glass Off-Canvas Drawer (Anchored to button position) ── */}
       <aside
         role="dialog"
         aria-modal="true"
         aria-label={t('accessibility.openMenu')}
         className={`fixed inset-y-0 ${
-          isRtl ? 'right-0' : 'left-0'
-        } w-[84vw] max-w-[340px] bg-[#FAF8F5] text-[var(--palette-espresso)] shadow-2xl flex flex-col justify-between z-[101] border-[var(--palette-stone-beige)]/60 ${
-          isRtl ? 'border-l' : 'border-r'
+          isRtl ? 'left-0' : 'right-0'
+        } w-[86vw] max-w-[340px] liquid-glass-drawer text-[var(--palette-espresso)] shadow-2xl flex flex-col justify-between z-[101] border-white/80 ${
+          isRtl ? 'border-r' : 'border-l'
         } transition-transform duration-300 ease-out ${
           isOpen
             ? 'translate-x-0'
             : isRtl
-            ? 'translate-x-full'
-            : '-translate-x-full'
+            ? '-translate-x-full'
+            : 'translate-x-full'
         }`}
       >
+        {/* Specular Glint Top Highlight */}
+        <div
+          className="absolute inset-x-6 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/90 to-transparent pointer-events-none rounded-full"
+          aria-hidden="true"
+        />
+
         {/* ── Drawer Header: Brand Logo & Title + Close Button ── */}
-        <div className="p-4 sm:p-5 border-b border-[var(--palette-stone-beige)]/40 bg-white/70 flex items-center justify-between gap-3">
+        <div className="p-4 sm:p-5 border-b border-black/[0.06] bg-white/40 backdrop-blur-md flex items-center justify-between gap-3">
           <Link
             href="/"
             onClick={onClose}
@@ -134,7 +140,7 @@ export function MobileSideDrawer({
           <button
             type="button"
             onClick={onClose}
-            className="w-9 h-9 rounded-full bg-stone-200/70 hover:bg-stone-300 text-[var(--palette-espresso)] flex items-center justify-center transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-[var(--palette-aged-brass)]"
+            className="w-9 h-9 rounded-full bg-white/70 hover:bg-white text-[var(--palette-espresso)] border border-white/90 shadow-xs flex items-center justify-center transition-all cursor-pointer active:scale-95 focus:outline-none focus:ring-2 focus:ring-[var(--palette-aged-brass)]"
             aria-label={t('accessibility.closeMenu')}
           >
             <X size={18} />
@@ -143,7 +149,7 @@ export function MobileSideDrawer({
 
         {/* ── Drawer Navigation Body ── */}
         <div className="flex-1 overflow-y-auto px-4 py-5 space-y-2">
-          <nav className="flex flex-col gap-1.5" aria-label="Mobile Navigation">
+          <nav className="flex flex-col gap-2" aria-label="Mobile Navigation">
             {navItems.map((item) => {
               const rawHref =
                 item.key === 'home'
@@ -157,18 +163,22 @@ export function MobileSideDrawer({
                   key={item.key}
                   href={rawHref}
                   onClick={onClose}
-                  className={`px-3.5 py-3 rounded-xl flex items-center justify-between text-sm transition-all duration-200 ${
+                  className={`px-3.5 py-3 rounded-2xl flex items-center justify-between text-sm transition-all duration-200 ${
                     isActive
-                      ? 'bg-[var(--palette-italian-red)] text-white font-bold shadow-xs'
-                      : 'bg-white/80 hover:bg-white text-[var(--palette-espresso)] border border-stone-200/50 hover:border-stone-300 font-medium'
+                      ? 'liquid-glass-item-active text-white font-bold'
+                      : 'liquid-glass-item hover:bg-white/80 text-[var(--palette-espresso)] font-medium hover:translate-x-0.5 rtl:hover:-translate-x-0.5'
                   }`}
                 >
                   <div className="flex items-center gap-3">
-                    <Icon
-                      size={18}
-                      className={isActive ? 'text-white' : 'text-[var(--palette-italian-red)]'}
-                      aria-hidden="true"
-                    />
+                    <div
+                      className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 ${
+                        isActive
+                          ? 'bg-white/20 text-white'
+                          : 'bg-[var(--palette-italian-red)]/10 text-[var(--palette-italian-red)]'
+                      }`}
+                    >
+                      <Icon size={17} aria-hidden="true" />
+                    </div>
                     <span className="font-serif text-sm">
                       {t(item.translationKey)}
                     </span>
@@ -176,7 +186,7 @@ export function MobileSideDrawer({
 
                   <span
                     className={`text-xs ${
-                      isActive ? 'text-white/80' : 'text-stone-400'
+                      isActive ? 'text-white/85 font-bold' : 'text-stone-400'
                     } ${isRtl ? 'rotate-180' : ''}`}
                     aria-hidden="true"
                   >
@@ -189,15 +199,15 @@ export function MobileSideDrawer({
         </div>
 
         {/* ── Drawer Footer: Language Switcher + Reserve CTA + Contacts ── */}
-        <div className="p-4 sm:p-5 border-t border-[var(--palette-stone-beige)]/40 bg-white/80 space-y-3.5">
-          {/* Language Switcher Buttons (Clear Solid Pills) */}
+        <div className="p-4 sm:p-5 border-t border-black/[0.06] bg-white/40 backdrop-blur-md space-y-3.5">
+          {/* Language Switcher Buttons (Liquid Glass Pills) */}
           <div className="space-y-1.5">
             <div className="flex items-center gap-1.5 text-[11px] font-semibold text-[var(--palette-espresso)]/70 uppercase tracking-wider">
               <Globe size={12} aria-hidden="true" />
               <span>{locale === 'ar' ? 'اللغة' : locale === 'it' ? 'Lingua' : 'Language'}</span>
             </div>
 
-            <div className="grid grid-cols-3 gap-1.5 bg-stone-100/90 p-1 rounded-xl border border-stone-200/60">
+            <div className="grid grid-cols-3 gap-1.5 bg-black/[0.04] p-1 rounded-2xl border border-black/[0.06] backdrop-blur-xs">
               {languages.map((lng) => {
                 const isSelected = lng.code === locale;
                 return (
@@ -205,10 +215,10 @@ export function MobileSideDrawer({
                     key={lng.code}
                     type="button"
                     onClick={() => handleLanguageChange(lng.code)}
-                    className={`py-1.5 px-2 rounded-lg text-xs font-semibold transition-all cursor-pointer text-center ${
+                    className={`py-1.5 px-2 rounded-xl text-xs transition-all cursor-pointer text-center ${
                       isSelected
-                        ? 'bg-white text-[var(--palette-italian-red)] shadow-2xs font-bold'
-                        : 'text-[var(--palette-espresso)]/80 hover:text-black hover:bg-white/50'
+                        ? 'liquid-glass-pill text-[var(--palette-italian-red)] font-bold shadow-xs'
+                        : 'text-[var(--palette-espresso)]/75 hover:text-black hover:bg-white/40 font-medium'
                     }`}
                   >
                     {lng.native}
@@ -222,14 +232,14 @@ export function MobileSideDrawer({
           <Link
             href="/location"
             onClick={onClose}
-            className="w-full py-3 rounded-full bg-[var(--palette-italian-red)] hover:bg-[var(--palette-italian-red-dark)] text-white font-semibold text-xs tracking-wide flex items-center justify-center gap-2 shadow-md transition-all active:scale-[0.98]"
+            className="w-full py-3 rounded-full bg-gradient-to-r from-[var(--palette-italian-red)] to-[var(--palette-italian-red-dark)] text-white font-semibold text-xs tracking-wide flex items-center justify-center gap-2 shadow-[0_6px_20px_rgba(122,46,42,0.35),inset_0_1px_1.5px_rgba(255,255,255,0.5)] border border-white/20 hover:brightness-105 active:scale-[0.98] transition-all"
           >
             <CalendarDays size={15} aria-hidden="true" />
             <span>{t('nav.reserve')}</span>
           </Link>
 
           {/* Quick Contact & Location Info */}
-          <div className="pt-2 border-t border-stone-200/60 flex flex-col gap-1 text-[11px] text-[var(--palette-espresso)]/75">
+          <div className="pt-2 border-t border-black/[0.06] flex flex-col gap-1 text-[11px] text-[var(--palette-espresso)]/75">
             <a
               href="tel:+390236557693"
               className="inline-flex items-center gap-1.5 font-semibold text-[var(--palette-espresso)] hover:text-[var(--palette-italian-red)] transition-colors"
