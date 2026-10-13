@@ -1,16 +1,199 @@
 {
   "meta": {
-    "title": "Tre Fratelli — Fondazione tecnica",
-    "description": "Tre Fratelli. Fondazione tecnica, fase 01."
+    "title": "Tre Fratelli — Ristorante Italiano Autentico & Pizzeria",
+    "description": "Vivi la vera cucina italiana curata da tre fratelli: pasta fresca fatta a mano, autentica pizza napoletana al forno a legna, vini selezionati e calda accoglienza familiare.",
+    "restaurantTitle": "La Nostra Storia e Tradizione — Tre Fratelli",
+    "pizzeriaTitle": "Pizzeria Tradizionale a Legna — Tre Fratelli",
+    "menuTitle": "Il Nostro Menu — Tre Fratelli",
+    "wineTitle": "Carta dei Vini e Abbinamenti — Tre Fratelli",
+    "newsTitle": "Eventi e Novità Stagionali — Tre Fratelli",
+    "locationTitle": "Dove Siamo e Prenotazioni — Tre Fratelli"
+  },
+  "accessibility": {
+    "skipToContent": "Salta al contenuto principale",
+    "languageSwitcher": "Scegli la lingua",
+    "openMenu": "Apri menu",
+    "closeMenu": "Chiudi menu"
+  },
+  "nav": {
+    "home": "Home",
+    "restaurant": "La Nostra Storia",
+    "pizzeria": "Pizzeria",
+    "menu": "Menu & Pizzeria",
+    "wineDrinks": "Vini & Cantina",
+    "newsPromo": "Novità & Eventi",
+    "location": "Dove Siamo & Prenota",
+    "reserve": "Prenota un Tavolo"
+  },
+  "home": {
+    "heroEyebrow": "Tre Fratelli · Milano",
+    "heroTitle": "Il Gusto Autentico della Cucina Italiana.",
+    "heroCopy": "Pasta fresca fatta a mano, pizza a legna e il calore di una vera tavola di famiglia.",
+    "viewMenu": "Scopri il Menu",
+    "reserveTable": "Prenota",
+    "menuCardTitle": "La Nostra Carta",
+    "menuCardCopy": "Specialità regionali artigianali, pasta trafilata al bronzo e pescato fresco del Mediterraneo.",
+    "reservationCardTitle": "Stasera da Tre Fratelli",
+    "reservationCardCopy": "Un tavolo intimo per due, un pranzo in famiglia o una serata lenta accompagnata da un buon Chianti.",
+    "signatureDishes": "I Nostri Piatti Firma",
+    "signatureSubtitle": "Icone della tradizione culinaria create con autentica passione.",
+    "ourPhilosophy": "La Nostra Filosofia",
+    "philosophyTitle": "Tre Fratelli, Una Sola Passione",
+    "philosophyCopy": "Nato dalla devozione per la sincera ospitalità italiana, Tre Fratelli unisce l'arte della pasta di Marco, la maestria del fuoco a legna di Matteo e la cantina sommelier di Luca.",
+    "pastaStory": "Pasta Tirata a Mano Ogni Mattina",
+    "pizzeriaHighlight": "Impasto Napoletano a Lenta Lievitazione",
+    "winePairings": "Abbinamenti Curati dalla Cantina",
+    "galleryPreview": "Atmosfera & Momenti",
+    "newsPreview": "Storie di Stagione e Masterclass",
+    "openingHours": "Orari di Apertura",
+    "locationPreview": "La Nostra Osteria",
+    "locationCta": "Pianifica la Tua Visita",
+    "exploreRestaurant": "Scopri la Nostra Storia",
+    "scrollCue": "Scorri Giù"
+  },
+  "restaurant": {
+    "title": "La Nostra Storia & Tradizione",
+    "subtitle": "INGREDIENTI GENUINI, PASSIONE DI FAMIGLIA",
+    "story1": "Tre Fratelli nasce dal legame indissolubile di tre fratelli cresciuti tra i profumi del ragù domenicale che sobbolliva e del pane appena sfornato nel cuore del Sud Italia.",
+    "story2": "Ogni mattina comincia con farina macinata a pietra e uova fresche sulla spianatoia in legno. Selezioniamo olio extravergine d'oliva spremuto a freddo da piccoli frantoi pugliesi, pomodori San Marzano ed erbe selvatiche.",
+    "ourPhilosophy": "I Nostri Tre Pilastri",
+    "pillar1Title": "Integrità Artigianale",
+    "pillar1Copy": "Nessuna scorciatoia, nessun compromesso. La vera cucina italiana vive della qualità della materia prima e della giusta lentezza.",
+    "pillar2Title": "Calore Familiare",
+    "pillar2Copy": "Accogliamo ogni ospite con la stessa premura e lo stesso sorriso con cui accoglieremmo un vecchio amico nella nostra casa.",
+    "pillar3Title": "Terroir e Territorio",
+    "pillar3Copy": "Ogni bottiglia di vino e ogni piatto tradizionale raccontano il microclima e la terra fertile delle più grandi valli gastronomiche italiane.",
+    "stats": {
+      "years": "28+",
+      "yearsLabel": "Anni di Tradizione",
+      "dishes": "120+",
+      "dishesLabel": "Ricette Tradizionali",
+      "producers": "18",
+      "producersLabel": "Produttori Artigianali Locali",
+      "satisfaction": "100%",
+      "satisfactionLabel": "Amore per l'Accoglienza"
+    }
+  },
+  "pizzeria": {
+    "title": "La Vera Pizzeria",
+    "subtitle": "L'ARTE DELL'IMPASTO E IL FORNO A LEGNA A 450°C",
+    "story": "Il nostro impasto segue una fermentazione e maturazione a freddo di oltre 48 ore. Il risultato è un cornicione alveolato, fragrante, incredibilmente leggero e altamente digeribile.",
+    "process": "Il Metodo in 4 Fasi",
+    "featured": "Le Nostre Pizze Signature",
+    "fullMenu": "Tutte le Pizze e i Calzoni",
+    "step1Title": "48h Lenta Maturazione",
+    "step1Desc": "Lievito madre e fermentazione controllata per massima digeribilità e sapore naturale.",
+    "step2Title": "Stesura Rigorosamente a Mano",
+    "step2Desc": "Aperta con gesti sapienti dal centro verso l'esterno per preservare l'aria nell'impasto.",
+    "step3Title": "Ingredienti D.O.P.",
+    "step3Desc": "Pomodoro San Marzano dell'Agro Sarnese-Nocerino, mozzarella di bufala campana e basilico fresco.",
+    "step4Title": "90 Secondi a 450°C",
+    "step4Desc": "Cottura rapidissima nel forno a legna in mattoni refrattari con legna di faggio certificata."
+  },
+  "menu": {
+    "title": "Il Nostro Menu Completo",
+    "subtitle": "UN VIAGGIO NEI SAPORI D'ITALIA",
+    "search": "Cerca piatti, ingredienti...",
+    "recommendations": "I Consigli dello Chef",
+    "askDish": "Vedi nel Menu",
+    "emptyTitle": "Nessun piatto trovato",
+    "emptyCopy": "Prova a modificare i filtri alimentari o i termini di ricerca.",
+    "filters": {
+      "all": "Tutti i Piatti",
+      "seafood": "Frutti di Mare & Pesce",
+      "meat": "Carni Selezionate",
+      "vegetarian": "Vegetariano",
+      "pasta": "Pasta Fresca",
+      "pizza": "Pizze & Calzoni",
+      "dessert": "Dolci della Casa",
+      "signature": "Piatti Firma",
+      "raw": "Crudi di Mare"
+    }
+  },
+  "wine": {
+    "title": "Carta dei Vini & Bevande",
+    "subtitle": "SELEZIONE DALLA NOSTRA CANTINA",
+    "pairWith": "Abbinamento Consigliato:",
+    "pairingsTitle": "Armonie tra Cibo e Vino",
+    "curatedCopy": "Una cantina pensata con dedizione: bianchi alpini sapidi, grandi rossi toscani e piemontesi, bollicine di Franciacorta, amari della tradizione e caffè espresso tostato a legna.",
+    "filters": {
+      "all": "Tutte le Bevande",
+      "glass": "Al Calice",
+      "sparkling": "Spumanti & Bollicine",
+      "white": "Vini Bianchi",
+      "red": "Vini Rossi",
+      "rose": "Vini Rosati",
+      "dessert": "Vini da Dessert",
+      "beer": "Birre Artigianali",
+      "soft": "Bevande Analcoliche",
+      "coffee": "Espresso & Amari"
+    }
+  },
+  "news": {
+    "title": "Novità & Eventi Speciali",
+    "subtitle": "INCONTRI, MASTERCLASS E MENU STAGIONALI",
+    "featured": "Evento in Primo Piano",
+    "readMore": "Leggi Tutto"
+  },
+  "location": {
+    "title": "Dove Siamo & Prenotazioni",
+    "subtitle": "RISERVIAMO UN TAVOLO PER VOI",
+    "address": "Viale Leonardo da Vinci, 97, 20090 Trezzano sul Naviglio (MI), Italia",
+    "hours": {
+      "title": "Orari di Apertura",
+      "monday": "Lunedì: 12:00 – 15:00",
+      "tueToSat": "Martedì – Sabato: 12:00 – 15:00 e 18:30 – 00:00",
+      "sunday": "Domenica: 12:00 – 00:00 (Orario Continuato)",
+      "lunch": "Pranzo: 12:00 – 15:00",
+      "dinner": "Cena: 18:30 – 00:00",
+      "everyDay": "Aperto Tutti i Giorni",
+      "closed": "Lunedì sera: consigliata verifica telefonica",
+      "note": "Nota: È consigliata la chiamata prima di venire, specialmente il lunedì sera (+39 02 3655 7693).",
+      "pagineGialleSource": "Fonte orari: Google Maps & PagineGialle"
+    },
+    "contacts": {
+      "title": "Contatto Diretto",
+      "phone": "+39 02 3655 7693",
+      "email": "prenotazioni@trefratelli.it"
+    },
+    "form": {
+      "title": "Prenota il Tuo Tavolo Online",
+      "step1": "Data e Numero Ospiti",
+      "step2": "Orario e Contatti",
+      "step3": "Preferenze e Note",
+      "date": "Data di Prenotazione",
+      "guests": "Numero di Ospiti",
+      "time": "Orario Desiderato",
+      "name": "Nome e Cognome",
+      "phone": "Numero di Telefono",
+      "email": "Indirizzo Email",
+      "language": "Lingua Preferita per il Servizio",
+      "occasion": "Occasione Speciale (Facoltativa)",
+      "occasionNone": "Pranzo o Cena Ordinaria",
+      "occasionBirthday": "Festa di Compleanno",
+      "occasionAnniversary": "Anniversario Romantico",
+      "occasionBusiness": "Pranzo o Cena di Lavoro",
+      "notes": "Richieste Particolari o Allergie",
+      "next": "Continua",
+      "prev": "Indietro",
+      "submit": "Invia Richiesta di Prenotazione",
+      "validation": "Compila correttamente tutti i campi obbligatori.",
+      "successTitle": "Richiesta Ricevuta con Successo!",
+      "successMessage": "Grazie! Abbiamo ricevuto la tua richiesta di prenotazione. Il nostro maître vi contatterà al più presto via telefono o email per la conferma.",
+      "newBooking": "Effettua un'Altra Prenotazione"
+    }
+  },
+  "footer": {
+    "tagline": "Ospitalità italiana verace, pasta fresca fatta a mano e pizza al forno a legna.",
+    "links": "Esplora",
+    "hours": "Orari",
+    "contact": "Contatti",
+    "rights": "© 2026 Tre Fratelli Ristorante Italiano. Tutti i diritti riservati."
   },
   "foundation": {
     "heading": "Tre Fratelli",
-    "status": "Fase 01 — Fondazione tecnica. Il design del sito seguirà nella prossima fase.",
-    "imageProof": "Verifica immagine responsive — campione tecnico.",
-    "motionProof": "Verifica movimento discreto. Statico con movimento ridotto."
-  },
-  "accessibility": {
-    "skipToContent": "Vai al contenuto principale",
-    "languageSwitcher": "Scegli la lingua"
+    "status": "Ristorazione e Accoglienza Tradizionale Italiana",
+    "imageProof": "Anteprima culinaria artigianale.",
+    "motionProof": "Esperienza visiva fluida."
   }
 }

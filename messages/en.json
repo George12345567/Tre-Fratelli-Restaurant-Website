@@ -1,16 +1,199 @@
 {
   "meta": {
-    "title": "Tre Fratelli — Technical foundation",
-    "description": "Tre Fratelli. Technical foundation, phase 01."
-  },
-  "foundation": {
-    "heading": "Tre Fratelli",
-    "status": "Phase 01 — Technical foundation. Website design follows in the next phase.",
-    "imageProof": "Responsive image check — technical sample.",
-    "motionProof": "Subtle motion check. Static with reduced motion."
+    "title": "Tre Fratelli — Authentic Italian Restaurant & Pizzeria",
+    "description": "Experience genuine Italian dining crafted by three brothers: handmade fresh pasta, authentic wood-fired Neapolitan pizza, curated wines, and heartfelt hospitality.",
+    "restaurantTitle": "Our Story & Heritage — Tre Fratelli",
+    "pizzeriaTitle": "Traditional Wood-Fired Pizzeria — Tre Fratelli",
+    "menuTitle": "Curated Italian Menu — Tre Fratelli",
+    "wineTitle": "Cellar Wines & Pairings — Tre Fratelli",
+    "newsTitle": "Events & Seasonal Updates — Tre Fratelli",
+    "locationTitle": "Location & Reservations — Tre Fratelli"
   },
   "accessibility": {
     "skipToContent": "Skip to main content",
-    "languageSwitcher": "Choose language"
+    "languageSwitcher": "Choose language",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "nav": {
+    "home": "Home",
+    "restaurant": "Our Story",
+    "pizzeria": "Pizzeria",
+    "menu": "Menu & Pizzeria",
+    "wineDrinks": "Wine & Cellar",
+    "newsPromo": "News & Events",
+    "location": "Location & Reserve",
+    "reserve": "Reserve a Table"
+  },
+  "home": {
+    "heroEyebrow": "Tre Fratelli · Milano",
+    "heroTitle": "True Italian Flavours, Crafted with Passion.",
+    "heroCopy": "Fresh handmade pasta, wood-fired pizza, and warm family hospitality every day.",
+    "viewMenu": "View Menu",
+    "reserveTable": "Book a Table",
+    "menuCardTitle": "La Nostra Carta",
+    "menuCardCopy": "Explore handcrafted regional specialties, bronze-cut pasta, and Mediterranean seafood.",
+    "reservationCardTitle": "Tonight at Tre Fratelli",
+    "reservationCardCopy": "An intimate table for two, a family feast, or a slow evening with vintage Chianti.",
+    "signatureDishes": "Signature Dishes",
+    "signatureSubtitle": "Icons of Italian tradition crafted with pure passion.",
+    "ourPhilosophy": "Our Culinary Heritage",
+    "philosophyTitle": "Three Brothers, One Shared Soul",
+    "philosophyCopy": "Born from devotion to timeless Italian hospitality, Tre Fratelli unites Marco's pasta craft, Matteo's wood-fired fire, and Luca's sommelier cellar. Every dish tells our heritage.",
+    "pastaStory": "Handmade Pasta Every Morning",
+    "pizzeriaHighlight": "Slow-Fermented Neapolitan Dough",
+    "winePairings": "Curated Cellar Pairings",
+    "galleryPreview": "Atmosphere & Moments",
+    "newsPreview": "Seasonal Stories & Masterclasses",
+    "openingHours": "Opening Hours",
+    "locationPreview": "Find Our Osteria",
+    "locationCta": "Plan Your Visit",
+    "exploreRestaurant": "Discover Our Story",
+    "scrollCue": "Scroll Down"
+  },
+  "restaurant": {
+    "title": "Our Heritage & Story",
+    "subtitle": "HONEST INGREDIENTS, FAMILY DEVOTION",
+    "story1": "Tre Fratelli was born from the bond of three brothers who grew up surrounded by the aromas of slow-simmered ragù and freshly baked bread in southern Italy.",
+    "story2": "Every morning begins with stone-ground flour and farm-fresh eggs on the wooden pastry board. We source cold-pressed extra-virgin olive oil directly from small groves in Puglia, San Marzano tomatoes from Campania, and wild herbs.",
+    "ourPhilosophy": "The Three Pillars",
+    "pillar1Title": "Artisanal Integrity",
+    "pillar1Copy": "No shortcuts, no artificial additions. True Italian cuisine relies on raw ingredient quality and unhurried patience.",
+    "pillar2Title": "Shared Family Warmth",
+    "pillar2Copy": "We welcome every guest as if they were stepping into our grandmother's dining room on a Sunday afternoon.",
+    "pillar3Title": "Terroir & Heritage",
+    "pillar3Copy": "Every wine bottle and regional recipe reflects the microclimate and soil of Italy's greatest culinary valleys.",
+    "stats": {
+      "years": "28+",
+      "yearsLabel": "Years of Tradition",
+      "dishes": "120+",
+      "dishesLabel": "Authentic Recipes",
+      "producers": "18",
+      "producersLabel": "Local Italian Artisans",
+      "satisfaction": "100%",
+      "satisfactionLabel": "Passion for Hospitality"
+    }
+  },
+  "pizzeria": {
+    "title": "La Nostra Pizzeria",
+    "subtitle": "THE ART OF DOUGH & 450°C WOOD FIRE",
+    "story": "Our pizza dough undergoes a gentle 48-hour cold fermentation, giving it an airy crust that is extraordinarily light and digestible. Baked in our hand-built volcanic brick oven.",
+    "process": "The 4-Step Craft",
+    "featured": "Signature Pizzas",
+    "fullMenu": "View All Pizzas & Calzoni",
+    "step1Title": "48h Slow Fermentation",
+    "step1Desc": "Cold-matured sourdough dough for exceptional lightness and natural digestibility.",
+    "step2Title": "Hand Stretched",
+    "step2Desc": "Skillfully opened by hand from center to rim to protect the airy alveoli.",
+    "step3Title": "D.O.P. Ingredients",
+    "step3Desc": "San Marzano plum tomatoes, creamy Campanian buffalo mozzarella, and fresh sweet basil.",
+    "step4Title": "90 Seconds at 450°C",
+    "step4Desc": "Intense flash baking over beechwood embers creating the signature leopard-spotted cornicione."
+  },
+  "menu": {
+    "title": "The Full Menu",
+    "subtitle": "A CELEBRATION OF ITALIAN TASTE",
+    "search": "Search dishes, ingredients...",
+    "recommendations": "Chef's Recommendations",
+    "askDish": "View in Menu",
+    "emptyTitle": "No dishes found",
+    "emptyCopy": "Try adjusting your search terms or dietary filters.",
+    "filters": {
+      "all": "All Dishes",
+      "seafood": "Seafood",
+      "meat": "Meat",
+      "vegetarian": "Vegetarian",
+      "pasta": "Pasta",
+      "pizza": "Pizza",
+      "dessert": "Dessert",
+      "signature": "Signature",
+      "raw": "Raw Seafood"
+    }
+  },
+  "wine": {
+    "title": "Carta dei Vini & Bevande",
+    "subtitle": "CURATED CELLAR SELECTION",
+    "pairWith": "Suggested Pairing:",
+    "pairingsTitle": "Food & Wine Harmonization",
+    "curatedCopy": "A cellar shaped by passion: crisp Alpine whites, bold Tuscan reds, effervescent Franciacorta, artisanal digestifs, and authentic Italian espresso.",
+    "filters": {
+      "all": "All Beverages",
+      "glass": "By the Glass",
+      "sparkling": "Sparkling & Prosecco",
+      "white": "White Wines",
+      "red": "Red Wines",
+      "rose": "Rosé Wines",
+      "dessert": "Dessert Wines",
+      "beer": "Italian Craft Beer",
+      "soft": "Soft Drinks",
+      "coffee": "Espresso & Amari"
+    }
+  },
+  "news": {
+    "title": "News & Special Events",
+    "subtitle": "GATHERINGS, MASTERCLASSES & SEASONAL MENUS",
+    "featured": "Featured Event",
+    "readMore": "Learn More"
+  },
+  "location": {
+    "title": "Location & Reservations",
+    "subtitle": "WE RESERVE A TABLE FOR YOU",
+    "address": "Viale Leonardo da Vinci, 97, 20090 Trezzano sul Naviglio (MI), Italy",
+    "hours": {
+      "title": "Service & Opening Hours",
+      "monday": "Monday: 12:00 PM – 3:00 PM",
+      "tueToSat": "Tuesday – Saturday: 12:00 PM – 3:00 PM | 6:30 PM – 12:00 Midnight",
+      "sunday": "Sunday: 12:00 PM – 12:00 Midnight (All-day continuous)",
+      "lunch": "Lunch: 12:00 PM – 3:00 PM",
+      "dinner": "Dinner: 6:30 PM – 12:00 Midnight",
+      "everyDay": "Open Daily",
+      "closed": "Monday evening: Call verification recommended",
+      "note": "Note: Calling in advance is recommended, especially on Monday evenings (+39 02 3655 7693).",
+      "pagineGialleSource": "Additional hours source: PagineGialle"
+    },
+    "contacts": {
+      "title": "Direct Contact",
+      "phone": "+39 02 3655 7693",
+      "email": "prenotazioni@trefratelli.it"
+    },
+    "form": {
+      "title": "Book Your Table Online",
+      "step1": "Date & Party Size",
+      "step2": "Time & Details",
+      "step3": "Preferences & Notes",
+      "date": "Select Date",
+      "guests": "Number of Guests",
+      "time": "Preferred Time",
+      "name": "Full Name",
+      "phone": "Phone Number",
+      "email": "Email Address",
+      "language": "Preferred Service Language",
+      "occasion": "Special Occasion (Optional)",
+      "occasionNone": "Regular Dining",
+      "occasionBirthday": "Birthday Celebration",
+      "occasionAnniversary": "Romantic Anniversary",
+      "occasionBusiness": "Business Lunch / Dinner",
+      "notes": "Special Requests or Dietary Allergies",
+      "next": "Continue",
+      "prev": "Back",
+      "submit": "Confirm Reservation Request",
+      "validation": "Please provide all required information correctly.",
+      "successTitle": "Reservation Received!",
+      "successMessage": "Grazie! Your reservation request has been received. Our maître d' will confirm your table shortly via phone or email.",
+      "newBooking": "Make Another Reservation"
+    }
+  },
+  "footer": {
+    "tagline": "Authentic Italian hospitality, fresh handmade pasta, and wood-fired pizza.",
+    "links": "Explore",
+    "hours": "Hours",
+    "contact": "Contact",
+    "rights": "© 2026 Tre Fratelli Ristorante Italiano. All rights reserved."
+  },
+  "foundation": {
+    "heading": "Tre Fratelli",
+    "status": "Authentic Italian Dining & Hospitality",
+    "imageProof": "Handcrafted culinary preview.",
+    "motionProof": "Smooth motion experience."
   }
 }

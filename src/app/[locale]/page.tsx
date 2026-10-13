@@ -1,40 +1,97 @@
-import { hasLocale } from "next-intl";
-import { getTranslations } from "next-intl/server";
-import { notFound } from "next/navigation";
-import { LocaleSwitcher } from "@/components/ui/LocaleSwitcher";
-import { ResponsiveImage } from "@/components/media/ResponsiveImage";
-import { MotionFade } from "@/components/motion/MotionFade";
-import { routing } from "@/i18n/routing";
+import { hasLocale } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
+import { notFound } from 'next/navigation';
+import { routing } from '@/i18n/routing';
+import { Link } from '@/i18n/navigation';
+import { ArrowRight, CalendarDays } from 'lucide-react';
+import { SignatureDishesSection } from '@/components/home/SignatureDishesSection';
+import { MenuCategoriesSection } from '@/components/home/MenuCategoriesSection';
+import { AboutRestaurantSection } from '@/components/home/AboutRestaurantSection';
+import { HeroSection } from '@/components/home/HeroSection';
 
-// Phase 01 proof only. Replace this page when the approved design arrives.
-export default async function FoundationPage({ params }: {
+interface PageProps {
   params: Promise<{ locale: string }>;
-}) {
+}
+
+export default async function HomePage({ params }: PageProps) {
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
-  const t = await getTranslations({ locale, namespace: "foundation" });
+
+  const t = await getTranslations({ locale });
+  const isRtl = locale === 'ar';
 
   return (
-    <main id="main-content" tabIndex={-1} className="mx-auto flex min-h-dvh max-w-3xl flex-col items-start gap-6 p-[var(--page-gutter)]">
-      <LocaleSwitcher locale={locale} />
-      <h1>{t("heading")}</h1>
-      <p className="text-muted-foreground">{t("status")}</p>
-      <div aria-hidden="true" className="flex flex-wrap gap-3">
-        {["bg-background", "bg-primary", "bg-secondary", "bg-foreground", "bg-muted", "bg-accent"].map((color) => (
-          <span key={color} className={`h-8 w-8 rounded border border-border ${color}`} />
-        ))}
-      </div>
-      <figure className="w-full max-w-xs">
-        <ResponsiveImage
-          src="/images/foundation.png"
-          alt=""
-          width={320}
-          height={180}
-          sizes="(max-width: 384px) calc(100vw - 32px), 320px"
-        />
-        <figcaption className="mt-2 text-sm text-muted-foreground">{t("imageProof")}</figcaption>
-      </figure>
-      <MotionFade><p className="text-sm">{t("motionProof")}</p></MotionFade>
+    <main id="main-content" tabIndex={-1} className="focus:outline-none">
+      {/* ── 1. Video Hero Section (Full-Screen Side-Aligned Luxury) ── */}
+      <HeroSection
+        locale={locale}
+        isRtl={isRtl}
+        translations={{
+          heroEyebrow: t('home.heroEyebrow'),
+          heroTitle: t('home.heroTitle'),
+          heroCopy: t('home.heroCopy'),
+          reserveTable: t('home.reserveTable'),
+          viewMenu: t('home.viewMenu'),
+        }}
+      />
+
+      {/* ── 2. About & Restaurant Information (Brand Emblem & Vital Info) ── */}
+      <AboutRestaurantSection
+        locale={locale}
+        isRtl={isRtl}
+        translations={{
+          reserveTable: t('home.reserveTable'),
+          exploreRestaurant: t('home.exploreRestaurant'),
+        }}
+      />
+
+      {/* ── 3. Menu Categories Discovery (Antipasti, Primi, Secondi, Pizza) ── */}
+      <MenuCategoriesSection
+        locale={locale}
+        isRtl={isRtl}
+        translations={{
+          viewMenu: t('home.viewMenu'),
+        }}
+      />
+
+      {/* ── 4. Signature Dishes Showcase (Enhanced Liquid Glass) ── */}
+      <SignatureDishesSection
+        locale={locale}
+        isRtl={isRtl}
+        translations={{
+          signatureSubtitle: t('home.signatureSubtitle'),
+          signatureDishes: t('home.signatureDishes'),
+          viewMenu: t('home.viewMenu'),
+          reserveTable: t('home.reserveTable'),
+          askDish: t('menu.askDish'),
+        }}
+      />
+
+
+
+
+      {/* ── 6. Bottom Reservation Callout ── */}
+      <section className="py-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-gradient-to-r from-[var(--palette-italian-red)] to-[var(--palette-italian-red-dark)] text-white rounded-2xl p-8 sm:p-12 shadow-xl flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="space-y-2 text-center md:text-start">
+            <h3 className="font-serif text-2xl sm:text-3xl font-bold">
+              {t('location.title')}
+            </h3>
+            <p className="text-stone-200 text-sm max-w-lg">
+              {t('home.reservationCardCopy')}
+            </p>
+          </div>
+
+          <Link
+            href="/location"
+            className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-[var(--palette-warm-ivory)] text-[var(--palette-espresso)] hover:bg-white font-bold text-sm transition-all shadow-md shrink-0"
+          >
+            <CalendarDays size={18} aria-hidden="true" />
+            <span>{t('nav.reserve')}</span>
+            <ArrowRight size={16} className={isRtl ? 'rotate-180' : ''} aria-hidden="true" />
+          </Link>
+        </div>
+      </section>
     </main>
   );
 }

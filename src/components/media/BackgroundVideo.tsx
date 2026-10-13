@@ -80,7 +80,6 @@ export function BackgroundVideo({
       {src && !sources && <source src={src} type="video/mp4" />}
       {poster && (
         // The poster is a native video fallback, not a page image.
-        // eslint-disable-next-line @next/next/no-img-element
         <img src={poster} alt="" aria-hidden="true" />
       )}
     </video>

@@ -5,5 +5,10 @@ import nextTypescript from "eslint-config-next/typescript";
 export default defineConfig([
   ...nextVitals,
   ...nextTypescript,
-  globalIgnores([".next/**", "out/**", "output/**", "next-env.d.ts"]),
+  {
+    rules: {
+      "@next/next/no-img-element": "off",
+    },
+  },
+  globalIgnores([".next/**", "out/**", "output/**", "next-env.d.ts", "node_modules/**"]),
 ]);

@@ -2,7 +2,7 @@ import { defineRouting } from "next-intl/routing";
 
 // Canonical locale list: add a locale and its messages without changing routes.
 export const routing = defineRouting({
-  locales: ["it", "en"],
+  locales: ["it", "en", "ar"],
   defaultLocale: "it",
   localePrefix: "always",
   // An unprefixed visit consistently opens Italian, regardless of headers/cookies.
