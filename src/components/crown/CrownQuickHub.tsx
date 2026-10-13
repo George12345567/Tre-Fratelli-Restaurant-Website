@@ -189,11 +189,20 @@ export function CrownQuickHub({ locale }: CrownQuickHubProps) {
               />
             </Link>
 
-            {/* 3. لينك لمعلومات التواصل والـ Google Maps */}
-            <Link
-              href="/location"
-              onClick={() => setIsOpen(false)}
-              className="group flex items-center justify-between p-2.5 rounded-2xl bg-white/70 hover:bg-white border border-black/5 shadow-2xs hover:shadow-xs transition-all duration-200"
+            {/* 3. لينك لمعلومات التواصل والـ Google Maps -> الانتقال للـ Footer */}
+            <a
+              href="#footer"
+              onClick={(e) => {
+                e.preventDefault();
+                setIsOpen(false);
+                const footerEl = document.getElementById('footer');
+                if (footerEl) {
+                  footerEl.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                  window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+                }
+              }}
+              className="group flex items-center justify-between p-2.5 rounded-2xl bg-white/70 hover:bg-white border border-black/5 shadow-2xs hover:shadow-xs transition-all duration-200 cursor-pointer"
             >
               <div className="flex items-center gap-2.5 min-w-0">
                 <div className="w-8 h-8 rounded-xl bg-emerald-500/10 text-emerald-700 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
@@ -219,7 +228,7 @@ export function CrownQuickHub({ locale }: CrownQuickHubProps) {
                   isRtl ? 'rotate-180 group-hover:-translate-x-1' : ''
                 }`}
               />
-            </Link>
+            </a>
           </div>
 
           {/* ── Direct Google Maps Fast Action Button ── */}

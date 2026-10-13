@@ -23,6 +23,7 @@ export async function Footer({ locale }: FooterProps) {
 
   return (
     <footer
+      id="footer"
       role="contentinfo"
       className="w-full max-w-full overflow-hidden overflow-x-clip bg-[var(--palette-espresso)] text-[var(--palette-warm-ivory)] border-t border-[var(--palette-espresso-light)] mt-10 sm:mt-14 relative z-10"
     >
