@@ -132,8 +132,39 @@
   "news": {
     "title": "News & Special Events",
     "subtitle": "GATHERINGS, MASTERCLASSES & SEASONAL MENUS",
-    "featured": "Featured Event",
-    "readMore": "Learn More"
+    "featured": "Featured Highlight",
+    "readMore": "Learn More",
+    "heroKicker": "TRADITION, MUSIC & FESTIVITY",
+    "heroLead": "Discover our upcoming live music & karaoke evenings, masterclasses with our chefs, seasonal tastings, and unforgettable gatherings at Tre Fratelli.",
+    "scheduleNotice": "Event schedules, guest artists, and exact dates are continuously updated. Advance reservations are warmly recommended.",
+    "datesSoon": "Dates Coming Soon",
+    "reserveSpot": "Book a Table for this Event",
+    "callInquire": "Call for Inquiries",
+    "viewAll": "All Events",
+    "highlightsLabel": "Event Highlights:",
+    "filters": {
+      "all": "All Events & News",
+      "music": "Music & Karaoke",
+      "tasting": "Wine & Tastings",
+      "masterclass": "Cooking Workshops",
+      "seasonal": "Seasonal Menus",
+      "celebration": "Private Parties"
+    },
+    "karaokeHighlight": {
+      "kicker": "TREZZANO SUL NAVIGLIO EVENINGS",
+      "title": "Serate di Musica & Karaoke: Sing, Dine & Celebrate",
+      "description": "Known across the Milan metro area for hearty Italian hospitality, Tre Fratelli hosts vibrant weekend nights with live singing, Sanremo classics, hot wood-fired pizzas, and cold beers. Perfect for family celebrations, birthdays, and friends gathering around one big table.",
+      "feature1": "Live microphones & song requests for all guests",
+      "feature2": "Generous food, crispy pizzas & fair pricing (€10–€20)",
+      "feature3": "Spacious rooms & private on-site parking"
+    },
+    "privateEvents": {
+      "kicker": "PRIVATE OCCASIONS & CELEBRATIONS",
+      "title": "Host Your Party, Birthday, or Event with Us",
+      "description": "Spacious rooms accommodating large parties, tailored fixed-price menus (€10–€20), festive karaoke entertainment, and complimentary private parking make Tre Fratelli the ideal venue for your celebration in Trezzano sul Naviglio.",
+      "cta": "Reserve Group Tables",
+      "call": "Call Directly"
+    }
   },
   "location": {
     "title": "Location & Reservations",

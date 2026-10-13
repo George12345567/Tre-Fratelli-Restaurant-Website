@@ -58,6 +58,13 @@ export interface Drink {
   description?: LocalizedText;
 }
 
+export type EventCategoryKey =
+  | 'music'
+  | 'tasting'
+  | 'masterclass'
+  | 'seasonal'
+  | 'celebration';
+
 export interface NewsPost {
   id: string;
   date: string;
@@ -65,6 +72,11 @@ export interface NewsPost {
   title: LocalizedText;
   excerpt: LocalizedText;
   image: string;
+  type?: EventCategoryKey;
+  scheduleBadge?: LocalizedText;
+  highlights?: LocalizedText[];
+  badge?: LocalizedText;
+  featured?: boolean;
 }
 
 export interface VisualCard {

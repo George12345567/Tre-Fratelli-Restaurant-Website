@@ -133,7 +133,38 @@
     "title": "Novità & Eventi Speciali",
     "subtitle": "INCONTRI, MASTERCLASS E MENU STAGIONALI",
     "featured": "Evento in Primo Piano",
-    "readMore": "Leggi Tutto"
+    "readMore": "Scopri di più",
+    "heroKicker": "TRADIZIONE, MUSICA E FESTA",
+    "heroLead": "Scoprite le nostre serate speciali con musica dal vivo e karaoke, le masterclass con i nostri chef, le degustazioni stagionali e le grandi feste conviviali da Tre Fratelli.",
+    "scheduleNotice": "Il calendario degli eventi, le date precise e gli ospiti musicali sono in continuo aggiornamento. Si consiglia vivamente la prenotazione anticipata.",
+    "datesSoon": "Date in Arrivo",
+    "reserveSpot": "Prenota per l'Evento",
+    "callInquire": "Chiama per Informazioni",
+    "viewAll": "Tutti gli Eventi",
+    "highlightsLabel": "Punti di Forza dell'Evento:",
+    "filters": {
+      "all": "Tutti gli Eventi",
+      "music": "Musica & Karaoke",
+      "tasting": "Degustazioni & Cantina",
+      "masterclass": "Masterclass di Cucina",
+      "seasonal": "Menu Stagionali",
+      "celebration": "Feste Private"
+    },
+    "karaokeHighlight": {
+      "kicker": "LE SERATE DI TREZZANO SUL NAVIGLIO",
+      "title": "Serate di Musica & Karaoke: Canta, Cena e Festeggia",
+      "description": "Famoso per la calda ospitalità italiana e le porzioni generose, Tre Fratelli anima i fine settimana con canzoni dal vivo, hit di Sanremo, pizza fumante a legna e birre fresche. L'atmosfera ideale per compleanni, famiglie e comitive felici di cantare insieme.",
+      "feature1": "Microfoni professionali e richieste brani per tutti i tavoli",
+      "feature2": "Piatti abbondanti, pizza fragrante e prezzi onesti (10–20 €)",
+      "feature3": "Sale spaziose e ampio parcheggio privato gratuito"
+    },
+    "privateEvents": {
+      "kicker": "FESTE PRIVATE & GRANDI OCCASIONI",
+      "title": "Organizza la Tua Festa o Compleanno con Noi",
+      "description": "Sale spaziose per tavolate numerose, menu concordati a prezzo vantaggioso (10–20 €), karaoke e animazione musicale su richiesta, oltre ad ampio parcheggio privato: la cornice perfetta per celebrare a Trezzano sul Naviglio.",
+      "cta": "Prenota per Gruppi & Feste",
+      "call": "Chiama Direttamente"
+    }
   },
   "location": {
     "title": "Dove Siamo & Prenotazioni",
