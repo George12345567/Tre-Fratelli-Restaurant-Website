@@ -1,0 +1,283 @@
+import type { Dish } from '../types';
+
+export const contorniDishes: Dish[] = [
+  // ── Insalatone (Grand Meal Salads) ──
+  {
+    id: 'ins-damore',
+    category: 'Contorni & Salads',
+    name: {
+      it: 'Insalatona D’Amore',
+      en: 'Insalatona D’Amore: Prawns, Salmon & Mango',
+      ar: 'سلطة ديل أموري الملكية: روبيان، سلمون مدخن، مانجو وأفوكادو',
+    },
+    description: {
+      it: 'Gamberetti dolci, salmone affumicato a fette, avocado fresco, cubetti di mango esotico, cipolla dolce, cetrioli e rucola.',
+      en: 'Sweet prawns, tender smoked salmon ribbons, fresh avocado, juicy exotic mango cubes, sweet red onions, cucumbers, and peppery rocket.',
+      ar: 'روبيان حلو، شرائح سلمون مدخن، أفوكادو طازج، مكعبات مانجو استوائية، بصل أحمر، خيار وجرجير بري.',
+    },
+    price: '€14,00',
+    tags: ['signature', 'seafood'],
+    allergens: ['2 - Crostacei', '4 - Pesce'],
+    image: '/images/dishes/contorni-insalate/insalata-mare-adriatico.webp',
+  },
+  {
+    id: 'ins-frutti-mare',
+    category: 'Contorni & Salads',
+    name: {
+      it: 'Insalatona ai Frutti di Mare Tre Fratelli',
+      en: 'Tre Fratelli Warm Seafood Garden Salad',
+      ar: 'سلطة ثمار البحر المشكلة تري فراتيلي',
+    },
+    description: {
+      it: 'Misticanza fresca di campo con calamari teneri, seppioline, gamberi, cozze e polpo al vapore con citronette.',
+      en: 'Fresh field greens tossed with tender steamed calamari, baby cuttlefish, shrimp, mussels, and octopus with lemon vinaigrette.',
+      ar: 'خضار مشكلة طازجة مع كالاماري وحبار وروبيان وبلح البحر وأخطبوط مطهو على البخار مع صلصة الليمون وزيت الزيتون.',
+    },
+    price: '€14,00',
+    tags: ['signature', 'seafood'],
+    allergens: ['2 - Crostacei', '4 - Pesce', '14 - Lupini/Molluschi'],
+    image: '/images/dishes/contorni-insalate/insalata-mare-adriatico.webp',
+  },
+  {
+    id: 'ins-pollo',
+    category: 'Contorni & Salads',
+    name: {
+      it: 'Insalatona di Pollo con Teriyaki e Grana',
+      en: 'Teriyaki Chicken Salad with Grana Shavings',
+      ar: 'سلطة الدجاج المشوي بصلصة الترياكي ورقائق الغرانا',
+    },
+    description: {
+      it: 'Insalata mista croccante, pomodorini, filetti di pollo marinati dorati, glassa teriyaki e scaglie di Grana Padano.',
+      en: 'Crisp garden greens, cherry tomatoes, seared tender chicken strips glazed with sweet teriyaki, and shaved Grana Padano.',
+      ar: 'خضار مقرمشة، طماطم كرزية، شرائح دجاج طرية متبلة بصلصة الترياكي ورقائق جبن الغرانا بادانو.',
+    },
+    price: '€13,00',
+    tags: ['meat'],
+    allergens: ['6 - Soia', '7 - Latte'],
+  },
+  {
+    id: 'ins-carne',
+    category: 'Contorni & Salads',
+    name: {
+      it: 'Insalatona di Manzo, Bufala e Sesamo',
+      en: 'Seared Beef Tenderloin Salad with Buffalo Mozzarella',
+      ar: 'سلطة شرائح اللحم البقري مع جبن البافلو والسمسم وغلاسا البلسميك',
+    },
+    description: {
+      it: 'Insalata mista con straccetti di manzo tenero saltati, mozzarella di bufala a bocconcini, semi di sesamo tostato e glassa di balsamico.',
+      en: 'Mixed baby greens with seared prime beef strips, fresh Campanian buffalo mozzarella bites, toasted sesame seeds, and balsamic glaze.',
+      ar: 'خضار متنوعة مع شرائح لحم بقري مشوحة، كرات جبن بافلو طازجة، سمسم محمص ورذاذ غلاسا الخل البلسمي المعتق.',
+    },
+    price: '€12,00',
+    tags: ['meat'],
+    allergens: ['7 - Latte', '11 - Semi di sesamo'],
+    image: '/images/dishes/contorni-insalate/straccetti-manzo-misticanza.webp',
+  },
+  {
+    id: 'ins-greca',
+    category: 'Contorni & Salads',
+    name: {
+      it: 'Insalatona Greca Tradizionale',
+      en: 'Traditional Greek Feta & Kalamata Salad',
+      ar: 'السلطة اليونانية التقليدية بجبن الفيتا والزيتون الأسود',
+    },
+    description: {
+      it: 'Autentico formaggio Feta D.O.P., cetrioli freschi, pomodorini maturi, olive nere carnose, cipolla rossa e insalata verde con origano.',
+      en: 'Authentic Greek Feta D.O.P., crisp cucumbers, vine cherry tomatoes, plump black olives, sweet red onions, and wild oregano.',
+      ar: 'جبن فيتا يوناني أصيل، خيار مقرمش، طماطم كرزية، زيتون أسود، بصل أحمر وأوراق خس مع الزعتر البري وزيت الزيتون.',
+    },
+    price: '€12,00',
+    tags: ['vegetarian'],
+    allergens: ['7 - Latte'],
+  },
+  {
+    id: 'ins-rucola-noci',
+    category: 'Contorni & Salads',
+    name: {
+      it: 'Insalata di Rucola, Noci, Mais e Pomodorini',
+      en: 'Wild Rocket, Walnut, Sweet Corn & Datterini Salad',
+      ar: 'سلطة الجرجير البري مع الجوز والذرة الحلوة والطماطم والخيار',
+    },
+    description: {
+      it: 'Rucola selvatica, gherigli di noci tostate, chicchi di mais dolce, cetrioli e pomodorini conditi con olio EVO.',
+      en: 'Wild rocket leaves, crunchy toasted walnuts, sweet corn kernels, fresh cucumber, and sweet datterini tomatoes.',
+      ar: 'جرجير بري طازج، حبات جوز مقرمشة، ذرة حلوة، خيار وطماطم كرزية مع زيت الزيتون البكر.',
+    },
+    price: '€4,50',
+    tags: ['vegetarian'],
+    allergens: ['8 - Frutta a guscio'],
+  },
+
+  // ── Contorni Caldi & Dorati ──
+  {
+    id: 'con-patate-forno',
+    category: 'Contorni & Salads',
+    name: {
+      it: 'Patate al Forno al Rosmarino',
+      en: 'Wood-Oven Roasted Rosemary Potatoes',
+      ar: 'بطاطس مخبوزة في الفرن بإكليل الجبل وزيت الزيتون',
+    },
+    description: {
+      it: 'Patate dorate a spicchi cotte al forno a legna con rametti di rosmarino fresco e sale integrale di Cervia.',
+      en: 'Golden potato wedges roasted in our wood oven with fragrant fresh rosemary sprigs and sweet Cervia sea salt.',
+      ar: 'أجنحة بطاطس ذهبية مخبوزة في فرن الحطب مع أعواد إكليل الجبل العطري والملح البحري.',
+    },
+    price: '€5,00',
+    tags: ['vegetarian'],
+    allergens: [],
+  },
+  {
+    id: 'con-verdure-griglia',
+    category: 'Contorni & Salads',
+    name: {
+      it: 'Verdure di Stagione alla Griglia',
+      en: 'Charcoal-Grilled Seasonal Garden Vegetables',
+      ar: 'خضار موسمية مشوية على الفحم مع زيت الزيتون والأعشاب',
+    },
+    description: {
+      it: 'Zucchine, melanzane e peperoni cotti alla brace viva, conditi con olio extravergine all’aglio ed erbe fini.',
+      en: 'Sliced zucchini, eggplant, and sweet peppers charred over live embers, dressed with garlic herb olive oil.',
+      ar: 'كوسا وباذنجان وفلفل حلو مشوي على الفحم ومتبل بزيت الزيتون البكر والثوم والأعشاب العطرية.',
+    },
+    price: '€5,00',
+    tags: ['vegetarian'],
+    allergens: [],
+  },
+  {
+    id: 'con-zucchine-fiori-fritti',
+    category: 'Contorni & Salads',
+    name: {
+      it: 'Zucchine e Fior di Zucca Fritti Dorati',
+      en: 'Crispy Fried Zucchini Sticks & Zucchini Blossoms',
+      ar: 'أصابع الكوسا وزهور الكوسا الذهبية المقلية المقرمشة',
+    },
+    description: {
+      it: 'Bastoncini di zucchine e delicati fiori di zucca passati in pastella leggera e fritti caldissimi.',
+      en: 'Thin fresh zucchini batons and delicate zucchini blossoms flash-fried in crisp feather-light batter.',
+      ar: 'أصابع كوسا وزهور كوسا رقيقة مغلفة بعجينة خفيفة ومقلية لدرجة القرمشة الذهبية الشهية.',
+    },
+    price: '€4,50',
+    tags: ['vegetarian'],
+    allergens: ['1 - Glutine'],
+  },
+  {
+    id: 'con-friarielli',
+    category: 'Contorni & Salads',
+    name: {
+      it: 'Friarielli Napoletani Aglio, Olio e Peperoncino',
+      en: 'Sautéed Neapolitan Friarielli Greens',
+      ar: 'خضار الفرياريلي النابولي المشوح بالثوم والزيت والفلفل الحار',
+    },
+    description: {
+      it: 'I tipici broccoletti napoletani saltati in padella con aglio in camicia, peperoncino fresco e olio EVO.',
+      en: 'Authentic Neapolitan broccoli rabe pan-braised with whole sweet garlic cloves, olive oil, and fiery chili.',
+      ar: 'خضار الفرياريلي النابولي التقليدي المشوح في المقلاة مع فصوص الثوم وزيت الزيتون والفلفل الحار.',
+    },
+    price: '€5,00',
+    tags: ['vegetarian'],
+    allergens: [],
+  },
+  {
+    id: 'con-broccoli',
+    category: 'Contorni & Salads',
+    name: {
+      it: 'Broccoli Saltati Aglio, Olio e Peperoncino',
+      en: 'Sautéed Garlic & Chili Broccoli Florets',
+      ar: 'بروكلي مشوح بالثوم وزيت الزيتون والفلفل الحار',
+    },
+    description: {
+      it: 'Cime di broccolo fresco scottate al vapore e ripassate in padella con aglio dolce e peperoncino.',
+      en: 'Fresh tender broccoli florets steamed then pan-seared with golden garlic and spicy red chili pepper.',
+      ar: 'زهور البروكلي الطازجة المطهوة على البخار ثم المشوحة مع الثوم الذهبي والفلفل الأحمر الحار.',
+    },
+    price: '€5,00',
+    tags: ['vegetarian'],
+    allergens: [],
+  },
+  {
+    id: 'con-spinaci',
+    category: 'Contorni & Salads',
+    name: {
+      it: 'Spinaci Freschi al Burro o Aglio e Olio',
+      en: 'Fresh Spinach sautéed in Butter or Garlic & Oil',
+      ar: 'سبانخ طازجة بالزبدة أو بالثوم وزيت الزيتون',
+    },
+    description: {
+      it: 'Foglie tenere di spinacio saltate a scelta con burro di fattoria o in versione leggera all’aglio e olio.',
+      en: 'Tender baby spinach leaves wilted with cultured farm butter or lightly sautéed in garlic-infused virgin oil.',
+      ar: 'أوراق سبانخ طرية مشوحة حسب الرغبة بزبدة المزارع الطبيعية أو بزيت الزيتون الخفيف والثوم.',
+    },
+    price: '€5,00',
+    tags: ['vegetarian'],
+    allergens: ['7 - Latte'],
+  },
+  {
+    id: 'con-pure',
+    category: 'Contorni & Salads',
+    name: {
+      it: 'Purè di Patate Fatto in Casa',
+      en: 'Silky Housemade Potato Purée',
+      ar: 'بوريه البطاطس البيتي المخملي بالزبدة والحليب',
+    },
+    description: {
+      it: 'Morbido purè di patate preparato fresco ogni giorno con latte intero, burro genuino e tocco di noce moscata.',
+      en: 'Creamy homemade mashed potatoes whipped fresh with whole milk, farm butter, and a pinch of nutmeg.',
+      ar: 'مهروس بطاطس ناعم كالحرير يُحضر يوميًا بالحليب الطازج والزبدة ولمسة من جوزة الطيب العطرة.',
+    },
+    price: '€5,00',
+    tags: ['vegetarian'],
+    allergens: ['7 - Latte'],
+  },
+  {
+    id: 'con-fryn-dip',
+    category: 'Contorni & Salads',
+    name: {
+      it: 'Patate Fry’n Dip',
+      en: 'Crispy Scoop Fry’n Dip Potatoes',
+      ar: 'بطاطس فراي إن ديب المقرمشة للتغميس',
+    },
+    description: {
+      it: 'Speciali patate sagomate a cucchiaio, extra croccanti all’esterno e morbide dentro, ideali con salse.',
+      en: 'Signature scoop-shaped potato fries with ultra-crisp exterior and tender heart, built for dipping.',
+      ar: 'بطاطس مقلية مميزة بشكل الملعقة المفرغة، مقرمشة جداً من الخارج وطرية من الداخل، مثالية للتغميس.',
+    },
+    price: '€6,00',
+    tags: ['vegetarian'],
+    allergens: [],
+  },
+  {
+    id: 'con-patatine',
+    category: 'Contorni & Salads',
+    name: {
+      it: 'Patatine Fritte Classiche Dorate',
+      en: 'Crispy Classic Golden French Fries',
+      ar: 'بطاطس مقلية كلاسيكية ذهبية مقرمشة',
+    },
+    description: {
+      it: 'Patatine fritte dorate e asciutte salate con sale iodato fine.',
+      en: 'Crispy golden French fries fried to perfection and dusted with sea salt.',
+      ar: 'أصابع بطاطس مقلية ذهبية مقرمشة ومملحة بالملح البحري الناعم.',
+    },
+    price: '€6,00',
+    tags: ['vegetarian'],
+    allergens: [],
+  },
+  {
+    id: 'con-insalata-mista',
+    category: 'Contorni & Salads',
+    name: {
+      it: 'Insalata Mista di Stagione',
+      en: 'Fresh Seasonal Mixed Garden Salad',
+      ar: 'سلطة خضراء موسمية مشكلة بالزيت والخل',
+    },
+    description: {
+      it: 'Lattuga croccante, rucola, carote a julienne e pomodorini freschi con vinaigrette di olio EVO.',
+      en: 'Crisp seasonal greens, wild arugula, shredded carrots, and cherry tomatoes with extra-virgin olive oil.',
+      ar: 'خس مقرمش، جرجير، جزر مبشور وطماطم كرزية مع تتبيلة زيت الزيتون البكر.',
+    },
+    price: '€4,00',
+    tags: ['vegetarian'],
+    allergens: [],
+    image: '/images/dishes/contorni-insalate/insalata-mediterranea-parmigiano.webp',
+  },
+];

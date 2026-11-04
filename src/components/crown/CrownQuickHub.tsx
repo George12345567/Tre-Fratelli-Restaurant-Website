@@ -8,6 +8,7 @@ import {
   CalendarDays,
   ExternalLink,
   ArrowRight,
+  Download,
 } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/routing';
@@ -48,7 +49,7 @@ export function CrownQuickHub({ locale }: CrownQuickHubProps) {
   }, [isOpen]);
 
   const googleMapsUrl = 'https://maps.app.goo.gl/XtPWEL7wA6BwA8na7?g_st=ac';
-  const logoSrc = '/images/brand/tre-fratelli-logo-red.jpg';
+  const logoSrc = '/images/brand/tre-fratelli-official-logo.png';
 
   return (
     <div ref={hubRef} className="fixed bottom-5 end-5 sm:bottom-7 sm:end-7 z-50 pointer-events-auto">
@@ -67,11 +68,13 @@ export function CrownQuickHub({ locale }: CrownQuickHubProps) {
         className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden shadow-[0_8px_25px_rgba(122,46,42,0.45)] border-2 border-[var(--palette-aged-brass)] hover:scale-110 active:scale-95 transition-all duration-300 cursor-pointer group bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--palette-aged-brass)]"
       >
         {/* The Exact Restaurant Logo */}
-        <img
-          src={logoSrc}
-          alt="Tre Fratelli Logo"
-          className="w-full h-full object-cover select-none pointer-events-none group-hover:rotate-3 transition-transform duration-300"
-        />
+        <div className="w-full h-full p-2 flex items-center justify-center">
+          <img
+            src={logoSrc}
+            alt="Tre Fratelli Logo"
+            className="w-full h-full object-contain select-none pointer-events-none group-hover:scale-105 transition-transform duration-300"
+          />
+        </div>
 
         {/* Subtle Breathing Ring on Hover */}
         <span
@@ -90,11 +93,13 @@ export function CrownQuickHub({ locale }: CrownQuickHubProps) {
           {/* ── Top Bar: Logo Emblem Thumbnail + Close Button ── */}
           <div className="flex items-center justify-between border-b border-black/5 pb-2.5">
             <div className="flex items-center gap-2.5">
-              <img
-                src={logoSrc}
-                alt="Tre Fratelli"
-                className="w-7 h-7 rounded-full object-cover border border-[var(--palette-aged-brass)]/70 shadow-2xs"
-              />
+              <div className="w-8 h-8 rounded-full bg-white p-1 flex items-center justify-center border border-[var(--palette-aged-brass)]/70 shadow-2xs">
+                <img
+                  src={logoSrc}
+                  alt="Tre Fratelli"
+                  className="w-full h-full object-contain"
+                />
+              </div>
               <span className="font-serif text-sm font-bold tracking-tight">
                 Tre Fratelli
               </span>
@@ -156,6 +161,37 @@ export function CrownQuickHub({ locale }: CrownQuickHubProps) {
                 }`}
               />
             </Link>
+
+            {/* 1.5. تحميل قائمة الطعام PDF المعتمدة */}
+            <a
+              href="/menu/tre-fratelli-menu.pdf"
+              download="Tre-Fratelli-Menu.pdf"
+              onClick={() => setIsOpen(false)}
+              className="group flex items-center justify-between p-2.5 rounded-2xl bg-[var(--palette-warm-ivory)]/80 hover:bg-white border border-[var(--palette-aged-brass)]/30 shadow-2xs hover:shadow-xs transition-all duration-200"
+            >
+              <div className="flex items-center gap-2.5 min-w-0">
+                <div className="w-8 h-8 rounded-xl bg-[var(--palette-aged-brass)]/15 text-[var(--palette-aged-brass)] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                  <Download size={15} />
+                </div>
+                <div className="min-w-0">
+                  <span className="font-serif text-xs sm:text-sm font-bold text-[var(--palette-espresso)] block truncate">
+                    {locale === 'it'
+                      ? 'Scarica Menù PDF'
+                      : locale === 'ar'
+                      ? 'تحميل المنيو الكامل PDF'
+                      : 'Download PDF Menu'}
+                  </span>
+                  <span className="text-[10px] text-[var(--palette-espresso)]/60 block truncate">
+                    {locale === 'it' ? '10 pagine · Originale (6.4 MB)' : locale === 'ar' ? 'النسخة الأصلية · 10 صفحات' : '10 pages · Official (6.4 MB)'}
+                  </span>
+                </div>
+              </div>
+
+              <Download
+                size={14}
+                className="text-[var(--palette-espresso)]/40 group-hover:text-[var(--palette-italian-red)] transition-colors shrink-0"
+              />
+            </a>
 
             {/* 2. لينك لحجز طرابيزة */}
             <Link

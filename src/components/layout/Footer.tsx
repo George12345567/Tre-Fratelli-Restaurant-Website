@@ -32,18 +32,15 @@ export async function Footer({ locale }: FooterProps) {
           ══════════════════════════════════════════════════════════════════ */}
       <div className="lg:hidden px-4 py-5 space-y-3.5 max-w-lg mx-auto text-center box-border">
         {/* Mobile Line 1: Brand & Subtitle */}
-        <div className="flex items-center justify-center gap-2">
-          <span className="w-6 h-6 rounded-full overflow-hidden border border-[var(--palette-aged-brass)]/70 shrink-0 shadow-2xs">
+        <div className="flex items-center justify-center gap-2.5">
+          <Link href="/" className="inline-flex items-center justify-center">
             <img
-              src="/images/brand/tre-fratelli-logo-red.jpg"
+              src="/images/brand/tre-fratelli-official-logo.png"
               alt="Tre Fratelli"
-              className="w-full h-full object-cover"
+              className="h-9 w-auto object-contain filter drop-shadow-sm"
               loading="lazy"
             />
-          </span>
-          <span className="font-serif text-base font-bold tracking-wide text-[var(--palette-warm-ivory)]">
-            TRE FRATELLI
-          </span>
+          </Link>
           <span className="text-[10px] uppercase tracking-wider text-[var(--palette-aged-brass)] font-sans">
             · Trezzano sul Naviglio (MI)
           </span>
@@ -60,6 +57,14 @@ export async function Footer({ locale }: FooterProps) {
           <Link href="/wine-drinks" className="hover:text-white transition-colors">{t('nav.wineDrinks')}</Link>
           <span className="text-white/20" aria-hidden="true">·</span>
           <Link href="/location" className="text-[var(--palette-aged-brass)] font-semibold hover:text-white transition-colors">{t('nav.reserve')}</Link>
+          <span className="text-white/20" aria-hidden="true">·</span>
+          <a
+            href="/menu/tre-fratelli-menu.pdf"
+            download="Tre-Fratelli-Menu.pdf"
+            className="text-[var(--palette-aged-brass)] hover:text-white transition-colors font-bold"
+          >
+            PDF
+          </a>
         </nav>
 
         {/* Mobile Line 3: Fast Action Buttons (Maps, Phone, Booking) */}
@@ -144,22 +149,12 @@ export async function Footer({ locale }: FooterProps) {
           {/* Column 1: Brand & Heritage */}
           <div className="space-y-3.5">
             <Link href="/" className="inline-flex items-center gap-3 group">
-              <span className="w-9 h-9 rounded-full overflow-hidden border border-[var(--palette-aged-brass)] shrink-0 shadow-xs group-hover:scale-105 transition-transform">
-                <img
-                  src="/images/brand/tre-fratelli-logo-red.jpg"
-                  alt="Tre Fratelli"
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                />
-              </span>
-              <div>
-                <span className="font-serif text-xl font-bold tracking-wide text-[var(--palette-warm-ivory)] block leading-tight">
-                  TRE FRATELLI
-                </span>
-                <span className="block text-[10px] uppercase tracking-widest text-[var(--palette-aged-brass)] font-sans">
-                  Ristorante & Pizzeria
-                </span>
-              </div>
+              <img
+                src="/images/brand/tre-fratelli-official-logo.png"
+                alt="Tre Fratelli - Ristorante Italiano"
+                className="h-14 w-auto object-contain filter drop-shadow-sm group-hover:scale-102 transition-transform"
+                loading="lazy"
+              />
             </Link>
 
             <p className="text-xs text-[var(--palette-stone-beige)]/85 leading-relaxed">
@@ -208,6 +203,21 @@ export async function Footer({ locale }: FooterProps) {
                 <Link href="/news-promo" className="text-[var(--palette-stone-beige)] hover:text-white transition-colors block">
                   {t('nav.newsPromo')}
                 </Link>
+              </li>
+              <li className="pt-1 border-t border-white/10">
+                <a
+                  href="/menu/tre-fratelli-menu.pdf"
+                  download="Tre-Fratelli-Menu.pdf"
+                  className="text-[var(--palette-aged-brass)] hover:text-white transition-colors inline-flex items-center gap-1 font-semibold"
+                >
+                  <span>
+                    {locale === 'it'
+                      ? 'Scarica Menù PDF (6.4 MB)'
+                      : locale === 'ar'
+                      ? 'تحميل المنيو PDF (6.4 ميغابايت)'
+                      : 'Download PDF Menu (6.4 MB)'}
+                  </span>
+                </a>
               </li>
             </ul>
           </div>

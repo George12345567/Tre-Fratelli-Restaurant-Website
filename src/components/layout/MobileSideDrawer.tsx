@@ -120,20 +120,12 @@ export function MobileSideDrawer({
             onClick={onClose}
             className="flex items-center gap-3 group focus:outline-none"
           >
-            <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-[var(--palette-aged-brass)]/70 shadow-xs shrink-0 group-hover:scale-105 transition-transform">
+            <div className="h-10 w-auto flex items-center justify-center shrink-0">
               <img
-                src="/images/brand/tre-fratelli-logo-red.jpg"
+                src="/images/brand/tre-fratelli-official-logo.png"
                 alt="Tre Fratelli Logo"
-                className="w-full h-full object-cover"
+                className="h-10 w-auto object-contain filter drop-shadow-2xs"
               />
-            </div>
-            <div>
-              <span className="font-serif text-base font-bold tracking-wide text-[var(--palette-espresso)] block leading-tight">
-                TRE FRATELLI
-              </span>
-              <span className="text-[10px] uppercase tracking-wider text-[var(--palette-aged-brass)] font-sans font-semibold">
-                Ristorante & Pizzeria
-              </span>
             </div>
           </Link>
 

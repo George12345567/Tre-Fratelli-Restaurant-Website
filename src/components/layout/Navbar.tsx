@@ -58,13 +58,13 @@ export function Navbar({ locale }: NavbarProps) {
           <Link
             href="/"
             aria-label="Tre Fratelli Home"
-            className="group flex items-center gap-2 p-0.5 rounded-full hover:bg-white/40 transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--accent)]"
+            className="group flex items-center gap-2 px-2 py-0.5 rounded-full hover:bg-white/50 transition-all focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--accent)]"
           >
-            <div className="w-8 h-8 rounded-full overflow-hidden border border-[var(--palette-aged-brass)]/60 shadow-xs group-hover:scale-105 transition-transform shrink-0">
+            <div className="h-8 w-auto flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
               <img
-                src="/images/brand/tre-fratelli-logo-red.jpg"
+                src="/images/brand/tre-fratelli-official-logo.png"
                 alt="Tre Fratelli Logo"
-                className="w-full h-full object-cover"
+                className="h-8 w-auto object-contain filter drop-shadow-2xs"
               />
             </div>
           </Link>
@@ -126,13 +126,13 @@ export function Navbar({ locale }: NavbarProps) {
           <Link
             href="/"
             aria-label="Tre Fratelli Home"
-            className="p-0.5 rounded-full focus:outline-none"
+            className="p-1 rounded-full focus:outline-none hover:bg-white/40 transition-colors"
           >
-            <div className="w-8 h-8 rounded-full overflow-hidden border border-[var(--palette-aged-brass)]/60 shadow-xs shrink-0">
+            <div className="h-7 w-auto flex items-center justify-center shrink-0">
               <img
-                src="/images/brand/tre-fratelli-logo-red.jpg"
+                src="/images/brand/tre-fratelli-official-logo.png"
                 alt="Tre Fratelli Logo"
-                className="w-full h-full object-cover"
+                className="h-7 w-auto object-contain filter drop-shadow-2xs"
               />
             </div>
           </Link>

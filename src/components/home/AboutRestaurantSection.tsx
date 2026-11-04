@@ -87,9 +87,9 @@ export function AboutRestaurantSection({
               {/* Logo Frame: Natural Unclipped Aspect Ratio */}
               <div className="relative rounded-2xl overflow-hidden shadow-[0_10px_28px_-6px_rgba(43,31,26,0.14)] border border-black/5 bg-white/75 p-3 backdrop-blur-xs transition-transform duration-500 group-hover:scale-102">
                 <img
-                  src="/images/brand/tre-fratelli-logo-light.jpg"
-                  alt="Tre Fratelli - Ristorante, Pizzeria, Forno a Legna"
-                  className="w-full h-auto object-contain select-none"
+                  src="/images/brand/tre-fratelli-official-logo.png"
+                  alt="Tre Fratelli - Ristorante Italiano"
+                  className="w-full h-auto object-contain select-none p-2"
                 />
               </div>
 
