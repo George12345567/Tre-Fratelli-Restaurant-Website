@@ -4,8 +4,6 @@ import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import { Link } from '@/i18n/navigation';
 import { ArrowRight, CalendarDays } from 'lucide-react';
-import { SignatureDishesSection } from '@/components/home/SignatureDishesSection';
-import { MenuCategoriesSection } from '@/components/home/MenuCategoriesSection';
 import { AboutRestaurantSection } from '@/components/home/AboutRestaurantSection';
 import { HeroSection } from '@/components/home/HeroSection';
 
@@ -45,32 +43,7 @@ export default async function HomePage({ params }: PageProps) {
         }}
       />
 
-      {/* ── 3. Menu Categories Discovery (Antipasti, Primi, Secondi, Pizza) ── */}
-      <MenuCategoriesSection
-        locale={locale}
-        isRtl={isRtl}
-        translations={{
-          viewMenu: t('home.viewMenu'),
-        }}
-      />
-
-      {/* ── 4. Signature Dishes Showcase (Enhanced Liquid Glass) ── */}
-      <SignatureDishesSection
-        locale={locale}
-        isRtl={isRtl}
-        translations={{
-          signatureSubtitle: t('home.signatureSubtitle'),
-          signatureDishes: t('home.signatureDishes'),
-          viewMenu: t('home.viewMenu'),
-          reserveTable: t('home.reserveTable'),
-          askDish: t('menu.askDish'),
-        }}
-      />
-
-
-
-
-      {/* ── 6. Bottom Reservation Callout ── */}
+      {/* ── 3. Bottom Reservation Callout ── */}
       <section className="py-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-gradient-to-r from-[var(--palette-italian-red)] to-[var(--palette-italian-red-dark)] text-white rounded-2xl p-8 sm:p-12 shadow-xl flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="space-y-2 text-center md:text-start">

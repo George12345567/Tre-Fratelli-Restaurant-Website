@@ -150,9 +150,10 @@ export function WineExplorer({ locale }: WineExplorerProps) {
           drink.category === cat &&
           (drink.name.toLowerCase().includes(query) ||
             (drink.region && drink.region.toLowerCase().includes(query)) ||
-            drink.pairing.it.toLowerCase().includes(query) ||
-            drink.pairing.en.toLowerCase().includes(query) ||
-            drink.pairing.ar.toLowerCase().includes(query))
+            (drink.pairing &&
+              (drink.pairing.it.toLowerCase().includes(query) ||
+                drink.pairing.en.toLowerCase().includes(query) ||
+                drink.pairing.ar.toLowerCase().includes(query))))
       );
     });
   }, [activeCategory, searchQuery]);
@@ -167,9 +168,10 @@ export function WineExplorer({ locale }: WineExplorerProps) {
       (drink) =>
         drink.name.toLowerCase().includes(query) ||
         (drink.region && drink.region.toLowerCase().includes(query)) ||
-        drink.pairing.it.toLowerCase().includes(query) ||
-        drink.pairing.en.toLowerCase().includes(query) ||
-        drink.pairing.ar.toLowerCase().includes(query)
+        (drink.pairing &&
+          (drink.pairing.it.toLowerCase().includes(query) ||
+            drink.pairing.en.toLowerCase().includes(query) ||
+            drink.pairing.ar.toLowerCase().includes(query)))
     );
   };
 
@@ -487,13 +489,15 @@ export function WineExplorer({ locale }: WineExplorerProps) {
                             </p>
                           )}
 
-                          {/* Food Pairing */}
-                          <div className="text-xs text-[var(--palette-espresso)]/80 leading-relaxed font-serif italic pt-0.5">
-                            <span className="text-[var(--palette-italian-red)] font-semibold not-italic text-[11px]">
-                              {locale === 'ar' ? 'توافق مع الطبق: ' : locale === 'it' ? 'Abbinamento: ' : 'Pairing: '}
-                            </span>
-                            <span>{getLocalized(drink.pairing, locale)}</span>
-                          </div>
+                          {/* Food Pairing (if available) */}
+                          {drink.pairing && (
+                            <div className="text-xs text-[var(--palette-espresso)]/80 leading-relaxed font-serif italic pt-0.5">
+                              <span className="text-[var(--palette-italian-red)] font-semibold not-italic text-[11px]">
+                                {locale === 'ar' ? 'توافق مع الطبق: ' : locale === 'it' ? 'Abbinamento: ' : 'Pairing: '}
+                              </span>
+                              <span>{getLocalized(drink.pairing, locale)}</span>
+                            </div>
+                          )}
                         </div>
 
                         {/* Thumbnail: ONLY if drink has an image */}

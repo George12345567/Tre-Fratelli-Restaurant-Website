@@ -53,7 +53,7 @@ export interface Drink {
   name: string;
   region?: string;
   price: string;
-  pairing: LocalizedText;
+  pairing?: LocalizedText;
   image?: string;
   description?: LocalizedText;
 }

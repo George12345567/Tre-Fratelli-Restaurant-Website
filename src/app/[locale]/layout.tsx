@@ -65,7 +65,7 @@ export default async function LocaleLayout({ children, params }: Props) {
         <a href="#main-content" className="skip-link">{t("skipToContent")}</a>
         <NextIntlClientProvider messages={messages} locale={locale}>
           <Navbar locale={locale as Locale} />
-          <div className="flex-1 pt-20 sm:pt-24">
+          <div className="flex-1 pt-14 sm:pt-16">
             {children}
           </div>
           <Footer locale={locale as Locale} />

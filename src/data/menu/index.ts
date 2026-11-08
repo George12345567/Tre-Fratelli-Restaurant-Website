@@ -45,9 +45,9 @@ export const categoryLabels: Record<DishCategory, LocalizedText> = {
     ar: 'السلطات الملكية والمقبلات الجانبية الشهية',
   },
   Desserts: {
-    it: 'Dolci Fatti in Casa',
-    en: 'Homemade Desserts',
-    ar: 'الحلويات الإيطالية المنزلية',
+    it: 'La Carta dei Dolci (Bindi)',
+    en: 'Dessert Menu (Bindi)',
+    ar: 'قائمة الحلويات الإيطالية (بيندي)',
   },
 };
 

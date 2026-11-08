@@ -62,7 +62,7 @@ export const homeFoodCategories: HomeCategoryItem[] = [
       ar: 'معتق 24 شهراً',
     },
     image: '/images/dishes/antipasti/tagliere-salumi-parma.webp',
-    targetAnchor: '/menu#antipasti',
+    targetAnchor: '/menu/antipasti',
     dishes: [
       {
         name: {
@@ -123,7 +123,7 @@ export const homeFoodCategories: HomeCategoryItem[] = [
       ar: 'محار وأسماك نيئة فاخرة',
     },
     image: '/images/dishes/raw-seafood/crudo-di-mare-misto.webp',
-    targetAnchor: '/menu#raw-seafood',
+    targetAnchor: '/menu/antipasti',
     dishes: [
       {
         name: {
@@ -184,7 +184,7 @@ export const homeFoodCategories: HomeCategoryItem[] = [
       ar: 'مخبوزة بغطاء العجين',
     },
     image: '/images/dishes/primi-piatti/spaghetti-chitarra-allo-scoglio.webp',
-    targetAnchor: '/menu#primi-piatti',
+    targetAnchor: '/menu/primi-piatti',
     dishes: [
       {
         name: {
@@ -245,7 +245,7 @@ export const homeFoodCategories: HomeCategoryItem[] = [
       ar: 'سفن بحرية بطول متر',
     },
     image: '/images/dishes/secondi-piatti/bistecca-fiorentina-chianina.webp',
-    targetAnchor: '/menu#secondi-piatti',
+    targetAnchor: '/menu/secondi-piatti',
     dishes: [
       {
         name: {
@@ -306,7 +306,7 @@ export const homeFoodCategories: HomeCategoryItem[] = [
       ar: 'بيتزا بالمتر',
     },
     image: '/images/dishes/pizza/pizza-margherita-crudo-cornicione.webp',
-    targetAnchor: '/menu#pizza-calzoni',
+    targetAnchor: '/menu/pizze',
     dishes: [
       {
         name: {
@@ -342,59 +342,59 @@ export const homeFoodCategories: HomeCategoryItem[] = [
     slug: 'desserts',
     icon: Coffee,
     title: {
-      it: 'Dolci Artigianali Fatti in Casa',
-      en: 'Handmade Italian Desserts',
-      ar: 'الحلويات الإيطالية المنزلية الصنع',
+      it: 'La Carta dei Dolci (Bindi)',
+      en: 'Bindi Dessert Masterworks',
+      ar: 'قائمة حلويات بيندي الإيطالية',
     },
     subtitle: {
-      it: 'Tiramisù Tradizionale, Cannoli & Pasticceria di Famiglia',
-      en: 'Historic Tiramisù, Sicilian Cannoli & Family Pastry',
-      ar: 'تيراميسو تقليدي، كانولي صقلي وحلويات العائلة',
+      it: 'Semifreddi d’Autore, Coppe Gelato & Pasticceria',
+      en: 'Signature Semifreddi, Gelato Cups & Artisan Cakes',
+      ar: 'سميفريدو، كؤوس جيلاتو وكيك الباستيتشيريا الفاخر',
     },
     tagline: {
-      it: 'I dessert della tradizione preparati freschi ogni mattina: mascarpone nobile montato con savoiardi imbevuti di espresso forte e granella di pistacchio siciliano.',
-      en: 'Traditional desserts hand-whipped each morning: velvety mascarpone with espresso-soaked savoiardi and pure Bronte pistachios.',
-      ar: 'حلويات إيطالية أصيلة تُحضر طازجة كل صباح: ماسكاربوني كريمي وبسكويت مشرب بالإسبريسو وفستق برونتي الصقلي.',
+      it: 'Per voi selezioniamo i celebri dessert Bindi: croccanti all’amarena e cioccolato, tartufi gelato, zuccotto e torte tradizionali.',
+      en: 'We select the celebrated masterworks by Bindi: crunchy amarena and chocolate semifreddi, gelato tartufi, and classic cakes.',
+      ar: 'نختار لكم أشهر حلويات بيندي الإيطالية: كروكانتي الشوكولاتة والكرز، تارتوفو جيلاتو، والحلويات الإيطالية الكلاسيكية.',
     },
     badge: {
-      it: 'Fatti a Mano Ogni Alba',
-      en: 'Handmade Every Morning',
-      ar: 'صنع يدوي طازج يومياً',
+      it: 'Bindi Maestri del Dessert',
+      en: 'Bindi Dessert Masters',
+      ar: 'بيندي خبراء الحلويات',
     },
     craftTag: {
-      it: 'Mascarpone & Pistacchio',
-      en: 'Bronte Pistachio & Mascarpone',
-      ar: 'ماسكاربوني وفستق برونتي',
+      it: 'Pasticceria d’Autore',
+      en: 'Artisan Confectionery',
+      ar: 'حلويات إيطالية راقية',
     },
     image: '/images/dishes/dolci-tiramisu-cannoli.jpg',
-    targetAnchor: '/menu#desserts',
+    targetAnchor: '/menu/dolci',
     dishes: [
       {
         name: {
-          it: 'Tiramisù Tradizionale Tre Fratelli',
-          en: 'Tre Fratelli Classic Espresso Mascarpone Tiramisù',
-          ar: 'تيراميسو تري فراتيلي الكلاسيكي بالإسبريسو والماسكاربوني',
-        },
-        price: '€6,50',
-        tag: { it: 'Dolce Icona', en: 'House Icon', ar: 'أيقونة الحلويات' },
-      },
-      {
-        name: {
-          it: 'Cannoli Siciliani alla Ricotta & Pistacchio',
-          en: 'Crispy Sicilian Cannoli with Ricotta & Pistachio',
-          ar: 'كانولي صقلي مقرمش بجبن الريكوتا وفستق برونتي',
+          it: 'Coppa ai Pistacchi di Sicilia',
+          en: 'Sicilian Pistachio Gelato Coppa',
+          ar: 'كوب فستق صقلية الطبيعي والوافل',
         },
         price: '€6,00',
-        tag: { it: 'Ricotta Fresca', en: 'Fresh Ricotta', ar: 'ريكوتا طازجة' },
+        tag: { it: '100% Sicilia', en: '100% Sicilian', ar: 'فستق صقلي 100%' },
       },
       {
         name: {
-          it: 'Babà Napoletano al Rum & Frutti di Bosco',
-          en: 'Neapolitan Rum-Soaked Babà with Wild Berries',
-          ar: 'بابا نابولي معتق بالروم والتوت البري الطازج',
+          it: 'Croccante all’Amarena',
+          en: 'Amarena Cherry Crunch Semifreddo',
+          ar: 'كروكانتي كرز أمارينا سيمفريدو',
         },
-        price: '€7,00',
-        tag: { it: 'Napoletano Doc', en: 'Traditional Babà', ar: 'أصلي نابولي' },
+        price: '€6,00',
+        tag: { it: 'Semifreddo', en: 'Semifreddo', ar: 'سيمفريدو' },
+      },
+      {
+        name: {
+          it: 'Torta della Nonna con Pinoli & Mandorle',
+          en: 'Torta della Nonna with Pine Nuts',
+          ar: 'تورتة ديلا نونا التوسكانية بالصنوبر والليمون',
+        },
+        price: '€6,00',
+        tag: { it: 'Classico', en: 'Classic', ar: 'كلاسيكي' },
       },
     ],
   },
@@ -431,7 +431,7 @@ export const homeWineCategories: HomeCategoryItem[] = [
       ar: 'محاصيل تاريخية',
     },
     image: '/images/wine/wine-cellar-tre-fratelli.jpg',
-    targetAnchor: '/wine-drinks#red',
+    targetAnchor: '/menu/carta-vini',
     dishes: [
       {
         name: {
@@ -492,7 +492,7 @@ export const homeWineCategories: HomeCategoryItem[] = [
       ar: 'فقاعات فوارة نقية',
     },
     image: '/images/wine/wine-cellar-tre-fratelli.jpg',
-    targetAnchor: '/wine-drinks#sparkling',
+    targetAnchor: '/menu/carta-vini',
     dishes: [
       {
         name: {
@@ -553,7 +553,7 @@ export const homeWineCategories: HomeCategoryItem[] = [
       ar: 'خلط عصري متقن',
     },
     image: '/images/wine/cocktails-aperitivo-tre-fratelli.jpg',
-    targetAnchor: '/wine-drinks#cocktails',
+    targetAnchor: '/menu/bevande',
     dishes: [
       {
         name: {

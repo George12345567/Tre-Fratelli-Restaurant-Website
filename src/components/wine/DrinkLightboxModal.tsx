@@ -93,14 +93,16 @@ export function DrinkLightboxModal({ drink, locale, onClose }: DrinkLightboxModa
             </h3>
           </div>
 
-          <div className="pt-2 border-t border-[var(--palette-stone-beige)]/40 space-y-1">
-            <span className="text-[11px] uppercase tracking-wider font-semibold text-[var(--palette-italian-red)] block">
-              {locale === 'ar' ? 'توافق مقترح مع الأطباق:' : locale === 'it' ? 'Miglior Abbinamento:' : 'Recommended Food Pairing:'}
-            </span>
-            <p className="text-xs sm:text-sm text-[var(--palette-espresso)]/85 leading-relaxed font-serif italic">
-              &ldquo;{getLocalized(drink.pairing, locale)}&rdquo;
-            </p>
-          </div>
+          {drink.pairing && (
+            <div className="pt-2 border-t border-[var(--palette-stone-beige)]/40 space-y-1">
+              <span className="text-[11px] uppercase tracking-wider font-semibold text-[var(--palette-italian-red)] block">
+                {locale === 'ar' ? 'توافق مقترح مع الأطباق:' : locale === 'it' ? 'Miglior Abbinamento:' : 'Recommended Food Pairing:'}
+              </span>
+              <p className="text-xs sm:text-sm text-[var(--palette-espresso)]/85 leading-relaxed font-serif italic">
+                &ldquo;{getLocalized(drink.pairing, locale)}&rdquo;
+              </p>
+            </div>
+          )}
 
           {/* Action Row - Clean Close */}
           <div className="pt-2 flex items-center justify-end">

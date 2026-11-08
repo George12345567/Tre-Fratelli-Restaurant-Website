@@ -76,7 +76,7 @@ export function LanguageDropdown({
         onClick={() => setIsOpen(!isOpen)}
         aria-expanded={isOpen}
         aria-haspopup="listbox"
-        className={`group relative inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-full transition-all duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--accent)] ${
+        className={`group relative inline-flex items-center gap-1.5 px-2 py-1 rounded-full transition-all duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--accent)] ${
           variant === 'mobile'
             ? 'w-full justify-between bg-black/[0.04] hover:bg-black/[0.07] px-3 py-1.5 rounded-full text-xs font-semibold'
             : isOpen
@@ -86,10 +86,10 @@ export function LanguageDropdown({
       >
         <div className="flex items-center gap-1.5">
           {/* Frosted icon container */}
-          <div className="w-5 h-5 rounded-full bg-[var(--palette-italian-red)]/10 text-[var(--palette-italian-red)] flex items-center justify-center shrink-0">
-            <Languages size={12} aria-hidden="true" />
+          <div className="w-4.5 h-4.5 rounded-full bg-[var(--palette-italian-red)]/10 text-[var(--palette-italian-red)] flex items-center justify-center shrink-0">
+            <Languages size={11} aria-hidden="true" />
           </div>
-          <span className="text-xs font-semibold tracking-wide">
+          <span className="text-[11px] sm:text-xs font-semibold tracking-wide">
             {currentLang.label}
           </span>
         </div>

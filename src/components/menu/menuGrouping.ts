@@ -223,6 +223,7 @@ export function groupDishesBySubSections(
       );
       const consiglio = dishes.filter(
         (d) =>
+          d.id.startsWith('piz-gourmet') ||
           d.id === 'piz-burratina' ||
           d.id === 'piz-mortadella-pistacchio' ||
           d.id === 'piz-fiori-zucca' ||
@@ -230,6 +231,7 @@ export function groupDishesBySubSections(
       );
       const mare = dishes.filter(
         (d) =>
+          d.id.startsWith('piz-mare') ||
           d.id === 'piz-frutti-mare' ||
           d.id === 'piz-polipina' ||
           d.id === 'piz-mare-monti' ||
@@ -392,22 +394,131 @@ export function groupDishesBySubSections(
     }
 
     case 'Desserts': {
-      return [
-        {
-          id: 'des-dolci',
+      const semifreddi = dishes.filter(
+        (d) =>
+          d.id.startsWith('des-croccante') ||
+          d.id.startsWith('des-cremoso') ||
+          d.id.startsWith('des-semifreddo') ||
+          d.id.startsWith('des-cocco') ||
+          d.id.startsWith('des-zuccotto') ||
+          d.id.startsWith('des-caramello') ||
+          d.id.startsWith('des-crema-catalana')
+      );
+      const tartufi = dishes.filter(
+        (d) =>
+          d.id.startsWith('des-tartufo') ||
+          d.id.startsWith('des-flute') ||
+          d.id.startsWith('des-mandarino') ||
+          d.id.startsWith('des-sorbetto')
+      );
+      const coppe = dishes.filter((d) => d.id.startsWith('des-coppa'));
+      const torte = dishes.filter(
+        (d) =>
+          d.id.startsWith('des-torta') ||
+          d.id.startsWith('des-profiterole') ||
+          d.id.startsWith('des-millefoglie') ||
+          d.id.startsWith('des-meringa')
+      );
+      const bimbi = dishes.filter(
+        (d) =>
+          d.id === 'des-rabbit' ||
+          d.id === 'des-pirata' ||
+          d.id === 'des-principessa'
+      );
+
+      const sections: MenuSubSection[] = [];
+
+      if (semifreddi.length > 0) {
+        sections.push({
+          id: 'des-semifreddi',
           title: {
-            it: 'I Nostri Dolci Artigianali Fatti in Casa',
-            en: 'Housemade Artisanal Desserts',
-            ar: 'الحلويات الإيطالية المنزلية الحرفية الفاخرة',
+            it: 'Semifreddi & Monoporzioni d’Autore',
+            en: 'Signature Semifreddi & Single Portions',
+            ar: 'السميفريدو والحلويات الفردية الفاخرة',
           },
           subtitle: {
-            it: 'Tiramisù classico all’espresso, panna cotta alla vaniglia Bourbon del Madagascar e cannolo siciliano.',
-            en: 'Classic espresso tiramisù, Madagascar bourbon vanilla panna cotta, and deconstructed cannolo.',
-            ar: 'تيراميسو تقليدي بالإسبريسو، بان كوتا فانيليا البوربون مع التوت البري، وكانولو صقلي مفتت.',
+            it: 'Croccanti all’amarena e cioccolato, cremoso ai frutti rossi, zuccotto e semifreddo al Vecchio Amaro del Capo.',
+            en: 'Amarena and chocolate crunches, red berries cream, zuccotto dome, and Vecchio Amaro del Capo semifreddo.',
+            ar: 'كروكانتي الكرز والشوكولاتة، كريموزو التوت، زوكوتو وسيمفريدو أمارو ديل كابو.',
           },
-          dishes,
-        },
-      ];
+          badge: {
+            it: 'Bindi Maestri del Dessert',
+            en: 'Bindi Dessert Masters',
+            ar: 'بيندي خبراء الحلويات',
+          },
+          dishes: semifreddi,
+        });
+      }
+
+      if (tartufi.length > 0) {
+        sections.push({
+          id: 'des-tartufi',
+          title: {
+            it: 'Tartufi Gelato, Flûte & Sorbetti',
+            en: 'Tartufi Gelato, Flûtes & Frozen Sorbets',
+            ar: 'التارتوفو جيلاتو وفلوت السوربيه الفاخر',
+          },
+          subtitle: {
+            it: 'Tartufo classico, al pistacchio e bianco, flûte al limoncello italiano e mandarino ripieno.',
+            en: 'Classic chocolate, pistachio, and white tartufi, Italian limoncello flûte, and frozen stuffed mandarin.',
+            ar: 'تارتوفو الشوكولاتة والفستق والأبيض، فلوت الليمونشيلو، وثمرة اليوسفي الصقلية المحشوة بالسوربيه.',
+          },
+          dishes: tartufi,
+        });
+      }
+
+      if (coppe.length > 0) {
+        sections.push({
+          id: 'des-coppe',
+          title: {
+            it: 'Le Coppe Gelato d’Autore',
+            en: 'Gourmet Gelato Cups',
+            ar: 'كؤوس الآيس كريم الجيلاتو الذواقة',
+          },
+          subtitle: {
+            it: 'Coppa ai pistacchi di Sicilia, Coppa Dubai Chocolate style con kataifi, mascarpone e lamponi.',
+            en: 'Sicilian pistachio cup, Dubai Chocolate style with kataifi, mascarpone with raspberries, and amarena.',
+            ar: 'كوب فستق صقلية، شوكولاتة دبي بالكنافة المقرمشة، ماسكاربوني بالتوت، وكريمة الأمارينا.',
+          },
+          dishes: coppe,
+        });
+      }
+
+      if (torte.length > 0) {
+        sections.push({
+          id: 'des-torte',
+          title: {
+            it: 'Le Grandi Torte & Tranci di Pasticceria',
+            en: 'Traditional Cakes & Fine Pastry',
+            ar: 'الكيك التراثي الفاخر وروائع الباستيتشيريا',
+          },
+          subtitle: {
+            it: 'Torta della Nonna con pinoli, cioccolato e pere italiane, torta Dubai chocolate, millefoglie e profiteroles.',
+            en: 'Torta della Nonna with pine nuts, dark chocolate & Italian pears, Dubai cake, millefeuille, and profiteroles.',
+            ar: 'تورتة ديلا نونا بالصنوبر، شوكولاتة وإجاص إيطالي، كعكة شوكولاتة دبي، ميل فوي وبروفيتيرول.',
+          },
+          dishes: torte,
+        });
+      }
+
+      if (bimbi.length > 0) {
+        sections.push({
+          id: 'des-bimbi',
+          title: {
+            it: 'I Gelati per Bambini',
+            en: 'Kids Ice Cream Characters',
+            ar: 'آيس كريم الأطفال الشخصيات اللطيفة',
+          },
+          subtitle: {
+            it: 'Rabbit al fiordilatte, Pirata al cioccolato e Principessa alla fragola.',
+            en: 'Rabbit fiordilatte, Pirate chocolate, and Princess strawberry.',
+            ar: 'الأرنب بالحليب الإيطالي، القرصان بالشوكولاتة، والأميرة بالفراولة الطبيعية.',
+          },
+          dishes: bimbi,
+        });
+      }
+
+      return sections;
     }
 
     default:

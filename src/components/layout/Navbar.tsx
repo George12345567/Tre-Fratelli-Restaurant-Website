@@ -39,10 +39,17 @@ export function Navbar({ locale }: NavbarProps) {
   }, [mobileMenuOpen]);
 
   return (
-    <header className="fixed top-3.5 sm:top-5 inset-x-0 z-50 px-3 flex justify-center pointer-events-none transition-all duration-300">
+    <>
+      {/* ── Soft Top Edge Mask: seamlessly dissolves scrolling text under floating navbar ── */}
+      <div
+        className="fixed top-0 inset-x-0 h-16 sm:h-20 bg-gradient-to-b from-[var(--palette-warm-ivory)] via-[var(--palette-warm-ivory)]/90 to-transparent z-40 pointer-events-none transition-opacity duration-300"
+        aria-hidden="true"
+      />
+
+      <header className="fixed top-2 sm:top-3 inset-x-0 z-50 px-3 flex justify-center pointer-events-none transition-all duration-300">
       {/* ── Single Unified Liquid Glass Floating Island ── */}
       <div
-        className={`pointer-events-auto relative rounded-full transition-all duration-500 ease-out flex items-center gap-1 sm:gap-2 px-2.5 sm:px-3 py-1.5 ${
+        className={`pointer-events-auto relative rounded-full transition-all duration-500 ease-out flex items-center gap-1 sm:gap-1.5 px-2 sm:px-2.5 py-1 sm:py-1.2 shadow-sm ${
           isScrolled ? 'liquid-glass-scrolled' : 'liquid-glass'
         }`}
       >
@@ -53,24 +60,24 @@ export function Navbar({ locale }: NavbarProps) {
         />
 
         {/* ── Desktop View: Brand Icon + Divider + Links + Divider + Lang + Reserve ── */}
-        <div className="hidden lg:flex items-center gap-1.5 xl:gap-2">
+        <div className="hidden lg:flex items-center gap-1 xl:gap-1.5">
           {/* Brand Logo */}
           <Link
             href="/"
             aria-label="Tre Fratelli Home"
-            className="group flex items-center gap-2 px-2 py-0.5 rounded-full hover:bg-white/50 transition-all focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--accent)]"
+            className="group flex items-center gap-1.5 px-1.5 py-0.5 rounded-full hover:bg-white/50 transition-all focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--accent)]"
           >
-            <div className="h-8 w-auto flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+            <div className="h-6 sm:h-6.5 w-auto flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
               <img
                 src="/images/brand/tre-fratelli-official-logo.png"
                 alt="Tre Fratelli Logo"
-                className="h-8 w-auto object-contain filter drop-shadow-2xs"
+                className="h-6 sm:h-6.5 w-auto object-contain filter drop-shadow-2xs"
               />
             </div>
           </Link>
 
           {/* Divider */}
-          <div className="h-4 w-[1px] bg-black/[0.08]" aria-hidden="true" />
+          <div className="h-3.5 w-[1px] bg-black/[0.08]" aria-hidden="true" />
 
           {/* Navigation Links */}
           <nav
@@ -88,7 +95,7 @@ export function Navbar({ locale }: NavbarProps) {
                 <Link
                   key={item.key}
                   href={rawHref}
-                  className={`text-[0.8rem] xl:text-[0.84rem] font-medium whitespace-nowrap px-2.5 xl:px-3 py-1.5 rounded-full transition-all duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--accent)] ${
+                  className={`text-[0.76rem] xl:text-[0.8rem] font-medium whitespace-nowrap px-2 xl:px-2.5 py-1 rounded-full transition-all duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--accent)] ${
                     isActive
                       ? 'liquid-glass-pill text-[var(--palette-italian-red)] font-semibold shadow-xs'
                       : 'text-[var(--palette-espresso)]/80 hover:text-[var(--palette-espresso)] hover:bg-white/40'
@@ -101,7 +108,7 @@ export function Navbar({ locale }: NavbarProps) {
           </nav>
 
           {/* Divider */}
-          <div className="h-4 w-[1px] bg-black/[0.08]" aria-hidden="true" />
+          <div className="h-3.5 w-[1px] bg-black/[0.08]" aria-hidden="true" />
 
           {/* Language Dropdown */}
           <LanguageDropdown currentLocale={locale} />
@@ -109,30 +116,40 @@ export function Navbar({ locale }: NavbarProps) {
           {/* Reserve CTA */}
           <Link
             href="/location"
-            className="group relative inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-[var(--palette-italian-red)] to-[var(--palette-italian-red-dark)] text-white text-xs font-semibold whitespace-nowrap shadow-[0_4px_14px_rgba(122,46,42,0.32),inset_0_1px_1px_rgba(255,255,255,0.45)] hover:shadow-[0_6px_20px_rgba(122,46,42,0.42),inset_0_1px_1.5px_rgba(255,255,255,0.65)] hover:brightness-105 active:scale-[0.98] transition-all overflow-hidden border border-white/20"
+            className="group relative inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-[var(--palette-italian-red)] to-[var(--palette-italian-red-dark)] text-white text-[11px] sm:text-xs font-semibold whitespace-nowrap shadow-[0_3px_12px_rgba(122,46,42,0.3),inset_0_1px_1px_rgba(255,255,255,0.45)] hover:shadow-[0_5px_16px_rgba(122,46,42,0.4),inset_0_1px_1.5px_rgba(255,255,255,0.65)] hover:brightness-105 active:scale-[0.98] transition-all overflow-hidden border border-white/20"
           >
             {/* Shimmer light bar across button */}
             <div
               className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none"
               aria-hidden="true"
             />
-            <CalendarDays size={13} aria-hidden="true" />
+            <CalendarDays size={12} aria-hidden="true" />
             <span>{t('nav.reserve')}</span>
           </Link>
+
+          {/* Menu Button */}
+          <button
+            type="button"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="p-1.5 rounded-full text-[var(--palette-espresso)]/85 hover:text-[var(--palette-espresso)] hover:bg-white/50 transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--accent)] cursor-pointer"
+            aria-label={mobileMenuOpen ? t('accessibility.closeMenu') : t('accessibility.openMenu')}
+          >
+            {mobileMenuOpen ? <X size={15} /> : <Menu size={15} />}
+          </button>
         </div>
 
         {/* ── Mobile/Tablet View ── */}
-        <div className="flex lg:hidden items-center gap-2">
+        <div className="flex lg:hidden items-center gap-1.5">
           <Link
             href="/"
             aria-label="Tre Fratelli Home"
-            className="p-1 rounded-full focus:outline-none hover:bg-white/40 transition-colors"
+            className="p-0.5 rounded-full focus:outline-none hover:bg-white/40 transition-colors"
           >
-            <div className="h-7 w-auto flex items-center justify-center shrink-0">
+            <div className="h-6 w-auto flex items-center justify-center shrink-0">
               <img
                 src="/images/brand/tre-fratelli-official-logo.png"
                 alt="Tre Fratelli Logo"
-                className="h-7 w-auto object-contain filter drop-shadow-2xs"
+                className="h-6 w-auto object-contain filter drop-shadow-2xs"
               />
             </div>
           </Link>
@@ -141,19 +158,19 @@ export function Navbar({ locale }: NavbarProps) {
 
           <Link
             href="/location"
-            className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-gradient-to-r from-[var(--palette-italian-red)] to-[var(--palette-italian-red-dark)] text-white text-xs font-semibold shadow-xs whitespace-nowrap border border-white/20"
+            className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-gradient-to-r from-[var(--palette-italian-red)] to-[var(--palette-italian-red-dark)] text-white text-[11px] font-semibold shadow-xs whitespace-nowrap border border-white/20"
           >
-            <CalendarDays size={12} aria-hidden="true" />
+            <CalendarDays size={11} aria-hidden="true" />
             <span>{t('nav.reserve')}</span>
           </Link>
 
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-1.5 rounded-full text-[var(--palette-espresso)] hover:bg-white/40 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+            className="p-1 rounded-full text-[var(--palette-espresso)] hover:bg-white/40 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
             aria-label={mobileMenuOpen ? t('accessibility.closeMenu') : t('accessibility.openMenu')}
           >
-            {mobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
+            {mobileMenuOpen ? <X size={17} /> : <Menu size={17} />}
           </button>
         </div>
       </div>
@@ -165,5 +182,6 @@ export function Navbar({ locale }: NavbarProps) {
         locale={locale}
       />
     </header>
+    </>
   );
 }
