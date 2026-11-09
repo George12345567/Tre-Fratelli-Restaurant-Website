@@ -33,3 +33,5 @@ yarn-error.log*
 *.tsbuildinfo
 output/
 .playwright-cli/
+*.webm
+*.mp4
