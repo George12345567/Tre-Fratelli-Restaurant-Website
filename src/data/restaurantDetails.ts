@@ -88,13 +88,13 @@ export const culinarySpecialties: CulinaryPillar[] = [
     id: 'spec-pizza',
     title: {
       it: 'Pizza al Forno a Legna',
-      en: 'Wood-Fired Hearth Pizza',
+      en: 'Pizza from the Wood-Fired Oven',
       ar: 'بيتزا فرن الحطب الإيطالي',
     },
     description: {
-      it: 'Impasto leggero ad alta digeribilità cotto a legna: crosta dorata e alveolata, molto apprezzata per il gusto e il prezzo onesto.',
-      en: 'Airy, slow-leavened dough baked in our traditional wood oven: golden crust praised for flavor and unbeatable value.',
-      ar: 'عجينة خفيفة سهلة الهضم تُخبز على الحطب، وتتميز بحواف مقرمشة ومذاق رائع أشاد به الزوار.',
+      it: 'Il profumo del forno, il bordo dorato, gli ingredienti che preferisci. Dalla Margherita alle pizze più ricche, scegli quella che ti va stasera.',
+      en: 'The scent of the oven, a golden crust, your favourite toppings. From a Margherita to something more generous, choose what you feel like tonight.',
+      ar: 'رائحة الفرن، وحواف ذهبية، والمكونات التي تحبونها. من المارغريتا الكلاسيكية إلى اختيارات أغنى، اختاروا البيتزا التي تشتهونها الليلة.',
     },
     badge: {
       it: 'Forno a Legna',
@@ -106,14 +106,14 @@ export const culinarySpecialties: CulinaryPillar[] = [
   {
     id: 'spec-seafood',
     title: {
-      it: 'Pesce & Frutti di Mare Abbondanti',
-      en: 'Abundant Mediterranean Seafood',
-      ar: 'الأسماك والمأكولات البحرية الوفيرة',
+      it: 'Il Mare a Tavola',
+      en: 'A Taste of the Sea',
+      ar: 'نكهات البحر على المائدة',
     },
     description: {
-      it: 'Specialità di mare fresche servite in porzioni ricche e generose: fritture croccanti, grigliate miste e primi marinari.',
-      en: 'Fresh seafood served in notably hearty portions: crispy golden fritto, grilled fish platters, and ocean-infused pasta.',
-      ar: 'أطباق بحرية طازجة تشتهر بحجمها الوفير وسخائها: أسماك مشوية، مقليات ذهبية، ومأكولات بحرية شهية.',
+      it: 'Un primo ai frutti di mare, una frittura da passarsi, una grigliata al centro del tavolo. Il mare si gusta ancora meglio in compagnia.',
+      en: 'Seafood pasta, a plate of crisp fritto to pass around, a mixed grill in the middle of the table. Some flavours are even better shared.',
+      ar: 'باستا بثمار البحر، ومقليات نتشاركها، وطبق مشاوي بحرية في وسط المائدة. نكهات يزيد جمالها مع الصحبة.',
     },
     badge: {
       it: 'Porzioni Generose',
@@ -125,14 +125,14 @@ export const culinarySpecialties: CulinaryPillar[] = [
   {
     id: 'spec-paella',
     title: {
-      it: 'La Tradizionale Paella & Brace',
-      en: 'Festive Paella & Charcoal Grills',
-      ar: 'طبق الباييلا الشهير والمشاوي',
+      it: 'Paella & Brace, da Condividere',
+      en: 'Paella & Grills to Share',
+      ar: 'باييلا ومشاوي للمشاركة',
     },
     description: {
-      it: 'Riso allo zafferano con frutti di mare per momenti conviviali di festa, insieme a carni scelte cotte sulla brace viva.',
-      en: 'Fragrant saffron rice laden with seafood for celebratory table moments, accompanied by prime charcoal-grilled meats.',
-      ar: 'أرز بالزعفران وثمار البحر الطازجة مثالي للمشاركة، إلى جانب قطع اللحم المشوية على الفحم الحي.',
+      it: 'La paella porta colore e profumo alla tavola; la brace aggiunge il suo carattere. Piatti per chi ama assaggiare e dividere qualcosa di buono.',
+      en: 'Paella brings colour and aroma to the table; the grill adds its own character. Dishes for those who like to try a little and share a little.',
+      ar: 'الباييلا تضيف لوناً ورائحة للمائدة، والمشاوي لها نكهتها الخاصة. أطباق لمن يحبون تجربة أكثر من طعم ومشاركة ما يحبونه.',
     },
     badge: {
       it: 'Piatto di Festa',
@@ -144,19 +144,19 @@ export const culinarySpecialties: CulinaryPillar[] = [
   {
     id: 'spec-dolci',
     title: {
-      it: 'Dolci Fatti in Casa & Antipasti',
-      en: 'Handcrafted Dolci & Antipasti',
-      ar: 'الحلويات المنزلية والمقبلات',
+      it: 'Per Finire, Qualcosa di Dolce',
+      en: 'Something Sweet to Finish',
+      ar: 'وللختام، شيء حلو',
     },
     description: {
-      it: 'Dal classico Tiramisù ai cannoli artigianali e ricchi antipasti all’italiana per iniziare e chiudere in dolcezza.',
-      en: 'From our classic homemade Tiramisù to crisp cannoli and rich antipasti platters to bookend your feast.',
-      ar: 'من التيراميسو الكلاسيكي المحضر منزلياً إلى الكانولي والمقبلات الإيطالية لتدليل مائدتك.',
+      it: 'Uno sguardo alla carta dei dolci, magari due cucchiaini. La nostra selezione Bindi è un buon motivo per fermarsi ancora un po’.',
+      en: 'A look at the dessert menu, perhaps two spoons. Our Bindi selection is a good reason to linger a little longer.',
+      ar: 'نظرة على قائمة الحلويات، وربما ملعقتان للمشاركة. مختارات بيندي سبب لطيف لنطيل الجلسة قليلاً.',
     },
     badge: {
-      it: 'Fatti in Casa',
-      en: 'Homemade Daily',
-      ar: 'تحضير يدوي طازج',
+      it: 'Selezione Bindi',
+      en: 'Bindi Selection',
+      ar: 'مختارات بيندي',
     },
     iconName: 'Cake',
   },

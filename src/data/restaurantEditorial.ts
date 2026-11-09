@@ -1,0 +1,37 @@
+import type { LocalizedText } from './types';
+
+export const restaurantEditorial = {
+  eyebrow: { it: 'Tre Fratelli · Trezzano sul Naviglio', en: 'Tre Fratelli · Trezzano sul Naviglio', ar: 'تري فراتيلي · تريزانو سول نافيليو' },
+  headline: { it: 'Il piacere di stare a tavola.', en: 'The pleasure of a shared table.', ar: 'على المائدة، تحلو اللمة.' },
+  introduction: {
+    it: 'Una pizza appena sfornata, un piatto da condividere, una conversazione che continua. Ti aspettiamo a Trezzano sul Naviglio, con i sapori della cucina italiana e il piacere di accoglierti.',
+    en: 'A pizza fresh from the oven, a dish to share, a conversation that carries on. Join us in Trezzano sul Naviglio for Italian cooking and a warm welcome.',
+    ar: 'بيتزا خرجت للتو من الفرن، وطبق نتشارك فيه، وحديث لا نملّه. ننتظركم في تريزانو سول نافيليو، بنكهات المطبخ الإيطالي وترحيب يشعركم أنكم بين أهلكم.',
+  },
+  storyLabel: { it: 'Il nostro modo di accoglierti', en: 'A welcome, our way', ar: 'ضيافتنا تبدأ من هنا' },
+  storyTitle: { it: 'Una cucina da vivere, insieme.', en: 'Good food. Even better company.', ar: 'أكل نحبه، وصحبة تكمل الحكاية.' },
+  storyCopy: {
+    it: 'Ci piace una tavola dove ognuno trova qualcosa che ama: la pizza, un primo di mare, una grigliata da dividere. La nostra idea di ospitalità è semplice: farti sentire a tuo agio e lasciarti il tempo di goderti il pranzo o la serata.',
+    en: 'We like a table where everyone finds something they love: pizza, seafood pasta, a grill to share. Our idea of hospitality is simple: make you feel at ease and give you time to enjoy your meal and your company.',
+    ar: 'نحب المائدة التي يجد فيها كل شخص ما يشتهيه: بيتزا، أو باستا بثمار البحر، أو مشاوي للمشاركة. فكرتنا عن الضيافة بسيطة: أن ترتاحوا، وتستمتعوا بالأكل والصحبة على مهلكم.',
+  },
+  imageCaption: { it: 'Il gusto della condivisione.', en: 'Made for sharing.', ar: 'أطباق تجمعنا.' },
+  tableAlt: { it: 'Una tavola apparecchiata in un ambiente caldo e accogliente', en: 'A table set in a warm, welcoming dining space', ar: 'مائدة مرتبة في أجواء دافئة ومريحة' },
+  feastAlt: { it: 'Una selezione di piatti della cucina mediterranea', en: 'A selection of Mediterranean dishes', ar: 'تشكيلة من أطباق مطبخ البحر المتوسط' },
+  kitchenLabel: { it: 'Dalla nostra cucina', en: 'From our kitchen', ar: 'من مطبخنا' },
+  kitchenTitle: { it: 'Segui il tuo appetito.', en: 'Follow your appetite.', ar: 'اختاروا ما تشتهون.' },
+  kitchenIntro: { it: 'Dal primo assaggio all’ultimo dolce, c’è sempre qualcosa da passarsi a tavola.', en: 'From the first bite to something sweet, there is always another dish to pass around.', ar: 'من أول لقمة إلى آخر ملعقة حلوى، دائماً هناك ما نتشاركه على المائدة.' },
+  hospitalityLabel: { it: 'Il piacere di fermarsi', en: 'Make yourself at home', ar: 'خذوا راحتكم' },
+  hospitalityTitle: { it: 'C’è spazio per la tua occasione.', en: 'Room for your kind of occasion.', ar: 'لكل لمة، مكانها.' },
+  hospitalityIntro: { it: 'Un pranzo in famiglia, un compleanno, una cena tra amici. Ecco qualche dettaglio utile per organizzare la tua visita.', en: 'A family lunch, a birthday, a dinner with friends. A few useful details to help you plan your visit.', ar: 'غداء عائلي، أو عيد ميلاد، أو عشاء مع الأصدقاء. هذه تفاصيل بسيطة تساعدكم في ترتيب زيارتكم.' },
+  visitLabel: { it: 'Vieni a trovarci', en: 'Come over', ar: 'ننتظر زيارتكم' },
+  visitTitle: { it: 'Il prossimo posto a tavola è il tuo.', en: 'There is a place for you at the table.', ar: 'مكانكم على المائدة ينتظركم.' },
+  reserve: { it: 'Prenota un tavolo', en: 'Book a table', ar: 'احجزوا طاولة' },
+  menu: { it: 'Esplora il menù', en: 'Explore the menu', ar: 'اكتشفوا القائمة' },
+  storyNav: { it: 'Il ristorante', en: 'Our place', ar: 'المطعم' },
+  kitchenNav: { it: 'La cucina', en: 'The kitchen', ar: 'المطبخ' },
+  visitNav: { it: 'La tua visita', en: 'Your visit', ar: 'زيارتكم' },
+  directions: { it: 'Come arrivare', en: 'Get directions', ar: 'الاتجاهات' },
+  phoneLabel: { it: 'Parliamone al telefono', en: 'Give us a call', ar: 'تواصلوا معنا' },
+  socialLabel: { it: 'Ci trovi anche qui', en: 'Find us here, too', ar: 'تابعوا أخبارنا' },
+} satisfies Record<string, LocalizedText>;
