@@ -1,7 +1,7 @@
 'use client';
 
-import { useState, useRef, useEffect, useCallback } from 'react';
-import { CalendarDays, ArrowRight, Volume2, VolumeX } from 'lucide-react';
+import { useRef, useEffect } from 'react';
+import { CalendarDays, ArrowRight } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 
 const HERO_VIDEO_SRC = '/video/tre-fratelli-hero.mp4';
@@ -20,48 +20,53 @@ interface Props {
 }
 
 export function HeroSection({ isRtl, translations }: Props) {
-  const [isMuted, setIsMuted] = useState(true);
-  const [isVideoReady, setIsVideoReady] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  const safePlay = useCallback(() => {
+  // ── Rock-Solid Autoplay & Intersection Observer ──
+  useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
-    video.muted = isMuted;
-    const playPromise = video.play();
-    if (playPromise !== undefined) {
-      playPromise.catch(() => {
-        // Fallback if browser autoplay restrictions apply before user interaction
-      });
-    }
-  }, [isMuted]);
 
-  const safePause = useCallback(() => {
-    const video = videoRef.current;
-    if (video && !video.paused) {
-      video.pause();
-    }
-  }, []);
+    // Explicitly enforce muted attributes to satisfy all browser autoplay policies
+    video.defaultMuted = true;
+    video.muted = true;
 
-  // ── 1. Smart Intersection Observer: Auto-play when visible, Pause when scrolled away ──
-  useEffect(() => {
+    const playVideo = () => {
+      const promise = video.play();
+      if (promise !== undefined) {
+        promise.catch(() => {
+          // If browser initially defered autoplay, start upon first interaction
+          const unlock = () => {
+            video.play().catch(() => {});
+            window.removeEventListener('pointerdown', unlock);
+            window.removeEventListener('touchstart', unlock);
+            window.removeEventListener('scroll', unlock);
+          };
+          window.addEventListener('pointerdown', unlock, { once: true, passive: true });
+          window.addEventListener('touchstart', unlock, { once: true, passive: true });
+          window.addEventListener('scroll', unlock, { once: true, passive: true });
+        });
+      }
+    };
+
+    // Attempt playback immediately on mount
+    playVideo();
+
+    // Pause when scrolled out of view, resume when back in view
     const section = sectionRef.current;
-    const video = videoRef.current;
-    if (!section || !video) return;
+    if (!section) return;
 
     const observer = new IntersectionObserver(
       (entries) => {
         const [entry] = entries;
         if (entry.isIntersecting) {
-          safePlay();
+          playVideo();
         } else {
-          safePause();
+          video.pause();
         }
       },
-      {
-        threshold: 0.08,
-      }
+      { threshold: 0.05 }
     );
 
     observer.observe(section);
@@ -69,49 +74,22 @@ export function HeroSection({ isRtl, translations }: Props) {
     // Tab visibility handling (pause when tab hidden, resume when active)
     const onVisibilityChange = () => {
       if (document.hidden) {
-        safePause();
+        video.pause();
       } else {
         const rect = section.getBoundingClientRect();
-        const inViewport = rect.bottom > 0 && rect.top < window.innerHeight;
-        if (inViewport) {
-          safePlay();
+        if (rect.bottom > 0 && rect.top < window.innerHeight) {
+          playVideo();
         }
       }
     };
 
-    // User gesture listener to unlock autoplay on mobile if restricted initially
-    const onFirstInteraction = () => {
-      const rect = section.getBoundingClientRect();
-      const inViewport = rect.bottom > 0 && rect.top < window.innerHeight;
-      if (inViewport && video.paused) {
-        safePlay();
-      }
-    };
-
     document.addEventListener('visibilitychange', onVisibilityChange);
-    window.addEventListener('pointerdown', onFirstInteraction, { once: true, passive: true });
-    window.addEventListener('touchstart', onFirstInteraction, { once: true, passive: true });
-    window.addEventListener('scroll', onFirstInteraction, { once: true, passive: true });
 
     return () => {
       observer.disconnect();
       document.removeEventListener('visibilitychange', onVisibilityChange);
-      window.removeEventListener('pointerdown', onFirstInteraction);
-      window.removeEventListener('touchstart', onFirstInteraction);
-      window.removeEventListener('scroll', onFirstInteraction);
     };
-  }, [safePlay, safePause]);
-
-  const toggleMute = () => {
-    const nextMuted = !isMuted;
-    setIsMuted(nextMuted);
-    if (videoRef.current) {
-      videoRef.current.muted = nextMuted;
-      if (!nextMuted && videoRef.current.paused) {
-        safePlay();
-      }
-    }
-  };
+  }, []);
 
   return (
     <section
@@ -120,12 +98,12 @@ export function HeroSection({ isRtl, translations }: Props) {
     >
       {/* ── Layer 1: Instant Poster Frame Background (Zero Black Screen / Zero Flash) ── */}
       <div
-        className="absolute inset-0 w-full h-full bg-cover bg-center z-0 transition-opacity duration-700 scale-100"
+        className="absolute inset-0 w-full h-full bg-cover bg-center z-0 scale-100"
         style={{ backgroundImage: `url('${HERO_POSTER_SRC}')` }}
         aria-hidden="true"
       />
 
-      {/* ── Layer 2: Main Continuous Video (Faststart Streaming with Pause-on-Scroll) ── */}
+      {/* ── Layer 2: Main Continuous Video (Faststart Streaming, Pure Visual Muted) ── */}
       <video
         ref={videoRef}
         src={HERO_VIDEO_SRC}
@@ -133,12 +111,9 @@ export function HeroSection({ isRtl, translations }: Props) {
         playsInline
         autoPlay
         loop
-        muted={isMuted}
+        muted
         preload="auto"
-        onCanPlay={() => setIsVideoReady(true)}
-        className={`absolute inset-0 w-full h-full object-cover z-10 transition-opacity duration-700 ${
-          isVideoReady ? 'opacity-100' : 'opacity-0'
-        }`}
+        className="absolute inset-0 w-full h-full object-cover z-10"
         aria-hidden="true"
       />
 
@@ -179,9 +154,8 @@ export function HeroSection({ isRtl, translations }: Props) {
         </div>
       </div>
 
-      {/* ── Layer 5: Bottom Action Row: Sleek Buttons + Sound Control ── */}
+      {/* ── Layer 5: Bottom Action Row: Sleek Action Buttons (No Volume Control) ── */}
       <div className="absolute bottom-6 sm:bottom-8 lg:bottom-10 inset-x-0 px-5 sm:px-10 lg:px-16 z-20 flex items-center justify-between gap-4 pointer-events-auto">
-        {/* The Two Action Buttons (Sleek, Liquid-Glass) */}
         <div className="flex flex-wrap items-center gap-2.5 sm:gap-3.5">
           <Link
             href="/location"
@@ -203,20 +177,6 @@ export function HeroSection({ isRtl, translations }: Props) {
             />
           </Link>
         </div>
-
-        {/* Audio Control Button (Bottom-End Corner) */}
-        <button
-          type="button"
-          onClick={toggleMute}
-          aria-label={isMuted ? 'Unmute video audio' : 'Mute video audio'}
-          className="w-10 h-10 sm:w-11 sm:h-11 rounded-full liquid-glass-pill hover:bg-white/20 flex items-center justify-center text-white border border-white/35 backdrop-blur-xl transition-all shadow-md active:scale-95 cursor-pointer shrink-0"
-        >
-          {isMuted ? (
-            <VolumeX size={16} aria-hidden="true" />
-          ) : (
-            <Volume2 size={16} className="text-[var(--palette-italian-red)]" aria-hidden="true" />
-          )}
-        </button>
       </div>
     </section>
   );
