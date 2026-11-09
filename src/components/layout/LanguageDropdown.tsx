@@ -74,6 +74,7 @@ export function LanguageDropdown({
     >
       {/* ── Liquid Glass Trigger Button ── */}
       <button
+        data-language-trigger
         type="button"
         onClick={() => setIsOpen(!isOpen)}
         aria-expanded={isOpen}

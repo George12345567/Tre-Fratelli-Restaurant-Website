@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef } from 'react';
-import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react';
+import { motion, useReducedMotion, useScroll, useTransform, type MotionStyle } from 'motion/react';
 import { ArrowRight, ArrowDown } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { useHeroVideo } from './useHeroVideo';
@@ -30,7 +30,8 @@ export function HeroSection({ locale = 'en', isRtl, translations }: Props) {
   useHeroVideo(videoRef, viewportRef);
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start start', 'end end'] });
   const scale = useTransform(scrollYProgress, [0, 1], [1.02, 1.1]);
-  const y = useTransform(scrollYProgress, [0, 1], [0, -24]);
+  // Reach the lower edge before the sticky viewport releases, then hold briefly.
+  const textPosition = useTransform(scrollYProgress, [0, 0.88, 1], [0, 1, 1]);
   const progress = useTransform(scrollYProgress, [0, 1], [0.08, 1]);
   const scrollHint = locale === 'ar' ? 'مرّر لاكتشاف المزيد' : locale === 'it' ? 'Scorri per scoprire' : 'Scroll to discover';
 
@@ -42,15 +43,15 @@ export function HeroSection({ locale = 'en', isRtl, translations }: Props) {
           <video ref={videoRef} src={HERO_VIDEO_SRC} poster={HERO_POSTER_SRC} playsInline loop muted preload="auto" className="absolute inset-0 w-full h-full object-cover" aria-hidden="true" />
         </motion.div>
         <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/60 via-black/20 to-black/85 pointer-events-none" aria-hidden="true" />
-        <div className={styles.content}>
-          <motion.div style={reduceMotion ? undefined : { y }} className="max-w-5xl">
-            <p className="flex items-center gap-3 text-[10px] sm:text-xs uppercase tracking-[0.18em] text-amber-100/90 mb-4">
+        <motion.div className={styles.content} style={{ '--hero-position': reduceMotion ? 0 : textPosition } as MotionStyle}>
+          <div className="mx-auto max-w-5xl text-center">
+            <p className="flex items-center justify-center gap-3 text-[10px] sm:text-xs uppercase tracking-[0.18em] text-amber-100/90 mb-4">
               <span aria-hidden="true" className="block h-px w-7 bg-amber-100/70" />{translations.heroEyebrow}
             </p>
-            <h1 id="home-hero-title" className={`${styles.title} font-serif font-medium`}>{translations.heroTitle}</h1>
-            <p className="mt-4 max-w-xl text-sm sm:text-base text-white/85 leading-relaxed">{translations.heroCopy}</p>
-          </motion.div>
-          <div className="mt-7 sm:mt-9 flex flex-wrap justify-between items-end gap-5">
+            <h1 id="home-hero-title" className={`${styles.title} mx-auto font-serif font-medium`}>{translations.heroTitle}</h1>
+            <p className="mt-4 mx-auto max-w-xl text-sm sm:text-base text-white/85 leading-relaxed">{translations.heroCopy}</p>
+          </div>
+          <div className="mt-7 sm:mt-9 flex flex-wrap justify-center items-center gap-5 sm:gap-8">
             <Link href="/menu" className={`${styles.menuLink} group rounded-sm focus-visible:outline-2 focus-visible:outline-offset-8 focus-visible:outline-white`}>
               <span className="space-y-2">
                 <span className="block text-sm sm:text-base font-medium tracking-wide">{translations.viewMenu}</span>
@@ -62,7 +63,7 @@ export function HeroSection({ locale = 'en', isRtl, translations }: Props) {
               <span>{scrollHint}</span><ArrowDown size={13} aria-hidden="true" />
             </a>
           </div>
-        </div>
+        </motion.div>
         <motion.div aria-hidden="true" className="absolute bottom-0 inset-x-0 h-px bg-amber-100/60 z-30" style={{ scaleX: reduceMotion ? 1 : progress, transformOrigin: isRtl ? 'right' : 'left' }} />
       </div>
     </section>

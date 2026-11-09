@@ -23,6 +23,13 @@ export function Navbar({ locale }: NavbarProps) {
   const immersive = overHero && !mobileMenuOpen;
 
   useEffect(() => {
+    const desktop = window.matchMedia('(min-width: 1024px)');
+    const closeOnDesktop = () => { if (desktop.matches) setMobileMenuOpen(false); };
+    desktop.addEventListener('change', closeOnDesktop);
+    return () => desktop.removeEventListener('change', closeOnDesktop);
+  }, []);
+
+  useEffect(() => {
     if (mobileMenuOpen) {
       document.body.style.overflow = 'hidden';
     } else {
@@ -59,6 +66,7 @@ export function Navbar({ locale }: NavbarProps) {
         <div className="hidden lg:flex items-center gap-1 xl:gap-1.5">
           {/* Brand Logo */}
           <Link
+            data-nav-brand
             href="/"
             aria-label="Tre Fratelli Home"
             className="group flex items-center gap-1.5 px-1.5 py-0.5 rounded-full hover:bg-white/50 transition-all focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--accent)]"
@@ -93,6 +101,7 @@ export function Navbar({ locale }: NavbarProps) {
                   data-nav-link
                   key={item.key}
                   href={rawHref}
+                  aria-current={isActive ? 'page' : undefined}
                   className={`text-[0.76rem] xl:text-[0.8rem] font-medium whitespace-nowrap px-2 xl:px-2.5 py-1 rounded-full transition-all duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--accent)] ${
                     isActive
                       ? 'liquid-glass-pill text-[var(--palette-italian-red)] font-semibold shadow-xs'
@@ -126,21 +135,12 @@ export function Navbar({ locale }: NavbarProps) {
             <span>{t('nav.reserve')}</span>
           </Link>
 
-          {/* Menu Button */}
-          <button
-            data-nav-menu
-            type="button"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-1.5 rounded-full text-[var(--palette-espresso)]/85 hover:text-[var(--palette-espresso)] hover:bg-white/50 transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--accent)] cursor-pointer"
-            aria-label={mobileMenuOpen ? t('accessibility.closeMenu') : t('accessibility.openMenu')}
-          >
-            {mobileMenuOpen ? <X size={15} /> : <Menu size={15} />}
-          </button>
         </div>
 
         {/* ── Mobile/Tablet View ── */}
         <div className="flex lg:hidden items-center gap-1.5">
           <Link
+            data-nav-brand
             href="/"
             aria-label="Tre Fratelli Home"
             className="p-0.5 rounded-full focus:outline-none hover:bg-white/40 transition-colors"

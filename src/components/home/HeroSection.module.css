@@ -19,13 +19,14 @@
 }
 
 .content {
-  position: relative;
+  --hero-bottom: max(2rem, env(safe-area-inset-bottom));
+  position: absolute;
   z-index: 20;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  height: 100%;
-  padding: max(6rem, env(safe-area-inset-top)) 1.5rem max(2rem, env(safe-area-inset-bottom));
+  inset-inline: 0;
+  top: 50%;
+  transform: translateY(calc(-50% + (50vh - 50% - var(--hero-bottom)) * var(--hero-position, 0)));
+  transform: translateY(calc(-50% + (50dvh - 50% - var(--hero-bottom)) * var(--hero-position, 0)));
+  padding-inline: 1.5rem;
 }
 
 .title {
@@ -43,19 +44,19 @@
 .menuLink:hover .menuArrow, .menuLink:focus-visible .menuArrow { transform: rotate(-35deg); background: rgb(255 255 255 / 12%); }
 
 @media (max-width: 639px) and (max-height: 700px) {
-  .content { padding: 5rem 1.25rem max(1rem, env(safe-area-inset-bottom)); }
+  .content { --hero-bottom: max(1rem, env(safe-area-inset-bottom)); padding-inline: 1.25rem; }
   .title { font-size: 1.75rem; line-height: 1.18; }
   .content p { font-size: .75rem; }
 }
 
 @media (min-width: 640px) {
   .section { margin-top: calc(-4rem - env(safe-area-inset-top, 0px)); }
-  .content { padding: 7rem 3rem 3rem; }
+  .content { --hero-bottom: max(3rem, env(safe-area-inset-bottom)); padding-inline: 3rem; }
   .title { max-width: 22ch; font-size: clamp(3rem, 5vw, 5rem); line-height: 1.12; }
 }
 
 @media (max-height: 500px) and (orientation: landscape) {
-  .content { padding: 5rem 1.5rem 1rem; }
+  .content { --hero-bottom: max(1rem, env(safe-area-inset-bottom)); padding-inline: 1.5rem; top: calc(100% - var(--hero-bottom)); transform: translateY(-100%); }
   .title { font-size: 1.75rem; max-width: 35ch; }
   .content p { font-size: .75rem; }
   .menuArrow { width: 2.5rem; height: 2.5rem; }
