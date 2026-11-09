@@ -61,21 +61,21 @@ export function HomeMenuScrollHeader({ locale }: { locale: Locale }) {
       : 'Explore Complete Menu';
 
   return (
-    <div ref={headerRef} className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 sm:pb-16 border-b border-[var(--palette-stone-beige)]/35">
-      <div className="space-y-3 max-w-2xl">
+    <div ref={headerRef} className="flex flex-col md:flex-row md:items-end justify-between gap-3 sm:gap-6 pb-6 sm:pb-16 border-b border-[var(--palette-stone-beige)]/35">
+      <div className="space-y-2 sm:space-y-3 max-w-2xl">
         <motion.div style={eyebrowStyle} className="flex items-center gap-2">
           <span className="w-6 h-[1.5px] bg-[var(--palette-italian-red)] rounded-full" aria-hidden="true" />
-          <span className="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-[var(--palette-aged-brass)] flex items-center gap-1.5">
+          <span className="text-[9px] sm:text-xs font-bold tracking-[0.14em] sm:tracking-[0.22em] uppercase text-[var(--palette-aged-brass)] flex items-center gap-1.5">
             <Sparkles size={13} className="text-[var(--palette-aged-brass)]" />
             {sectionEyebrow}
           </span>
         </motion.div>
 
-        <motion.h2 style={titleStyle} className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold uppercase tracking-wide text-[var(--palette-espresso)] leading-tight">
+        <motion.h2 style={titleStyle} className="font-serif text-2xl sm:text-4xl lg:text-5xl font-extrabold uppercase tracking-wide text-[var(--palette-espresso)] leading-tight">
           {sectionTitle}
         </motion.h2>
 
-        <motion.p style={introStyle} className="text-sm sm:text-base text-[var(--palette-espresso)]/75 font-serif italic leading-relaxed">
+        <motion.p style={introStyle} className="text-xs sm:text-base text-[var(--palette-espresso)]/75 font-serif italic leading-snug sm:leading-relaxed">
           {sectionIntro}
         </motion.p>
       </div>
@@ -87,7 +87,7 @@ export function HomeMenuScrollHeader({ locale }: { locale: Locale }) {
       >
         <Link
           href="/menu"
-          className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[var(--palette-espresso)] text-white hover:bg-[var(--palette-italian-red)] transition-all duration-300 font-semibold text-xs sm:text-sm shadow-md hover:shadow-lg group cursor-pointer"
+          className="inline-flex min-h-11 items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 rounded-full bg-[var(--palette-espresso)] text-white hover:bg-[var(--palette-italian-red)] transition-all duration-300 font-semibold text-[11px] sm:text-sm shadow-md hover:shadow-lg group cursor-pointer"
         >
           <Utensils size={15} aria-hidden="true" />
           <span>{viewAllText}</span>
