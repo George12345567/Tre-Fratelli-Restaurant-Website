@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
-import { ArrowRight, Music2, Phone } from 'lucide-react';
-import Image from 'next/image';
+import { ArrowRight, Phone } from 'lucide-react';
 import type { Locale } from '@/i18n/routing';
 import { Link } from '@/i18n/navigation';
 import { getLocalized } from '@/data/types';
@@ -11,6 +10,7 @@ import { eventsEditorial, recurringEvents } from '@/data/eventsEditorial';
 import { restaurantOfficialInfo } from '@/data/restaurantDetails';
 import { ScrollReveal } from '@/components/motion/ScrollReveal';
 import { restaurantSchedule } from '@/data/restaurantSchedule';
+import { EventsMedia } from './EventsMedia';
 
 export function EventsExplorer({ locale }: { locale: Locale }) {
   const [filter, setFilter] = useState<'all' | 'music' | 'seasonal' | 'celebration'>('all');
@@ -32,15 +32,7 @@ export function EventsExplorer({ locale }: { locale: Locale }) {
             </div>
           </div>
         </ScrollReveal>
-        <ScrollReveal image className="mt-8 sm:mt-12 overflow-hidden">
-          <div className="relative aspect-[4/3] sm:aspect-[16/6] bg-[var(--palette-stone-beige)]">
-            <Image src="/images/events/karaoke-evening.webp" alt={text('heroAlt')} fill sizes="(max-width: 1280px) 100vw, 1280px" preload className="object-cover object-[center_25%]" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" aria-hidden="true" />
-            <div className="absolute bottom-5 start-5 sm:bottom-9 sm:start-9 text-white flex items-center gap-3">
-              <Music2 size={24} aria-hidden="true" /><p className="font-serif text-xl sm:text-3xl">{text('music')}</p>
-            </div>
-          </div>
-        </ScrollReveal>
+        <EventsMedia locale={locale} />
       </header>
       <section aria-labelledby="events-programme-title" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
         <ScrollReveal>

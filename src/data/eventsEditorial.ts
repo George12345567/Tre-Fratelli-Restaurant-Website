@@ -15,7 +15,6 @@ export const eventsEditorial = {
   contactKicker: { it: 'Le vostre occasioni, insieme a noi', en: 'Your occasion, shared with us', ar: 'لمناسباتكم ولمّتكم' },
   contactTitle: { it: 'La prossima bella serata? Organizziamola insieme.', en: 'Let’s make an evening of it.', ar: 'خلّونا نرتّب سهرة على ذوقكم.' },
   contactCopy: { it: 'Una cena tra amici o una festa da ricordare: raccontaci la tua idea. Scegliamo insieme il giorno, il menù e i dettagli della serata.', en: 'Dinner with friends or a celebration to remember: tell us what you have in mind. We will plan the date, menu and details together.', ar: 'عشاء مع الأصدقاء أو حفلة لمناسبة غالية؟ احكوا لنا فكرتكم، ونرتّب معاً اليوم والقائمة وتفاصيل السهرة.' },
-  heroAlt: { it: 'Atmosfera di festa con amici che cantano al karaoke', en: 'Friends singing karaoke at a festive restaurant evening', ar: 'أجواء احتفالية وأصدقاء يغنون الكاراوكي في سهرة بالمطعم' },
 } satisfies Record<string, LocalizedText>;
 
 // Recurring occasions supplied by the restaurant; no invented dates or packages.
