@@ -178,9 +178,9 @@
       "lunch": "Lunch: 12:00 PM – 3:00 PM",
       "dinner": "Dinner: 6:30 PM – 12:00 Midnight",
       "everyDay": "Open Daily",
-      "closed": "Monday evening: Call verification recommended",
-      "note": "Note: Calling in advance is recommended, especially on Monday evenings (+39 02 3655 7693).",
-      "pagineGialleSource": "Additional hours source: PagineGialle"
+      "closed": "Monday evening: Closed",
+      "note": "Monday: lunch only, 12:00–15:00. Closed in the evening. Contact us for holiday hours.",
+      "pagineGialleSource": "View opening hours on Restaurant Guru"
     },
     "contacts": {
       "title": "Direct Contact",

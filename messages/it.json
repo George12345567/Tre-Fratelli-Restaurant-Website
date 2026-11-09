@@ -178,9 +178,9 @@
       "lunch": "Pranzo: 12:00 – 15:00",
       "dinner": "Cena: 18:30 – 00:00",
       "everyDay": "Aperto Tutti i Giorni",
-      "closed": "Lunedì sera: consigliata verifica telefonica",
-      "note": "Nota: È consigliata la chiamata prima di venire, specialmente il lunedì sera (+39 02 3655 7693).",
-      "pagineGialleSource": "Fonte orari: Google Maps & PagineGialle"
+      "closed": "Lunedì sera: chiuso",
+      "note": "Lunedì aperti solo a pranzo, 12:00–15:00. Chiusi la sera. Per gli orari festivi, contattaci.",
+      "pagineGialleSource": "Orari su Restaurant Guru"
     },
     "contacts": {
       "title": "Contatto Diretto",

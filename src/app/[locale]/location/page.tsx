@@ -5,6 +5,7 @@ import { getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing, type Locale } from '@/i18n/routing';
 import { ReservationForm } from '@/components/reservations/ReservationForm';
+import { restaurantSchedule } from '@/data/restaurantSchedule';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 
 interface PageProps {
@@ -126,7 +127,7 @@ export default async function LocationPage({ params }: PageProps) {
               </p>
               <div className="pt-1 flex items-center justify-between text-[11px]">
                 <a
-                  href="https://www.paginegialle.it/trezzano-sul-naviglio-mi/ristoranti/tre-fratelli"
+                  href={restaurantSchedule.sourceUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-amber-800 underline hover:text-amber-950 font-medium"

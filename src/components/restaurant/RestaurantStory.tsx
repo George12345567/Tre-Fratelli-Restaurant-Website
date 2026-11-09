@@ -39,11 +39,13 @@ export function RestaurantStory({ locale }: { locale: Locale }) {
           </RestaurantReveal>
 
           <figure className="mt-9 sm:mt-12">
+            <RestaurantReveal image className="overflow-hidden">
             <div className="relative aspect-[4/3] sm:aspect-[16/7] lg:aspect-[21/8] overflow-hidden bg-[var(--palette-stone-beige)]">
               <Image src="/images/hero/restaurant-table-ambiance.webp" alt={text('tableAlt')} fill sizes="(max-width: 1280px) 100vw, 1280px" preload className="object-cover" />
               <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black/35 to-transparent" />
               <p className="absolute bottom-5 start-5 sm:bottom-8 sm:start-8 text-white font-serif text-xl sm:text-3xl italic">Tre Fratelli</p>
             </div>
+            </RestaurantReveal>
             <figcaption className="flex justify-between items-center gap-4 mt-3 text-[10px] sm:text-xs text-[var(--palette-espresso)]/60">
               <span>{text('imageCaption')}</span><span lang="it">Trezzano sul Naviglio · Milano</span>
             </figcaption>

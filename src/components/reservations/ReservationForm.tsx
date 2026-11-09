@@ -19,6 +19,8 @@ import {
   Check,
 } from 'lucide-react';
 import type { Locale } from '@/i18n/routing';
+import { isMonday, restaurantSchedule } from '@/data/restaurantSchedule';
+import { getLocalized } from '@/data/types';
 
 interface ReservationFormProps {
   locale: Locale;
@@ -84,8 +86,8 @@ export function ReservationForm({ locale }: ReservationFormProps) {
   const [formData, setFormData] = useState<FormFields>(() => ({
     date: tomorrowIso,
     guests: '2',
-    service: 'dinner',
-    time: '20:30',
+    service: isMonday(tomorrowIso) ? 'lunch' : 'dinner',
+    time: isMonday(tomorrowIso) ? '13:00' : '20:30',
     name: '',
     phone: '',
     email: '',
@@ -94,7 +96,12 @@ export function ReservationForm({ locale }: ReservationFormProps) {
   }));
 
   const updateField = (field: keyof FormFields, value: string) => {
-    setFormData((prev) => ({ ...prev, [field]: value }));
+    setFormData((prev) => {
+      if (field === 'date' && isMonday(value)) {
+        return { ...prev, date: value, service: 'lunch', time: '13:00' };
+      }
+      return { ...prev, [field]: value };
+    });
     setErrorMessage('');
     if (field === 'name') setNameError('');
     if (field === 'phone') setPhoneError('');
@@ -102,6 +109,7 @@ export function ReservationForm({ locale }: ReservationFormProps) {
   };
 
   const selectService = (service: 'lunch' | 'dinner') => {
+    if (service === 'dinner' && isMonday(formData.date)) return;
     const defaultTime = service === 'lunch' ? '13:00' : '20:30';
     setFormData((prev) => ({ ...prev, service, time: defaultTime }));
   };
@@ -123,6 +131,10 @@ export function ReservationForm({ locale }: ReservationFormProps) {
 
   const validateStep = (currentStep: number): boolean => {
     setErrorMessage('');
+    if (isMonday(formData.date) && (formData.service === 'dinner' || !lunchSlots.includes(formData.time))) {
+      setErrorMessage(getLocalized(restaurantSchedule.mondayNotice, locale));
+      return false;
+    }
     if (currentStep === 0) {
       if (!formData.date) {
         setErrorMessage(t('location.form.validation'));
@@ -273,8 +285,8 @@ export function ReservationForm({ locale }: ReservationFormProps) {
             setFormData({
               date: tomorrowIso,
               guests: '2',
-              service: 'dinner',
-              time: '20:30',
+              service: isMonday(tomorrowIso) ? 'lunch' : 'dinner',
+              time: isMonday(tomorrowIso) ? '13:00' : '20:30',
               name: '',
               phone: '',
               email: '',
@@ -481,7 +493,8 @@ export function ReservationForm({ locale }: ReservationFormProps) {
             <button
               type="button"
               onClick={() => selectService('dinner')}
-              className={`flex-1 py-2.5 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-all cursor-pointer ${
+              disabled={isMonday(formData.date)}
+              className={`flex-1 py-2.5 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-all cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed ${
                 formData.service === 'dinner'
                   ? 'bg-white text-[var(--palette-italian-red)] shadow-xs'
                   : 'text-stone-500 hover:text-stone-800'
@@ -491,6 +504,12 @@ export function ReservationForm({ locale }: ReservationFormProps) {
               <span>{t('location.form.dinner')}</span>
             </button>
           </div>
+
+          {isMonday(formData.date) && (
+            <p role="status" className="text-xs leading-relaxed text-[var(--palette-italian-red)]">
+              {getLocalized(restaurantSchedule.mondayNotice, locale)}
+            </p>
+          )}
 
           {/* Time Slot Chips with 24h + 12h Dual Display */}
           <div className="space-y-2">

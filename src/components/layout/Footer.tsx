@@ -10,6 +10,8 @@ import {
   Utensils,
 } from 'lucide-react';
 import type { Locale } from '@/i18n/routing';
+import { restaurantSchedule } from '@/data/restaurantSchedule';
+import { getLocalized } from '@/data/types';
 
 interface FooterProps {
   locale: Locale;
@@ -18,8 +20,7 @@ interface FooterProps {
 export async function Footer({ locale }: FooterProps) {
   const t = await getTranslations({ locale });
   const googleMapsUrl = 'https://maps.app.goo.gl/XtPWEL7wA6BwA8na7?g_st=ac';
-  const pagineGialleUrl =
-    'https://www.paginegialle.it/trezzano-sul-naviglio-mi/ristoranti/tre-fratelli';
+  const hoursSourceUrl = restaurantSchedule.sourceUrl;
 
   return (
     <footer
@@ -126,11 +127,7 @@ export async function Footer({ locale }: FooterProps) {
             </span>
           </p>
           <p className="text-[9px] text-amber-200/80 italic">
-            {locale === 'it'
-              ? 'Consigliata la chiamata per il lunedì sera (+39 02 3655 7693)'
-              : locale === 'ar'
-              ? 'يُفضل الاتصال للتأكد مساء الاثنين (+39 02 3655 7693)'
-              : 'Call recommended for Monday dinner (+39 02 3655 7693)'}
+            {getLocalized(restaurantSchedule.mondayNotice, locale)}
           </p>
         </div>
 
@@ -245,7 +242,7 @@ export async function Footer({ locale }: FooterProps) {
                 {t('location.hours.note')}
               </p>
               <a
-                href={pagineGialleUrl}
+                href={hoursSourceUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[10px] text-[var(--palette-aged-brass)] hover:text-white underline inline-block"
