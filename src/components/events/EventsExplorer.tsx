@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
-import { ArrowRight, ExternalLink, Music2, Phone } from 'lucide-react';
+import { ArrowRight, Music2, Phone } from 'lucide-react';
 import Image from 'next/image';
 import type { Locale } from '@/i18n/routing';
 import { Link } from '@/i18n/navigation';
@@ -75,16 +75,19 @@ export function EventsExplorer({ locale }: { locale: Locale }) {
           </AnimatePresence>
         </div>
       </section>
-      <section aria-labelledby="events-contact-title" className="bg-[var(--palette-espresso)] text-[var(--palette-warm-ivory)] px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
-        <ScrollReveal className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-            <div><h2 id="events-contact-title" className="text-3xl sm:text-5xl font-serif leading-tight">{text('social')}</h2><p className="mt-4 text-sm leading-relaxed text-stone-300">{text('socialCopy')}</p></div>
-            <div className="space-y-4">
-              <a href={`tel:${restaurantOfficialInfo.phone}`} className="inline-flex min-h-11 items-center gap-3 text-xl sm:text-2xl font-serif hover:text-amber-200"><Phone size={19} aria-hidden="true" /><bdi dir="ltr">{restaurantOfficialInfo.phoneDisplay}</bdi></a>
-              <div className="flex flex-wrap gap-6 text-sm">
-                {(['instagram', 'facebook'] as const).map((channel) => <a key={channel} href={restaurantOfficialInfo[channel === 'instagram' ? 'instagramUrl' : 'facebookUrl']} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 underline underline-offset-8 decoration-stone-500 hover:decoration-white">{channel === 'instagram' ? 'Instagram' : 'Facebook'}<ExternalLink size={12} aria-hidden="true" /></a>)}
-              </div>
-            </div>
+      <section aria-labelledby="events-contact-title" className="px-4 sm:px-6 lg:px-8 pb-10 sm:pb-16">
+        <ScrollReveal className="max-w-6xl mx-auto border-t border-[var(--palette-aged-brass)]/30 pt-10 sm:pt-14 text-center">
+          <span aria-hidden="true" className="block w-8 h-px bg-[var(--palette-italian-red)] mx-auto mb-5" />
+          <p className="text-[10px] sm:text-xs tracking-widest uppercase text-[var(--palette-aged-brass)]">{text('contactKicker')}</p>
+          <h2 id="events-contact-title" className="mt-3 text-3xl sm:text-4xl font-serif leading-tight text-balance">{text('contactTitle')}</h2>
+          <p className="mt-4 mx-auto max-w-xl text-sm leading-relaxed text-[var(--palette-espresso)]/70">{text('contactCopy')}</p>
+          <div className="mt-6 flex flex-col sm:flex-row flex-wrap items-center justify-center gap-3 sm:gap-7">
+            <Link href="/location" className="inline-flex min-h-11 items-center gap-3 rounded-full bg-[var(--palette-italian-red)] hover:bg-[var(--palette-italian-red-dark)] text-white px-6 py-3 text-sm font-semibold transition-colors">
+              {text('reserve')}<ArrowRight size={15} className={arrow} aria-hidden="true" />
+            </Link>
+            <a href={`tel:${restaurantOfficialInfo.phone}`} className="inline-flex min-h-11 items-center gap-3 text-base sm:text-lg font-serif text-[var(--palette-espresso)] hover:text-[var(--palette-italian-red)] transition-colors">
+              <Phone size={16} aria-hidden="true" /><bdi dir="ltr">{restaurantOfficialInfo.phoneDisplay}</bdi>
+            </a>
           </div>
         </ScrollReveal>
       </section>

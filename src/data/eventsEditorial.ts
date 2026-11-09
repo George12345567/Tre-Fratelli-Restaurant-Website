@@ -12,8 +12,9 @@ export const eventsEditorial = {
   notice: { it: 'Date, orari, menù e disponibilità si confermano con il ristorante. Qui trovi le nostre occasioni ricorrenti, non un calendario di prenotazioni confermate.', en: 'Confirm dates, times, menus and availability with the restaurant. These are our recurring occasions, rather than a calendar of confirmed bookings.', ar: 'هذه مناسباتنا المتكررة؛ لتأكيد موعد كل حفلة ووقتها والقائمة والأماكن المتاحة، تواصلوا معنا قبل الحجز.' },
   reserve: { it: 'Organizziamo la tua serata', en: 'Plan your evening with us', ar: 'رتّبوا سهرتكم معنا' },
   call: { it: 'Chiedi il programma', en: 'Ask about the programme', ar: 'اسألوا عن برنامج الحفلات' },
-  social: { it: 'Le novità, appena ci sono.', en: 'The latest, as it happens.', ar: 'كل جديد، أولاً بأول.' },
-  socialCopy: { it: 'Segui i nostri canali per gli annunci delle prossime serate. Per una tavolata o una festa, parlane direttamente con noi.', en: 'Follow our channels for upcoming evening announcements. Planning a group dinner or a celebration? Talk to us directly.', ar: 'تابعوا صفحاتنا لإعلانات السهرات القادمة. ولترتيب عشاء جماعي أو حفلة خاصة، تواصلوا معنا مباشرة.' },
+  contactKicker: { it: 'Le vostre occasioni, insieme a noi', en: 'Your occasion, shared with us', ar: 'لمناسباتكم ولمّتكم' },
+  contactTitle: { it: 'La prossima bella serata? Organizziamola insieme.', en: 'Let’s make an evening of it.', ar: 'خلّونا نرتّب سهرة على ذوقكم.' },
+  contactCopy: { it: 'Una cena tra amici o una festa da ricordare: raccontaci la tua idea. Scegliamo insieme il giorno, il menù e i dettagli della serata.', en: 'Dinner with friends or a celebration to remember: tell us what you have in mind. We will plan the date, menu and details together.', ar: 'عشاء مع الأصدقاء أو حفلة لمناسبة غالية؟ احكوا لنا فكرتكم، ونرتّب معاً اليوم والقائمة وتفاصيل السهرة.' },
   heroAlt: { it: 'Atmosfera di festa con amici che cantano al karaoke', en: 'Friends singing karaoke at a festive restaurant evening', ar: 'أجواء احتفالية وأصدقاء يغنون الكاراوكي في سهرة بالمطعم' },
 } satisfies Record<string, LocalizedText>;
 
