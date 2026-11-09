@@ -5,29 +5,16 @@ import { BookOpen, ShieldAlert } from 'lucide-react';
 import { Link, useRouter } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/routing';
 import { menuCategoryConfigs, getCategoryData } from '@/data/menu/menuCategories';
-import { getLocalized, type LocalizedText } from '@/data/types';
 import { MenuCategoryCard } from './MenuCategoryCard';
 import { MenuPdfViewerModal } from './MenuPdfViewerModal';
 import { MenuAllergenLegendModal } from './MenuAllergenLegendModal';
 
 interface MainMenuCategoriesGridProps {
   locale: Locale;
-  scope?: 'all' | 'drinks';
 }
 
-const drinksDirectory = {
-  title: { it: 'Vini & Bevande', en: 'Wines & Drinks', ar: 'النبيذ والمشروبات' },
-  intro: {
-    it: 'Dalle bibite e dalle birre al vino della casa, fino alle bottiglie della nostra cantina: scegli una sezione per esplorare la carta e i prezzi.',
-    en: 'From soft drinks and beers to house wine and bottles from our cellar: choose a section to explore the selection and prices.',
-    ar: 'من المشروبات الغازية والبيرة إلى نبيذ الدار وزجاجات القبو: اختاروا القسم لتصفح الأصناف والأسعار.',
-  },
-} satisfies Record<string, LocalizedText>;
-
-export function MainMenuCategoriesGrid({ locale, scope = 'all' }: MainMenuCategoriesGridProps) {
+export function MainMenuCategoriesGrid({ locale }: MainMenuCategoriesGridProps) {
   const router = useRouter();
-  const drinksOnly = scope === 'drinks';
-  const categories = menuCategoryConfigs.filter((config) => !drinksOnly || config.kind === 'drink');
   const [isPdfModalOpen, setIsPdfModalOpen] = useState(false);
   const [isAllergenModalOpen, setIsAllergenModalOpen] = useState(false);
 
@@ -79,7 +66,7 @@ export function MainMenuCategoriesGrid({ locale, scope = 'all' }: MainMenuCatego
           </Link>
           <span className="text-stone-300" aria-hidden="true">/</span>
           <span className="text-[var(--palette-espresso)] font-bold" aria-current="page">
-            {drinksOnly ? getLocalized(drinksDirectory.title, locale) : locale === 'ar' ? 'قائمة الطعام' : locale === 'it' ? 'Menù' : 'Menu'}
+            {locale === 'ar' ? 'قائمة الطعام' : locale === 'it' ? 'Menù' : 'Menu'}
           </span>
         </nav>
 
@@ -90,16 +77,14 @@ export function MainMenuCategoriesGrid({ locale, scope = 'all' }: MainMenuCatego
 
         {/* Large Italian Heading */}
         <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold uppercase tracking-wide text-[var(--palette-espresso)]">
-          {drinksOnly ? getLocalized(drinksDirectory.title, locale) : 'Il Nostro Menù'}
+          Il Nostro Menù
         </h1>
 
         <div className="w-12 h-0.5 bg-[var(--palette-italian-red)] mx-auto rounded-full" aria-hidden="true" />
 
         {/* Short Introductory Description */}
         <p className="text-xs sm:text-sm md:text-base text-[var(--palette-espresso)]/80 leading-relaxed font-serif italic max-w-xl mx-auto">
-          {drinksOnly
-            ? getLocalized(drinksDirectory.intro, locale)
-            : locale === 'ar'
+          {locale === 'ar'
             ? 'استكشف إبداعات مطبخنا الإيطالي الأصيل: مقبلات التراث، باستا طازجة مصنوعة يدوياً، أطباق اللحوم والأسماك، بيتزا الحطب، ومختارات القبو.'
             : locale === 'it'
             ? 'Scopri le specialità della nostra cucina: antipasti della tradizione, pasta fresca fatta a mano, secondi di carne e pesce, pizze cotte nel forno a legna e la nostra accurata selezione di vini.'
@@ -140,12 +125,12 @@ export function MainMenuCategoriesGrid({ locale, scope = 'all' }: MainMenuCatego
         </div>
       </header>
 
-      {/* ── 2. Responsive Category Photography Grid (Scroll-Animated) ── */}
+      {/* ── 2. Responsive Eight-Category Photography Grid (Scroll-Animated) ── */}
       <section
-        aria-label={drinksOnly ? getLocalized(drinksDirectory.title, locale) : 'Menu Categories'}
+        aria-label="Menu Categories"
         className="grid grid-cols-1 md:grid-cols-2 gap-7 sm:gap-9 lg:gap-11"
       >
-        {categories.map((config, index) => {
+        {menuCategoryConfigs.map((config, index) => {
           const categoryData = getCategoryData(config.slug);
           const count =
             categoryData.kind === 'food'
