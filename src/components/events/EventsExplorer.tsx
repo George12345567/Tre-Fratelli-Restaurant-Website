@@ -34,7 +34,7 @@ export function EventsExplorer({ locale }: { locale: Locale }) {
         </ScrollReveal>
         <ScrollReveal image className="mt-8 sm:mt-12 overflow-hidden">
           <div className="relative aspect-[4/3] sm:aspect-[16/6] bg-[var(--palette-stone-beige)]">
-            <Image src="/images/hero/restaurant-table-ambiance.webp" alt={text('heroAlt')} fill sizes="(max-width: 1280px) 100vw, 1280px" preload className="object-cover" />
+            <Image src="/images/events/karaoke-evening.webp" alt={text('heroAlt')} fill sizes="(max-width: 1280px) 100vw, 1280px" preload className="object-cover object-[center_25%]" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" aria-hidden="true" />
             <div className="absolute bottom-5 start-5 sm:bottom-9 sm:start-9 text-white flex items-center gap-3">
               <Music2 size={24} aria-hidden="true" /><p className="font-serif text-xl sm:text-3xl">{text('music')}</p>

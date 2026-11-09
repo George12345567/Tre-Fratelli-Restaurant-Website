@@ -14,7 +14,7 @@ export const eventsEditorial = {
   call: { it: 'Chiedi il programma', en: 'Ask about the programme', ar: 'اسألوا عن برنامج الحفلات' },
   social: { it: 'Le novità, appena ci sono.', en: 'The latest, as it happens.', ar: 'كل جديد، أولاً بأول.' },
   socialCopy: { it: 'Segui i nostri canali per gli annunci delle prossime serate. Per una tavolata o una festa, parlane direttamente con noi.', en: 'Follow our channels for upcoming evening announcements. Planning a group dinner or a celebration? Talk to us directly.', ar: 'تابعوا صفحاتنا لإعلانات السهرات القادمة. ولترتيب عشاء جماعي أو حفلة خاصة، تواصلوا معنا مباشرة.' },
-  heroAlt: { it: 'La tavola e l’atmosfera di una serata insieme', en: 'A table set for an evening together', ar: 'مائدة وأجواء لسهرة معاً' },
+  heroAlt: { it: 'Atmosfera di festa con amici che cantano al karaoke', en: 'Friends singing karaoke at a festive restaurant evening', ar: 'أجواء احتفالية وأصدقاء يغنون الكاراوكي في سهرة بالمطعم' },
 } satisfies Record<string, LocalizedText>;
 
 // Recurring occasions supplied by the restaurant; no invented dates or packages.

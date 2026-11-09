@@ -1,0 +1,6 @@
+Asset: public/images/events/karaoke-evening.webp
+Generator: built-in image_gen
+Purpose: illustrative events-page hero, not a documentary photograph of the venue.
+
+Final prompt:
+Use case: photorealistic-natural. Asset type: wide website hero for an Italian restaurant events and karaoke page. Create a candid editorial photograph of a warm, lively Saturday karaoke party in an inviting Italian restaurant at night: a smiling adult woman and adult man holding microphones singing together, friends around them clapping and laughing, subtle stage lights and warm amber hanging lights. All people adults, natural faces and realistic hands, smart casual clothes, intimate convivial restaurant party, tasteful festive atmosphere, refined and authentic rather than nightclub spectacle. Wide horizontal composition; keep singing people and microphones centrally grouped so the image also crops well on mobile; upper body portraits clearly visible within the central horizontal band for a wide banner crop. Background dining guests and tasteful warm bokeh, slight burgundy accent lights. The party and singing must be the unmistakable subject; food is not the focal point. No text, no lettering, no branding, no watermarks, no cartoon, no collage. Original illustrative atmosphere photo, not documentary of a specific real venue.
