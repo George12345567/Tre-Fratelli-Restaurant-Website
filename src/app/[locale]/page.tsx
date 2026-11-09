@@ -1,11 +1,12 @@
 import { hasLocale } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
-import { routing } from '@/i18n/routing';
+import { routing, type Locale } from '@/i18n/routing';
 import { Link } from '@/i18n/navigation';
 import { ArrowRight, CalendarDays } from 'lucide-react';
-import { AboutRestaurantSection } from '@/components/home/AboutRestaurantSection';
 import { HeroSection } from '@/components/home/HeroSection';
+import { HomeMenuScrollSection } from '@/components/home/HomeMenuScrollSection';
+import { AboutRestaurantSection } from '@/components/home/AboutRestaurantSection';
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -33,7 +34,10 @@ export default async function HomePage({ params }: PageProps) {
         }}
       />
 
-      {/* ── 2. About & Restaurant Information (Brand Emblem & Vital Info) ── */}
+      {/* ── 2. Menu Categories Showcase (Scroll-Linked Parallax & Card Animations) ── */}
+      <HomeMenuScrollSection locale={locale as Locale} />
+
+      {/* ── 3. About & Restaurant Information (Brand Emblem & Vital Info) ── */}
       <AboutRestaurantSection
         locale={locale}
         isRtl={isRtl}
@@ -43,7 +47,7 @@ export default async function HomePage({ params }: PageProps) {
         }}
       />
 
-      {/* ── 3. Bottom Reservation Callout ── */}
+      {/* ── 4. Bottom Reservation Callout ── */}
       <section className="py-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-gradient-to-r from-[var(--palette-italian-red)] to-[var(--palette-italian-red-dark)] text-white rounded-2xl p-8 sm:p-12 shadow-xl flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="space-y-2 text-center md:text-start">
