@@ -9,6 +9,7 @@ interface LanguageDropdownProps {
   currentLocale: Locale;
   variant?: 'navbar' | 'mobile';
   onSelect?: () => void;
+  light?: boolean;
 }
 
 const languages: Array<{ code: Locale; label: string; native: string }> = [
@@ -21,6 +22,7 @@ export function LanguageDropdown({
   currentLocale,
   variant = 'navbar',
   onSelect,
+  light = false,
 }: LanguageDropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -77,7 +79,9 @@ export function LanguageDropdown({
         aria-expanded={isOpen}
         aria-haspopup="listbox"
         className={`group relative inline-flex items-center gap-1.5 px-2 py-1 rounded-full transition-all duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--accent)] ${
-          variant === 'mobile'
+          light
+            ? 'text-white hover:bg-white/10'
+            : variant === 'mobile'
             ? 'w-full justify-between bg-black/[0.04] hover:bg-black/[0.07] px-3 py-1.5 rounded-full text-xs font-semibold'
             : isOpen
             ? 'bg-black/[0.07] text-[var(--palette-espresso)]'
@@ -86,7 +90,7 @@ export function LanguageDropdown({
       >
         <div className="flex items-center gap-1.5">
           {/* Frosted icon container */}
-          <div className="w-4.5 h-4.5 rounded-full bg-[var(--palette-italian-red)]/10 text-[var(--palette-italian-red)] flex items-center justify-center shrink-0">
+          <div className={`w-4.5 h-4.5 rounded-full flex items-center justify-center shrink-0 ${light ? 'text-white/80' : 'bg-[var(--palette-italian-red)]/10 text-[var(--palette-italian-red)]'}`}>
             <Languages size={11} aria-hidden="true" />
           </div>
           <span className="text-[11px] sm:text-xs font-semibold tracking-wide">
@@ -96,7 +100,7 @@ export function LanguageDropdown({
 
         <ChevronDown
           size={12}
-          className={`text-[var(--palette-espresso)]/50 transition-transform duration-200 ${
+          className={`${light ? 'text-white/70' : 'text-[var(--palette-espresso)]/50'} transition-transform duration-200 ${
             isOpen ? 'rotate-180 text-[var(--palette-italian-red)]' : ''
           }`}
           aria-hidden="true"

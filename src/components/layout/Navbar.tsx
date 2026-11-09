@@ -8,6 +8,8 @@ import { navItems } from '@/data/navigation';
 import type { Locale } from '@/i18n/routing';
 import { LanguageDropdown } from './LanguageDropdown';
 import { MobileSideDrawer } from './MobileSideDrawer';
+import { useHeroVisibility } from './useHeroVisibility';
+import styles from './Navbar.module.css';
 
 interface NavbarProps {
   locale: Locale;
@@ -16,16 +18,9 @@ interface NavbarProps {
 export function Navbar({ locale }: NavbarProps) {
   const t = useTranslations();
   const pathname = usePathname();
-  const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const overHero = useHeroVisibility(pathname);
+  const immersive = overHero && !mobileMenuOpen;
 
   useEffect(() => {
     if (mobileMenuOpen) {
@@ -42,19 +37,20 @@ export function Navbar({ locale }: NavbarProps) {
     <>
       {/* ── Soft Top Edge Mask: seamlessly dissolves scrolling text under floating navbar ── */}
       <div
-        className="fixed top-0 inset-x-0 h-16 sm:h-20 bg-gradient-to-b from-[var(--palette-warm-ivory)] via-[var(--palette-warm-ivory)]/90 to-transparent z-40 pointer-events-none transition-opacity duration-300"
+        className={`fixed top-0 inset-x-0 h-16 sm:h-20 bg-gradient-to-b from-[var(--palette-warm-ivory)] via-[var(--palette-warm-ivory)]/90 to-transparent z-40 pointer-events-none transition-opacity duration-700 ${immersive ? 'opacity-0' : 'opacity-100'}`}
         aria-hidden="true"
       />
 
-      <header className="fixed top-2 sm:top-3 inset-x-0 z-50 px-3 flex justify-center pointer-events-none transition-all duration-300">
+      <header className={`${styles.header} fixed inset-x-0 z-50 px-3 flex justify-center pointer-events-none transition-all duration-300`}>
       {/* ── Single Unified Liquid Glass Floating Island ── */}
       <div
-        className={`pointer-events-auto relative rounded-full transition-all duration-500 ease-out flex items-center gap-1 sm:gap-1.5 px-2 sm:px-2.5 py-1 sm:py-1.2 shadow-sm ${
-          isScrolled ? 'liquid-glass-scrolled' : 'liquid-glass'
+        className={`${styles.island} pointer-events-auto relative rounded-full flex items-center gap-1 sm:gap-1.5 px-2 sm:px-2.5 py-1 sm:py-1.2 ${
+          immersive ? styles.immersive : ''
         }`}
       >
         {/* Specular Glint Top Highlight */}
         <div
+          data-nav-glint
           className="absolute inset-x-8 top-0 h-[1px] bg-gradient-to-r from-transparent via-white to-transparent pointer-events-none rounded-full"
           aria-hidden="true"
         />
@@ -67,17 +63,18 @@ export function Navbar({ locale }: NavbarProps) {
             aria-label="Tre Fratelli Home"
             className="group flex items-center gap-1.5 px-1.5 py-0.5 rounded-full hover:bg-white/50 transition-all focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--accent)]"
           >
-            <div className="h-6 sm:h-6.5 w-auto flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+            <div data-nav-logo className="h-6 sm:h-6.5 w-auto flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
               <img
                 src="/images/brand/tre-fratelli-official-logo.png"
                 alt="Tre Fratelli Logo"
                 className="h-6 sm:h-6.5 w-auto object-contain filter drop-shadow-2xs"
               />
             </div>
+            <span className={styles.wordmark}>Tre Fratelli</span>
           </Link>
 
           {/* Divider */}
-          <div className="h-3.5 w-[1px] bg-black/[0.08]" aria-hidden="true" />
+          <div data-nav-divider className="h-3.5 w-[1px] bg-black/[0.08]" aria-hidden="true" />
 
           {/* Navigation Links */}
           <nav
@@ -93,6 +90,7 @@ export function Navbar({ locale }: NavbarProps) {
 
               return (
                 <Link
+                  data-nav-link
                   key={item.key}
                   href={rawHref}
                   className={`text-[0.76rem] xl:text-[0.8rem] font-medium whitespace-nowrap px-2 xl:px-2.5 py-1 rounded-full transition-all duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--accent)] ${
@@ -108,13 +106,14 @@ export function Navbar({ locale }: NavbarProps) {
           </nav>
 
           {/* Divider */}
-          <div className="h-3.5 w-[1px] bg-black/[0.08]" aria-hidden="true" />
+          <div data-nav-divider className="h-3.5 w-[1px] bg-black/[0.08]" aria-hidden="true" />
 
           {/* Language Dropdown */}
-          <LanguageDropdown currentLocale={locale} />
+          <LanguageDropdown currentLocale={locale} light={immersive} />
 
           {/* Reserve CTA */}
           <Link
+            data-nav-reserve
             href="/location"
             className="group relative inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-[var(--palette-italian-red)] to-[var(--palette-italian-red-dark)] text-white text-[11px] sm:text-xs font-semibold whitespace-nowrap shadow-[0_3px_12px_rgba(122,46,42,0.3),inset_0_1px_1px_rgba(255,255,255,0.45)] hover:shadow-[0_5px_16px_rgba(122,46,42,0.4),inset_0_1px_1.5px_rgba(255,255,255,0.65)] hover:brightness-105 active:scale-[0.98] transition-all overflow-hidden border border-white/20"
           >
@@ -129,6 +128,7 @@ export function Navbar({ locale }: NavbarProps) {
 
           {/* Menu Button */}
           <button
+            data-nav-menu
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="p-1.5 rounded-full text-[var(--palette-espresso)]/85 hover:text-[var(--palette-espresso)] hover:bg-white/50 transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--accent)] cursor-pointer"
@@ -145,18 +145,20 @@ export function Navbar({ locale }: NavbarProps) {
             aria-label="Tre Fratelli Home"
             className="p-0.5 rounded-full focus:outline-none hover:bg-white/40 transition-colors"
           >
-            <div className="h-6 w-auto flex items-center justify-center shrink-0">
+            <div data-nav-logo className="h-6 w-auto flex items-center justify-center shrink-0">
               <img
                 src="/images/brand/tre-fratelli-official-logo.png"
                 alt="Tre Fratelli Logo"
                 className="h-6 w-auto object-contain filter drop-shadow-2xs"
               />
             </div>
+            <span className={styles.wordmark}>Tre Fratelli</span>
           </Link>
 
-          <LanguageDropdown currentLocale={locale} />
+          <LanguageDropdown currentLocale={locale} light={immersive} />
 
           <Link
+            data-nav-reserve
             href="/location"
             className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-gradient-to-r from-[var(--palette-italian-red)] to-[var(--palette-italian-red-dark)] text-white text-[11px] font-semibold shadow-xs whitespace-nowrap border border-white/20"
           >
@@ -165,6 +167,7 @@ export function Navbar({ locale }: NavbarProps) {
           </Link>
 
           <button
+            data-nav-menu
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="p-1 rounded-full text-[var(--palette-espresso)] hover:bg-white/40 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
