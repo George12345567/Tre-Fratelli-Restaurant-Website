@@ -24,11 +24,6 @@ export function SweetCard({ dish, locale, dict, onSelect }: SweetCardProps) {
     dish.id.includes('pirata') ||
     dish.id.includes('principessa');
 
-  // Format allergens cleanly for display
-  const allergenChips = dish.allergens
-    .map((a) => a.replace(/^\d+\s*-\s*/, '').trim())
-    .slice(0, 2);
-
   return (
     <article
       data-dessert-id={dish.id}
@@ -96,24 +91,8 @@ export function SweetCard({ dish, locale, dict, onSelect }: SweetCardProps) {
           )}
         </div>
 
-        {/* ── Card Footer: Allergens & Action Hint ── */}
-        <div className="pt-3 border-t border-[var(--palette-stone-beige)]/30 flex items-center justify-between gap-2 text-[11px]">
-          {/* Allergen chips */}
-          <div className="flex items-center gap-1.5 overflow-hidden">
-            {allergenChips.length > 0 ? (
-              allergenChips.map((allergen, idx) => (
-                <span
-                  key={idx}
-                  className="px-2 py-0.5 rounded-md bg-[var(--palette-stone-beige)]/25 text-stone-600 text-[10px] font-medium truncate max-w-[100px]"
-                >
-                  {allergen}
-                </span>
-              ))
-            ) : (
-              <span className="text-[10px] text-stone-400 italic">Pasticceria Bindi</span>
-            )}
-          </div>
-
+        {/* ── Card Footer: Details ── */}
+        <div className="pt-3 border-t border-[var(--palette-stone-beige)]/30 flex items-center justify-end gap-2 text-[11px]">
           {/* Details CTA Link */}
           <span className="inline-flex items-center gap-1 font-semibold text-[11px] text-[var(--palette-aged-brass)] group-hover:text-[var(--palette-italian-red)] transition-colors shrink-0">
             <span>{dict.details}</span>

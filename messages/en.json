@@ -28,6 +28,10 @@
     "reserve": "Reserve a Table"
   },
   "home": {
+    "heroLogoOpen": "View the Tre Fratelli logo full screen",
+    "heroLogoClose": "Close logo viewer",
+    "heroLogoZoomIn": "Zoom in on the logo",
+    "heroLogoZoomOut": "Fit the logo to the screen",
     "heroEyebrow": "Tre Fratelli · Milano",
     "heroTitle": "True Italian Flavours, Crafted with Passion.",
     "heroCopy": "Fresh handmade pasta, wood-fired pizza, and warm family hospitality every day.",

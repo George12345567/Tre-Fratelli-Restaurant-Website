@@ -1,6 +1,6 @@
 'use client';
 
-import { Sparkles, Info, ArrowLeft } from 'lucide-react';
+import { Sparkles, ArrowLeft } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/routing';
 import type { SweetsDictionary } from './sweetsI18n';
@@ -18,7 +18,7 @@ export function SweetsHeader({ locale, dict, totalCount }: SweetsHeaderProps) {
     <header className="space-y-5 pb-6 border-b border-[var(--palette-stone-beige)]/40">
       {/* ── Breadcrumb & Wayfinding ── */}
       <div className="flex flex-wrap items-center justify-between gap-3 text-xs sm:text-sm">
-        <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-[var(--palette-espresso)]/70">
+        <nav aria-label={dict.breadcrumbLabel} className="flex min-w-0 flex-wrap items-center gap-2 text-[var(--palette-espresso)]/70">
           <Link
             href="/"
             className="hover:text-[var(--palette-italian-red)] transition-colors font-medium"
@@ -70,17 +70,6 @@ export function SweetsHeader({ locale, dict, totalCount }: SweetsHeaderProps) {
           </span>
         </div>
 
-        <p className="mt-3 text-sm sm:text-base text-[var(--palette-espresso)]/75 leading-relaxed font-sans">
-          {dict.subtitle}
-        </p>
-      </div>
-
-      {/* ── Advisory Banner ── */}
-      <div className="flex items-start sm:items-center gap-3 px-4 py-3 rounded-xl bg-amber-500/10 border border-amber-600/20 text-xs text-[var(--palette-espresso)]/85">
-        <Info size={16} className="text-[var(--palette-aged-brass)] shrink-0 mt-0.5 sm:mt-0" aria-hidden="true" />
-        <p className="leading-relaxed">
-          {dict.allergenNotice}
-        </p>
       </div>
     </header>
   );
