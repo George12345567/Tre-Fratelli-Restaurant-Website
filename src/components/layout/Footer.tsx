@@ -57,6 +57,8 @@ export async function Footer({ locale }: FooterProps) {
           <span className="text-white/20" aria-hidden="true">·</span>
           <Link href="/wine-drinks" className="hover:text-white transition-colors">{t('nav.wineDrinks')}</Link>
           <span className="text-white/20" aria-hidden="true">·</span>
+          <Link href="/sweets" className="hover:text-white transition-colors">{t('nav.sweets')}</Link>
+          <span className="text-white/20" aria-hidden="true">·</span>
           <Link href="/location" className="text-[var(--palette-aged-brass)] font-semibold hover:text-white transition-colors">{t('nav.reserve')}</Link>
           <span className="text-white/20" aria-hidden="true">·</span>
           <a
@@ -189,6 +191,11 @@ export async function Footer({ locale }: FooterProps) {
               <li>
                 <Link href="/wine-drinks" className="text-[var(--palette-stone-beige)] hover:text-white transition-colors block">
                   {t('nav.wineDrinks')}
+                </Link>
+              </li>
+              <li>
+                <Link href="/sweets" className="text-[var(--palette-stone-beige)] hover:text-white transition-colors block">
+                  {t('nav.sweets')}
                 </Link>
               </li>
               <li>

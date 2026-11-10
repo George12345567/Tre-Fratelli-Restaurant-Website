@@ -4,6 +4,7 @@ export type PageKey =
   | 'pizzeria'
   | 'menu'
   | 'wineDrinks'
+  | 'sweets'
   | 'newsPromo'
   | 'location';
 
@@ -28,6 +29,11 @@ export const navItems: NavItem[] = [
     key: 'menu',
     href: (locale: string) => `/${locale}/menu`,
     translationKey: 'nav.menu',
+  },
+  {
+    key: 'sweets',
+    href: (locale: string) => `/${locale}/sweets`,
+    translationKey: 'nav.sweets',
   },
   {
     key: 'wineDrinks',

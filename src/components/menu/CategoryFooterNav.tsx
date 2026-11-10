@@ -1,11 +1,12 @@
 'use client';
 
-import { motion, useReducedMotion } from 'motion/react';
+import { motion } from 'motion/react';
 import { ArrowLeft, ArrowRight, Grid } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/routing';
 import type { MenuCategoryConfig } from '@/data/menu/menuCategories';
 import { getLocalized } from '@/data/types';
+import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
 
 interface CategoryFooterNavProps {
   prev: MenuCategoryConfig;
@@ -14,7 +15,7 @@ interface CategoryFooterNavProps {
 }
 
 export function CategoryFooterNav({ prev, next, locale }: CategoryFooterNavProps) {
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = usePrefersReducedMotion();
   const isRtl = locale === 'ar';
   const prevTitle = getLocalized(prev.title, locale);
   const nextTitle = getLocalized(next.title, locale);

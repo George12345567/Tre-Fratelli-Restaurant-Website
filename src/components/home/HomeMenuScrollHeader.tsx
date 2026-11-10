@@ -1,9 +1,10 @@
 'use client';
 
 import { useRef } from 'react';
-import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react';
+import { motion, useScroll, useTransform } from 'motion/react';
 import { Sparkles } from 'lucide-react';
 import type { Locale } from '@/i18n/routing';
+import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
 
 // Motion values update styles directly, without rendering React on every scroll.
 function useRevealStyle(
@@ -19,7 +20,7 @@ function useRevealStyle(
 
 export function HomeMenuScrollHeader({ locale }: { locale: Locale }) {
   const headerRef = useRef<HTMLDivElement>(null);
-  const reduceMotion = useReducedMotion() !== false;
+  const reduceMotion = usePrefersReducedMotion();
   // Measure the stationary header, independently of the animated children.
   const { scrollYProgress } = useScroll({
     target: headerRef,

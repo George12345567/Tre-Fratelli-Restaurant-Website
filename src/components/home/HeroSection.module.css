@@ -43,6 +43,56 @@
 .menuLink:hover .menuLine, .menuLink:focus-visible .menuLine { width: 7rem; }
 .menuLink:hover .menuArrow, .menuLink:focus-visible .menuArrow { transform: rotate(-35deg); background: rgb(255 255 255 / 12%); }
 
+/* ── Mobile-Only Cinematic Brand Emblem ── */
+.mobileEmblem {
+  position: absolute;
+  top: calc(env(safe-area-inset-top, 0px) + 4.25rem);
+  left: 0;
+  right: 0;
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+  padding-inline: 1rem;
+}
+
+@media (min-width: 768px) {
+  .mobileEmblem {
+    display: none !important;
+  }
+}
+
+@media (max-height: 520px) {
+  .mobileEmblem {
+    display: none !important;
+  }
+}
+
+.mobileEmblemInner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: mobileEmblemEntrance 950ms cubic-bezier(0.16, 1, 0.3, 1) 250ms both;
+}
+
+@keyframes mobileEmblemEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobileEmblemInner {
+    animation: none;
+  }
+}
+
 @media (max-width: 639px) and (max-height: 700px) {
   .content { --hero-bottom: max(1rem, env(safe-area-inset-bottom)); padding-inline: 1.25rem; }
   .title { font-size: 1.75rem; line-height: 1.18; }

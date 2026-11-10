@@ -1,9 +1,11 @@
 'use client';
 
 import { useRef } from 'react';
-import { motion, useReducedMotion, useScroll, useTransform, type MotionStyle } from 'motion/react';
+import Image from 'next/image';
+import { motion, useScroll, useTransform, type MotionStyle } from 'motion/react';
 import { ArrowRight, ArrowDown } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
+import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
 import { useHeroVideo } from './useHeroVideo';
 import styles from './HeroSection.module.css';
 
@@ -26,13 +28,17 @@ export function HeroSection({ locale = 'en', isRtl, translations }: Props) {
   const sectionRef = useRef<HTMLElement>(null);
   const viewportRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const reduceMotion = useReducedMotion() !== false;
+  const reduceMotion = usePrefersReducedMotion();
   useHeroVideo(videoRef, viewportRef);
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start start', 'end end'] });
   const scale = useTransform(scrollYProgress, [0, 1], [1.02, 1.1]);
   // Reach the lower edge before the sticky viewport releases, then hold briefly.
   const textPosition = useTransform(scrollYProgress, [0, 0.88, 1], [0, 1, 1]);
   const progress = useTransform(scrollYProgress, [0, 1], [0.08, 1]);
+  // Mobile logo scroll timing: smoothly fades & floats up early (10%-25%) so it never collides with ascending text
+  const mobileLogoOpacity = useTransform(scrollYProgress, [0, 0.1, 0.25], [1, 0.4, 0]);
+  const mobileLogoY = useTransform(scrollYProgress, [0, 0.25], [0, -16]);
+  const mobileLogoScale = useTransform(scrollYProgress, [0, 0.25], [1, 0.94]);
   const scrollHint = locale === 'ar' ? 'مرّر لاكتشاف المزيد' : locale === 'it' ? 'Scorri per scoprire' : 'Scroll to discover';
 
   return (
@@ -43,6 +49,30 @@ export function HeroSection({ locale = 'en', isRtl, translations }: Props) {
           <video ref={videoRef} src={HERO_VIDEO_SRC} poster={HERO_POSTER_SRC} playsInline loop muted preload="auto" className="absolute inset-0 w-full h-full object-cover" aria-hidden="true" />
         </motion.div>
         <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/60 via-black/20 to-black/85 pointer-events-none" aria-hidden="true" />
+
+        {/* ── Mobile-Only Cinematic Brand Emblem Embedded in Video Viewport ── */}
+        <motion.div
+          className={styles.mobileEmblem}
+          style={reduceMotion ? undefined : { opacity: mobileLogoOpacity, y: mobileLogoY, scale: mobileLogoScale }}
+          aria-hidden="true"
+        >
+          <div className={styles.mobileEmblemInner}>
+            {/* Soft Ambient Cinematic Vignette behind Crest */}
+            <div
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-36 sm:w-44 h-24 sm:h-28 bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0.7),transparent_72%)] pointer-events-none blur-lg"
+              aria-hidden="true"
+            />
+            <Image
+              src="/images/brand/tre-fratelli-official-logo.png"
+              alt="Tre Fratelli"
+              width={260}
+              height={195}
+              priority
+              className="relative h-16 sm:h-20 w-auto object-contain filter drop-shadow-[0_4px_24px_rgba(0,0,0,0.85)] brightness-105 select-none"
+            />
+          </div>
+        </motion.div>
+
         <motion.div className={styles.content} style={{ '--hero-position': reduceMotion ? 0 : textPosition } as MotionStyle}>
           <div className="mx-auto max-w-5xl text-center">
             <p className="flex items-center justify-center gap-3 text-[10px] sm:text-xs uppercase tracking-[0.18em] text-amber-100/90 mb-4">

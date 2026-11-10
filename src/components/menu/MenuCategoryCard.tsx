@@ -1,10 +1,11 @@
 'use client';
 
-import { motion, useReducedMotion } from 'motion/react';
+import { motion } from 'motion/react';
 import { Link } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/routing';
 import type { MenuCategoryConfig } from '@/data/menu/menuCategories';
 import { getLocalized } from '@/data/types';
+import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
 
 interface MenuCategoryCardProps {
   config: MenuCategoryConfig;
@@ -19,7 +20,7 @@ export function MenuCategoryCard({
   itemCount,
   index,
 }: MenuCategoryCardProps) {
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = usePrefersReducedMotion();
   const categoryTitle = getLocalized(config.title, locale);
   const categorySubtitle = getLocalized(config.subtitle, locale);
 

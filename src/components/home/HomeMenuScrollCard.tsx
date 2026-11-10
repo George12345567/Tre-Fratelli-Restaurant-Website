@@ -1,12 +1,13 @@
 'use client';
 
 import { useRef } from 'react';
-import { motion, useScroll, useTransform, useReducedMotion } from 'motion/react';
+import { motion, useScroll, useTransform } from 'motion/react';
 import { ArrowUpRight } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/routing';
 import type { MenuCategoryConfig } from '@/data/menu/menuCategories';
 import { getLocalized } from '@/data/types';
+import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
 
 interface HomeMenuScrollCardProps {
   config: MenuCategoryConfig;
@@ -24,7 +25,7 @@ export function HomeMenuScrollCard({
   index,
 }: HomeMenuScrollCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
-  const shouldReduceMotion = useReducedMotion() !== false;
+  const shouldReduceMotion = usePrefersReducedMotion();
 
   const isRtl = locale === 'ar';
   const categoryTitle = getLocalized(config.title, locale);
