@@ -1,8 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import { motion, useReducedMotion } from 'motion/react';
+import { motion } from 'motion/react';
 import type { Locale } from '@/i18n/routing';
+import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
 import type { Dish, Drink } from '@/data/types';
 import { getLocalized } from '@/data/types';
 import {
@@ -54,7 +55,7 @@ const itemVariants = {
 };
 
 export function CategoryPageView({ slug, locale }: CategoryPageViewProps) {
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = usePrefersReducedMotion();
   const config = getMenuCategoryConfig(slug);
   const { prev, next } = getAdjacentCategoryConfigs(slug);
   const data = getCategoryData(slug);

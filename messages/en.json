@@ -6,6 +6,7 @@
     "pizzeriaTitle": "Traditional Wood-Fired Pizzeria — Tre Fratelli",
     "menuTitle": "Curated Italian Menu — Tre Fratelli",
     "wineTitle": "Cellar Wines & Pairings — Tre Fratelli",
+    "sweetsTitle": "Dessert Menu — Tre Fratelli",
     "newsTitle": "Events & Seasonal Updates — Tre Fratelli",
     "locationTitle": "Location & Reservations — Tre Fratelli"
   },
@@ -21,6 +22,7 @@
     "pizzeria": "Pizzeria",
     "menu": "Menu & Pizzeria",
     "wineDrinks": "Wine & Cellar",
+    "sweets": "Desserts",
     "newsPromo": "News & Events",
     "location": "Location & Reserve",
     "reserve": "Reserve a Table"

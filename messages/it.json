@@ -6,6 +6,7 @@
     "pizzeriaTitle": "Pizzeria Tradizionale a Legna — Tre Fratelli",
     "menuTitle": "Il Nostro Menu — Tre Fratelli",
     "wineTitle": "Carta dei Vini e Abbinamenti — Tre Fratelli",
+    "sweetsTitle": "La Carta dei Dolci — Tre Fratelli",
     "newsTitle": "Eventi e Novità Stagionali — Tre Fratelli",
     "locationTitle": "Dove Siamo e Prenotazioni — Tre Fratelli"
   },
@@ -21,6 +22,7 @@
     "pizzeria": "Pizzeria",
     "menu": "Menu & Pizzeria",
     "wineDrinks": "Vini & Cantina",
+    "sweets": "Dolci",
     "newsPromo": "Novità & Eventi",
     "location": "Dove Siamo & Prenota",
     "reserve": "Prenota un Tavolo"

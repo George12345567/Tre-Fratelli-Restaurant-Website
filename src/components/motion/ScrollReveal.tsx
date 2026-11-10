@@ -1,7 +1,8 @@
 'use client';
 
 import { useRef, type ReactNode } from 'react';
-import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react';
+import { motion, useScroll, useTransform } from 'motion/react';
+import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
 import styles from './ScrollReveal.module.css';
 
 export function ScrollReveal({ children, className = '', image = false }: {
@@ -10,7 +11,7 @@ export function ScrollReveal({ children, className = '', image = false }: {
   image?: boolean;
 }) {
   const ref = useRef<HTMLDivElement>(null);
-  const reduceMotion = useReducedMotion() !== false;
+  const reduceMotion = usePrefersReducedMotion();
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ['start 0.98', 'start 0.35'],

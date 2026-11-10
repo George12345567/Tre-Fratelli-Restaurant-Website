@@ -1,14 +1,15 @@
 'use client';
 
-import { motion, useReducedMotion } from 'motion/react';
+import { motion } from 'motion/react';
 import type { ReactNode } from 'react';
+import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
 
 interface TemplateProps {
   children: ReactNode;
 }
 
 export default function RootTemplate({ children }: TemplateProps) {
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = usePrefersReducedMotion();
 
   if (shouldReduceMotion) {
     return <>{children}</>;

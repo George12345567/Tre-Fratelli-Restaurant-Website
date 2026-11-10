@@ -33,3 +33,10 @@ yarn-error.log*
 *.tsbuildinfo
 output/
 .playwright-cli/
+
+# Local source media and staging scratchpad
+restaurant_data/
+sweet/
+tmp/
+public/sweets/
+public/images/restaurant_guru/

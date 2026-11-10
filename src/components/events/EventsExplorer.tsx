@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
+import { AnimatePresence, motion } from 'motion/react';
 import { ArrowRight, Phone } from 'lucide-react';
 import type { Locale } from '@/i18n/routing';
 import { Link } from '@/i18n/navigation';
@@ -10,11 +10,12 @@ import { eventsEditorial, recurringEvents } from '@/data/eventsEditorial';
 import { restaurantOfficialInfo } from '@/data/restaurantDetails';
 import { ScrollReveal } from '@/components/motion/ScrollReveal';
 import { restaurantSchedule } from '@/data/restaurantSchedule';
+import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
 import { EventsMedia } from './EventsMedia';
 
 export function EventsExplorer({ locale }: { locale: Locale }) {
   const [filter, setFilter] = useState<'all' | 'music' | 'seasonal' | 'celebration'>('all');
-  const reduceMotion = useReducedMotion() !== false;
+  const reduceMotion = usePrefersReducedMotion();
   const text = (key: keyof typeof eventsEditorial) => getLocalized(eventsEditorial[key], locale);
   const events = recurringEvents.filter((event) => filter === 'all' || event.type === filter);
   const arrow = locale === 'ar' ? 'rotate-180' : '';

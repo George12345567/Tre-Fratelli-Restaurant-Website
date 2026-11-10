@@ -1,11 +1,12 @@
 'use client';
 
 import { useRef, type ReactNode } from 'react';
-import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react';
+import { motion, useScroll, useTransform } from 'motion/react';
 import { ArrowRight, CalendarDays } from 'lucide-react';
 import { kitchenStory, kitchenStorySteps } from '@/data/homeKitchenStory';
 import { getLocalized } from '@/data/types';
 import { Link } from '@/i18n/navigation';
+import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
 
 interface Props {
   locale: string;
@@ -23,7 +24,7 @@ function StoryPassage({ children, isRtl, className = '' }: {
   className?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
-  const reduceMotion = useReducedMotion() !== false;
+  const reduceMotion = usePrefersReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start 0.95', 'start 0.55'] });
   const y = useTransform(scrollYProgress, [0, 1], [24, 0]);
   const opacity = useTransform(scrollYProgress, [0, 1], [0.5, 1]);

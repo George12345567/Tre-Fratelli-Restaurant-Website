@@ -1,10 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-import { motion, useReducedMotion } from 'motion/react';
+import { motion } from 'motion/react';
 import { ZoomIn, X } from 'lucide-react';
 import type { Locale } from '@/i18n/routing';
 import type { EditorialPhoto } from '@/data/menu/editorialGalleries';
+import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
 
 interface MenuEditorialGalleryProps {
   photos: EditorialPhoto[];
@@ -36,7 +37,7 @@ const photoItemVariants = {
 };
 
 export function MenuEditorialGallery({ photos, locale }: MenuEditorialGalleryProps) {
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = usePrefersReducedMotion();
   const [activePhoto, setActivePhoto] = useState<EditorialPhoto | null>(null);
 
   if (!photos || photos.length === 0) return null;
