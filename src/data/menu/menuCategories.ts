@@ -193,6 +193,10 @@ export const menuCategoryConfigs: MenuCategoryConfig[] = [
   },
 ];
 
+export const mainMenuCategoryConfigs: MenuCategoryConfig[] = menuCategoryConfigs.filter(
+  (c) => c.slug !== 'dolci' && c.slug !== 'bevande' && c.slug !== 'carta-vini'
+);
+
 export function getMenuCategoryConfig(slug: string): MenuCategoryConfig | undefined {
   return menuCategoryConfigs.find((c) => c.slug === slug);
 }
@@ -201,14 +205,15 @@ export function getAdjacentCategoryConfigs(slug: string): {
   prev: MenuCategoryConfig;
   next: MenuCategoryConfig;
 } {
-  const index = menuCategoryConfigs.findIndex((c) => c.slug === slug);
+  const index = mainMenuCategoryConfigs.findIndex((c) => c.slug === slug);
   const safeIndex = index === -1 ? 0 : index;
-  const prevIndex = (safeIndex - 1 + menuCategoryConfigs.length) % menuCategoryConfigs.length;
-  const nextIndex = (safeIndex + 1) % menuCategoryConfigs.length;
+  const prevIndex =
+    (safeIndex - 1 + mainMenuCategoryConfigs.length) % mainMenuCategoryConfigs.length;
+  const nextIndex = (safeIndex + 1) % mainMenuCategoryConfigs.length;
 
   return {
-    prev: menuCategoryConfigs[prevIndex],
-    next: menuCategoryConfigs[nextIndex],
+    prev: mainMenuCategoryConfigs[prevIndex],
+    next: mainMenuCategoryConfigs[nextIndex],
   };
 }
 

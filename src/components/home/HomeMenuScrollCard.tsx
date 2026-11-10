@@ -1,6 +1,7 @@
 'use client';
 
-import { motion } from 'motion/react';
+import { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'motion/react';
 import { ArrowUpRight } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/routing';
@@ -23,6 +24,7 @@ export function HomeMenuScrollCard({
   itemCount,
   index,
 }: HomeMenuScrollCardProps) {
+  const cardRef = useRef<HTMLDivElement>(null);
   const shouldReduceMotion = usePrefersReducedMotion();
 
   const isRtl = locale === 'ar';
@@ -31,20 +33,61 @@ export function HomeMenuScrollCard({
   const categoryIntro = getLocalized(config.intro, locale);
 
   const isRightColumn = index % 2 === 1;
-
   const columnOffsetClass = isRightColumn ? 'lg:translate-y-12' : '';
 
+  // Lightweight 2D GPU-composited scroll progress (transform + opacity only, 1 layer per card)
+  const { scrollYProgress } = useScroll({
+    target: cardRef,
+    offset: ['start 96%', 'end 8%'],
+  });
+
+  const horizontalDir = (isRightColumn !== isRtl ? 1 : -1) * 14;
+  const revealPoint = isRightColumn ? 0.34 : 0.28;
+
+  const cardOpacity = useTransform(
+    scrollYProgress,
+    [0, revealPoint, 0.78, 1],
+    [0.2, 1, 1, 0.82]
+  );
+  const cardY = useTransform(
+    scrollYProgress,
+    [0, revealPoint, 0.78, 1],
+    [36, 0, 0, -14]
+  );
+  const cardX = useTransform(
+    scrollYProgress,
+    [0, revealPoint],
+    [horizontalDir, 0]
+  );
+  const cardScale = useTransform(
+    scrollYProgress,
+    [0, revealPoint, 0.78, 1],
+    [0.95, 1, 1, 0.985]
+  );
+
   return (
-    <div className={`w-full ${columnOffsetClass}`}>
+    <div ref={cardRef} className={`w-full ${columnOffsetClass}`}>
       <motion.div
-        initial={shouldReduceMotion ? false : { opacity: 0.85, y: 14 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.12 }}
-        transition={{ duration: 0.35, ease: 'easeOut' }}
-        className="w-full group motion-reduce:transform-none! motion-reduce:opacity-100!"
+        style={
+          shouldReduceMotion
+            ? undefined
+            : {
+                opacity: cardOpacity,
+                y: cardY,
+                x: cardX,
+                scale: cardScale,
+              }
+        }
+        className="w-full group will-change-transform motion-reduce:transform-none! motion-reduce:opacity-100!"
       >
         <Link
-          href={`/menu/${config.slug}`}
+          href={
+            config.slug === 'dolci'
+              ? '/sweets'
+              : config.slug === 'bevande' || config.slug === 'carta-vini'
+              ? '/wine-drinks'
+              : `/menu/${config.slug}`
+          }
           className="block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--palette-aged-brass)] rounded-3xl"
           aria-label={`${categoryTitle} - ${categorySubtitle}`}
         >

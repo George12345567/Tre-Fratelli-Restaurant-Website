@@ -5,8 +5,8 @@ import { getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing, type Locale } from '@/i18n/routing';
 import { ReservationForm } from '@/components/reservations/ReservationForm';
-import { restaurantSchedule } from '@/data/restaurantSchedule';
-import { MapPin, Phone, Mail, Clock } from 'lucide-react';
+import { restaurantOfficialInfo } from '@/data/restaurantDetails';
+import { MapPin, Phone, Clock } from 'lucide-react';
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -83,18 +83,6 @@ export default async function LocationPage({ params }: PageProps) {
                   </a>
                 </div>
               </div>
-
-              <div className="flex items-center gap-3">
-                <Mail size={18} className="text-[var(--palette-italian-red)] shrink-0" />
-                <div>
-                  <strong className="block text-[11px] uppercase tracking-wider text-stone-400 font-bold">
-                    Email
-                  </strong>
-                  <a href={`mailto:${t('location.contacts.email')}`} className="hover:text-[var(--palette-italian-red)] font-medium text-xs sm:text-sm">
-                    {t('location.contacts.email')}
-                  </a>
-                </div>
-              </div>
             </div>
           </div>
 
@@ -125,15 +113,7 @@ export default async function LocationPage({ params }: PageProps) {
               <p className="leading-relaxed">
                 {t('location.hours.note')}
               </p>
-              <div className="pt-1 flex items-center justify-between text-[11px]">
-                <a
-                  href={restaurantSchedule.sourceUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-amber-800 underline hover:text-amber-950 font-medium"
-                >
-                  {t('location.hours.pagineGialleSource')}
-                </a>
+              <div className="pt-1 flex items-center justify-end text-[11px]">
                 <a
                   href="tel:+390236557693"
                   className="font-bold text-[var(--palette-italian-red)] hover:underline font-mono"
@@ -162,7 +142,7 @@ export default async function LocationPage({ params }: PageProps) {
             </div>
 
             <a
-              href="https://maps.app.goo.gl/XtPWEL7wA6BwA8na7?g_st=ac"
+              href={restaurantOfficialInfo.googleMapsUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-full bg-[var(--palette-italian-red)] hover:bg-[var(--palette-italian-red-dark)] text-white text-xs font-bold transition-all shadow-md active:scale-98"

@@ -13,6 +13,7 @@ import {
 import { Link } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/routing';
 import { LanguageDropdown } from '@/components/layout/LanguageDropdown';
+import { restaurantOfficialInfo } from '@/data/restaurantDetails';
 
 interface CrownQuickHubProps {
   locale: Locale;
@@ -48,7 +49,7 @@ export function CrownQuickHub({ locale }: CrownQuickHubProps) {
     };
   }, [isOpen]);
 
-  const googleMapsUrl = 'https://maps.app.goo.gl/XtPWEL7wA6BwA8na7?g_st=ac';
+  const googleMapsUrl = restaurantOfficialInfo.googleMapsUrl;
   const logoSrc = '/images/brand/tre-fratelli-official-logo.png';
 
   return (

@@ -31,11 +31,11 @@ export function HomeMenuScrollHeader({ locale }: { locale: Locale }) {
 
   return (
     <motion.div
-      initial={reduceMotion ? false : { opacity: 0.85, y: 10 }}
+      initial={reduceMotion ? false : { opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.15 }}
-      transition={{ duration: 0.3, ease: 'easeOut' }}
-      className="flex flex-col md:flex-row md:items-end justify-between gap-3 sm:gap-6 pb-6 sm:pb-16 border-b border-[var(--palette-stone-beige)]/35 motion-reduce:transform-none! motion-reduce:opacity-100!"
+      viewport={{ once: false, amount: 0.25 }}
+      transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+      className="flex flex-col md:flex-row md:items-end justify-between gap-3 sm:gap-6 pb-6 sm:pb-16 border-b border-[var(--palette-stone-beige)]/35 will-change-transform motion-reduce:transform-none! motion-reduce:opacity-100!"
     >
       <div className="space-y-2 sm:space-y-3 max-w-2xl">
         <div className="flex items-center gap-2">

@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
 import { hasLocale } from 'next-intl';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import { routing, type Locale } from '@/i18n/routing';
 import { siteConfig } from '@/config/site';
 import {
   type MenuCategorySlug,
-  menuCategoryConfigs,
+  mainMenuCategoryConfigs,
   getMenuCategoryConfig,
 } from '@/data/menu/menuCategories';
 import { getLocalized } from '@/data/types';
@@ -20,7 +20,7 @@ interface CategoryPageProps {
 
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
-    menuCategoryConfigs.map((config) => ({
+    mainMenuCategoryConfigs.map((config) => ({
       locale,
       category: config.slug,
     }))
@@ -56,6 +56,13 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
 export default async function CategoryPage({ params }: CategoryPageProps) {
   const { locale, category } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
+
+  if (category === 'dolci') {
+    redirect(`/${locale}/sweets`);
+  }
+  if (category === 'bevande' || category === 'carta-vini') {
+    redirect(`/${locale}/wine-drinks`);
+  }
 
   const config = getMenuCategoryConfig(category);
   if (!config) notFound();

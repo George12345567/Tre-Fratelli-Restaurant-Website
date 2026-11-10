@@ -27,9 +27,9 @@ export const recurringEvents: {
 }[] = [
   {
     id: 'saturday', type: 'music',
-    title: { it: 'Il sabato ha un’altra voce.', en: 'Saturday has a soundtrack.', ar: 'السبت له صوت مختلف.' },
-    copy: { it: 'Cena, musica e karaoke: scegli la tua canzone, porta gli amici e goditi la serata. Chiamaci per conoscere il programma del prossimo sabato.', en: 'Dinner, music and karaoke: choose a song, bring your friends and settle in for the evening. Call us for next Saturday’s programme.', ar: 'عشاء وموسيقى وكاراوكي: اختاروا أغنيتكم، واجمعوا أصحابكم، واستمتعوا بالسهرة. اتصلوا بنا لمعرفة برنامج السبت القادم.' },
-    schedule: { it: 'Sabato sera · Programma da confermare', en: 'Saturday evenings · Confirm the programme', ar: 'مساء السبت · البرنامج بالتواصل معنا' },
+    title: { it: 'Ogni sabato sera: Serata Karaoke.', en: 'Every Saturday night: Karaoke party.', ar: 'كل ليلة سبت: حفلة كاريوكي وموسيقى.' },
+    copy: { it: 'Ogni sabato sera cena, musica e karaoke: scegli la tua canzone, porta gli amici e goditi la serata nei nostri ampi spazi con 400 posti e parcheggio privato.', en: 'Every Saturday night brings dinner, music and karaoke: choose a song, bring your friends and enjoy the evening in our spacious 400-seat dining hall with private parking.', ar: 'كل ليلة سبت عشاء وموسيقى وحفلة كاريوكي: اختاروا أغنيتكم، واجمعوا أصحابكم، واستمتعوا بالسهرة في صالاتنا الواسعة (400 كرسي) مع جراج خاص بالمطعم.' },
+    schedule: { it: 'Ogni sabato sera · Prenotazione consigliata', en: 'Every Saturday evening · Booking recommended', ar: 'كل ليلة سبت · يُنصح بالحجز المسبق' },
   },
   {
     id: 'holidays', type: 'seasonal',

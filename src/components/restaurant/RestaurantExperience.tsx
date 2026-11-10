@@ -1,11 +1,12 @@
 import Image from 'next/image';
-import { ArrowRight, MapPin, Phone, ExternalLink } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/routing';
 import { getLocalized } from '@/data/types';
 import { restaurantEditorial } from '@/data/restaurantEditorial';
-import { culinarySpecialties, hospitalityAmenities, restaurantOfficialInfo, sectionTwoContent } from '@/data/restaurantDetails';
+import { culinarySpecialties, hospitalityAmenities } from '@/data/restaurantDetails';
 import { RestaurantReveal } from './RestaurantReveal';
+import { RestaurantVisitSection } from './RestaurantVisitSection';
 
 export function RestaurantExperience({ locale }: { locale: Locale }) {
   const text = (key: keyof typeof restaurantEditorial) => getLocalized(restaurantEditorial[key], locale);
@@ -70,44 +71,7 @@ export function RestaurantExperience({ locale }: { locale: Locale }) {
         </div>
       </section>
 
-      <section id="visit" aria-labelledby="restaurant-visit-title" className="scroll-mt-28 px-4 sm:px-6 lg:px-8 py-12 sm:py-20 bg-[var(--palette-espresso)] text-[var(--palette-warm-ivory)]">
-        <div className="max-w-6xl mx-auto">
-          <RestaurantReveal>
-            <div className="grid lg:grid-cols-12 gap-8 lg:gap-20">
-              <div className="lg:col-span-6">
-                <p className="text-[10px] sm:text-xs uppercase tracking-widest text-amber-200/70">{text('visitLabel')}</p>
-                <h2 id="restaurant-visit-title" className="mt-4 font-serif text-3xl sm:text-5xl leading-tight text-balance">{text('visitTitle')}</h2>
-                <p className="mt-5 text-xs sm:text-sm leading-relaxed text-stone-300 max-w-md">{getLocalized(sectionTwoContent.bookingAdvisory, locale)}</p>
-                <Link href="/location" className="inline-flex mt-6 min-h-11 items-center gap-3 bg-[var(--palette-warm-ivory)] text-[var(--palette-espresso)] px-6 py-3 rounded-full text-sm font-semibold hover:bg-white transition-colors">
-                  {text('reserve')}<ArrowRight size={16} className={arrow} aria-hidden="true" />
-                </Link>
-              </div>
-              <div className="lg:col-span-6 lg:pt-2 space-y-7">
-                <div>
-                  <p className="text-xs text-stone-400">{text('directions')}</p>
-                  <address className="mt-3 text-sm leading-relaxed not-italic"><bdi>{restaurantOfficialInfo.address}</bdi></address>
-                  <a href={restaurantOfficialInfo.googleMapsUrl} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 text-sm underline underline-offset-4 decoration-stone-500 hover:decoration-white">
-                    <MapPin size={14} aria-hidden="true" />{text('directions')}<ExternalLink size={12} aria-hidden="true" />
-                  </a>
-                </div>
-                <div className="border-t border-white/15 pt-5">
-                  <p className="text-xs text-stone-400">{text('phoneLabel')}</p>
-                  <a href={`tel:${restaurantOfficialInfo.phone}`} className="inline-flex min-h-11 items-center gap-3 mt-1 font-serif text-xl sm:text-2xl hover:text-amber-200 transition-colors">
-                    <Phone size={17} aria-hidden="true" /><bdi dir="ltr">{restaurantOfficialInfo.phoneDisplay}</bdi>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </RestaurantReveal>
-          <div className="mt-10 sm:mt-14 pt-5 border-t border-white/15 flex flex-wrap items-center justify-between gap-x-8 gap-y-3 text-xs text-stone-300">
-            <span>{text('socialLabel')}</span>
-            <div className="flex gap-6">
-              <a href={restaurantOfficialInfo.instagramUrl} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 hover:text-white">Instagram<ExternalLink size={11} aria-hidden="true" /></a>
-              <a href={restaurantOfficialInfo.facebookUrl} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 hover:text-white">Facebook<ExternalLink size={11} aria-hidden="true" /></a>
-            </div>
-          </div>
-        </div>
-      </section>
+      <RestaurantVisitSection locale={locale} />
     </>
   );
 }

@@ -185,13 +185,11 @@
       "dinner": "Dinner: 6:30 PM – 12:00 Midnight",
       "everyDay": "Open Daily",
       "closed": "Monday evening: Closed",
-      "note": "Monday: lunch only, 12:00–15:00. Closed in the evening. Contact us for holiday hours.",
-      "pagineGialleSource": "View opening hours on Restaurant Guru"
+      "note": "Monday: lunch only, 12:00–15:00. Closed in the evening. Contact us for holiday hours."
     },
     "contacts": {
       "title": "Direct Contact",
-      "phone": "+39 02 3655 7693",
-      "email": "prenotazioni@trefratelli.it"
+      "phone": "+39 02 3655 7693"
     },
     "form": {
       "title": "Book Your Table Online",

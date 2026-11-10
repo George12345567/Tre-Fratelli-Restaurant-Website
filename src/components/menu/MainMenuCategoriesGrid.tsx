@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { BookOpen, ShieldAlert } from 'lucide-react';
 import { Link, useRouter } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/routing';
-import { menuCategoryConfigs, getCategoryData } from '@/data/menu/menuCategories';
+import { mainMenuCategoryConfigs, getCategoryData } from '@/data/menu/menuCategories';
 import { MenuCategoryCard } from './MenuCategoryCard';
 import { MenuPdfViewerModal } from './MenuPdfViewerModal';
 import { MenuAllergenLegendModal } from './MenuAllergenLegendModal';
@@ -25,27 +25,27 @@ export function MainMenuCategoriesGrid({ locale }: MainMenuCategoriesGridProps) 
     if (!rawHash) return;
 
     const legacyHashMap: Record<string, string> = {
-      pizzeria: 'pizze',
-      pizza: 'pizze',
-      'pizza-calzoni': 'pizze',
-      antipasti: 'antipasti',
-      'raw-seafood': 'antipasti',
-      'primi-piatti': 'primi-piatti',
-      primi: 'primi-piatti',
-      'secondi-piatti': 'secondi-piatti',
-      secondi: 'secondi-piatti',
-      contorni: 'contorni',
-      'contorni-insalate': 'contorni',
-      dolci: 'dolci',
-      desserts: 'dolci',
-      bevande: 'bevande',
-      'carta-vini': 'carta-vini',
-      wine: 'carta-vini',
+      pizzeria: '/menu/pizze',
+      pizza: '/menu/pizze',
+      'pizza-calzoni': '/menu/pizze',
+      antipasti: '/menu/antipasti',
+      'raw-seafood': '/menu/antipasti',
+      'primi-piatti': '/menu/primi-piatti',
+      primi: '/menu/primi-piatti',
+      'secondi-piatti': '/menu/secondi-piatti',
+      secondi: '/menu/secondi-piatti',
+      contorni: '/menu/contorni',
+      'contorni-insalate': '/menu/contorni',
+      dolci: '/sweets',
+      desserts: '/sweets',
+      bevande: '/wine-drinks',
+      'carta-vini': '/wine-drinks',
+      wine: '/wine-drinks',
     };
 
     const target = legacyHashMap[rawHash];
     if (target) {
-      router.replace(`/menu/${target}`);
+      router.replace(target);
     }
   }, [router]);
 
@@ -85,10 +85,10 @@ export function MainMenuCategoriesGrid({ locale }: MainMenuCategoriesGridProps) 
         {/* Short Introductory Description */}
         <p className="text-xs sm:text-sm md:text-base text-[var(--palette-espresso)]/80 leading-relaxed font-serif italic max-w-xl mx-auto">
           {locale === 'ar'
-            ? 'استكشف إبداعات مطبخنا الإيطالي الأصيل: مقبلات التراث، باستا طازجة مصنوعة يدوياً، أطباق اللحوم والأسماك، بيتزا الحطب، ومختارات القبو.'
+            ? 'استكشف إبداعات مطبخنا الإيطالي الأصيل: مقبلات التراث، باستا طازجة مصنوعة يدوياً، أطباق اللحوم والأسماك، السلطات الغنية، وبيتزا فرن الحطب.'
             : locale === 'it'
-            ? 'Scopri le specialità della nostra cucina: antipasti della tradizione, pasta fresca fatta a mano, secondi di carne e pesce, pizze cotte nel forno a legna e la nostra accurata selezione di vini.'
-            : 'Discover the culinary specialties of our kitchen: traditional starters, handmade fresh pasta, prime meat and seafood mains, wood-fired pizzas, and our curated wine cellar.'}
+            ? 'Scopri le specialità della nostra cucina: antipasti della tradizione, pasta fresca fatta a mano, secondi di carne e pesce, insalatone e pizze cotte nel forno a legna.'
+            : 'Discover the culinary specialties of our kitchen: traditional starters, handmade fresh pasta, prime meat and seafood mains, grand salads, and wood-fired pizzas.'}
         </p>
 
         {/* Action Buttons: PDF Menu & Allergens Guide */}
@@ -125,12 +125,12 @@ export function MainMenuCategoriesGrid({ locale }: MainMenuCategoriesGridProps) 
         </div>
       </header>
 
-      {/* ── 2. Responsive Eight-Category Photography Grid (Scroll-Animated) ── */}
+      {/* ── 2. Responsive Five-Category Kitchen & Pizzeria Grid (Scroll-Animated) ── */}
       <section
         aria-label="Menu Categories"
         className="grid grid-cols-1 md:grid-cols-2 gap-7 sm:gap-9 lg:gap-11"
       >
-        {menuCategoryConfigs.map((config, index) => {
+        {mainMenuCategoryConfigs.map((config, index) => {
           const categoryData = getCategoryData(config.slug);
           const count =
             categoryData.kind === 'food'

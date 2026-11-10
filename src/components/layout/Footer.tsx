@@ -3,14 +3,15 @@ import { Link } from '@/i18n/navigation';
 import {
   MapPin,
   Phone,
-  Mail,
   Clock,
   ExternalLink,
   Navigation,
   Utensils,
+  Download,
 } from 'lucide-react';
 import type { Locale } from '@/i18n/routing';
 import { restaurantSchedule } from '@/data/restaurantSchedule';
+import { restaurantOfficialInfo } from '@/data/restaurantDetails';
 import { getLocalized } from '@/data/types';
 
 interface FooterProps {
@@ -19,22 +20,39 @@ interface FooterProps {
 
 export async function Footer({ locale }: FooterProps) {
   const t = await getTranslations({ locale });
-  const googleMapsUrl = 'https://maps.app.goo.gl/XtPWEL7wA6BwA8na7?g_st=ac';
-  const hoursSourceUrl = restaurantSchedule.sourceUrl;
+  const googleMapsUrl = restaurantOfficialInfo.googleMapsUrl;
 
   return (
     <footer
       id="footer"
       role="contentinfo"
-      className="w-full max-w-full overflow-hidden overflow-x-clip bg-[var(--palette-espresso)] text-[var(--palette-warm-ivory)] border-t border-[var(--palette-espresso-light)] mt-10 sm:mt-14 relative z-10"
+      className="w-full max-w-full overflow-hidden overflow-x-clip bg-[var(--palette-espresso)] text-[var(--palette-warm-ivory)] border-t border-[var(--palette-aged-brass)]/25 mt-10 sm:mt-14 relative z-10"
     >
+      {/* Top Ornamental Brass Glint Line */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--palette-aged-brass)]/70 to-transparent"
+      />
+      {/* Subtle Ambient Warm Glows */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-28 left-1/4 h-64 w-64 rounded-full bg-[var(--palette-aged-brass)]/8 blur-3xl"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -bottom-28 right-1/4 h-64 w-64 rounded-full bg-[var(--palette-italian-red)]/12 blur-3xl"
+      />
+
       {/* ══════════════════════════════════════════════════════════════════
-          MOBILE VIEW (< lg): Ultra-Compact & Short with Essential Details
+          MOBILE VIEW (< lg): Sculpted, Compact & High-Contrast Layout
           ══════════════════════════════════════════════════════════════════ */}
-      <div className="lg:hidden px-4 py-5 space-y-3.5 max-w-lg mx-auto text-center box-border">
+      <div className="relative lg:hidden px-4 pt-6 pb-20 space-y-4 max-w-lg mx-auto text-center box-border">
         {/* Mobile Line 1: Brand & Subtitle */}
-        <div className="flex items-center justify-center gap-2.5">
-          <Link href="/" className="inline-flex items-center justify-center">
+        <div className="flex flex-col items-center justify-center gap-1.5">
+          <Link
+            href="/"
+            className="min-h-0 min-w-0 inline-flex items-center justify-center rounded-2xl bg-white/[0.04] border border-[var(--palette-aged-brass)]/25 px-3.5 py-1.5 shadow-xs"
+          >
             <img
               src="/images/brand/tre-fratelli-official-logo.png"
               alt="Tre Fratelli"
@@ -42,42 +60,70 @@ export async function Footer({ locale }: FooterProps) {
               loading="lazy"
             />
           </Link>
-          <span className="text-[10px] uppercase tracking-wider text-[var(--palette-aged-brass)] font-sans">
+          <span className="text-[10px] uppercase tracking-[0.18em] text-[var(--palette-aged-brass)] font-sans font-medium">
             · Trezzano sul Naviglio (MI)
           </span>
         </div>
 
         {/* Mobile Line 2: Compact Horizontal Links */}
-        <nav aria-label="Mobile Footer Nav" className="flex flex-wrap items-center justify-center gap-x-2.5 gap-y-1 text-xs text-[var(--palette-stone-beige)]">
-          <Link href="/" className="hover:text-white transition-colors">{t('nav.home')}</Link>
-          <span className="text-white/20" aria-hidden="true">·</span>
-          <Link href="/menu" className="hover:text-white transition-colors">{t('nav.menu')}</Link>
-          <span className="text-white/20" aria-hidden="true">·</span>
-          <Link href="/pizzeria" className="hover:text-white transition-colors">{t('nav.pizzeria')}</Link>
-          <span className="text-white/20" aria-hidden="true">·</span>
-          <Link href="/wine-drinks" className="hover:text-white transition-colors">{t('nav.wineDrinks')}</Link>
-          <span className="text-white/20" aria-hidden="true">·</span>
-          <Link href="/sweets" className="hover:text-white transition-colors">{t('nav.sweets')}</Link>
-          <span className="text-white/20" aria-hidden="true">·</span>
-          <Link href="/location" className="text-[var(--palette-aged-brass)] font-semibold hover:text-white transition-colors">{t('nav.reserve')}</Link>
-          <span className="text-white/20" aria-hidden="true">·</span>
+        <nav
+          aria-label="Mobile Footer Nav"
+          className="flex flex-wrap items-center justify-center gap-1.5 text-[11px] text-[var(--palette-stone-beige)]"
+        >
+          <Link
+            href="/"
+            className="min-h-7 min-w-0 inline-flex items-center px-2.5 py-1 rounded-full bg-white/[0.04] hover:bg-white/[0.1] border border-white/[0.07] hover:text-white transition-colors"
+          >
+            {t('nav.home')}
+          </Link>
+          <Link
+            href="/menu"
+            className="min-h-7 min-w-0 inline-flex items-center px-2.5 py-1 rounded-full bg-white/[0.04] hover:bg-white/[0.1] border border-white/[0.07] hover:text-white transition-colors"
+          >
+            {t('nav.menu')}
+          </Link>
+          <Link
+            href="/pizzeria"
+            className="min-h-7 min-w-0 inline-flex items-center px-2.5 py-1 rounded-full bg-white/[0.04] hover:bg-white/[0.1] border border-white/[0.07] hover:text-white transition-colors"
+          >
+            {t('nav.pizzeria')}
+          </Link>
+          <Link
+            href="/wine-drinks"
+            className="min-h-7 min-w-0 inline-flex items-center px-2.5 py-1 rounded-full bg-white/[0.04] hover:bg-white/[0.1] border border-white/[0.07] hover:text-white transition-colors"
+          >
+            {t('nav.wineDrinks')}
+          </Link>
+          <Link
+            href="/sweets"
+            className="min-h-7 min-w-0 inline-flex items-center px-2.5 py-1 rounded-full bg-white/[0.04] hover:bg-white/[0.1] border border-white/[0.07] hover:text-white transition-colors"
+          >
+            {t('nav.sweets')}
+          </Link>
+          <Link
+            href="/location"
+            className="min-h-7 min-w-0 inline-flex items-center px-2.5 py-1 rounded-full bg-[var(--palette-aged-brass)]/15 border border-[var(--palette-aged-brass)]/35 text-[var(--palette-aged-brass)] font-semibold hover:text-white transition-colors"
+          >
+            {t('nav.reserve')}
+          </Link>
           <a
             href="/menu/tre-fratelli-menu.pdf"
             download="Tre-Fratelli-Menu.pdf"
-            className="text-[var(--palette-aged-brass)] hover:text-white transition-colors font-bold"
+            className="min-h-7 min-w-0 inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-[var(--palette-italian-red)]/25 border border-[var(--palette-italian-red)]/45 text-[var(--palette-warm-ivory)] hover:text-white transition-colors font-bold"
           >
-            PDF
+            <Download size={10} aria-hidden="true" />
+            <span>PDF</span>
           </a>
         </nav>
 
-        {/* Mobile Line 3: Fast Action Buttons (Maps, Phone, Booking) */}
-        <div className="flex flex-wrap items-center justify-center gap-1.5 pt-0.5">
+        {/* Mobile Line 3: Fast Action Buttons (Maps, Phone, Email) */}
+        <div className="flex flex-wrap items-center justify-center gap-2 pt-0.5">
           {/* Google Maps Button */}
           <a
             href={googleMapsUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--palette-italian-red)] hover:bg-[var(--palette-italian-red-dark)] text-white text-[11px] font-bold transition-all shadow-2xs"
+            className="min-h-9 min-w-0 inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[var(--palette-italian-red)] hover:bg-[var(--palette-italian-red-dark)] text-white text-[11px] font-bold transition-all shadow-sm"
           >
             <Navigation size={12} aria-hidden="true" />
             <span>Google Maps</span>
@@ -87,67 +133,103 @@ export async function Footer({ locale }: FooterProps) {
           {/* Direct Phone */}
           <a
             href="tel:+390236557693"
-            className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-[11px] font-semibold border border-white/10 transition-all font-mono"
+            className="min-h-9 min-w-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.08] hover:bg-white/[0.16] text-white text-[11px] font-semibold border border-[var(--palette-aged-brass)]/30 transition-all font-mono"
           >
-            <Phone size={11} className="text-[var(--palette-aged-brass)]" aria-hidden="true" />
-            <span>+39 02 3655 7693</span>
-          </a>
-
-          {/* Direct Email */}
-          <a
-            href="mailto:prenotazioni@trefratelli.it"
-            className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-full bg-white/5 hover:bg-white/10 text-[var(--palette-stone-beige)] text-[11px] border border-white/10 transition-all font-mono"
-          >
-            <Mail size={11} className="text-[var(--palette-aged-brass)]" aria-hidden="true" />
-            <span>Email</span>
+            <Phone size={11} className="text-[var(--palette-aged-brass)] shrink-0" aria-hidden="true" />
+            <bdi dir="ltr">+39 02 3655 7693</bdi>
           </a>
         </div>
 
-        {/* Mobile Line 4: Compact Address & Plus Code */}
-        <div className="text-[11px] text-[var(--palette-stone-beige)]/90 space-y-0.5 pt-0.5 border-t border-white/5">
-          <p className="flex items-center justify-center gap-1">
-            <MapPin size={11} className="text-[var(--palette-italian-red)] shrink-0" aria-hidden="true" />
-            <a href={googleMapsUrl} target="_blank" rel="noopener noreferrer" className="hover:underline">
-              Viale Leonardo da Vinci, 97 · 20090 Trezzano sul Naviglio
-            </a>
-          </p>
-          <p className="text-[10px] text-[var(--palette-stone-beige)]/70 font-mono">
-            Plus Code: C3C6+PH · Milano
-          </p>
-        </div>
+        {/* Mobile Inset Card: Address, Plus Code & Working Hours */}
+        <div className="rounded-2xl bg-white/[0.03] border border-[var(--palette-aged-brass)]/20 p-3.5 space-y-2.5 text-center">
+          {/* Mobile Line 4: Compact Address & Plus Code */}
+          <div className="text-[11px] text-[var(--palette-stone-beige)]/95 space-y-0.5">
+            <p className="flex items-center justify-center gap-1.5">
+              <MapPin size={12} className="text-[var(--palette-italian-red)] shrink-0" aria-hidden="true" />
+              <a
+                href={googleMapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="min-h-0 min-w-0 hover:text-white hover:underline transition-colors"
+              >
+                Viale Leonardo da Vinci, 97 · 20090 Trezzano sul Naviglio
+              </a>
+            </p>
+            <p className="text-[10px] text-[var(--palette-stone-beige)]/70 font-mono">
+              <bdi dir="ltr">Plus Code: C3C6+PH · Milano</bdi>
+            </p>
+          </div>
 
-        {/* Mobile Line 5: Compact Working Hours & Monday Tip */}
-        <div className="text-[10px] text-[var(--palette-stone-beige)]/80 space-y-1 pt-1 border-t border-white/5">
-          <p className="flex items-center justify-center gap-1">
-            <Clock size={10} className="text-[var(--palette-aged-brass)] shrink-0" aria-hidden="true" />
-            <span>
-              {locale === 'it'
-                ? 'Mar–Sab 12-15 · 18:30-00 | Dom 12-00 | Lun 12-15'
-                : locale === 'ar'
-                ? 'الثلاثاء–السبت: 12–15 · 18:30–00 | الأحد: 12–00 | الاثنين: 12–15'
-                : 'Tue–Sat 12-15 · 18:30-00 | Sun 12-00 | Mon 12-15'}
-            </span>
-          </p>
-          <p className="text-[9px] text-amber-200/80 italic">
-            {getLocalized(restaurantSchedule.mondayNotice, locale)}
-          </p>
+          {/* Mobile Line 5: Clear, Structured Opening Hours Table */}
+          <div className="pt-2.5 border-t border-white/10 space-y-2.5">
+            <div className="flex items-center justify-center gap-1.5 text-[11px] font-serif font-bold text-[var(--palette-aged-brass)]">
+              <Clock size={12} className="shrink-0" aria-hidden="true" />
+              <span>{t('location.hours.title')}</span>
+            </div>
+
+            <div className="space-y-1.5 text-start">
+              {restaurantSchedule.rows.map((row) => (
+                <div
+                  key={row.id}
+                  className="rounded-xl bg-white/[0.03] border border-white/8 px-3 py-2 flex flex-col gap-1.5"
+                >
+                  <span className="text-[11px] font-bold text-white">
+                    {getLocalized(row.days, locale)}
+                  </span>
+                  <div className="flex flex-wrap items-center gap-1.5">
+                    {row.shifts.map((shift, idx) =>
+                      shift.isClosed ? (
+                        <span
+                          key={idx}
+                          className="inline-flex items-center px-2 py-0.5 rounded-md bg-[var(--palette-italian-red)]/25 border border-[var(--palette-italian-red)]/40 text-[10px] font-semibold text-amber-100"
+                        >
+                          {getLocalized(shift.label, locale)}
+                        </span>
+                      ) : (
+                        <span
+                          key={idx}
+                          className={`inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md text-[10px] border ${
+                            shift.highlight
+                              ? 'bg-[var(--palette-aged-brass)]/15 border-[var(--palette-aged-brass)]/35 text-[var(--palette-aged-brass)] font-semibold'
+                              : 'bg-white/[0.04] border-white/10 text-[var(--palette-stone-beige)]'
+                          }`}
+                        >
+                          <span className="opacity-85">{getLocalized(shift.label, locale)}:</span>
+                          <bdi dir="ltr" className="font-mono font-semibold text-white">
+                            {shift.time}
+                          </bdi>
+                        </span>
+                      )
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <p className="text-[9.5px] text-amber-200/85 italic leading-relaxed pt-0.5">
+              {getLocalized(restaurantSchedule.mondayNotice, locale)}
+            </p>
+          </div>
         </div>
 
         {/* Mobile Copyright */}
-        <div className="text-[9px] text-[var(--palette-stone-beige)]/50 pt-1 border-t border-white/5">
-          © {new Date().getFullYear()} Tre Fratelli · Dal 1998
+        <div className="text-[10px] text-[var(--palette-stone-beige)]/55 pt-1">
+          © {new Date().getFullYear()} Tre Fratelli · Trezzano sul Naviglio (MI)
         </div>
       </div>
 
       {/* ══════════════════════════════════════════════════════════════════
           DESKTOP / LAPTOP VIEW (lg:block): Rich, Elegant 4-Column Layout
           ══════════════════════════════════════════════════════════════════ */}
-      <div className="hidden lg:block max-w-7xl mx-auto px-6 lg:px-8 py-12 box-border">
+      <div className="relative hidden lg:block max-w-7xl mx-auto px-6 lg:px-8 pt-14 pb-10 box-border">
         {/* Desktop 4-Column Grid */}
-        <div className="grid grid-cols-4 gap-8 pb-10 border-b border-white/10">
-          {/* Column 1: Brand & Heritage */}
-          <div className="space-y-3.5">
-            <Link href="/" className="inline-flex items-center gap-3 group">
+        <div className="grid grid-cols-12 gap-8 lg:gap-10 pb-11 border-b border-white/10 items-start">
+          {/* Column 1: Brand & Heritage (3 cols) */}
+          <div className="col-span-3 space-y-4">
+            <Link
+              href="/"
+              className="min-h-0 min-w-0 inline-flex items-center gap-3 rounded-2xl bg-white/[0.04] border border-[var(--palette-aged-brass)]/25 px-4 py-2.5 group hover:border-[var(--palette-aged-brass)]/50 transition-all"
+            >
               <img
                 src="/images/brand/tre-fratelli-official-logo.png"
                 alt="Tre Fratelli - Ristorante Italiano"
@@ -164,56 +246,88 @@ export async function Footer({ locale }: FooterProps) {
                 : 'Authentic Italian dining in Trezzano sul Naviglio, Milan: raw seafood, oak wood grill, bronze-cut pasta & curated cellar.'}
             </p>
 
-            <div className="pt-1 flex items-center gap-2">
-              <span className="inline-block py-0.5 px-2.5 rounded-full bg-white/5 border border-white/10 text-[10px] font-mono text-[var(--palette-aged-brass)]">
-                Milano · Dal 1998
+            <div className="pt-0.5 flex items-center gap-2">
+              <span className="inline-flex items-center gap-1.5 py-1 px-3 rounded-full bg-[var(--palette-aged-brass)]/12 border border-[var(--palette-aged-brass)]/30 text-[10px] font-mono tracking-wider uppercase text-[var(--palette-aged-brass)]">
+                <span className="h-1.5 w-1.5 rounded-full bg-[var(--palette-aged-brass)]" aria-hidden="true" />
+                <span>Trezzano sul Naviglio · Milano</span>
               </span>
             </div>
           </div>
 
-          {/* Column 2: Navigation Links */}
-          <div className="space-y-3">
-            <h3 className="font-serif text-sm font-bold text-[var(--palette-aged-brass)] flex items-center gap-1.5">
-              <Utensils size={15} aria-hidden="true" />
-              <span>{locale === 'it' ? 'Menu & Specialità' : locale === 'ar' ? 'القائمة والأطباق' : 'Menu & Chapters'}</span>
+          {/* Column 2: Navigation Links (3 cols) */}
+          <div className="col-span-3 space-y-3.5">
+            <h3 className="font-serif text-sm font-bold tracking-wide text-[var(--palette-aged-brass)] flex items-center gap-2 pb-1 border-b border-white/10">
+              <Utensils size={14} aria-hidden="true" />
+              <span>
+                {locale === 'it'
+                  ? 'Menu & Specialità'
+                  : locale === 'ar'
+                  ? 'القائمة والأطباق'
+                  : 'Menu & Chapters'}
+              </span>
             </h3>
-            <ul className="space-y-2 text-xs">
+            <ul className="space-y-1.5 text-xs">
               <li>
-                <Link href="/menu" className="text-[var(--palette-stone-beige)] hover:text-white transition-colors block">
-                  {t('nav.menu')}
+                <Link
+                  href="/menu"
+                  className="min-h-0 min-w-0 py-1 text-[var(--palette-stone-beige)] hover:text-white transition-colors inline-flex items-center gap-2 group"
+                >
+                  <span className="h-1 w-1 rounded-full bg-[var(--palette-aged-brass)]/60 group-hover:bg-[var(--palette-italian-red)] transition-colors" aria-hidden="true" />
+                  <span>{t('nav.menu')}</span>
                 </Link>
               </li>
               <li>
-                <Link href="/pizzeria" className="text-[var(--palette-stone-beige)] hover:text-white transition-colors block">
-                  {t('nav.pizzeria')}
+                <Link
+                  href="/pizzeria"
+                  className="min-h-0 min-w-0 py-1 text-[var(--palette-stone-beige)] hover:text-white transition-colors inline-flex items-center gap-2 group"
+                >
+                  <span className="h-1 w-1 rounded-full bg-[var(--palette-aged-brass)]/60 group-hover:bg-[var(--palette-italian-red)] transition-colors" aria-hidden="true" />
+                  <span>{t('nav.pizzeria')}</span>
                 </Link>
               </li>
               <li>
-                <Link href="/wine-drinks" className="text-[var(--palette-stone-beige)] hover:text-white transition-colors block">
-                  {t('nav.wineDrinks')}
+                <Link
+                  href="/wine-drinks"
+                  className="min-h-0 min-w-0 py-1 text-[var(--palette-stone-beige)] hover:text-white transition-colors inline-flex items-center gap-2 group"
+                >
+                  <span className="h-1 w-1 rounded-full bg-[var(--palette-aged-brass)]/60 group-hover:bg-[var(--palette-italian-red)] transition-colors" aria-hidden="true" />
+                  <span>{t('nav.wineDrinks')}</span>
                 </Link>
               </li>
               <li>
-                <Link href="/sweets" className="text-[var(--palette-stone-beige)] hover:text-white transition-colors block">
-                  {t('nav.sweets')}
+                <Link
+                  href="/sweets"
+                  className="min-h-0 min-w-0 py-1 text-[var(--palette-stone-beige)] hover:text-white transition-colors inline-flex items-center gap-2 group"
+                >
+                  <span className="h-1 w-1 rounded-full bg-[var(--palette-aged-brass)]/60 group-hover:bg-[var(--palette-italian-red)] transition-colors" aria-hidden="true" />
+                  <span>{t('nav.sweets')}</span>
                 </Link>
               </li>
               <li>
-                <Link href="/restaurant" className="text-[var(--palette-stone-beige)] hover:text-white transition-colors block">
-                  {t('nav.restaurant')}
+                <Link
+                  href="/restaurant"
+                  className="min-h-0 min-w-0 py-1 text-[var(--palette-stone-beige)] hover:text-white transition-colors inline-flex items-center gap-2 group"
+                >
+                  <span className="h-1 w-1 rounded-full bg-[var(--palette-aged-brass)]/60 group-hover:bg-[var(--palette-italian-red)] transition-colors" aria-hidden="true" />
+                  <span>{t('nav.restaurant')}</span>
                 </Link>
               </li>
               <li>
-                <Link href="/news-promo" className="text-[var(--palette-stone-beige)] hover:text-white transition-colors block">
-                  {t('nav.newsPromo')}
+                <Link
+                  href="/news-promo"
+                  className="min-h-0 min-w-0 py-1 text-[var(--palette-stone-beige)] hover:text-white transition-colors inline-flex items-center gap-2 group"
+                >
+                  <span className="h-1 w-1 rounded-full bg-[var(--palette-aged-brass)]/60 group-hover:bg-[var(--palette-italian-red)] transition-colors" aria-hidden="true" />
+                  <span>{t('nav.newsPromo')}</span>
                 </Link>
               </li>
-              <li className="pt-1 border-t border-white/10">
+              <li className="pt-2">
                 <a
                   href="/menu/tre-fratelli-menu.pdf"
                   download="Tre-Fratelli-Menu.pdf"
-                  className="text-[var(--palette-aged-brass)] hover:text-white transition-colors inline-flex items-center gap-1 font-semibold"
+                  className="min-h-9 min-w-0 px-3.5 py-2 rounded-xl bg-[var(--palette-aged-brass)]/12 hover:bg-[var(--palette-aged-brass)]/22 border border-[var(--palette-aged-brass)]/35 text-[var(--palette-aged-brass)] hover:text-white transition-all inline-flex items-center gap-2 font-semibold"
                 >
+                  <Download size={13} className="shrink-0" aria-hidden="true" />
                   <span>
                     {locale === 'it'
                       ? 'Scarica Menù PDF (6.4 MB)'
@@ -226,89 +340,102 @@ export async function Footer({ locale }: FooterProps) {
             </ul>
           </div>
 
-          {/* Column 3: Verified Opening Hours */}
-          <div className="space-y-3">
-            <h3 className="font-serif text-sm font-bold text-[var(--palette-aged-brass)] flex items-center gap-1.5">
-              <Clock size={15} aria-hidden="true" />
+          {/* Column 3: Verified Opening Hours (3 cols) */}
+          <div className="col-span-3 space-y-3.5">
+            <h3 className="font-serif text-sm font-bold tracking-wide text-[var(--palette-aged-brass)] flex items-center gap-2 pb-1 border-b border-white/10">
+              <Clock size={14} aria-hidden="true" />
               <span>{t('location.hours.title')}</span>
             </h3>
-            <div className="space-y-1.5 text-xs text-[var(--palette-stone-beige)]">
-              <div className="flex justify-between items-center py-0.5 border-b border-white/5">
-                <span>{locale === 'it' ? 'Martedì – Sabato' : locale === 'ar' ? 'الثلاثاء – السبت' : 'Tue – Sat'}</span>
-                <span className="font-mono text-white text-[11px]">12:00-15 · 18:30-00</span>
-              </div>
-              <div className="flex justify-between items-center py-0.5 border-b border-white/5">
-                <span>{locale === 'it' ? 'Domenica' : locale === 'ar' ? 'الأحد' : 'Sunday'}</span>
-                <span className="font-mono text-[var(--palette-aged-brass)] text-[11px]">12:00 – 00:00</span>
-              </div>
-              <div className="flex justify-between items-center py-0.5 border-b border-white/5">
-                <span>{locale === 'it' ? 'Lunedì' : locale === 'ar' ? 'الاثنين' : 'Monday'}</span>
-                <span className="font-mono text-stone-300 text-[11px]">12:00 – 15:00</span>
-              </div>
-              <p className="text-[11px] text-[var(--palette-stone-beige)]/70 italic pt-1 leading-snug">
+            <div className="space-y-2 text-xs text-[var(--palette-stone-beige)]">
+              {restaurantSchedule.rows.map((row) => (
+                <div
+                  key={row.id}
+                  className="rounded-xl bg-white/[0.03] border border-white/10 p-3 space-y-1.5"
+                >
+                  <div className="font-semibold text-white text-xs border-b border-white/8 pb-1">
+                    {getLocalized(row.days, locale)}
+                  </div>
+                  <div className="space-y-1 pt-0.5">
+                    {row.shifts.map((shift, idx) => (
+                      <div key={idx} className="flex items-center justify-between gap-2 text-[11px]">
+                        <span className="text-[var(--palette-stone-beige)]/85">
+                          {getLocalized(shift.label, locale)}
+                        </span>
+                        {shift.isClosed ? (
+                          <span className="inline-flex items-center px-2 py-0.5 rounded-md bg-[var(--palette-italian-red)]/25 border border-[var(--palette-italian-red)]/40 text-[10px] font-semibold text-amber-100">
+                            {locale === 'ar' ? 'مغلق' : locale === 'it' ? 'Chiuso' : 'Closed'}
+                          </span>
+                        ) : (
+                          <bdi
+                            dir="ltr"
+                            className={`font-mono text-[11px] font-semibold ${
+                              shift.highlight ? 'text-[var(--palette-aged-brass)]' : 'text-white'
+                            }`}
+                          >
+                            {shift.time}
+                          </bdi>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+
+              <p className="text-[11px] text-[var(--palette-stone-beige)]/75 italic pt-1 leading-snug">
                 {t('location.hours.note')}
               </p>
-              <a
-                href={hoursSourceUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[10px] text-[var(--palette-aged-brass)] hover:text-white underline inline-block"
-              >
-                {t('location.hours.pagineGialleSource')}
-              </a>
             </div>
           </div>
 
-          {/* Column 4: Contact, Address & Google Maps */}
-          <div className="space-y-3">
-            <h3 className="font-serif text-sm font-bold text-[var(--palette-aged-brass)] flex items-center gap-1.5">
-              <MapPin size={15} aria-hidden="true" />
+          {/* Column 4: Contact, Address & Google Maps (3 cols) */}
+          <div className="col-span-3 space-y-3.5">
+            <h3 className="font-serif text-sm font-bold tracking-wide text-[var(--palette-aged-brass)] flex items-center gap-2 pb-1 border-b border-white/10">
+              <MapPin size={14} aria-hidden="true" />
               <span>{t('location.contacts.title')}</span>
             </h3>
-            <div className="space-y-2 text-xs text-[var(--palette-stone-beige)]">
+            <div className="space-y-2.5 text-xs text-[var(--palette-stone-beige)]">
               {/* Address with Direct Maps Link */}
               <a
                 href={googleMapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-start gap-2 hover:text-white transition-colors"
+                className="min-h-0 min-w-0 group flex items-start gap-2.5 p-2 rounded-xl bg-white/[0.03] hover:bg-white/[0.07] border border-white/8 transition-colors"
               >
-                <MapPin size={14} className="text-[var(--palette-italian-red)] shrink-0 mt-0.5" aria-hidden="true" />
-                <span className="leading-snug group-hover:underline">
+                <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-[var(--palette-italian-red)]/20 text-[var(--palette-italian-red)] mt-0.5">
+                  <MapPin size={14} aria-hidden="true" />
+                </span>
+                <span className="leading-snug group-hover:text-white transition-colors">
                   Viale Leonardo da Vinci, 97
-                  <span className="block text-[11px] text-[var(--palette-stone-beige)]/80">
+                  <span className="block text-[11px] text-[var(--palette-stone-beige)]/75">
                     20090 Trezzano sul Naviglio (MI)
                   </span>
                 </span>
               </a>
 
               {/* Direct Phone */}
-              <div className="flex items-center gap-2">
-                <Phone size={13} className="text-[var(--palette-aged-brass)] shrink-0" aria-hidden="true" />
-                <a href="tel:+390236557693" className="hover:text-white transition-colors font-mono font-medium">
+              <a
+                href="tel:+390236557693"
+                className="min-h-0 min-w-0 flex items-center gap-2.5 p-2 rounded-xl bg-white/[0.03] hover:bg-white/[0.07] border border-white/8 hover:text-white transition-colors"
+              >
+                <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-[var(--palette-aged-brass)]/15 text-[var(--palette-aged-brass)]">
+                  <Phone size={13} aria-hidden="true" />
+                </span>
+                <bdi dir="ltr" className="font-mono font-semibold text-white">
                   +39 02 3655 7693
-                </a>
-              </div>
-
-              {/* Direct Email */}
-              <div className="flex items-center gap-2">
-                <Mail size={13} className="text-[var(--palette-aged-brass)] shrink-0" aria-hidden="true" />
-                <a href="mailto:prenotazioni@trefratelli.it" className="hover:text-white transition-colors font-mono">
-                  prenotazioni@trefratelli.it
-                </a>
-              </div>
+                </bdi>
+              </a>
 
               {/* Google Maps Button */}
-              <div className="pt-1.5 flex items-center">
+              <div className="pt-1 flex items-center">
                 <a
                   href={googleMapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[var(--palette-italian-red)] hover:bg-[var(--palette-italian-red-dark)] text-white text-xs font-bold transition-all shadow-xs"
+                  className="min-h-9 min-w-0 w-full inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-[var(--palette-italian-red)] hover:bg-[var(--palette-italian-red-dark)] text-white text-xs font-bold transition-all shadow-sm"
                 >
                   <Navigation size={12} aria-hidden="true" />
                   <span>Google Maps</span>
-                  <ExternalLink size={10} className="opacity-80" />
+                  <ExternalLink size={11} className="opacity-80" />
                 </a>
               </div>
             </div>
@@ -317,14 +444,26 @@ export async function Footer({ locale }: FooterProps) {
 
         {/* Desktop Bottom Bar */}
         <div className="pt-6 flex items-center justify-between text-xs text-[var(--palette-stone-beige)]/70">
-          <p>© {new Date().getFullYear()} Tre Fratelli Ristorante & Pizzeria. {t('footer.rights')}</p>
+          <p>
+            © {new Date().getFullYear()} Tre Fratelli Ristorante & Pizzeria. {t('footer.rights')}
+          </p>
           <div className="flex items-center gap-4 text-xs">
-            <a href={googleMapsUrl} target="_blank" rel="noopener noreferrer" className="hover:underline text-[var(--palette-aged-brass)] inline-flex items-center gap-1">
-              <span>C3C6+PH Trezzano sul Naviglio (Milano)</span>
+            <a
+              href={googleMapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="min-h-0 min-w-0 hover:underline text-[var(--palette-aged-brass)] hover:text-white transition-colors inline-flex items-center gap-1.5"
+            >
+              <bdi dir="ltr">C3C6+PH Trezzano sul Naviglio (Milano)</bdi>
               <ExternalLink size={11} />
             </a>
-            <span className="text-white/20">·</span>
-            <Link href="/location" className="hover:underline text-[var(--palette-warm-ivory)]">
+            <span className="text-white/20" aria-hidden="true">
+              ·
+            </span>
+            <Link
+              href="/location"
+              className="min-h-0 min-w-0 hover:underline text-[var(--palette-warm-ivory)] hover:text-white font-medium transition-colors"
+            >
               {t('nav.reserve')}
             </Link>
           </div>

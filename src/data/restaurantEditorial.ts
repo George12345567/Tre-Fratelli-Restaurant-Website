@@ -33,5 +33,4 @@ export const restaurantEditorial = {
   visitNav: { it: 'La tua visita', en: 'Your visit', ar: 'زيارتكم' },
   directions: { it: 'Come arrivare', en: 'Get directions', ar: 'الاتجاهات' },
   phoneLabel: { it: 'Parliamone al telefono', en: 'Give us a call', ar: 'تواصلوا معنا' },
-  socialLabel: { it: 'Ci trovi anche qui', en: 'Find us here, too', ar: 'تابعوا أخبارنا' },
 } satisfies Record<string, LocalizedText>;
