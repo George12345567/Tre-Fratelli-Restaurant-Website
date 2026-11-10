@@ -29,12 +29,12 @@ export function SweetsNav({
 }: SweetsNavProps) {
   return (
     <div className="sticky top-16 z-30 py-3 bg-[#FAF7F2]/95 backdrop-blur-md border-b border-[var(--palette-stone-beige)]/30 space-y-3">
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
+      <div className="flex min-w-0 flex-col md:flex-row md:items-center justify-between gap-3">
         {/* ── Category Pill Tabs ── */}
         <div
           role="tablist"
           aria-label={dict.title}
-          className="flex items-center gap-1.5 overflow-x-auto pb-1 md:pb-0 scrollbar-none"
+          className="flex min-w-0 items-center gap-1.5 overflow-x-auto pb-1 md:pb-0 scrollbar-none"
         >
           {/* All Items Pill */}
           <button
@@ -84,7 +84,7 @@ export function SweetsNav({
         </div>
 
         {/* ── Quick Search Input ── */}
-        <div className="relative min-w-[240px] md:w-72 shrink-0">
+        <div className="relative min-w-0 w-full md:w-72 shrink-0">
           <Search
             size={14}
             className="absolute start-3 top-1/2 -translate-y-1/2 text-stone-400 pointer-events-none"
@@ -102,7 +102,7 @@ export function SweetsNav({
             <button
               type="button"
               onClick={() => onSearchChange('')}
-              aria-label="Clear search"
+              aria-label={dict.clearSearch}
               className="absolute end-2.5 top-1/2 -translate-y-1/2 text-stone-400 hover:text-stone-600 p-0.5 rounded-full"
             >
               <X size={13} />

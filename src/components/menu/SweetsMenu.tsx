@@ -65,10 +65,10 @@ export function SweetsMenu({ locale }: { locale: Locale }) {
 
       {/* ── Search Results Mode ── */}
       {filteredDishes !== null ? (
-        <section aria-label="Search results" className="space-y-6">
+        <section aria-label={dict.searchResults} className="space-y-6">
           <div className="flex items-baseline justify-between border-b border-[var(--palette-stone-beige)]/40 pb-3">
             <h2 className="font-serif text-xl sm:text-2xl font-bold text-[var(--palette-espresso)]">
-              Risultati della ricerca: &ldquo;{searchQuery}&rdquo;
+              {dict.searchResults}: &ldquo;{searchQuery}&rdquo;
             </h2>
             <span className="text-xs font-bold text-[var(--palette-italian-red)] tabular-nums">
               {dict.dessertCount(filteredDishes.length)}
@@ -178,6 +178,7 @@ export function SweetsMenu({ locale }: { locale: Locale }) {
         dish={activeDish}
         locale={locale}
         onClose={() => setActiveDish(null)}
+        showAllergens={false}
       />
     </div>
   );

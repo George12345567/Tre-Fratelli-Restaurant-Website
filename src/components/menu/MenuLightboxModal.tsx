@@ -10,9 +10,10 @@ interface MenuLightboxModalProps {
   dish: Dish | null;
   locale: Locale;
   onClose: () => void;
+  showAllergens?: boolean;
 }
 
-export function MenuLightboxModal({ dish, locale, onClose }: MenuLightboxModalProps) {
+export function MenuLightboxModal({ dish, locale, onClose, showAllergens = true }: MenuLightboxModalProps) {
   useEffect(() => {
     if (!dish) return;
 
@@ -94,7 +95,7 @@ export function MenuLightboxModal({ dish, locale, onClose }: MenuLightboxModalPr
             &ldquo;{getLocalized(dish.description, locale)}&rdquo;
           </p>
 
-          {dish.allergens.length > 0 && (
+          {showAllergens && dish.allergens.length > 0 && (
             <div className="pt-2 border-t border-[var(--palette-stone-beige)]/40 flex items-center gap-2 text-[11px] text-[var(--palette-espresso)]/65">
               <span className="font-semibold text-[var(--palette-espresso)]">
                 {locale === 'ar' ? 'مسببات الحساسية:' : locale === 'it' ? 'Allergeni:' : 'Allergens:'}
