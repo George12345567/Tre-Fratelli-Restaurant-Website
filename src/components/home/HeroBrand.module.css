@@ -3,27 +3,20 @@
   display: block;
   width: clamp(12rem, 46vw, 15rem);
   margin: 0 auto 1.25rem;
-  padding: .5rem .75rem;
-  border: 1px solid #d6b875;
-  border-radius: 1rem;
-  background: #fffdf7;
-  box-shadow: 0 8px 32px rgb(0 0 0 / 22%), 0 0 0 4px rgb(214 184 117 / 12%);
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  appearance: none;
   cursor: zoom-in;
 }
 
 .brand:focus-visible { outline: 2px solid white; outline-offset: 7px; }
-.logo { display: block; width: 100%; height: auto; }
-.expand {
-  position: absolute;
-  bottom: .4rem;
-  inset-inline-end: .4rem;
-  display: grid;
-  place-items: center;
-  width: 1.75rem;
-  height: 1.75rem;
-  border-radius: 50%;
-  background: #2b1f1a;
-  color: #ead5a8;
+.logo {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 1px 1px rgb(255 239 190 / 35%)) drop-shadow(0 4px 16px rgb(0 0 0 / 60%));
 }
 
 .viewer {
@@ -84,7 +77,7 @@
 }
 @media (max-width: 450px) { .toolbar h2 span { display: none; } }
 @media (max-height: 700px) {
-  .brand { width: 10rem; margin-bottom: .75rem; padding: .25rem .5rem; }
+  .brand { width: 10rem; margin-bottom: .75rem; }
 }
 @media (max-height: 500px) and (orientation: landscape) {
   .brand { width: 7rem; margin-bottom: .5rem; }

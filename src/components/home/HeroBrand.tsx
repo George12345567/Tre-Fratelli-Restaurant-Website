@@ -3,7 +3,7 @@
 import { useEffect, useId, useRef, useState } from 'react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
-import { Maximize2, Minus, Plus, X } from 'lucide-react';
+import { Minus, Plus, X } from 'lucide-react';
 import styles from './HeroBrand.module.css';
 
 const LOGO_SRC = '/images/brand/tre-fratelli-official-logo.png';
@@ -53,7 +53,6 @@ export function HeroBrand() {
           preload
           className={styles.logo}
         />
-        <span className={styles.expand} aria-hidden="true"><Maximize2 size={14} /></span>
       </button>
 
       <dialog
