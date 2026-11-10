@@ -10,7 +10,6 @@ import { RestaurantVisitSection } from './RestaurantVisitSection';
 
 export function RestaurantExperience({ locale }: { locale: Locale }) {
   const text = (key: keyof typeof restaurantEditorial) => getLocalized(restaurantEditorial[key], locale);
-  const arrow = locale === 'ar' ? 'rotate-180' : '';
 
   return (
     <>
@@ -43,7 +42,7 @@ export function RestaurantExperience({ locale }: { locale: Locale }) {
               ))}
               <li className="pt-5">
                 <Link href="/menu" className="inline-flex min-h-11 items-center gap-3 text-sm font-semibold text-[var(--palette-italian-red)] hover:underline underline-offset-8">
-                  {text('menu')}<ArrowRight size={16} className={arrow} aria-hidden="true" />
+                  {text('menu')}<ArrowRight size={16} aria-hidden="true" />
                 </Link>
               </li>
             </ol>

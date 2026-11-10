@@ -87,7 +87,7 @@ export function DrinkRowItem({
             {localizedPairing && (
               <p className="font-serif italic text-[var(--palette-espresso)]/80 leading-relaxed">
                 <span className="font-sans font-medium not-italic text-[11px] text-[var(--palette-aged-brass)] uppercase me-1">
-                  {locale === 'ar' ? 'المواءمة:' : locale === 'it' ? 'Abbinamento:' : 'Pairing:'}
+                  {locale === 'it' ? 'Abbinamento:' : 'Pairing:'}
                 </span>
                 {localizedPairing}
               </p>
@@ -111,7 +111,7 @@ export function DrinkRowItem({
                 >
                   <ZoomIn size={12} />
                   <span>
-                    {locale === 'ar' ? 'عرض صورة المشروب' : locale === 'it' ? 'Vedi foto' : 'View photo'}
+                    {locale === 'it' ? 'Vedi foto' : 'View photo'}
                   </span>
                 </button>
               </div>

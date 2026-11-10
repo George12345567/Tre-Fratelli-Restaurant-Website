@@ -30,7 +30,6 @@ export function MenuExplorer({ locale }: MenuExplorerProps) {
   const [activeCategory, setActiveCategory] = useState<DishCategory | 'all'>('all');
   const [activeTag, setActiveTag] = useState<DishTag | 'all'>('all');
   const [searchQuery, setSearchQuery] = useState('');
-  const isRtl = locale === 'ar';
 
   const filteredDishes = useMemo(() => {
     return menuDishes.filter((dish) => {
@@ -42,10 +41,8 @@ export function MenuExplorer({ locale }: MenuExplorerProps) {
         query === '' ||
         dish.name.it.toLowerCase().includes(query) ||
         dish.name.en.toLowerCase().includes(query) ||
-        dish.name.ar.toLowerCase().includes(query) ||
         dish.description.it.toLowerCase().includes(query) ||
-        dish.description.en.toLowerCase().includes(query) ||
-        dish.description.ar.toLowerCase().includes(query);
+        dish.description.en.toLowerCase().includes(query);
 
       return matchCategory && matchTag && matchSearch;
     });
@@ -60,7 +57,7 @@ export function MenuExplorer({ locale }: MenuExplorerProps) {
           <Search
             size={18}
             className={`absolute top-1/2 -translate-y-1/2 text-[var(--palette-espresso)]/50 ${
-              isRtl ? 'right-4' : 'left-4'
+              'left-4'
             }`}
             aria-hidden="true"
           />
@@ -70,7 +67,7 @@ export function MenuExplorer({ locale }: MenuExplorerProps) {
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder={t('menu.search')}
             className={`w-full py-3.5 rounded-full border border-[var(--palette-stone-beige)] bg-[var(--palette-warm-ivory)]/40 focus:bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[var(--palette-aged-brass)] text-[var(--palette-espresso)] transition-all ${
-              isRtl ? 'pr-11 pl-10' : 'pl-11 pr-10'
+              'pl-11 pr-10'
             }`}
           />
           {searchQuery && (
@@ -78,7 +75,7 @@ export function MenuExplorer({ locale }: MenuExplorerProps) {
               type="button"
               onClick={() => setSearchQuery('')}
               className={`absolute top-1/2 -translate-y-1/2 text-[var(--palette-espresso)]/50 hover:text-black ${
-                isRtl ? 'left-4' : 'right-4'
+                'right-4'
               }`}
             >
               <X size={16} />

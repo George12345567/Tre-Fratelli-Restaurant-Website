@@ -22,7 +22,6 @@ interface CrownQuickHubProps {
 export function CrownQuickHub({ locale }: CrownQuickHubProps) {
   const [isOpen, setIsOpen] = useState(false);
   const hubRef = useRef<HTMLDivElement>(null);
-  const isRtl = locale === 'ar';
 
   // Close on outside click or Escape key
   useEffect(() => {
@@ -62,8 +61,6 @@ export function CrownQuickHub({ locale }: CrownQuickHubProps) {
         aria-label={
           locale === 'it'
             ? 'Apri menu Tre Fratelli rapido'
-            : locale === 'ar'
-            ? 'فتح قائمة Tre Fratelli واللغات'
             : 'Open Tre Fratelli Quick Hub'
         }
         className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden shadow-[0_8px_25px_rgba(122,46,42,0.45)] border-2 border-[var(--palette-aged-brass)] hover:scale-110 active:scale-95 transition-all duration-300 cursor-pointer group bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--palette-aged-brass)]"
@@ -116,10 +113,10 @@ export function CrownQuickHub({ locale }: CrownQuickHubProps) {
             </button>
           </div>
 
-          {/* ── Language Picker (بيكر بتاع اللغات الجميل) ── */}
+          {/* ── Language Picker ── */}
           <div className="space-y-1">
             <span className="text-[10px] uppercase font-bold tracking-wider text-[var(--palette-espresso)]/55 px-1 block">
-              {locale === 'it' ? 'Lingua / Language / اللغة' : locale === 'ar' ? 'اختر لغة الموقع' : 'Choose Language'}
+              {locale === 'it' ? 'Lingua / Language' : 'Choose Language'}
             </span>
             <div className="w-full">
               <LanguageDropdown currentLocale={locale} variant="mobile" onSelect={() => setIsOpen(false)} />
@@ -129,9 +126,9 @@ export function CrownQuickHub({ locale }: CrownQuickHubProps) {
           {/* Divider */}
           <div className="h-px bg-black/6" aria-hidden="true" />
 
-          {/* ── The 3 Core Links (روابط سريعة ونظيفة) ── */}
+          {/* ── The 3 Core Links ── */}
           <div className="space-y-1.5">
-            {/* 1. لينك للمنيو */}
+            {/* 1. Full menu */}
             <Link
               href="/menu"
               onClick={() => setIsOpen(false)}
@@ -145,25 +142,21 @@ export function CrownQuickHub({ locale }: CrownQuickHubProps) {
                   <span className="font-serif text-xs sm:text-sm font-bold text-[var(--palette-espresso)] block truncate">
                     {locale === 'it'
                       ? 'Il Nostro Menu Completo'
-                      : locale === 'ar'
-                      ? 'قائمة الطعام والمنيو'
                       : 'Explore Full Menu'}
                   </span>
                   <span className="text-[10px] text-[var(--palette-espresso)]/60 block truncate">
-                    {locale === 'it' ? 'Tutte le specialità' : locale === 'ar' ? 'جميع الأطباق والمشروبات' : 'All culinary chapters'}
+                    {locale === 'it' ? 'Tutte le specialità' : 'All culinary chapters'}
                   </span>
                 </div>
               </div>
 
               <ArrowRight
                 size={14}
-                className={`text-[var(--palette-espresso)]/40 group-hover:text-[var(--palette-italian-red)] transition-transform group-hover:translate-x-1 ${
-                  isRtl ? 'rotate-180 group-hover:-translate-x-1' : ''
-                }`}
+                className="text-[var(--palette-espresso)]/40 group-hover:text-[var(--palette-italian-red)] transition-transform group-hover:translate-x-1"
               />
             </Link>
 
-            {/* 1.5. تحميل قائمة الطعام PDF المعتمدة */}
+            {/* 1.5. Official menu PDF */}
             <a
               href="/menu/tre-fratelli-menu.pdf"
               download="Tre-Fratelli-Menu.pdf"
@@ -178,12 +171,10 @@ export function CrownQuickHub({ locale }: CrownQuickHubProps) {
                   <span className="font-serif text-xs sm:text-sm font-bold text-[var(--palette-espresso)] block truncate">
                     {locale === 'it'
                       ? 'Scarica Menù PDF'
-                      : locale === 'ar'
-                      ? 'تحميل المنيو الكامل PDF'
                       : 'Download PDF Menu'}
                   </span>
                   <span className="text-[10px] text-[var(--palette-espresso)]/60 block truncate">
-                    {locale === 'it' ? '10 pagine · Originale (6.4 MB)' : locale === 'ar' ? 'النسخة الأصلية · 10 صفحات' : '10 pages · Official (6.4 MB)'}
+                    {locale === 'it' ? '10 pagine · Originale (6.4 MB)' : '10 pages · Official (6.4 MB)'}
                   </span>
                 </div>
               </div>
@@ -194,7 +185,7 @@ export function CrownQuickHub({ locale }: CrownQuickHubProps) {
               />
             </a>
 
-            {/* 2. لينك لحجز طرابيزة */}
+            {/* 2. Reservations */}
             <Link
               href="/location"
               onClick={() => setIsOpen(false)}
@@ -208,25 +199,21 @@ export function CrownQuickHub({ locale }: CrownQuickHubProps) {
                   <span className="font-serif text-xs sm:text-sm font-bold text-[var(--palette-espresso)] block truncate">
                     {locale === 'it'
                       ? 'Prenota un Tavolo'
-                      : locale === 'ar'
-                      ? 'حجز طاولة بالمطعم'
                       : 'Reserve a Table'}
                   </span>
                   <span className="text-[10px] text-[var(--palette-espresso)]/60 block truncate">
-                    {locale === 'it' ? 'Pranzo e cena' : locale === 'ar' ? 'حجز مسبق فوري' : 'Lunch & dinner'}
+                    {locale === 'it' ? 'Pranzo e cena' : 'Lunch & dinner'}
                   </span>
                 </div>
               </div>
 
               <ArrowRight
                 size={14}
-                className={`text-[var(--palette-espresso)]/40 group-hover:text-[var(--palette-italian-red)] transition-transform group-hover:translate-x-1 ${
-                  isRtl ? 'rotate-180 group-hover:-translate-x-1' : ''
-                }`}
+                className="text-[var(--palette-espresso)]/40 group-hover:text-[var(--palette-italian-red)] transition-transform group-hover:translate-x-1"
               />
             </Link>
 
-            {/* 3. لينك لمعلومات التواصل والـ Google Maps -> الانتقال للـ Footer */}
+            {/* 3. Contacts and Google Maps in the footer */}
             <a
               href="#footer"
               onClick={(e) => {
@@ -249,8 +236,6 @@ export function CrownQuickHub({ locale }: CrownQuickHubProps) {
                   <span className="font-serif text-xs sm:text-sm font-bold text-[var(--palette-espresso)] block truncate">
                     {locale === 'it'
                       ? 'Contatti & Google Maps'
-                      : locale === 'ar'
-                      ? 'معلومات التواصل وخرائط Google'
                       : 'Contacts & Google Maps'}
                   </span>
                   <span className="text-[10px] text-[var(--palette-espresso)]/60 block truncate">
@@ -261,9 +246,7 @@ export function CrownQuickHub({ locale }: CrownQuickHubProps) {
 
               <ArrowRight
                 size={14}
-                className={`text-[var(--palette-espresso)]/40 group-hover:text-[var(--palette-italian-red)] transition-transform group-hover:translate-x-1 ${
-                  isRtl ? 'rotate-180 group-hover:-translate-x-1' : ''
-                }`}
+                className="text-[var(--palette-espresso)]/40 group-hover:text-[var(--palette-italian-red)] transition-transform group-hover:translate-x-1"
               />
             </a>
           </div>
@@ -280,8 +263,6 @@ export function CrownQuickHub({ locale }: CrownQuickHubProps) {
               <span>
                 {locale === 'it'
                   ? 'Apri su Google Maps'
-                  : locale === 'ar'
-                  ? 'فتح الموقع في Google Maps'
                   : 'Open on Google Maps'}
               </span>
               <ExternalLink size={12} className="opacity-80" />

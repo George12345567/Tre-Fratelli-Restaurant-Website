@@ -2,16 +2,13 @@
 
 import { Wine, CalendarDays, ArrowRight } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
-import type { Locale } from '@/i18n/routing';
 import type { SweetsDictionary } from './sweetsI18n';
 
 interface SweetsFooterBannerProps {
-  locale: Locale;
   dict: SweetsDictionary;
 }
 
-export function SweetsFooterBanner({ locale, dict }: SweetsFooterBannerProps) {
-  const isRtl = locale === 'ar';
+export function SweetsFooterBanner({ dict }: SweetsFooterBannerProps) {
 
   return (
     <section
@@ -54,9 +51,7 @@ export function SweetsFooterBanner({ locale, dict }: SweetsFooterBannerProps) {
             <span>{dict.pairingActionWine}</span>
             <ArrowRight
               size={14}
-              className={`transition-transform duration-200 group-hover:translate-x-0.5 ${
-                isRtl ? 'rotate-180 group-hover:-translate-x-0.5' : ''
-              }`}
+              className="transition-transform duration-200 group-hover:translate-x-0.5"
               aria-hidden="true"
             />
           </Link>

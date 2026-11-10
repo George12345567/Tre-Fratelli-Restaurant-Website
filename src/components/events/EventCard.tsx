@@ -14,7 +14,6 @@ interface EventCardProps {
 
 export function EventCard({ post, locale }: EventCardProps) {
   const t = useTranslations();
-  const isRtl = locale === 'ar';
 
   return (
     <article className="bg-white rounded-3xl overflow-hidden border border-[var(--palette-stone-beige)]/50 shadow-sm hover:shadow-xl hover:border-[var(--palette-aged-brass)]/40 transition-all duration-300 flex flex-col justify-between group">
@@ -86,7 +85,7 @@ export function EventCard({ post, locale }: EventCardProps) {
           className="text-xs font-bold text-[var(--palette-italian-red)] hover:text-[var(--palette-italian-red-dark)] inline-flex items-center gap-1.5 group-hover:underline cursor-pointer"
         >
           <span>{t('news.reserveSpot')}</span>
-          <ArrowRight size={13} className={isRtl ? 'rotate-180' : ''} aria-hidden="true" />
+          <ArrowRight size={13} aria-hidden="true" />
         </Link>
       </div>
     </article>

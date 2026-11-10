@@ -48,7 +48,7 @@ export function DrinkLightboxModal({ drink, locale, onClose }: DrinkLightboxModa
         <button
           type="button"
           onClick={onClose}
-          aria-label={locale === 'ar' ? 'إغلاق' : locale === 'it' ? 'Chiudi' : 'Close'}
+          aria-label={locale === 'it' ? 'Chiudi' : 'Close'}
           className="absolute top-3 right-3 rtl:right-auto rtl:left-3 z-10 w-9 h-9 rounded-full bg-black/70 hover:bg-black text-white flex items-center justify-center transition-all shadow-md focus:outline-none focus:ring-2 focus:ring-white"
         >
           <X size={18} />
@@ -96,7 +96,7 @@ export function DrinkLightboxModal({ drink, locale, onClose }: DrinkLightboxModa
           {drink.pairing && (
             <div className="pt-2 border-t border-[var(--palette-stone-beige)]/40 space-y-1">
               <span className="text-[11px] uppercase tracking-wider font-semibold text-[var(--palette-italian-red)] block">
-                {locale === 'ar' ? 'توافق مقترح مع الأطباق:' : locale === 'it' ? 'Miglior Abbinamento:' : 'Recommended Food Pairing:'}
+                {locale === 'it' ? 'Miglior Abbinamento:' : 'Recommended Food Pairing:'}
               </span>
               <p className="text-xs sm:text-sm text-[var(--palette-espresso)]/85 leading-relaxed font-serif italic">
                 &ldquo;{getLocalized(drink.pairing, locale)}&rdquo;
@@ -111,7 +111,7 @@ export function DrinkLightboxModal({ drink, locale, onClose }: DrinkLightboxModa
               onClick={onClose}
               className="px-6 py-2 rounded-full bg-[var(--palette-espresso)] hover:bg-black text-white text-xs sm:text-sm font-semibold transition-all shadow-xs cursor-pointer"
             >
-              {locale === 'ar' ? 'إغلاق' : locale === 'it' ? 'Chiudi' : 'Close'}
+              {locale === 'it' ? 'Chiudi' : 'Close'}
             </button>
           </div>
         </div>

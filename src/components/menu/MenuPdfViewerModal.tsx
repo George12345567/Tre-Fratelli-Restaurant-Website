@@ -17,7 +17,6 @@ export function MenuPdfViewerModal({
 }: MenuPdfViewerModalProps) {
   const dialogRef = useRef<HTMLDivElement>(null);
   const pdfUrl = '/menu/tre-fratelli-menu.pdf';
-  const isRtl = locale === 'ar';
 
   useEffect(() => {
     if (!isOpen) return;
@@ -57,7 +56,7 @@ export function MenuPdfViewerModal({
       <div
         ref={dialogRef}
         className="relative w-full max-w-5xl h-[92vh] sm:h-[88vh] bg-white rounded-2xl sm:rounded-3xl shadow-2xl flex flex-col overflow-hidden border border-white/30"
-        dir={isRtl ? 'rtl' : 'ltr'}
+        dir="ltr"
       >
         {/* ── Modal Header ── */}
         <div className="flex items-center justify-between px-4 sm:px-6 py-3.5 sm:py-4 bg-[var(--palette-warm-ivory)] border-b border-[var(--palette-stone-beige)]/60 shrink-0">
@@ -72,15 +71,11 @@ export function MenuPdfViewerModal({
               >
                 {locale === 'it'
                   ? 'Menù Ufficiale Tre Fratelli — Ristorante & Pizzeria'
-                  : locale === 'ar'
-                  ? 'قائمة طعام Tre Fratelli الرسمية الكاملة'
                   : 'Official Tre Fratelli Menu — Restaurant & Pizzeria'}
               </h2>
               <p className="text-[11px] text-[var(--palette-espresso)]/65 truncate">
                 {locale === 'it'
                   ? 'Documento originale completo · 10 Pagine · Allergeni & Prezzi'
-                  : locale === 'ar'
-                  ? 'الملف الأصلي المعتمد · 10 صفحات · مبيّن بها الأسعار ومسببات الحساسية'
                   : 'Full original document · 10 Pages · Allergens & Official Pricing'}
               </p>
             </div>
@@ -97,14 +92,12 @@ export function MenuPdfViewerModal({
               title={
                 locale === 'it'
                   ? 'Apri in nuova scheda'
-                  : locale === 'ar'
-                  ? 'فتح في علامة تبويب جديدة'
                   : 'Open in new tab'
               }
             >
               <ExternalLink size={13} aria-hidden="true" />
               <span className="hidden sm:inline">
-                {locale === 'it' ? 'Nuova Scheda' : locale === 'ar' ? 'نافذة جديدة' : 'New Tab'}
+                {locale === 'it' ? 'Nuova Scheda' : 'New Tab'}
               </span>
             </a>
 
@@ -113,10 +106,10 @@ export function MenuPdfViewerModal({
               href={pdfUrl}
               download="Tre-Fratelli-Menu.pdf"
               className="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 rounded-full text-xs font-semibold bg-[var(--palette-italian-red)] text-white hover:bg-[var(--palette-italian-red-dark)] transition-colors shadow-xs"
-              title={locale === 'it' ? 'Scarica PDF' : locale === 'ar' ? 'تحميل الملف' : 'Download PDF'}
+              title={locale === 'it' ? 'Scarica PDF' : 'Download PDF'}
             >
               <Download size={13} aria-hidden="true" />
-              <span>{locale === 'it' ? 'Scarica' : locale === 'ar' ? 'تحميل' : 'Download'}</span>
+              <span>{locale === 'it' ? 'Scarica' : 'Download'}</span>
             </a>
 
             {/* Close Modal Button */}
@@ -124,7 +117,7 @@ export function MenuPdfViewerModal({
               type="button"
               onClick={onClose}
               className="p-1.5 sm:p-2 rounded-full text-[var(--palette-espresso)]/70 hover:text-black hover:bg-black/5 transition-colors cursor-pointer"
-              aria-label={locale === 'it' ? 'Chiudi' : locale === 'ar' ? 'إغلاق' : 'Close'}
+              aria-label={locale === 'it' ? 'Chiudi' : 'Close'}
             >
               <X size={18} />
             </button>
@@ -144,8 +137,6 @@ export function MenuPdfViewerModal({
             <p className="text-sm text-stone-700">
               {locale === 'it'
                 ? 'Visualizzazione integrata non disponibile su questo browser.'
-                : locale === 'ar'
-                ? 'المعاينة المباشرة غير مدعومة على هذا المتصفح.'
                 : 'Inline PDF viewer is not supported on this browser.'}
             </p>
             <a
@@ -153,7 +144,7 @@ export function MenuPdfViewerModal({
               download="Tre-Fratelli-Menu.pdf"
               className="px-4 py-2 rounded-full bg-[var(--palette-italian-red)] text-white text-xs font-bold"
             >
-              {locale === 'it' ? 'Scarica il Menù PDF' : locale === 'ar' ? 'تحميل ملف المنيو PDF' : 'Download Menu PDF'}
+              {locale === 'it' ? 'Scarica il Menù PDF' : 'Download Menu PDF'}
             </a>
           </noscript>
         </div>
@@ -163,8 +154,6 @@ export function MenuPdfViewerModal({
           <span>
             {locale === 'it'
               ? 'Consiglio: puoi ingrandire e scorrere tutte le 10 pagine direttamente dal visualizzatore.'
-              : locale === 'ar'
-              ? 'تلميح: يمكنك تكبير الصفحات والتنقل بين كافة الصفحات العشر مباشرة داخل المعاينة.'
               : 'Tip: you can zoom and flip through all 10 pages directly within the viewer.'}
           </span>
           <span className="font-semibold text-[var(--palette-espresso)]">

@@ -25,7 +25,6 @@ export function CinematicShowcase({ locale }: Props) {
   const [isMuted, setIsMuted] = useState(true);
   const [progress, setProgress] = useState(0);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const isRtl = locale === 'ar';
 
   const activeVideo = restaurantVideos[activeVideoIndex];
 
@@ -110,8 +109,6 @@ export function CinematicShowcase({ locale }: Props) {
           <span>
             {locale === 'it'
               ? 'Esperienza Cinematica Immersiva'
-              : locale === 'ar'
-              ? 'تجربة سينمائية حية بكامل الشاشة'
               : 'Immersive Cinematic Experience'}
           </span>
         </div>
@@ -119,16 +116,12 @@ export function CinematicShowcase({ locale }: Props) {
         <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-medium tracking-normal text-white drop-shadow-md leading-[1.15] max-w-4xl mx-auto">
           {locale === 'it'
             ? 'Un Banchetto per i Sensi'
-            : locale === 'ar'
-            ? 'وليمة تأسر الحواس والأبصار'
             : 'A Feast for All Senses'}
         </h2>
 
         <p className="text-xs sm:text-base text-stone-200/90 max-w-2xl mx-auto mt-3 leading-relaxed drop-shadow-sm px-2">
           {locale === 'it'
             ? 'Dalle fiamme del forno a legna alla freschezza del pescato mediterraneo: vivi l anima autentica della nostra cucina.'
-            : locale === 'ar'
-            ? 'من لهب فرن الحطب المتوقد إلى طزاجة ثمار البحر المتوسطية: عش أجواء مطبخنا وتفاصيل أطباقنا الفاخرة.'
             : 'From the glowing embers of our wood-fired hearth to pristine Mediterranean seafood: experience the soul of our kitchen.'}
         </p>
       </header>
@@ -163,7 +156,7 @@ export function CinematicShowcase({ locale }: Props) {
             <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[var(--palette-aged-brass)]">
               <Sparkles size={13} className="shrink-0" aria-hidden="true" />
               <span>
-                {locale === 'it' ? 'Scena Attiva' : locale === 'ar' ? 'المشهد المعروض' : 'Current Scene'}
+                {locale === 'it' ? 'Scena Attiva' : 'Current Scene'}
               </span>
               <span className="text-white/40">•</span>
               <span className="text-white/80 font-mono text-[11px]">
@@ -192,14 +185,14 @@ export function CinematicShowcase({ locale }: Props) {
                 <>
                   <VolumeX size={15} aria-hidden="true" />
                   <span className="hidden sm:inline">
-                    {locale === 'it' ? 'Attiva Audio' : locale === 'ar' ? 'تشغيل الصوت' : 'Unmute'}
+                    {locale === 'it' ? 'Attiva Audio' : 'Unmute'}
                   </span>
                 </>
               ) : (
                 <>
                   <Volume2 size={15} className="text-[var(--palette-italian-red)]" aria-hidden="true" />
                   <span className="hidden sm:inline">
-                    {locale === 'it' ? 'Disattiva Audio' : locale === 'ar' ? 'كتم الصوت' : 'Mute'}
+                    {locale === 'it' ? 'Disattiva Audio' : 'Mute'}
                   </span>
                 </>
               )}
@@ -269,7 +262,7 @@ export function CinematicShowcase({ locale }: Props) {
           >
             <CalendarDays size={14} aria-hidden="true" />
             <span>
-              {locale === 'it' ? 'Prenota un Tavolo' : locale === 'ar' ? 'احجز طاولتك الآن' : 'Reserve a Table'}
+              {locale === 'it' ? 'Prenota un Tavolo' : 'Reserve a Table'}
             </span>
           </Link>
 
@@ -278,9 +271,9 @@ export function CinematicShowcase({ locale }: Props) {
             className="inline-flex items-center gap-2 px-6 sm:px-7 py-3 rounded-full liquid-glass-pill text-white hover:bg-white/20 text-xs sm:text-sm font-semibold transition-all border border-white/40"
           >
             <span>
-              {locale === 'it' ? 'Esplora il Menu' : locale === 'ar' ? 'استكشف قائمة الطعام' : 'Explore Menu'}
+              {locale === 'it' ? 'Esplora il Menu' : 'Explore Menu'}
             </span>
-            <ArrowRight size={14} className={isRtl ? 'rotate-180' : ''} aria-hidden="true" />
+            <ArrowRight size={14} aria-hidden="true" />
           </Link>
         </div>
       </footer>

@@ -1,10 +1,8 @@
-export type LocaleCode = 'it' | 'en' | 'ar';
+import type { Locale } from '@/i18n/routing';
 
-export type LocalizedText = {
-  it: string;
-  en: string;
-  ar: string;
-};
+export type LocaleCode = Locale;
+
+export type LocalizedText = Record<Locale, string>;
 
 export type DishCategory =
   | 'Antipasti'
@@ -99,7 +97,7 @@ export interface ProcessStep {
 }
 
 export function getLocalized(text: LocalizedText, locale: string): string {
-  if (locale === 'it' || locale === 'en' || locale === 'ar') {
+  if (locale === 'it' || locale === 'en') {
     return text[locale] || text.it || text.en || '';
   }
   return text.it || text.en || '';

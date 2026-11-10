@@ -25,7 +25,7 @@
 - **Framework & Stack**: Next.js (App Router), React 19, TypeScript, Tailwind CSS v4, Motion, `next-intl`.
 - **Modularity**:
   - Separate UI presentation components from data/logic hooks and domain services.
-  - Maintain internationalization consistency across English, Arabic, and Italian locales.
+  - Maintain internationalization consistency across the supported Italian and English locales.
 - **Verification Gates**:
   - Always verify changes with `pnpm run lint` and `pnpm run typecheck` or `pnpm run build`.
   - Zero TypeScript errors and zero ESLint warnings (`--max-warnings=0`).

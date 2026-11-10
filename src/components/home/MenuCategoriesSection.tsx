@@ -15,7 +15,6 @@ import { MenuPdfViewerModal } from '@/components/menu/MenuPdfViewerModal';
 
 interface Props {
   locale: string;
-  isRtl: boolean;
   translations: {
     viewMenu: string;
   };
@@ -23,7 +22,6 @@ interface Props {
 
 export function MenuCategoriesSection({
   locale,
-  isRtl,
   translations,
 }: Props) {
   const [activeMode, setActiveMode] = useState<'food' | 'wine'>('food');
@@ -64,8 +62,6 @@ export function MenuCategoriesSection({
             <span className="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-[var(--palette-italian-red)]">
               {locale === 'it'
                 ? 'La Nostra Offerta Gastronomica'
-                : locale === 'ar'
-                ? 'تشكيلات المطبخ والقبو الإيطالي'
                 : 'Artisanal Kitchen & Cellar'}
             </span>
             <span className="w-6 h-px bg-[var(--palette-aged-brass)]/70" aria-hidden="true" />
@@ -74,16 +70,12 @@ export function MenuCategoriesSection({
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight text-[var(--palette-espresso)] leading-tight">
             {locale === 'it'
               ? 'Esplora il Menu & La Cantina'
-              : locale === 'ar'
-              ? 'استكشف قائمة الطعام وقبو المشروبات'
               : 'Explore the Menu & Cellar'}
           </h2>
 
           <p className="text-xs sm:text-base text-[var(--palette-espresso)]/80 max-w-2xl mx-auto leading-relaxed font-light">
             {locale === 'it'
               ? 'Dalle creazioni artigianali dei fratelli ai calici più pregiati: seleziona una sezione per scoprirne le specialità.'
-              : locale === 'ar'
-              ? 'من إبداعات الأطباق الطازجة إلى أعتق أصناف النبيذ والمشروبات: اختر القسم لتصفح تفاصيله وصوره بوضوح.'
               : 'From fresh culinary masterworks to fine cellar labels: choose a chapter to explore unobstructed photos and highlights.'}
           </p>
         </div>
@@ -104,8 +96,6 @@ export function MenuCategoriesSection({
               <span>
                 {locale === 'it'
                   ? 'La Cucina dei Fratelli (6 Sezioni)'
-                  : locale === 'ar'
-                  ? 'مطبخ الإخوة الثلاثة (6 أقسام)'
                   : 'The Brothers’ Kitchen (6 Chapters)'}
               </span>
             </button>
@@ -123,8 +113,6 @@ export function MenuCategoriesSection({
               <span>
                 {locale === 'it'
                   ? 'La Cantina & Mixology (3 Sezioni)'
-                  : locale === 'ar'
-                  ? 'قبو المشروبات والبار (3 أقسام)'
                   : 'Cellar & Mixology (3 Chapters)'}
               </span>
             </button>
@@ -137,14 +125,12 @@ export function MenuCategoriesSection({
           activeCategoryId={activeCategoryId}
           onSelectCategory={handleSelectCategory}
           locale={locale}
-          isRtl={isRtl}
         />
 
         {/* ── Spotlight Hero Card ── */}
         <MenuCategoryHeroCard
           category={activeCategory}
           locale={locale}
-          isRtl={isRtl}
           activeMode={activeMode}
           onOpenPdfModal={() => setIsPdfModalOpen(true)}
         />
@@ -164,9 +150,7 @@ export function MenuCategoriesSection({
             <span>{translations.viewMenu}</span>
             <ArrowRight
               size={16}
-              className={`transition-transform duration-300 group-hover:translate-x-1 ${
-                isRtl ? 'rotate-180 group-hover:-translate-x-1' : ''
-              }`}
+              className="transition-transform duration-300 group-hover:translate-x-1"
               aria-hidden="true"
             />
           </Link>

@@ -95,15 +95,15 @@ export default async function LocationPage({ params }: PageProps) {
 
             <div className="space-y-2.5 text-xs sm:text-sm text-[var(--palette-espresso)]/85">
               <div className="flex justify-between items-center py-1.5 border-b border-black/5">
-                <span className="font-semibold">{locale === 'it' ? 'Lunedì' : locale === 'ar' ? 'الاثنين' : 'Monday'}</span>
+                <span className="font-semibold">{locale === 'it' ? 'Lunedì' : 'Monday'}</span>
                 <span className="font-mono font-bold text-[var(--palette-espresso)]">12:00 – 15:00</span>
               </div>
               <div className="flex justify-between items-center py-1.5 border-b border-black/5">
-                <span className="font-semibold">{locale === 'it' ? 'Martedì – Sabato' : locale === 'ar' ? 'الثلاثاء – السبت' : 'Tuesday – Saturday'}</span>
+                <span className="font-semibold">{locale === 'it' ? 'Martedì – Sabato' : 'Tuesday – Saturday'}</span>
                 <span className="font-mono font-bold text-[var(--palette-espresso)] text-end">12:00–15 · 18:30–00:00</span>
               </div>
               <div className="flex justify-between items-center py-1.5 border-b border-black/5">
-                <span className="font-semibold">{locale === 'it' ? 'Domenica' : locale === 'ar' ? 'الأحد' : 'Sunday'}</span>
+                <span className="font-semibold">{locale === 'it' ? 'Domenica' : 'Sunday'}</span>
                 <span className="font-mono font-bold text-[var(--palette-italian-red)]">12:00 – 00:00</span>
               </div>
             </div>
@@ -150,8 +150,6 @@ export default async function LocationPage({ params }: PageProps) {
               <span>
                 {locale === 'it'
                   ? 'Apri su Google Maps'
-                  : locale === 'ar'
-                  ? 'فتح موقع المطعم على خرائط Google'
                   : 'Open on Google Maps'}
               </span>
             </a>

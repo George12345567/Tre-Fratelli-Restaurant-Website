@@ -35,7 +35,7 @@ export function DishCard({ dish, locale, onOpenLightbox }: DishCardProps) {
               {dish.name.it}
             </h4>
 
-            {/* Translated Title if viewing in English or Arabic */}
+            {/* Translated Title if viewing in English */}
             {locale !== 'it' && (
               <p className="text-xs font-medium text-[var(--palette-espresso)]/75 pt-0.5">
                 {getLocalized(dish.name, locale)}
@@ -61,9 +61,7 @@ export function DishCard({ dish, locale, onOpenLightbox }: DishCardProps) {
             <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-900 border border-amber-300/50">
               <Sparkles size={10} aria-hidden="true" />
               <span>
-                {locale === 'ar'
-                  ? 'طبق الدار المميز'
-                  : locale === 'it'
+                {locale === 'it'
                   ? 'Della Casa'
                   : 'Signature'}
               </span>
@@ -72,25 +70,25 @@ export function DishCard({ dish, locale, onOpenLightbox }: DishCardProps) {
 
           {dish.tags.includes('seafood') && (
             <span className="px-2 py-0.5 rounded-full text-[10px] font-medium bg-sky-50 text-sky-800 border border-sky-200/50">
-              {locale === 'ar' ? 'بحري طازج' : locale === 'it' ? 'Mare' : 'Seafood'}
+              {locale === 'it' ? 'Mare' : 'Seafood'}
             </span>
           )}
 
           {dish.tags.includes('meat') && (
             <span className="px-2 py-0.5 rounded-full text-[10px] font-medium bg-orange-50 text-orange-800 border border-orange-200/50">
-              {locale === 'ar' ? 'لحوم مختارة' : locale === 'it' ? 'Terra' : 'Meat'}
+              {locale === 'it' ? 'Terra' : 'Meat'}
             </span>
           )}
 
           {dish.tags.includes('vegetarian') && (
             <span className="px-2 py-0.5 rounded-full text-[10px] font-medium bg-emerald-50 text-emerald-800 border border-emerald-200/50">
-              {locale === 'ar' ? 'نباتي' : locale === 'it' ? 'Vegetariano' : 'Vegetarian'}
+              {locale === 'it' ? 'Vegetariano' : 'Vegetarian'}
             </span>
           )}
 
           {dish.tags.includes('raw') && (
             <span className="px-2 py-0.5 rounded-full text-[10px] font-medium bg-purple-50 text-purple-800 border border-purple-200/50">
-              {locale === 'ar' ? 'طازج نيء' : locale === 'it' ? 'Crudo' : 'Raw Bar'}
+              {locale === 'it' ? 'Crudo' : 'Raw Bar'}
             </span>
           )}
 
@@ -123,9 +121,7 @@ export function DishCard({ dish, locale, onOpenLightbox }: DishCardProps) {
           type="button"
           onClick={() => onOpenLightbox(dish)}
           title={
-            locale === 'ar'
-              ? 'انقر لتكبير صورة الطبق'
-              : locale === 'it'
+            locale === 'it'
               ? 'Clicca per ingrandire la foto'
               : 'Click to enlarge photo'
           }

@@ -8,12 +8,10 @@ export const dessertDishes: Dish[] = [
     name: {
       it: "Croccante all'Amarena",
       en: "Amarena Cherry Crunch Semifreddo",
-      ar: 'كروكانتي كرز أمارينا سيمفريدو',
     },
     description: {
       it: "Dessert semifreddo con crema al gusto vaniglia, cuore morbido all'amarena, decorato con mandorle caramellizzate.",
       en: "Vanilla cream semifreddo with a soft black cherry heart, decorated with caramelized almonds.",
-      ar: "حلوى سيمفريدو بكريمة الفانيليا وقلب من كرز الأمارينا، مزينة باللوز المكرمل.",
     },
     price: '€6,00',
     image: '/images/sweet-menu/des-croccante-amarena.webp',
@@ -26,12 +24,10 @@ export const dessertDishes: Dish[] = [
     name: {
       it: 'Croccante al Cioccolato e Caramello',
       en: 'Chocolate & Caramel Crunch Dome',
-      ar: 'قبة كروكانتي الشوكولاتة والكراميل',
     },
     description: {
       it: 'Elegante cupolina di semifreddo al cioccolato con cuore di salsa al caramello, mandorle pralinate e goccia di caramello.',
       en: 'Chocolate semifreddo dome with a caramel sauce center, decorated with praline almonds.',
-      ar: 'قبة سيمفريدو بالشوكولاتة مع قلب من صوص الكراميل ومزينة باللوز المحلى بالكراميل.',
     },
     price: '€6,00',
     image: '/images/sweet-menu/des-croccante-cioccolato.webp',
@@ -44,12 +40,10 @@ export const dessertDishes: Dish[] = [
     name: {
       it: 'Cremoso ai Frutti Rossi',
       en: 'Red Berries Cream Delight',
-      ar: 'كريموزو التوت البري الأحمر والشوكولاتة البيضاء',
     },
     description: {
       it: 'Pan di Spagna con crema al gusto vaniglia, cuore ai frutti rossi, decorato con cioccolato bianco e salsa ai frutti rossi.',
       en: 'Sponge cake with vanilla cream, red berry heart, decorated with white chocolate and berry sauce.',
-      ar: 'كعكة إسفنجية بكريمة الفانيليا وقلب من التوت الأحمر، مزينة بالشوكولاتة البيضاء وصلصة التوت.',
     },
     price: '€6,00',
     tags: ['dessert'],
@@ -61,12 +55,10 @@ export const dessertDishes: Dish[] = [
     name: {
       it: 'Semifreddo al Torroncino',
       en: 'Nougat Torroncino Semifreddo',
-      ar: 'سيمفريدو النوجا الإيطالية تورونشينو',
     },
     description: {
       it: 'Gelato semifreddo al torroncino decorato con granella di nocciole pralinate.',
       en: 'Torroncino nougat semifreddo gelato decorated with crushed praline hazelnuts.',
-      ar: 'جيلاتو سيمفريدو بنكهة نوجا التورونشينو مزين بقطع البندق المكرمل.',
     },
     price: '€6,00',
     image: '/images/sweet-menu/des-semifreddo-torroncino.webp',
@@ -79,12 +71,10 @@ export const dessertDishes: Dish[] = [
     name: {
       it: 'Semifreddo al Vecchio Amaro del Capo',
       en: 'Vecchio Amaro del Capo Semifreddo',
-      ar: 'سيمفريدو أمارو ديل كابو الإيطالي',
     },
     description: {
       it: "Iconico semifreddo Bindi con crema e cuore liquido al Vecchio Amaro del Capo decorato con crumble al burro.",
       en: "Iconic Bindi semifreddo with a liquid Vecchio Amaro del Capo center and butter crumble.",
-      ar: "سيمفريدو بيندي الأيقوني بكريمة وقلب سائل من أمارو ديل كابو ومزين بكرامبل الزبدة.",
     },
     price: '€6,00',
     image: '/images/sweet-menu/des-semifreddo-amaro-capo.webp',
@@ -97,12 +87,10 @@ export const dessertDishes: Dish[] = [
     name: {
       it: 'Semifreddo al Cioccolato e Nocciola',
       en: 'Chocolate & Hazelnut Semifreddo',
-      ar: 'سيمفريدو الشوكولاتة والبندق',
     },
     description: {
       it: 'Delizioso semifreddo al cioccolato e pasta di nocciole, decorato con granella di nocciole tostate.',
       en: 'Chocolate and Italian hazelnut semifreddo, garnished with toasted chopped hazelnuts.',
-      ar: 'سيمفريدو الشوكولاتة الغنية ومعجون البندق الإيطالي، مزين بقطع البندق المحمص.',
     },
     price: '€6,00',
     image: '/images/sweet-menu/des-semifreddo-ciocco-nocciola.webp',
@@ -115,12 +103,10 @@ export const dessertDishes: Dish[] = [
     name: {
       it: 'Cocco Nocciola',
       en: 'Coconut & Hazelnut Delight',
-      ar: 'بسكويت جوز الهند والبندق',
     },
     description: {
       it: 'Biscotto alla nocciola farcito con crema al gusto di cocco e crema alla nocciola, decorato con cocco rapè.',
       en: 'Hazelnut biscuit filled with coconut and hazelnut cream, finished with shredded coconut.',
-      ar: 'بسكويت البندق محشو بكريمة جوز الهند وكريمة البندق، مزين بجوز الهند المبشور.',
     },
     price: '€6,00',
     image: '/images/sweet-menu/des-cocco-nocciola.webp',
@@ -133,12 +119,10 @@ export const dessertDishes: Dish[] = [
     name: {
       it: 'Zuccotto Fiorentino',
       en: 'Florentine Zuccotto Dome',
-      ar: 'زوكوتو فلورنسي بالشوكولاتة والبرتقال المسكر',
     },
     description: {
       it: 'Soffice biscuit con creme semifredde alla vaniglia, arancia candita e gocce di cioccolato fondente.',
       en: 'Tuscan dome sponge cake filled with vanilla semifreddo cream, candied orange, and dark chocolate drops.',
-      ar: 'كعكة القبة التوسكانية مع كريمات السيمفريدو بالفانيليا، قشور البرتقال المسكرة، وحبيبات الشوكولاتة.',
     },
     price: '€6,00',
     image: '/images/sweet-menu/des-zuccotto.webp',
@@ -151,12 +135,10 @@ export const dessertDishes: Dish[] = [
     name: {
       it: 'Semifreddo al Caramello Salato e Cioccolato',
       en: 'Salted Caramel & Chocolate Semifreddo',
-      ar: 'سيمفريدو الكراميل المملح والشوكولاتة',
     },
     description: {
       it: 'Semifreddo con caramello salato, pepite di cioccolato e crumble croccante al burro.',
       en: 'Salted caramel semifreddo with chocolate chunks and crunchy butter crumble.',
-      ar: 'سيمفريدو الكراميل المملح مع قطع الشوكولاتة وكرامبل الزبدة المقرمش.',
     },
     price: '€6,00',
     image: '/images/sweet-menu/des-caramello-salato.webp',
@@ -169,12 +151,10 @@ export const dessertDishes: Dish[] = [
     name: {
       it: 'Crema Catalana in Coccio',
       en: 'Crema Catalana in Terracotta Bowl',
-      ar: 'كريما كاتالانا في وعاء الفخار التقليدي',
     },
     description: {
       it: 'Crema catalana tradizionale con crosta di zucchero caramellato a fiamma.',
       en: 'Traditional custard dessert in a clay dish with a crisp caramelized sugar crust.',
-      ar: 'كاسترد الكريما الكاتالانية الكلاسيكي مع طبقة السكر المكرمل المقرمشة بالفرن.',
     },
     price: '€5,00',
     image: '/images/sweet-menu/des-crema-catalana.webp',
@@ -189,12 +169,10 @@ export const dessertDishes: Dish[] = [
     name: {
       it: 'Tartufo Pistacchio',
       en: 'Pistachio Tartufo Gelato',
-      ar: 'تارتوفو الفستق الحلبي',
     },
     description: {
       it: 'Gelato semifreddo al pistacchio con cuore al pistacchio, decorato con nocciole pralinate e granella di pistacchio.',
       en: 'Pistachio semifreddo gelato with a pistachio heart, praline hazelnuts, and chopped pistachios.',
-      ar: 'جيلاتو سيمفريدو بالفستق مع قلب فستق غني، مزين بالبندق المحلى وقطع الفستق.',
     },
     price: '€6,00',
     image: '/images/sweet-menu/des-tartufo-pistacchio.webp',
@@ -207,12 +185,10 @@ export const dessertDishes: Dish[] = [
     name: {
       it: 'Tartufo Classico',
       en: 'Classic Chocolate & Zabaione Tartufo',
-      ar: 'تارتوفو الشوكولاتة والسابايون الكلاسيكي',
     },
     description: {
       it: 'Gelato al cioccolato e zabaione con cuore al cioccolato, ricoperto con granella di nocciole e cacao.',
       en: 'Chocolate and zabaione gelato with a liquid chocolate heart, coated with crushed hazelnuts and cocoa.',
-      ar: 'جيلاتو شوكولاتة وسابايون مع قلب شوكولاتة ذائبة، مغطى بفتات البندق والكاكاو.',
     },
     price: '€6,00',
     image: '/images/sweet-menu/des-tartufo-classico.webp',
@@ -225,12 +201,10 @@ export const dessertDishes: Dish[] = [
     name: {
       it: 'Tartufo Bianco',
       en: 'White Coffee & Zabaione Tartufo',
-      ar: 'تارتوفو أبيض بالقهوة والسابايون',
     },
     description: {
       it: 'Gelato allo zabaione e gelato al caffè con cuore morbido al caffè, ricoperto con granella di meringa.',
       en: 'Zabaione and espresso gelato with a soft coffee heart, enrobed in crunchy crushed meringue.',
-      ar: 'جيلاتو سابايون وجيلاتو القهوة مع قلب قهوة طري ومغطى بحبيبات المارينغ المقرمشة.',
     },
     price: '€6,00',
     image: '/images/sweet-menu/des-tartufo-bianco.webp',
@@ -243,12 +217,10 @@ export const dessertDishes: Dish[] = [
     name: {
       it: 'Flûte Limoncello',
       en: 'Limoncello Flûte',
-      ar: 'فلوت ليمونشيلو جيلاتو',
     },
     description: {
       it: 'Gelato al limone con variegatura al limoncello. Utilizziamo solo limoni italiani.',
       en: 'Italian lemon gelato rippled with authentic limoncello liqueur made with 100% Italian lemons.',
-      ar: 'جيلاتو الليمون الإيطالي الموشى بصلصة الليمونشيلو الطبيعية.',
     },
     price: '€6,00',
     image: '/images/sweet-menu/des-flute-limoncello.webp',
@@ -261,12 +233,10 @@ export const dessertDishes: Dish[] = [
     name: {
       it: 'Flûte Mango e Passion Fruit',
       en: 'Mango & Passion Fruit Flûte',
-      ar: 'فلوت المانجو وفاكهة الباشن فروت',
     },
     description: {
       it: 'Gelato al mango con variegatura al frutto della passione.',
       en: 'Refreshing mango gelato swirled with tropical passion fruit puree.',
-      ar: 'جيلاتو المانجو المنعش الموشى بصلصة الباشن فروت الاستوائية.',
     },
     price: '€6,00',
     image: '/images/sweet-menu/des-flute-mango.webp',
@@ -279,12 +249,10 @@ export const dessertDishes: Dish[] = [
     name: {
       it: 'Mandarino Ripieno',
       en: 'Stuffed Frozen Mandarin Sorbet',
-      ar: 'يوسفي محشو بسوربيه اليوسفي الطبيعي',
     },
     description: {
       it: 'Un profumato guscio di mandarino ripieno di sorbetto al mandarino tardivo di Ciaculli.',
       en: 'Natural whole frozen mandarin shell filled with late Ciaculli mandarin sorbet.',
-      ar: 'ثمرة يوسفي طبيعية مجمدة محشوة بسوربيه اليوسفي الصقلي الفاخر.',
     },
     price: '€6,00',
     image: '/images/sweet-menu/des-mandarino-ripieno.webp',
@@ -297,12 +265,10 @@ export const dessertDishes: Dish[] = [
     name: {
       it: 'Sorbetto al Limone',
       en: 'Lemon Sorbet',
-      ar: 'سوربيه الليمون الإيطالي',
     },
     description: {
       it: 'Sorbetto al limone da bere.',
       en: 'Refreshing drinkable Italian lemon sorbet.',
-      ar: 'سوربيه ليمون إيطالي منعش للشرب.',
     },
     price: '€5,00',
     image: '/images/sweet-menu/des-sorbetto.webp',
@@ -317,12 +283,10 @@ export const dessertDishes: Dish[] = [
     name: {
       it: 'Coppa ai Pistacchi di Sicilia',
       en: 'Sicilian Pistachio Coppa',
-      ar: 'كوب فستق صقلية الطبيعي والوافل المقرمش',
     },
     description: {
       it: 'Crema al pistacchio su wafer croccante di pistacchio e cioccolato bianco, cacao glitter e granella di pistacchio 100% Sicilia.',
       en: 'Gourmet Sicilian pistachio cream over crispy white chocolate pistachio wafer, glitter cocoa, and chopped pistachios.',
-      ar: 'كريمة فستق صقلي فاخرة فوق وافل مقرمش بالشوكولاتة البيضاء والفستق مع بودرة الكاكاو البراقة.',
     },
     price: '€6,00',
     tags: ['dessert', 'signature'],
@@ -334,12 +298,10 @@ export const dessertDishes: Dish[] = [
     name: {
       it: 'Coppa Dubai Chocolate Style',
       en: 'Dubai Chocolate Style Coppa',
-      ar: 'كوب شوكولاتة دبي ستايل بالفستق والكنافة',
     },
     description: {
       it: 'Gelato al pistacchio con fondo cremoso al cioccolato e gelato al cioccolato decorato con variegatura al pistacchio arricchita con pasta kataifi.',
       en: 'Pistachio gelato over creamy chocolate fudge, paired with chocolate gelato, pistachio swirl, and crispy golden kataifi.',
-      ar: 'جيلاتو الفستق مع طبقة شوكولاتة غنية، موشى بصلصة الفستق الحلبي مع عجينة الكنافة الكنافة المقرمشة.',
     },
     price: '€6,00',
     image: '/images/sweet-menu/des-coppa-dubai.webp',
@@ -352,12 +314,10 @@ export const dessertDishes: Dish[] = [
     name: {
       it: 'Coppa Mascarpone e Lamponi',
       en: 'Mascarpone & Fresh Raspberries Coppa',
-      ar: 'كوب الماسكاربوني وتوت العليق الأحمر',
     },
     description: {
       it: 'Pan di Spagna con crema al mascarpone, lamponi e decorata con granella di pistacchio.',
       en: 'Sponge cake layered with rich mascarpone cream, tart raspberries, and chopped pistachios.',
-      ar: 'كعكة إسفنجية مع كريمة جبن الماسكاربوني الفاخرة، توت العليق الطازج، وقطع الفستق.',
     },
     price: '€6,00',
     image: '/images/sweet-menu/des-coppa-mascarpone.webp',
@@ -370,12 +330,10 @@ export const dessertDishes: Dish[] = [
     name: {
       it: 'Coppa Crema Amarena',
       en: 'Vanilla Cream & Amarena Cherry Coppa',
-      ar: 'كوب الكريمة وكرز الأمارينا الإيطالي',
     },
     description: {
       it: "Pan di Spagna al cacao, crema al gusto vaniglia, ciliegie amarene e salsa all'amarena.",
       en: 'Cocoa sponge cake with smooth vanilla cream, sweet Amarena black cherries, and rich cherry coulis.',
-      ar: 'كعكة إسفنجية بالكاكاو، كريمة الفانيليا، حبات كرز أمارينا الكاملة، وصلصة الأمارينا المركزة.',
     },
     price: '€6,00',
     image: '/images/sweet-menu/des-coppa-crema-amarena.webp',
@@ -388,12 +346,10 @@ export const dessertDishes: Dish[] = [
     name: {
       it: 'Coppa Mousse Chantilly e Caffè',
       en: 'Chantilly & Espresso Mousse Coppa',
-      ar: 'كوب موس الشانتيلي والإسبريسو بالبندق',
     },
     description: {
       it: 'Gelato semifreddo al caffè e chantilly con salsa al cioccolato e caffè e nocciole pralinate.',
       en: 'Coffee and Chantilly semifreddo gelato with dark chocolate & espresso sauce, topped with praline hazelnuts.',
-      ar: 'موس سيمفريدو بالقهوة وكريمة الشانتيلي مع صوص الشوكولاتة والإسبريسو وحبات البندق المحلى.',
     },
     price: '€6,00',
     tags: ['dessert'],
@@ -405,12 +361,10 @@ export const dessertDishes: Dish[] = [
     name: {
       it: 'Coppa Crema e Fragole',
       en: 'Sweet Cream & Candied Strawberries Coppa',
-      ar: 'كوب الكريمة والفراولة الإيطالية',
     },
     description: {
       it: 'Gelato al gusto crema e panna variegato alla fragola su fondo cremoso alla fragola, con fragole semicandite.',
       en: 'Crema and cream gelato swirled with sweet strawberry coulis over strawberry cream and candied strawberries.',
-      ar: 'جيلاتو الكريمة والقشطة الموشى بصوص الفراولة فوق قاعدة الفراولة مع حبات الفراولة المسكرة.',
     },
     price: '€6,00',
     image: '/images/sweet-menu/des-coppa-crema-fragole.webp',
@@ -423,9 +377,8 @@ export const dessertDishes: Dish[] = [
     name: {
       it: 'Coppa Gelato Mista',
       en: 'Mixed Gelato Cup',
-      ar: 'كوب آيس كريم جيلاتو مشكل',
     },
-    description: { it: '', en: '', ar: '' },
+    description: { it: '', en: '' },
     price: '€5,00',
     image: '/images/sweet-menu/des-coppa-mista.webp',
     tags: ['dessert', 'vegetarian'],
@@ -439,12 +392,10 @@ export const dessertDishes: Dish[] = [
     name: {
       it: 'Torta Dubai Chocolate',
       en: 'Dubai Chocolate Cake',
-      ar: 'كعكة شوكولاتة دبي بالفستق والكنافة الكرانشي',
     },
     description: {
       it: 'Torta con Pan di Spagna al cacao e pistacchio, creme al cioccolato e pistacchio, pasta kataifi e granella di pistacchio.',
       en: 'Layer cake with cocoa & pistachio sponge, chocolate and pistachio creams, crispy kataifi, and chopped pistachios.',
-      ar: 'كعكة متعددة الطبقات بكيك الكاكاو والفستق، كريمات الشوكولاتة والفستق، كنافة مقرمشة، وفستق حلبي مجروش.',
     },
     price: '€6,00',
     image: '/images/sweet-menu/des-torta-dubai.webp',
@@ -457,12 +408,10 @@ export const dessertDishes: Dish[] = [
     name: {
       it: 'Torta della Nonna',
       en: 'Tuscan Torta della Nonna',
-      ar: 'تورتة ديلا نونا التوسكانية بالصنوبر والليمون',
     },
     description: {
       it: 'Pasta frolla con crema pasticcera al profumo di limone, ricoperta con pinoli e mandorle.',
       en: 'Traditional Tuscan shortcrust pie filled with lemon-infused pastry cream, topped with roasted pine nuts and almonds.',
-      ar: 'فطيرة بسكويت إيطالية تقليدية محشوة بكريمة الكاسترد بالليمون ومغطاة بحبات الصنوبر واللوز المحمص.',
     },
     price: '€6,00',
     image: '/images/sweet-menu/des-torta-nonna.webp',
@@ -475,12 +424,10 @@ export const dessertDishes: Dish[] = [
     name: {
       it: 'Torta Cioccolato e Pere',
       en: 'Dark Chocolate & Italian Pear Tart',
-      ar: 'تورتة الشوكولاتة الداكنة والإجاص الإيطالي',
     },
     description: {
       it: 'Fragrante pasta frolla con crema al cioccolato fondente, cubetti di pera 100% italiana e riccioli di cioccolato.',
       en: 'Crisp shortcrust pastry with dark chocolate cream, 100% Italian diced pears, and delicate chocolate curls.',
-      ar: 'عجينة تارت مقرمشة مع كريمة الشوكولاتة الداكنة، قطع إجاص إيطالي 100%، وتجعيدات الشوكولاتة.',
     },
     price: '€6,00',
     image: '/images/sweet-menu/des-torta-ciocco-pere.webp',
@@ -493,12 +440,10 @@ export const dessertDishes: Dish[] = [
     name: {
       it: 'Torta al Croccante',
       en: 'Ecuadorian Cocoa & Almond Crunch Cake',
-      ar: 'كعكة كروكانتي الشوكولاتة واللوز المقرمش',
     },
     description: {
       it: "Pan di Spagna al cacao, crema alla nocciola e crema al cioccolato con cacao monorigine dell'Ecuador, decorata con mandorla pralinata.",
       en: 'Cocoa sponge with hazelnut and single-origin Ecuadorian chocolate cream, topped with crunchy praline almonds.',
-      ar: 'كعكة إسفنجية بالكاكاو، كريمة البندق وشوكولاتة الإكوادور أحادية المصدر، مزينة باللوز المحلى المقرمش.',
     },
     price: '€6,00',
     image: '/images/sweet-menu/des-torta-croccante.webp',
@@ -511,12 +456,10 @@ export const dessertDishes: Dish[] = [
     name: {
       it: 'Profiterole Scuro',
       en: 'Classic Dark Chocolate Profiteroles',
-      ar: 'بروفيتيرول كلاسيكي بالشوكولاتة الداكنة',
     },
     description: {
       it: 'Bignè con crema al gusto vaniglia e ricoperti con crema al cioccolato.',
       en: 'Choux pastry puffs filled with vanilla cream and drenched in rich dark chocolate glaze.',
-      ar: 'حبات شو محشوة بكريمة الفانيليا ومغمورة بصوص الشوكولاتة الداكنة الغنية.',
     },
     price: '€6,00',
     image: '/images/sweet-menu/des-profiterole-scuro.webp',
@@ -529,12 +472,10 @@ export const dessertDishes: Dish[] = [
     name: {
       it: 'Profiterole Bianco',
       en: 'White Chocolate Profiteroles',
-      ar: 'بروفيتيرول أبيض بالفانيليا والشوكولاتة',
     },
     description: {
       it: 'Bignè con crema al cioccolato e ricoperti con crema al gusto vaniglia.',
       en: 'Choux pastry puffs filled with chocolate cream and covered in velvety vanilla cream.',
-      ar: 'حبات شو مقرمشة محشوة بكريمة الشوكولاتة ومغطاة بكريمة الفانيليا المخملية.',
     },
     price: '€6,00',
     image: '/images/sweet-menu/des-profiterole-bianco.webp',
@@ -547,12 +488,10 @@ export const dessertDishes: Dish[] = [
     name: {
       it: 'Millefoglie',
       en: 'Traditional Millefeuille',
-      ar: 'ميل فوي إيطالي تقليدي بكريمة الكاسترد',
     },
     description: {
       it: 'Pasta sfoglia farcita con crema pasticcera.',
       en: 'Crispy caramelized puff pastry layers filled with delicate Italian pastry cream.',
-      ar: 'طبقات رقائق باف باستري مقرمشة محشوة بكريمة الكاسترد الإيطالية.',
     },
     price: '€6,00',
     image: '/images/sweet-menu/des-millefoglie.webp',
@@ -565,12 +504,10 @@ export const dessertDishes: Dish[] = [
     name: {
       it: 'Meringa',
       en: 'Crispy Vanilla Meringue',
-      ar: 'مارينغ محشو بكريمة الفانيليا',
     },
     description: {
       it: 'Meringa farcita con crema al gusto vaniglia.',
       en: 'Crisp baked meringue shells filled with smooth vanilla cream.',
-      ar: 'مارينغ هش ومقرمش محشو بكريمة الفانيليا الغنية.',
     },
     price: '€6,00',
     image: '/images/sweet-menu/des-meringa.webp',
@@ -585,12 +522,10 @@ export const dessertDishes: Dish[] = [
     name: {
       it: 'Rabbit',
       en: 'Rabbit Kids Gelato',
-      ar: 'آيس كريم الأرنب للأطفال',
     },
     description: {
       it: 'Gelato al fiordilatte.',
       en: 'Creamy Italian fiordilatte milk gelato character for children.',
-      ar: 'جيلاتو الحليب الإيطالي الصافي في شكل شخصية أرنب محبوبة للأطفال.',
     },
     price: '€5,00',
     image: '/images/sweet-menu/des-rabbit.webp',
@@ -603,12 +538,10 @@ export const dessertDishes: Dish[] = [
     name: {
       it: 'Pirata',
       en: 'Pirate Kids Chocolate Gelato',
-      ar: 'آيس كريم القرصان بالشوكولاتة للأطفال',
     },
     description: {
       it: 'Gelato al cioccolato.',
       en: 'Rich chocolate gelato character for children.',
-      ar: 'جيلاتو الشوكولاتة اللذيذ في شكل شخصية القرصان للأطفال.',
     },
     price: '€5,00',
     image: '/images/sweet-menu/des-pirata.webp',
@@ -621,12 +554,10 @@ export const dessertDishes: Dish[] = [
     name: {
       it: 'Principessa',
       en: 'Princess Kids Strawberry Gelato',
-      ar: 'آيس كريم الأميرة بالفراولة للأطفال',
     },
     description: {
       it: 'Gelato alla fragola.',
       en: 'Sweet natural strawberry gelato character for children.',
-      ar: 'جيلاتو الفراولة الطبيعية اللذيذة في شكل شخصية الأميرة للأطفال.',
     },
     price: '€5,00',
     image: '/images/sweet-menu/des-principessa.webp',
@@ -640,13 +571,11 @@ export const dessertDishes: Dish[] = [
     "category": "Desserts",
     "name": {
       "it": "Coppa Cioccolato e Nocciola",
-      "en": "Chocolate & Hazelnut Cup",
-      "ar": "كأس الشوكولاتة والبندق"
+      "en": "Chocolate & Hazelnut Cup"
     },
     "description": {
       "it": "Coppa Cioccolato e Nocciola",
-      "en": "Chocolate & Hazelnut Cup",
-      "ar": "كأس الشوكولاتة والبندق"
+      "en": "Chocolate & Hazelnut Cup"
     },
     "price": "€6,00",
     "image": "/images/sweet-menu/des-coppa-cioccolato-nocciola.webp",
@@ -660,13 +589,11 @@ export const dessertDishes: Dish[] = [
     "category": "Desserts",
     "name": {
       "it": "Rubino Cheesecake",
-      "en": "Rubino Cheesecake",
-      "ar": "روبينو تشيز كيك"
+      "en": "Rubino Cheesecake"
     },
     "description": {
       "it": "Rubino Cheesecake",
-      "en": "Rubino Cheesecake",
-      "ar": "روبينو تشيز كيك"
+      "en": "Rubino Cheesecake"
     },
     "price": "€6,00",
     "image": "/images/sweet-menu/des-torta-rubino.webp",
@@ -680,13 +607,11 @@ export const dessertDishes: Dish[] = [
     "category": "Desserts",
     "name": {
       "it": "Tiramisù Tradizionale ai Savoiardi",
-      "en": "Traditional Savoiardi Tiramisu",
-      "ar": "تيراميسو تقليدي ببسكويت السافوياردي"
+      "en": "Traditional Savoiardi Tiramisu"
     },
     "description": {
       "it": "Tiramisù Tradizionale ai Savoiardi",
-      "en": "Traditional Savoiardi Tiramisu",
-      "ar": "تيراميسو تقليدي ببسكويت السافوياردي"
+      "en": "Traditional Savoiardi Tiramisu"
     },
     "price": "€5,00",
     "image": "/images/sweet-menu/des-torta-tiramisu.webp",
@@ -700,13 +625,11 @@ export const dessertDishes: Dish[] = [
     "category": "Desserts",
     "name": {
       "it": "Coppa Crema e Pistacchio",
-      "en": "Cream & Pistachio Cup",
-      "ar": "كأس الكريمة والفستق"
+      "en": "Cream & Pistachio Cup"
     },
     "description": {
       "it": "Coppa Crema e Pistacchio",
-      "en": "Cream & Pistachio Cup",
-      "ar": "كأس الكريمة والفستق"
+      "en": "Cream & Pistachio Cup"
     },
     "price": "€6,00",
     "image": "/images/sweet-menu/des-coppa-crema-pistacchio.webp",

@@ -15,7 +15,6 @@ interface SweetCardProps {
 }
 
 export function SweetCard({ dish, locale, dict, onSelect }: SweetCardProps) {
-  const isRtl = locale === 'ar';
   const localizedName = getLocalized(dish.name, locale);
   const localizedDesc = getLocalized(dish.description, locale);
   const isSignature = dish.tags?.includes('signature');
@@ -94,7 +93,7 @@ export function SweetCard({ dish, locale, dict, onSelect }: SweetCardProps) {
             </span>
           </div>
 
-          {/* Subtitle original Italian name if locale is English or Arabic */}
+          {/* Subtitle original Italian name if locale is English */}
           {locale !== 'it' && dish.name.it !== localizedName && (
             <p className="text-[11px] text-[var(--palette-aged-brass)] font-serif italic line-clamp-1" dir="ltr">
               {dish.name.it}
@@ -119,9 +118,7 @@ export function SweetCard({ dish, locale, dict, onSelect }: SweetCardProps) {
             <span>{dict.details}</span>
             <ArrowRight
               size={13}
-              className={`transition-transform duration-200 group-hover:translate-x-0.5 ${
-                isRtl ? 'rotate-180 group-hover:-translate-x-0.5' : ''
-              }`}
+              className="transition-transform duration-200 group-hover:translate-x-0.5"
               aria-hidden="true"
             />
           </span>

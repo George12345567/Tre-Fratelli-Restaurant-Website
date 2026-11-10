@@ -36,7 +36,7 @@ export function MenuSubSectionHeader({
             </span>
           )}
           <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded-full bg-stone-100 text-stone-600">
-            {count} {locale === 'it' ? 'piatti' : locale === 'ar' ? 'أطباق' : 'dishes'}
+            {count} {locale === 'it' ? 'piatti' : 'dishes'}
           </span>
         </div>
       </div>

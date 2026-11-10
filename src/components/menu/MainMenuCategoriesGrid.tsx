@@ -62,11 +62,11 @@ export function MainMenuCategoriesGrid({ locale }: MainMenuCategoriesGridProps) 
             href="/"
             className="hover:text-[var(--palette-italian-red)] transition-colors font-medium"
           >
-            {locale === 'ar' ? 'الرئيسية' : locale === 'it' ? 'Home' : 'Home'}
+            {locale === 'it' ? 'Home' : 'Home'}
           </Link>
           <span className="text-stone-300" aria-hidden="true">/</span>
           <span className="text-[var(--palette-espresso)] font-bold" aria-current="page">
-            {locale === 'ar' ? 'قائمة الطعام' : locale === 'it' ? 'Menù' : 'Menu'}
+            {locale === 'it' ? 'Menù' : 'Menu'}
           </span>
         </nav>
 
@@ -84,9 +84,7 @@ export function MainMenuCategoriesGrid({ locale }: MainMenuCategoriesGridProps) 
 
         {/* Short Introductory Description */}
         <p className="text-xs sm:text-sm md:text-base text-[var(--palette-espresso)]/80 leading-relaxed font-serif italic max-w-xl mx-auto">
-          {locale === 'ar'
-            ? 'استكشف إبداعات مطبخنا الإيطالي الأصيل: مقبلات التراث، باستا طازجة مصنوعة يدوياً، أطباق اللحوم والأسماك، السلطات الغنية، وبيتزا فرن الحطب.'
-            : locale === 'it'
+          {locale === 'it'
             ? 'Scopri le specialità della nostra cucina: antipasti della tradizione, pasta fresca fatta a mano, secondi di carne e pesce, insalatone e pizze cotte nel forno a legna.'
             : 'Discover the culinary specialties of our kitchen: traditional starters, handmade fresh pasta, prime meat and seafood mains, grand salads, and wood-fired pizzas.'}
         </p>
@@ -100,9 +98,7 @@ export function MainMenuCategoriesGrid({ locale }: MainMenuCategoriesGridProps) 
           >
             <BookOpen size={14} aria-hidden="true" />
             <span>
-              {locale === 'ar'
-                ? 'عرض وتحميل القائمة PDF الرسمية'
-                : locale === 'it'
+              {locale === 'it'
                 ? 'Visualizza il Menù PDF'
                 : 'View Official PDF Menu'}
             </span>
@@ -115,9 +111,7 @@ export function MainMenuCategoriesGrid({ locale }: MainMenuCategoriesGridProps) 
           >
             <ShieldAlert size={14} className="text-amber-600" aria-hidden="true" />
             <span>
-              {locale === 'ar'
-                ? 'دليل مسببات الحساسية [1-14]'
-                : locale === 'it'
+              {locale === 'it'
                 ? 'Tabella Allergeni'
                 : 'Allergens Guide'}
             </span>

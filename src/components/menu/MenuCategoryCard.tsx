@@ -48,7 +48,7 @@ export function MenuCategoryCard({
         href={`/menu/${config.slug}`}
         className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--palette-aged-brass)] rounded-3xl"
         aria-label={`${categoryTitle} - ${itemCount} ${
-          locale === 'ar' ? 'أصناف متوفرة' : locale === 'it' ? 'proposte' : 'items'
+          locale === 'it' ? 'proposte' : 'items'
         }`}
       >
         <article className="space-y-3 sm:space-y-4">
@@ -76,7 +76,7 @@ export function MenuCategoryCard({
             {/* Item Count Micro Badge in Top Corner */}
             <div className="absolute top-3.5 end-3.5 pointer-events-none transition-transform duration-300 group-hover:scale-105">
               <span className="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-bold tracking-wider uppercase bg-black/65 backdrop-blur-md text-white border border-white/20 shadow-xs">
-                {itemCount} {locale === 'ar' ? 'صنف' : locale === 'it' ? 'proposte' : 'items'}
+                {itemCount} {locale === 'it' ? 'proposte' : 'items'}
               </span>
             </div>
           </div>

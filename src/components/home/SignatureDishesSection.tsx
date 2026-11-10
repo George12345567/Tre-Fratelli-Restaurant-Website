@@ -8,7 +8,6 @@ import { Link } from '@/i18n/navigation';
 
 interface Props {
   locale: string;
-  isRtl: boolean;
   translations: {
     signatureSubtitle: string;
     signatureDishes: string;
@@ -20,7 +19,6 @@ interface Props {
 
 export function SignatureDishesSection({
   locale,
-  isRtl,
   translations,
 }: Props) {
   const [activeIndex, setActiveIndex] = useState<number>(0);
@@ -41,7 +39,7 @@ export function SignatureDishesSection({
     if (!carouselRef.current) return;
     const container = carouselRef.current;
     const itemWidth = container.offsetWidth * 0.84;
-    const targetScroll = isRtl ? -index * itemWidth : index * itemWidth;
+    const targetScroll = index * itemWidth;
     container.scrollTo({ left: targetScroll, behavior: 'smooth' });
     setActiveIndex(index);
   };
@@ -73,8 +71,6 @@ export function SignatureDishesSection({
             <span className="text-[11px] sm:text-xs font-semibold tracking-[0.25em] uppercase text-[var(--palette-italian-red)]">
               {locale === 'it'
                 ? 'Tre Fratelli · Specialità'
-                : locale === 'ar'
-                ? 'تري فراتيلي · مختارات المطبخ'
                 : "Tre Fratelli · Chef's Selection"}
             </span>
             <span className="w-8 h-px bg-[var(--palette-aged-brass)]/40" aria-hidden="true" />
@@ -174,9 +170,7 @@ export function SignatureDishesSection({
                       <span>{translations.askDish}</span>
                       <ArrowRight
                         size={12}
-                        className={`transition-transform duration-200 group-hover/link:translate-x-0.5 ${
-                          isRtl ? 'rotate-180 group-hover/link:-translate-x-0.5' : ''
-                        }`}
+                        className="transition-transform duration-200 group-hover/link:translate-x-0.5"
                         aria-hidden="true"
                       />
                     </Link>
@@ -190,12 +184,12 @@ export function SignatureDishesSection({
           <div className="flex sm:hidden items-center justify-between px-2 pt-3">
             <button
               type="button"
-              onClick={isRtl ? handleNext : handlePrev}
+              onClick={handlePrev}
               disabled={activeIndex === 0}
               className="p-1.5 rounded-full bg-black/5 disabled:opacity-30 text-[var(--palette-espresso)]"
               aria-label="Previous dish"
             >
-              <ChevronLeft size={16} className={isRtl ? 'rotate-180' : ''} />
+              <ChevronLeft size={16} />
             </button>
 
             {/* Dots */}
@@ -217,12 +211,12 @@ export function SignatureDishesSection({
 
             <button
               type="button"
-              onClick={isRtl ? handlePrev : handleNext}
+              onClick={handleNext}
               disabled={activeIndex === signatureDishes.length - 1}
               className="p-1.5 rounded-full bg-black/5 disabled:opacity-30 text-[var(--palette-espresso)]"
               aria-label="Next dish"
             >
-              <ChevronRight size={16} className={isRtl ? 'rotate-180' : ''} />
+              <ChevronRight size={16} />
             </button>
           </div>
         </div>
@@ -236,9 +230,7 @@ export function SignatureDishesSection({
             <span>{translations.viewMenu}</span>
             <ArrowRight
               size={14}
-              className={`transition-transform duration-300 group-hover:translate-x-1 ${
-                isRtl ? 'rotate-180 group-hover:-translate-x-1' : ''
-              }`}
+              className="transition-transform duration-300 group-hover:translate-x-1"
               aria-hidden="true"
             />
           </Link>

@@ -8,12 +8,10 @@ export const contorniDishes: Dish[] = [
     name: {
       it: "Insalatone d'Amore",
       en: "Insalatone d'Amore",
-      ar: 'سلطة ديل أموري الملكية بثمار البحر والمانجو',
     },
     description: {
       it: 'Gamberetti, salmone affumicato, avocado, mango, cipolla, cetrioli, rucola.',
       en: 'Shrimp, smoked salmon, avocado, mango, red onion, cucumbers, wild rocket.',
-      ar: 'روبيان، سلمون مدخن، أفوكادو، مانجو، بصل، خيار، وجرجير.',
     },
     price: '€14,00',
     tags: ['signature', 'seafood'],
@@ -26,12 +24,10 @@ export const contorniDishes: Dish[] = [
     name: {
       it: 'Insalatona Greca',
       en: 'Greek Salad',
-      ar: 'سلطة يونانية تقليدية بجبن الفيتا والزيتون',
     },
     description: {
       it: 'Feta, cetrioli, cipolla, olive nere, insalata verde, pomodorini.',
       en: 'Feta cheese, cucumbers, red onion, black olives, mixed greens, cherry tomatoes.',
-      ar: 'جبن فيتا، خيار، بصل، زيتون أسود، خس مشكل، وطماطم كرزية.',
     },
     price: '€12,00',
     tags: ['vegetarian'],
@@ -43,12 +39,10 @@ export const contorniDishes: Dish[] = [
     name: {
       it: 'Insalatona ai Frutti di Mare Tre Fratelli',
       en: 'Tre Fratelli Seafood Salad',
-      ar: 'سلطة تري فراتيلي الكبرى بثمار البحر',
     },
     description: {
       it: 'Insalata mista, frutti di mare.',
       en: 'Mixed garden greens, assortment of tender seafood.',
-      ar: 'سلطة خضراء مشكلة مع تشكيلة ثمار البحر الطازجة.',
     },
     price: '€14,00',
     tags: ['signature', 'seafood'],
@@ -61,12 +55,10 @@ export const contorniDishes: Dish[] = [
     name: {
       it: 'Insalatona di Carne',
       en: 'Beef, Buffalo Mozzarella & Sesame Salad',
-      ar: 'سلطة اللحم البقري مع جبن البافلو والسمسم',
     },
     description: {
       it: 'Insalata mista, carne di manzo, glassa di aceto balsamico, sesamo, bufala, scaglie di grana.',
       en: 'Mixed greens, seared beef strips, balsamic glaze, toasted sesame, buffalo mozzarella, shaved grana.',
-      ar: 'سلطة مشكلة، شرائح لحم بقر، صوص بلسميك، سمسم، موزاريلا بافلو، ورقائق جبن الغرانا.',
     },
     price: '€12,00',
     tags: ['meat'],
@@ -78,12 +70,10 @@ export const contorniDishes: Dish[] = [
     name: {
       it: 'Insalatona di Pollo',
       en: 'Chicken Teriyaki Salad with Shaved Grana',
-      ar: 'سلطة الدجاج المشوي مع صوص الترياكي وجبن الغرانا',
     },
     description: {
       it: 'Insalata mista, pomodoro, scaglie di grana, pollo, salsa teriyaki.',
       en: 'Mixed greens, cherry tomatoes, shaved grana, grilled chicken breast, teriyaki glaze.',
-      ar: 'سلطة مشكلة، طماطم، شرائح جبن الغرانا، دجاج مشوي، وصلصة ترياكي.',
     },
     price: '€13,00',
     tags: ['meat'],
@@ -97,9 +87,8 @@ export const contorniDishes: Dish[] = [
     name: {
       it: 'Insalata Mista',
       en: 'Mixed Garden Salad',
-      ar: 'سلطة خضراء مشكلة طازجة',
     },
-    description: { it: '', en: '', ar: '' },
+    description: { it: '', en: '' },
     price: '€4,00',
     tags: ['vegetarian'],
     allergens: [],
@@ -110,9 +99,8 @@ export const contorniDishes: Dish[] = [
     name: {
       it: 'Patate al Forno',
       en: 'Rosemary Roasted Potatoes',
-      ar: 'بطاطا مخبوزة بالفرن مع إكليل الجبل',
     },
-    description: { it: '', en: '', ar: '' },
+    description: { it: '', en: '' },
     price: '€5,00',
     tags: ['vegetarian'],
     allergens: [],
@@ -124,9 +112,8 @@ export const contorniDishes: Dish[] = [
     name: {
       it: 'Patatine Fritte',
       en: 'Golden French Fries',
-      ar: 'بطاطا مقلية ذهبية مقرمشة',
     },
-    description: { it: '', en: '', ar: '' },
+    description: { it: '', en: '' },
     price: '€6,00',
     tags: ['vegetarian'],
     allergens: [],
@@ -137,9 +124,8 @@ export const contorniDishes: Dish[] = [
     name: {
       it: 'Patatine Fritte con Salsa',
       en: 'French Fries with Dipping Sauce',
-      ar: 'بطاطا مقلية مقرمشة مع الصلصة',
     },
-    description: { it: '', en: '', ar: '' },
+    description: { it: '', en: '' },
     price: '€6,50',
     tags: ['vegetarian'],
     allergens: [],
@@ -150,9 +136,8 @@ export const contorniDishes: Dish[] = [
     name: {
       it: "Patate Fry'n Dip",
       en: "Crispy Fry'n Dip Scoop Potatoes",
-      ar: 'بطاطا فراي آند ديب المقرمشة',
     },
-    description: { it: '', en: '', ar: '' },
+    description: { it: '', en: '' },
     price: '€6,00',
     tags: ['vegetarian'],
     allergens: [],
@@ -163,9 +148,8 @@ export const contorniDishes: Dish[] = [
     name: {
       it: 'Purè di Patate',
       en: 'Creamy Homemade Mashed Potatoes',
-      ar: 'بوريه بطاطا كريمي طازج بالزبدة',
     },
-    description: { it: '', en: '', ar: '' },
+    description: { it: '', en: '' },
     price: '€5,00',
     tags: ['vegetarian'],
     allergens: ['7 - Latte'],
@@ -176,9 +160,8 @@ export const contorniDishes: Dish[] = [
     name: {
       it: 'Verdure Grigliate',
       en: 'Seasonal Char-Grilled Vegetables',
-      ar: 'تشكيلة خضروات موسمية مشوية على الفحم',
     },
-    description: { it: '', en: '', ar: '' },
+    description: { it: '', en: '' },
     price: '€5,00',
     tags: ['vegetarian'],
     allergens: [],
@@ -190,9 +173,8 @@ export const contorniDishes: Dish[] = [
     name: {
       it: 'Broccoli Aglio, Olio e Peperoncino',
       en: 'Sautéed Broccoli with Garlic, Olive Oil & Chilli',
-      ar: 'بروكلي سوتيه بالثوم وزيت الزيتون والفلفل الحار',
     },
-    description: { it: '', en: '', ar: '' },
+    description: { it: '', en: '' },
     price: '€5,00',
     tags: ['vegetarian'],
     allergens: [],
@@ -203,9 +185,8 @@ export const contorniDishes: Dish[] = [
     name: {
       it: 'Zucchine e Fior di Zucca Fritti',
       en: 'Crispy Fried Zucchini & Squash Blossoms',
-      ar: 'كوسة وأزهار الكوسة المقلية الذهبية المقرمشة',
     },
-    description: { it: '', en: '', ar: '' },
+    description: { it: '', en: '' },
     price: '€4,50',
     tags: ['vegetarian'],
     allergens: ['1 - Glutine'],
@@ -216,9 +197,8 @@ export const contorniDishes: Dish[] = [
     name: {
       it: 'Spinaci al Burro / Aglio Olio e Peperoncino',
       en: 'Fresh Spinach in Butter or Garlic, Oil & Chilli',
-      ar: 'سبانخ طازجة بالزبدة أو بالثوم وزيت الزيتون والشطة',
     },
-    description: { it: '', en: '', ar: '' },
+    description: { it: '', en: '' },
     price: '€5,00',
     tags: ['vegetarian'],
     allergens: ['7 - Latte'],
@@ -229,9 +209,8 @@ export const contorniDishes: Dish[] = [
     name: {
       it: 'Friarielli Aglio, Olio e Peperoncino',
       en: 'Neapolitan Friarielli with Garlic & Chilli',
-      ar: 'فرايريلي نابوليتانو بالثوم وزيت الزيتون والفلفل الحار',
     },
-    description: { it: '', en: '', ar: '' },
+    description: { it: '', en: '' },
     price: '€5,00',
     tags: ['vegetarian'],
     allergens: [],
@@ -243,9 +222,8 @@ export const contorniDishes: Dish[] = [
     name: {
       it: 'Insalata di Rucola, Noci, Pomodorini, Mais e Cetrioli',
       en: 'Rocket, Walnut, Cherry Tomato, Sweetcorn & Cucumber Salad',
-      ar: 'سلطة جرجير مع الجوز، طماطم كرزية، ذرة حلوة وخيار',
     },
-    description: { it: '', en: '', ar: '' },
+    description: { it: '', en: '' },
     price: '€4,50',
     tags: ['vegetarian'],
     allergens: ['8 - Frutta a guscio'],

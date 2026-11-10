@@ -18,8 +18,6 @@ interface HomeMenuScrollSectionProps {
 }
 
 export function HomeMenuScrollSection({ locale }: HomeMenuScrollSectionProps) {
-  const isRtl = locale === 'ar';
-  const arrowClass = isRtl ? 'rotate-180' : '';
   const companionRef = useRef<HTMLDivElement>(null);
   const shouldReduceMotion = usePrefersReducedMotion();
 
@@ -28,7 +26,7 @@ export function HomeMenuScrollSection({ locale }: HomeMenuScrollSectionProps) {
     offset: ['start 96%', 'end 8%'],
   });
 
-  const horizontalDir = (true !== isRtl ? 1 : -1) * 14;
+  const horizontalDir = 14;
   const cardOpacity = useTransform(scrollYProgress, [0, 0.34, 0.78, 1], [0.2, 1, 1, 0.82]);
   const cardY = useTransform(scrollYProgress, [0, 0.34, 0.78, 1], [36, 0, 0, -14]);
   const cardX = useTransform(scrollYProgress, [0, 0.34], [horizontalDir, 0]);
@@ -41,25 +39,19 @@ export function HomeMenuScrollSection({ locale }: HomeMenuScrollSectionProps) {
       icon: CakeSlice,
       image: '/images/dishes/dolci-tiramisu-cannoli.jpg',
       eyebrow:
-        locale === 'ar'
-          ? 'بيندي · حلويات وجيلاتو'
-          : locale === 'it'
+        locale === 'it'
           ? 'Bindi — Maestri del Dessert'
           : 'Bindi — Artisan Desserts',
       title:
-        locale === 'ar'
-          ? 'قائمة الحلويات الإيطالية'
-          : locale === 'it'
+        locale === 'it'
           ? 'La Carta dei Dolci'
           : 'Desserts & Sweets Menu',
       subtitle:
-        locale === 'ar'
-          ? 'مختارات Bindi: سميفريدو، تارتوفو جيلاتو، سوربيه وتورتات إيطالية.'
-          : locale === 'it'
+        locale === 'it'
           ? 'Semifreddi d’autore, tartufi gelato, coppe speciali e grandi torte Bindi.'
           : 'Signature semifreddi, gelato tartufi, gourmet cups, and artisan cakes.',
       countLabel:
-        locale === 'ar' ? '36 صنف' : locale === 'it' ? '36 proposte' : '36 items',
+        locale === 'it' ? '36 proposte' : '36 items',
     },
     {
       href: '/wine-drinks',
@@ -67,25 +59,19 @@ export function HomeMenuScrollSection({ locale }: HomeMenuScrollSectionProps) {
       icon: Wine,
       image: '/images/wine/wine-cellar-tre-fratelli.jpg',
       eyebrow:
-        locale === 'ar'
-          ? 'القبو الإيطالي والمشروبات'
-          : locale === 'it'
+        locale === 'it'
           ? 'Cantina, Birre & Caffetteria'
           : 'Wine Cellar, Beers & Coffee',
       title:
-        locale === 'ar'
-          ? 'قائمة المشروبات والنبيذ'
-          : locale === 'it'
+        locale === 'it'
           ? 'Vini & Bevande'
           : 'Wines & Beverages Menu',
       subtitle:
-        locale === 'ar'
-          ? 'تشكيلة النبيذ الإيطالي، البيرة الحرفية، المشروبات المنعشة والإسبريسو.'
-          : locale === 'it'
+        locale === 'it'
           ? 'Vini rossi, bianchi e bollicine, birre alla spina, bibite e caffetteria.'
           : 'Sparkling, white and red Italian wines, craft beers, soft drinks & espresso.',
       countLabel:
-        locale === 'ar' ? '43 صنف' : locale === 'it' ? '43 proposte' : '43 items',
+        locale === 'it' ? '43 proposte' : '43 items',
     },
   ];
 
@@ -177,9 +163,7 @@ export function HomeMenuScrollSection({ locale }: HomeMenuScrollSectionProps) {
                     </div>
 
                     <div
-                      className={`w-10 h-10 lg:w-11 lg:h-11 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center shrink-0 group-hover:bg-[var(--palette-italian-red)] group-hover:border-[var(--palette-italian-red)] group-hover:scale-110 transition-all duration-300 shadow-md ${
-                        isRtl ? 'rotate-180' : ''
-                      }`}
+                      className="w-10 h-10 lg:w-11 lg:h-11 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center shrink-0 group-hover:bg-[var(--palette-italian-red)] group-hover:border-[var(--palette-italian-red)] group-hover:scale-110 transition-all duration-300 shadow-md"
                       aria-hidden="true"
                     >
                       <ArrowUpRight
@@ -220,7 +204,7 @@ export function HomeMenuScrollSection({ locale }: HomeMenuScrollSectionProps) {
               </div>
 
               <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[var(--palette-warm-ivory)] text-[var(--palette-espresso)] group-hover:bg-[var(--palette-italian-red)] group-hover:text-white transition-colors">
-                <ArrowRight size={15} className={arrowClass} aria-hidden="true" />
+                <ArrowRight size={15} aria-hidden="true" />
               </span>
             </Link>
           );

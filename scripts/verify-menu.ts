@@ -59,7 +59,7 @@ for (const config of menuCategoryConfigs) {
       }
       seenDishIds.add(dish.id);
 
-      if (!dish.name.it || !dish.name.en || !dish.name.ar) {
+      if (!dish.name.it || !dish.name.en) {
         throw new Error(`Missing localized name in dish: ${dish.id}`);
       }
       if (!dish.price || !dish.price.includes('€')) {
@@ -84,25 +84,29 @@ for (const config of menuCategoryConfigs) {
   }
 }
 
-console.log(`Dishes verified: ${totalDishesCounted} (Expected: 181, Master: ${menuDishes.length})`);
-console.log(`Drinks verified: ${totalDrinksCounted} (Expected: 41, Master: ${drinksData.length})`);
+// Counts captured from the checkpoint before Arabic was removed.
+const expectedDishCount = 229;
+const expectedDrinkCount = 43;
+console.log(`Dishes verified: ${totalDishesCounted} (Expected: ${expectedDishCount}, Master: ${menuDishes.length})`);
+console.log(`Drinks verified: ${totalDrinksCounted} (Expected: ${expectedDrinkCount}, Master: ${drinksData.length})`);
 
-if (totalDishesCounted !== 181 || menuDishes.length !== 181) {
+if (totalDishesCounted !== expectedDishCount || menuDishes.length !== expectedDishCount) {
   throw new Error(`Dish count mismatch: counted ${totalDishesCounted}, master has ${menuDishes.length}`);
 }
 
-if (totalDrinksCounted !== 41 || drinksData.length !== 41) {
+if (totalDrinksCounted !== expectedDrinkCount || drinksData.length !== expectedDrinkCount) {
   throw new Error(`Drink count mismatch: counted ${totalDrinksCounted}, master has ${drinksData.length}`);
 }
 
-console.log('✓ All 181 food dishes and 41 beverage items preserved with zero duplicates.');
+console.log(`✓ All ${expectedDishCount} food dishes and ${expectedDrinkCount} beverage items preserved with zero duplicates.`);
 
-// 3. Verify Adjacent navigation loop
-for (let i = 0; i < expectedSlugs.length; i++) {
-  const current = expectedSlugs[i];
+// 3. Verify the main menu loop. Desserts and beverages have dedicated pages.
+const mainCategorySlugs = ['antipasti', 'primi-piatti', 'secondi-piatti', 'contorni', 'pizze'];
+for (let i = 0; i < mainCategorySlugs.length; i++) {
+  const current = mainCategorySlugs[i];
   const { prev, next } = getAdjacentCategoryConfigs(current);
-  const expectedPrev = expectedSlugs[(i - 1 + expectedSlugs.length) % expectedSlugs.length];
-  const expectedNext = expectedSlugs[(i + 1) % expectedSlugs.length];
+  const expectedPrev = mainCategorySlugs[(i - 1 + mainCategorySlugs.length) % mainCategorySlugs.length];
+  const expectedNext = mainCategorySlugs[(i + 1) % mainCategorySlugs.length];
 
   if (prev.slug !== expectedPrev) {
     throw new Error(`For ${current}, expected prev ${expectedPrev}, got ${prev.slug}`);

@@ -21,7 +21,6 @@ export function CategoryPageHeader({
   onOpenPdfModal,
   onOpenAllergenModal,
 }: CategoryPageHeaderProps) {
-  const isRtl = locale === 'ar';
   const categoryTitle = getLocalized(config.title, locale);
   const categorySubtitle = getLocalized(config.subtitle, locale);
   const categoryIntro = getLocalized(config.intro, locale);
@@ -36,14 +35,14 @@ export function CategoryPageHeader({
             href="/"
             className="hover:text-[var(--palette-italian-red)] transition-colors font-medium"
           >
-            {locale === 'ar' ? 'الرئيسية' : locale === 'it' ? 'Home' : 'Home'}
+            {locale === 'it' ? 'Home' : 'Home'}
           </Link>
           <span className="text-stone-300" aria-hidden="true">/</span>
           <Link
             href="/menu"
             className="hover:text-[var(--palette-italian-red)] transition-colors font-medium"
           >
-            {locale === 'ar' ? 'قائمة الطعام' : locale === 'it' ? 'Menù' : 'Menu'}
+            {locale === 'it' ? 'Menù' : 'Menu'}
           </Link>
           <span className="text-stone-300" aria-hidden="true">/</span>
           <span className="text-[var(--palette-espresso)] font-bold" aria-current="page">
@@ -58,15 +57,11 @@ export function CategoryPageHeader({
         >
           <ArrowLeft
             size={13}
-            className={`transition-transform duration-200 group-hover:-translate-x-0.5 ${
-              isRtl ? 'rotate-180 group-hover:translate-x-0.5' : ''
-            }`}
+            className="transition-transform duration-200 group-hover:-translate-x-0.5"
             aria-hidden="true"
           />
           <span>
-            {locale === 'ar'
-              ? 'العودة إلى القائمة الرئيسية'
-              : locale === 'it'
+            {locale === 'it'
               ? 'Torna al Menù'
               : 'Back to Menu'}
           </span>
@@ -96,8 +91,6 @@ export function CategoryPageHeader({
           {itemCount}{' '}
           {locale === 'it'
             ? 'proposte disponibili'
-            : locale === 'ar'
-            ? 'أصناف متوفرة'
             : 'items available'}
         </span>
 
@@ -111,7 +104,7 @@ export function CategoryPageHeader({
             >
               <ShieldAlert size={13} className="text-amber-600" aria-hidden="true" />
               <span>
-                {locale === 'ar' ? 'دليل مسببات الحساسية' : locale === 'it' ? 'Allergeni [1-14]' : 'Allergens Guide'}
+                {locale === 'it' ? 'Allergeni [1-14]' : 'Allergens Guide'}
               </span>
             </button>
           )}
@@ -125,7 +118,7 @@ export function CategoryPageHeader({
             >
               <BookOpen size={13} aria-hidden="true" />
               <span>
-                {locale === 'ar' ? 'عرض PDF الرسمي' : locale === 'it' ? 'Menù PDF' : 'Official PDF'}
+                {locale === 'it' ? 'Menù PDF' : 'Official PDF'}
               </span>
             </button>
           )}

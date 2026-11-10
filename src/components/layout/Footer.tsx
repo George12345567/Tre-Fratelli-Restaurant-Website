@@ -241,8 +241,6 @@ export async function Footer({ locale }: FooterProps) {
             <p className="text-xs text-[var(--palette-stone-beige)]/85 leading-relaxed">
               {locale === 'it'
                 ? 'Tradizione culinaria di famiglia a Trezzano sul Naviglio: crudi di mare, carni alla brace di quercia, paste fresche al bronzo e cantina selezionata.'
-                : locale === 'ar'
-                ? 'أصالة الضيافة والمطبخ الإيطالي في تريتزانو سول نافيليو، ميلانو: ثمار البحر، مشويات جمر البلوط، الباستا الطازجة، وقبو المشروبات المعتقة.'
                 : 'Authentic Italian dining in Trezzano sul Naviglio, Milan: raw seafood, oak wood grill, bronze-cut pasta & curated cellar.'}
             </p>
 
@@ -261,8 +259,6 @@ export async function Footer({ locale }: FooterProps) {
               <span>
                 {locale === 'it'
                   ? 'Menu & Specialità'
-                  : locale === 'ar'
-                  ? 'القائمة والأطباق'
                   : 'Menu & Chapters'}
               </span>
             </h3>
@@ -331,8 +327,6 @@ export async function Footer({ locale }: FooterProps) {
                   <span>
                     {locale === 'it'
                       ? 'Scarica Menù PDF (6.4 MB)'
-                      : locale === 'ar'
-                      ? 'تحميل المنيو PDF (6.4 ميغابايت)'
                       : 'Download PDF Menu (6.4 MB)'}
                   </span>
                 </a>
@@ -363,7 +357,7 @@ export async function Footer({ locale }: FooterProps) {
                         </span>
                         {shift.isClosed ? (
                           <span className="inline-flex items-center px-2 py-0.5 rounded-md bg-[var(--palette-italian-red)]/25 border border-[var(--palette-italian-red)]/40 text-[10px] font-semibold text-amber-100">
-                            {locale === 'ar' ? 'مغلق' : locale === 'it' ? 'Chiuso' : 'Closed'}
+                            {locale === 'it' ? 'Chiuso' : 'Closed'}
                           </span>
                         ) : (
                           <bdi

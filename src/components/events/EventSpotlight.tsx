@@ -14,7 +14,6 @@ interface EventSpotlightProps {
 
 export function EventSpotlight({ event, locale }: EventSpotlightProps) {
   const t = useTranslations();
-  const isRtl = locale === 'ar';
 
   return (
     <article className="relative mb-16 rounded-3xl overflow-hidden border border-[var(--palette-stone-beige)]/70 bg-white/95 shadow-xl backdrop-blur-sm grid grid-cols-1 lg:grid-cols-12 items-stretch transition-all duration-300">
@@ -108,7 +107,7 @@ export function EventSpotlight({ event, locale }: EventSpotlightProps) {
             className="flex-1 min-w-[200px] inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[var(--palette-italian-red)] text-white hover:bg-[var(--palette-italian-red-dark)] text-xs sm:text-sm font-semibold transition-all shadow-md hover:shadow-lg cursor-pointer"
           >
             <span>{t('news.reserveSpot')}</span>
-            <ArrowRight size={15} className={isRtl ? 'rotate-180' : ''} aria-hidden="true" />
+            <ArrowRight size={15} aria-hidden="true" />
           </Link>
 
           <a

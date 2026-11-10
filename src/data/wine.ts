@@ -4,47 +4,38 @@ export const wineCategoryLabels: Record<WineCategory, LocalizedText> = {
   glass: {
     it: 'Vino della Casa',
     en: 'House Wine',
-    ar: 'نبيذ الدار',
   },
   sparkling: {
     it: 'Spumanti',
     en: 'Sparkling Wines',
-    ar: 'النبيذ الفوار',
   },
   white: {
     it: 'Vini Bianchi',
     en: 'White Wines',
-    ar: 'النبيذ الأبيض',
   },
   red: {
     it: 'Vini Rossi',
     en: 'Red Wines',
-    ar: 'النبيذ الأحمر',
   },
   rose: {
     it: 'Vini Rosati',
     en: 'Rosé Wines',
-    ar: 'النبيذ الوردي',
   },
   dessert: {
     it: 'Vini da Dessert',
     en: 'Dessert Wines',
-    ar: 'نبيذ الحلوى',
   },
   beer: {
     it: 'Birre alla Spina & in Bottiglia',
     en: 'Draft & Bottled Beers',
-    ar: 'البيرة على الصنبور وفي زجاجات',
   },
   soft: {
     it: 'Bibite & Acqua Minerale',
     en: 'Soft Drinks & Water',
-    ar: 'المشروبات الغازية والمياه',
   },
   coffee: {
     it: 'Caffetteria & Amari',
     en: 'Coffee & Digestifs',
-    ar: 'القهوة والمشروبات الهضمية',
   },
 };
 

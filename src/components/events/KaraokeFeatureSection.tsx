@@ -3,15 +3,8 @@
 import { Mic2, Music, Users, Car, Sparkles, ArrowRight, Phone } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
-import type { Locale } from '@/i18n/routing';
-
-interface KaraokeFeatureSectionProps {
-  locale: Locale;
-}
-
-export function KaraokeFeatureSection({ locale }: KaraokeFeatureSectionProps) {
+export function KaraokeFeatureSection() {
   const t = useTranslations();
-  const isRtl = locale === 'ar';
 
   return (
     <section className="my-16 sm:my-20 relative rounded-3xl overflow-hidden bg-gradient-to-br from-[var(--palette-espresso)] via-[#1f1614] to-black text-white p-6 sm:p-10 lg:p-12 shadow-2xl border border-amber-900/40">
@@ -99,7 +92,7 @@ export function KaraokeFeatureSection({ locale }: KaraokeFeatureSectionProps) {
               className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[var(--palette-italian-red)] hover:bg-[var(--palette-italian-red-dark)] text-white text-xs sm:text-sm font-semibold transition-all shadow-lg hover:shadow-xl cursor-pointer"
             >
               <span>{t('news.reserveSpot')}</span>
-              <ArrowRight size={15} className={isRtl ? 'rotate-180' : ''} aria-hidden="true" />
+              <ArrowRight size={15} aria-hidden="true" />
             </Link>
 
             <a

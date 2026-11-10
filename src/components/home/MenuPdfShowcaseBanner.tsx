@@ -30,8 +30,6 @@ export function MenuPdfShowcaseBanner({
               <span>
                 {locale === 'it'
                   ? 'Edizione Cartacea Ufficiale (10 Pagine)'
-                  : locale === 'ar'
-                  ? 'النسخة الورقية الرسمية (10 صفحات)'
                   : 'Official Print Edition (10 Pages)'}
               </span>
             </span>
@@ -39,7 +37,7 @@ export function MenuPdfShowcaseBanner({
             <span className="hidden sm:inline-flex items-center gap-1 text-[10px] text-amber-300 font-semibold">
               <Sparkles size={11} />
               <span>
-                {locale === 'it' ? 'Alta Definizione' : locale === 'ar' ? 'عالي الدقة' : 'High Resolution'}
+                {locale === 'it' ? 'Alta Definizione' : 'High Resolution'}
               </span>
             </span>
           </div>
@@ -47,16 +45,12 @@ export function MenuPdfShowcaseBanner({
           <h3 className="font-serif text-xl sm:text-2xl font-bold text-white tracking-tight">
             {locale === 'it'
               ? 'Desideri Sfogliare il Menù Completo Ufficiale?'
-              : locale === 'ar'
-              ? 'هل تفضل تصفح أو تحميل قائمة الطعام الرسمية كاملة؟'
               : 'Prefer to Browse or Download the Complete Menu PDF?'}
           </h3>
 
           <p className="text-xs sm:text-sm text-stone-300 font-light leading-relaxed">
             {locale === 'it'
               ? 'Tutte le 10 pagine originali con pizze al metro, selezioni di terra e mare, paste al forno in crosta e cantina completa da portare sempre con te.'
-              : locale === 'ar'
-              ? 'تضم الصفحات العشر الأصلية تشكيلات بيتزا المتر، مأكولات الأرض والبحر، الباستا المخبوزة في غطاء العجين، وقائمة المشروبات كاملة.'
               : 'All 10 authentic pages with meter-long pizzas, seafood and land selections, bread-crust baked pasta, and the cellar list.'}
           </p>
         </div>
@@ -72,8 +66,6 @@ export function MenuPdfShowcaseBanner({
             <span>
               {locale === 'it'
                 ? 'Sfoglia PDF Online'
-                : locale === 'ar'
-                ? 'استعراض PDF هنا'
                 : 'Preview PDF Online'}
             </span>
           </button>
@@ -87,8 +79,6 @@ export function MenuPdfShowcaseBanner({
             <span>
               {locale === 'it'
                 ? 'Scarica PDF'
-                : locale === 'ar'
-                ? 'تحميل الملف'
                 : 'Download PDF'}
             </span>
           </a>

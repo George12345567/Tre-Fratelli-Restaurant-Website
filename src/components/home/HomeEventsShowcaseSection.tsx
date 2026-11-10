@@ -22,7 +22,6 @@ const eventImages: Record<string, string> = {
 interface FlipEventItemProps {
   id: string;
   index: number;
-  locale: Locale;
   title: string;
   copy: string;
   schedule: string;
@@ -31,7 +30,6 @@ interface FlipEventItemProps {
 
 function FlipEventItem({
   index,
-  locale,
   title,
   copy,
   schedule,
@@ -39,14 +37,13 @@ function FlipEventItem({
 }: FlipEventItemProps) {
   const itemRef = useRef<HTMLDivElement>(null);
   const shouldReduceMotion = usePrefersReducedMotion();
-  const isRtl = locale === 'ar';
 
   const { scrollYProgress } = useScroll({
     target: itemRef,
     offset: ['start 95%', 'end 10%'],
   });
 
-  // Smooth scroll-linked page-flip ("تجليب") animation
+  // Smooth scroll-linked page-flip animation
   const rotateX = useTransform(scrollYProgress, [0, 0.36, 0.75, 1], [28, 0, 0, -18]);
   const scale = useTransform(scrollYProgress, [0, 0.36, 0.75, 1], [0.9, 1, 1, 0.94]);
   const y = useTransform(scrollYProgress, [0, 0.36, 0.75, 1], [48, 0, 0, -28]);
@@ -107,9 +104,7 @@ function FlipEventItem({
 
               <span
                 aria-hidden="true"
-                className={`inline-flex h-10 w-10 sm:h-11 sm:w-11 shrink-0 items-center justify-center rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-white group-hover:bg-[var(--palette-italian-red)] group-hover:border-[var(--palette-italian-red)] transition-all duration-300 ${
-                  isRtl ? 'rotate-180' : ''
-                }`}
+                className="inline-flex h-10 w-10 sm:h-11 sm:w-11 shrink-0 items-center justify-center rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-white group-hover:bg-[var(--palette-italian-red)] group-hover:border-[var(--palette-italian-red)] transition-all duration-300"
               >
                 <ArrowUpRight size={18} />
               </span>
@@ -125,9 +120,7 @@ export function HomeEventsShowcaseSection({ locale }: HomeEventsShowcaseSectionP
   return (
     <section
       aria-label={
-        locale === 'ar'
-          ? 'فعاليات وسهرات المطعم'
-          : locale === 'it'
+        locale === 'it'
           ? 'Serate ed Eventi'
           : 'Restaurant Evenings & Events'
       }
@@ -139,7 +132,6 @@ export function HomeEventsShowcaseSection({ locale }: HomeEventsShowcaseSectionP
             key={event.id}
             id={event.id}
             index={index}
-            locale={locale}
             title={getLocalized(event.title, locale)}
             copy={getLocalized(event.copy, locale)}
             schedule={getLocalized(event.schedule, locale)}

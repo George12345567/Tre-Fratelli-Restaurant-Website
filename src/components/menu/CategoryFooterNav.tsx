@@ -16,7 +16,6 @@ interface CategoryFooterNavProps {
 
 export function CategoryFooterNav({ prev, next, locale }: CategoryFooterNavProps) {
   const shouldReduceMotion = usePrefersReducedMotion();
-  const isRtl = locale === 'ar';
   const prevTitle = getLocalized(prev.title, locale);
   const nextTitle = getLocalized(next.title, locale);
 
@@ -37,14 +36,12 @@ export function CategoryFooterNav({ prev, next, locale }: CategoryFooterNavProps
         >
           <ArrowLeft
             size={16}
-            className={`text-[var(--palette-italian-red)] transition-transform duration-200 group-hover:-translate-x-1 ${
-              isRtl ? 'rotate-180 group-hover:translate-x-1' : ''
-            }`}
+            className="text-[var(--palette-italian-red)] transition-transform duration-200 group-hover:-translate-x-1"
             aria-hidden="true"
           />
           <div className="text-start">
             <span className="text-[10px] uppercase font-sans text-stone-400 block font-normal">
-              {locale === 'ar' ? 'القسم السابق' : locale === 'it' ? 'Precedente' : 'Previous'}
+              {locale === 'it' ? 'Precedente' : 'Previous'}
             </span>
             <span>{prevTitle}</span>
           </div>
@@ -57,9 +54,7 @@ export function CategoryFooterNav({ prev, next, locale }: CategoryFooterNavProps
         >
           <Grid size={15} aria-hidden="true" />
           <span>
-            {locale === 'ar'
-              ? 'كل أقسام القائمة'
-              : locale === 'it'
+            {locale === 'it'
               ? 'Tutte le Categorie'
               : 'All Menu Categories'}
           </span>
@@ -72,15 +67,13 @@ export function CategoryFooterNav({ prev, next, locale }: CategoryFooterNavProps
         >
           <div className="text-end">
             <span className="text-[10px] uppercase font-sans text-stone-400 block font-normal">
-              {locale === 'ar' ? 'القسم التالي' : locale === 'it' ? 'Successivo' : 'Next'}
+              {locale === 'it' ? 'Successivo' : 'Next'}
             </span>
             <span>{nextTitle}</span>
           </div>
           <ArrowRight
             size={16}
-            className={`text-[var(--palette-italian-red)] transition-transform duration-200 group-hover:translate-x-1 ${
-              isRtl ? 'rotate-180 group-hover:-translate-x-1' : ''
-            }`}
+            className="text-[var(--palette-italian-red)] transition-transform duration-200 group-hover:translate-x-1"
             aria-hidden="true"
           />
         </Link>

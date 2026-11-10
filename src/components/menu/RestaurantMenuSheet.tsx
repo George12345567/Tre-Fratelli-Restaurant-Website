@@ -90,12 +90,10 @@ export function RestaurantMenuSheet({ locale }: RestaurantMenuSheetProps) {
       if (query) {
         const matchesName =
           dish.name.it.toLowerCase().includes(query) ||
-          dish.name.en.toLowerCase().includes(query) ||
-          dish.name.ar.toLowerCase().includes(query);
+          dish.name.en.toLowerCase().includes(query);
         const matchesDesc =
           dish.description.it.toLowerCase().includes(query) ||
-          dish.description.en.toLowerCase().includes(query) ||
-          dish.description.ar.toLowerCase().includes(query);
+          dish.description.en.toLowerCase().includes(query);
         const matchesAllergens = dish.allergens.some((alg) =>
           alg.toLowerCase().includes(query)
         );
@@ -116,7 +114,6 @@ export function RestaurantMenuSheet({ locale }: RestaurantMenuSheetProps) {
       label: {
         it: 'Tutta la Carta',
         en: 'All Menu',
-        ar: 'كامل القائمة',
       },
       count: filteredDishes.length,
       icon: <UtensilsCrossed size={13} aria-hidden="true" />,
@@ -147,16 +144,6 @@ export function RestaurantMenuSheet({ locale }: RestaurantMenuSheetProps) {
               : cat === 'Contorni & Salads'
               ? 'Salads & Sides'
               : categoryLabels[cat].en,
-          ar:
-            cat === 'Pizza & Calzoni'
-              ? 'بيتزا الحطب'
-              : cat === 'Primi Piatti'
-              ? 'الباستا والريزوتو'
-              : cat === 'Secondi Piatti'
-              ? 'الرئيسية والسفن'
-              : cat === 'Contorni & Salads'
-              ? 'السلطات والمقبلات'
-              : categoryLabels[cat].ar,
         },
         count,
         icon: getCategoryIcon(cat),
@@ -223,7 +210,7 @@ export function RestaurantMenuSheet({ locale }: RestaurantMenuSheetProps) {
                   </div>
 
                   <span className="text-xs font-serif italic text-[var(--palette-espresso)]/70">
-                    {dishesInCat.length} {locale === 'it' ? 'proposte disponibili' : locale === 'ar' ? 'أطباق متوفرة' : 'dishes available'}
+                    {dishesInCat.length} {locale === 'it' ? 'proposte disponibili' : 'dishes available'}
                   </span>
                 </div>
 
@@ -265,16 +252,12 @@ export function RestaurantMenuSheet({ locale }: RestaurantMenuSheetProps) {
             </div>
             <div className="space-y-1">
               <p className="font-serif text-base font-bold text-[var(--palette-espresso)]">
-                {locale === 'ar'
-                  ? 'لم يتم العثور على أطباق تطابق بحثك.'
-                  : locale === 'it'
+                {locale === 'it'
                   ? 'Nessun piatto trovato per questa ricerca.'
                   : 'No dishes found matching your search.'}
               </p>
               <p className="text-xs text-[var(--palette-espresso)]/65">
-                {locale === 'ar'
-                  ? 'جرب البحث باسم مكون آخر أو تغيير فلتر التصنيف.'
-                  : locale === 'it'
+                {locale === 'it'
                   ? 'Prova a cercare un altro ingrediente o a rimuovere i filtri attivi.'
                   : 'Try searching another ingredient or clearing active dietary filters.'}
               </p>
@@ -288,7 +271,7 @@ export function RestaurantMenuSheet({ locale }: RestaurantMenuSheetProps) {
               }}
               className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[var(--palette-italian-red)] text-white text-xs font-bold hover:bg-[var(--palette-italian-red-dark)] transition-colors shadow-2xs cursor-pointer"
             >
-              {locale === 'ar' ? 'إعادة ضبط كل الفلاتر' : locale === 'it' ? 'Mostra tutta la carta' : 'Reset all filters'}
+              {locale === 'it' ? 'Mostra tutta la carta' : 'Reset all filters'}
             </button>
           </div>
         )}

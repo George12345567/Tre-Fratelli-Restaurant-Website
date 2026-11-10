@@ -2,18 +2,15 @@
 
 import { Sparkles, ArrowLeft } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
-import type { Locale } from '@/i18n/routing';
 import type { SweetsDictionary } from './sweetsI18n';
 
 interface SweetsHeaderProps {
-  locale: Locale;
   dict: SweetsDictionary;
   totalCount: number;
   sectionCount?: number;
 }
 
-export function SweetsHeader({ locale, dict, totalCount, sectionCount = 5 }: SweetsHeaderProps) {
-  const isRtl = locale === 'ar';
+export function SweetsHeader({ dict, totalCount, sectionCount = 5 }: SweetsHeaderProps) {
 
   return (
     <header className="space-y-4 sm:space-y-5">
@@ -48,9 +45,7 @@ export function SweetsHeader({ locale, dict, totalCount, sectionCount = 5 }: Swe
         >
           <ArrowLeft
             size={12}
-            className={`text-[var(--palette-italian-red)] transition-transform duration-200 group-hover:-translate-x-0.5 ${
-              isRtl ? 'rotate-180 group-hover:translate-x-0.5' : ''
-            }`}
+            className="text-[var(--palette-italian-red)] transition-transform duration-200 group-hover:-translate-x-0.5"
             aria-hidden="true"
           />
           <span>{dict.breadcrumbMenu}</span>

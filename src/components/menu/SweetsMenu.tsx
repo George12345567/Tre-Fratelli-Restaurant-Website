@@ -76,7 +76,6 @@ export function SweetsMenu({ locale }: { locale: Locale }) {
 
       {/* ── Page Header & Wayfinding ── */}
       <SweetsHeader
-        locale={locale}
         dict={dict}
         totalCount={sweetMenuDishes.length}
         sectionCount={sweetMenuSections.length}
@@ -230,7 +229,7 @@ export function SweetsMenu({ locale }: { locale: Locale }) {
       )}
 
       {/* ── Wine / Digestif Pairing Banner ── */}
-      <SweetsFooterBanner locale={locale} dict={dict} />
+      <SweetsFooterBanner dict={dict} />
 
       {/* ── High-Resolution Lightbox Modal ── */}
       <MenuLightboxModal

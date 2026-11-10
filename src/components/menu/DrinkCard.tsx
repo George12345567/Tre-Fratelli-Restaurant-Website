@@ -49,7 +49,7 @@ export function DrinkCard({ drink, locale, onOpenLightbox }: DrinkCardProps) {
         {drink.pairing && (
           <p className="text-xs text-[var(--palette-espresso)]/80 leading-relaxed font-serif italic">
             <span className="font-sans font-medium not-italic text-[11px] text-[var(--palette-aged-brass)] uppercase me-1">
-              {locale === 'ar' ? 'المواءمة:' : locale === 'it' ? 'Abbinamento:' : 'Pairing:'}
+              {locale === 'it' ? 'Abbinamento:' : 'Pairing:'}
             </span>
             {getLocalized(drink.pairing, locale)}
           </p>
@@ -76,9 +76,7 @@ export function DrinkCard({ drink, locale, onOpenLightbox }: DrinkCardProps) {
           type="button"
           onClick={() => onOpenLightbox(drink)}
           title={
-            locale === 'ar'
-              ? 'انقر لتكبير صورة المشروب'
-              : locale === 'it'
+            locale === 'it'
               ? 'Clicca per ingrandire la foto'
               : 'Click to enlarge photo'
           }

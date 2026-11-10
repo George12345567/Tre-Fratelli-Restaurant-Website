@@ -18,7 +18,6 @@ export function EventsExplorer({ locale }: { locale: Locale }) {
   const reduceMotion = usePrefersReducedMotion();
   const text = (key: keyof typeof eventsEditorial) => getLocalized(eventsEditorial[key], locale);
   const events = recurringEvents.filter((event) => filter === 'all' || event.type === filter);
-  const arrow = locale === 'ar' ? 'rotate-180' : '';
 
   return (
     <>
@@ -59,7 +58,7 @@ export function EventsExplorer({ locale }: { locale: Locale }) {
                     <div className="sm:col-span-8">
                       <h3 className="font-serif text-2xl sm:text-3xl leading-tight">{getLocalized(event.title, locale)}</h3>
                       <p className="mt-3 text-sm leading-relaxed text-[var(--palette-espresso)]/75">{getLocalized(event.copy, locale)}</p>
-                      <Link href="/location" className="inline-flex min-h-11 items-center gap-3 mt-3 text-xs sm:text-sm text-[var(--palette-italian-red)] font-semibold hover:underline underline-offset-8">{text('reserve')}<ArrowRight size={14} className={arrow} aria-hidden="true" /></Link>
+                      <Link href="/location" className="inline-flex min-h-11 items-center gap-3 mt-3 text-xs sm:text-sm text-[var(--palette-italian-red)] font-semibold hover:underline underline-offset-8">{text('reserve')}<ArrowRight size={14} aria-hidden="true" /></Link>
                     </div>
                   </div>
                 </ScrollReveal>
@@ -76,7 +75,7 @@ export function EventsExplorer({ locale }: { locale: Locale }) {
           <p className="mt-4 mx-auto max-w-xl text-sm leading-relaxed text-[var(--palette-espresso)]/70">{text('contactCopy')}</p>
           <div className="mt-6 flex flex-col sm:flex-row flex-wrap items-center justify-center gap-3 sm:gap-7">
             <Link href="/location" className="inline-flex min-h-11 items-center gap-3 rounded-full bg-[var(--palette-italian-red)] hover:bg-[var(--palette-italian-red-dark)] text-white px-6 py-3 text-sm font-semibold transition-colors">
-              {text('reserve')}<ArrowRight size={15} className={arrow} aria-hidden="true" />
+              {text('reserve')}<ArrowRight size={15} aria-hidden="true" />
             </Link>
             <a href={`tel:${restaurantOfficialInfo.phone}`} className="inline-flex min-h-11 items-center gap-3 text-base sm:text-lg font-serif text-[var(--palette-espresso)] hover:text-[var(--palette-italian-red)] transition-colors">
               <Phone size={16} aria-hidden="true" /><bdi dir="ltr">{restaurantOfficialInfo.phoneDisplay}</bdi>

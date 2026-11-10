@@ -8,7 +8,6 @@ import { RestaurantReveal } from './RestaurantReveal';
 
 export function RestaurantStory({ locale }: { locale: Locale }) {
   const text = (key: keyof typeof restaurantEditorial) => getLocalized(restaurantEditorial[key], locale);
-  const arrow = locale === 'ar' ? 'rotate-180' : '';
 
   return (
     <>
@@ -28,10 +27,10 @@ export function RestaurantStory({ locale }: { locale: Locale }) {
                 </p>
                 <div className="mt-6 flex flex-wrap gap-x-6 gap-y-3 items-center">
                   <Link href="/location" className="inline-flex items-center gap-3 min-h-11 px-5 py-3 bg-[var(--palette-italian-red)] text-white rounded-full text-sm font-semibold hover:bg-[var(--palette-italian-red-dark)] transition-colors">
-                    {text('reserve')}<ArrowRight size={15} className={arrow} aria-hidden="true" />
+                    {text('reserve')}<ArrowRight size={15} aria-hidden="true" />
                   </Link>
                   <Link href="/menu" className="inline-flex items-center min-h-11 gap-2 text-sm underline underline-offset-8 decoration-[var(--palette-aged-brass)]/50 hover:decoration-current">
-                    {text('menu')}<ArrowRight size={15} className={arrow} aria-hidden="true" />
+                    {text('menu')}<ArrowRight size={15} aria-hidden="true" />
                   </Link>
                 </div>
               </div>

@@ -8,7 +8,6 @@ interface MenuCategoryNavPillsProps {
   activeCategoryId: string;
   onSelectCategory: (id: string) => void;
   locale: string;
-  isRtl: boolean;
 }
 
 export function MenuCategoryNavPills({
@@ -16,10 +15,9 @@ export function MenuCategoryNavPills({
   activeCategoryId,
   onSelectCategory,
   locale,
-  isRtl,
 }: MenuCategoryNavPillsProps) {
-  const getLoc = (obj: { it: string; en: string; ar: string }) => {
-    return locale === 'ar' ? obj.ar : locale === 'en' ? obj.en : obj.it;
+  const getLoc = (obj: { it: string; en: string;  }) => {
+    return locale === 'en' ? obj.en : obj.it;
   };
 
   const activeIdx = categories.findIndex((c) => c.id === activeCategoryId);
@@ -41,11 +39,11 @@ export function MenuCategoryNavPills({
       <div className="md:hidden flex items-center justify-between bg-white/90 backdrop-blur-md p-2 rounded-2xl border border-black/10 shadow-xs">
         <button
           type="button"
-          onClick={isRtl ? handleNext : handlePrev}
+          onClick={handlePrev}
           className="p-2 rounded-xl bg-black/5 hover:bg-black/10 text-[var(--palette-espresso)] transition-colors cursor-pointer"
           aria-label="Previous category"
         >
-          <ChevronLeft size={16} className={isRtl ? 'rotate-180' : ''} />
+          <ChevronLeft size={16} />
         </button>
 
         <div className="text-center px-3 min-w-0">
@@ -59,11 +57,11 @@ export function MenuCategoryNavPills({
 
         <button
           type="button"
-          onClick={isRtl ? handlePrev : handleNext}
+          onClick={handleNext}
           className="p-2 rounded-xl bg-black/5 hover:bg-black/10 text-[var(--palette-espresso)] transition-colors cursor-pointer"
           aria-label="Next category"
         >
-          <ChevronRight size={16} className={isRtl ? 'rotate-180' : ''} />
+          <ChevronRight size={16} />
         </button>
       </div>
 

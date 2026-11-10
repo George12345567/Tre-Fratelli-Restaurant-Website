@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint . --max-warnings=0",
+    "lint": "node scripts/check-locales.mjs && eslint . --max-warnings=0",
+    "check:locales": "node scripts/check-locales.mjs",
+    "verify:locales": "node scripts/verify-locales.mjs",
     "typecheck": "next typegen && tsc --noEmit"
   },
   "dependencies": {

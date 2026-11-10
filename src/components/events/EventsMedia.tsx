@@ -6,17 +6,14 @@ const copy = {
   title: {
     it: 'Momenti veri, da noi.',
     en: 'Real moments, from our restaurant.',
-    ar: 'لقطات حقيقية من عندنا.',
   },
   evening: {
     it: 'Una serata al ristorante',
     en: 'An evening at the restaurant',
-    ar: 'من سهرات المطعم',
   },
   karaoke: {
     it: 'Musica e karaoke, dal vivo',
     en: 'Music and karaoke, in the moment',
-    ar: 'من أجواء الغناء والكاراوكي',
   },
 } satisfies Record<string, LocalizedText>;
 

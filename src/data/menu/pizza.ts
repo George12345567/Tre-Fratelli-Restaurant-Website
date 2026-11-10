@@ -5,11 +5,10 @@ export const pizzaDishes: Dish[] = [
   {
     id: 'piz-1',
     category: 'Pizza & Calzoni',
-    name: { it: 'Marinara', en: 'Marinara', ar: 'بيتزا مارينارا الكلاسيكية' },
+    name: { it: 'Marinara', en: 'Marinara' },
     description: {
       it: 'Pomodoro, aglio, olio e origano.',
       en: 'Tomato sauce, garlic, olive oil, and oregano.',
-      ar: 'صلصة طماطم، ثوم، زيت زيتون بكر، وأوريغانو.',
     },
     price: '€5,50',
     tags: ['pizza', 'vegetarian'],
@@ -19,11 +18,10 @@ export const pizzaDishes: Dish[] = [
   {
     id: 'piz-2',
     category: 'Pizza & Calzoni',
-    name: { it: 'Margherita', en: 'Margherita', ar: 'بيتزا مارغريتا الكلاسيكية' },
+    name: { it: 'Margherita', en: 'Margherita' },
     description: {
       it: 'Pomodoro, mozzarella e basilico.',
       en: 'Tomato sauce, fior di latte mozzarella, and fresh basil.',
-      ar: 'صلصة طماطم، جبن موزاريلا، وريحان طازج.',
     },
     price: '€7,00',
     tags: ['signature', 'pizza', 'vegetarian'],
@@ -33,11 +31,10 @@ export const pizzaDishes: Dish[] = [
   {
     id: 'piz-3',
     category: 'Pizza & Calzoni',
-    name: { it: 'Amore', en: 'Pizza Amore', ar: 'بيتزا أموري بالبورشيني والجرجير' },
+    name: { it: 'Amore', en: 'Pizza Amore' },
     description: {
       it: 'Mozzarella, mozzarella di bufala, porcini, rucola e grana.',
       en: 'Mozzarella, buffalo mozzarella, porcini mushrooms, fresh arugula, and shaved grana.',
-      ar: 'موزاريلا، موزاريلا بافلو، فطر بورشيني، جرجير، وجبن غرانا.',
     },
     price: '€9,50',
     tags: ['pizza', 'vegetarian'],
@@ -46,11 +43,10 @@ export const pizzaDishes: Dish[] = [
   {
     id: 'piz-4',
     category: 'Pizza & Calzoni',
-    name: { it: 'Americana', en: 'Americana', ar: 'بيتزا أمريكانا بالسجق والبطاطا' },
+    name: { it: 'Americana', en: 'Americana' },
     description: {
       it: 'Pomodoro, mozzarella, wurstel e patatine.',
       en: 'Tomato sauce, mozzarella, würstel sausage, and crispy fries.',
-      ar: 'صلصة طماطم، موزاريلا، سجق فرانکفورتر، وبطاطا مقلية.',
     },
     price: '€8,50',
     tags: ['pizza', 'meat'],
@@ -59,11 +55,10 @@ export const pizzaDishes: Dish[] = [
   {
     id: 'piz-5',
     category: 'Pizza & Calzoni',
-    name: { it: 'Boscaiola', en: 'Boscaiola', ar: 'بيتزا بوسكايولا بالفطر' },
+    name: { it: 'Boscaiola', en: 'Boscaiola' },
     description: {
       it: 'Pomodoro, mozzarella e funghi champignon.',
       en: 'Tomato sauce, mozzarella, and sliced champignon mushrooms.',
-      ar: 'صلصة طماطم، موزاريلا، وفطر شامبينيون طازج.',
     },
     price: '€7,50',
     tags: ['pizza', 'vegetarian'],
@@ -72,11 +67,10 @@ export const pizzaDishes: Dish[] = [
   {
     id: 'piz-6',
     category: 'Pizza & Calzoni',
-    name: { it: 'Bismark', en: 'Bismark', ar: 'بيتزا بسمارك مع البيض واللحم' },
+    name: { it: 'Bismark', en: 'Bismark' },
     description: {
       it: 'Pomodoro, mozzarella, cotto e uovo.',
       en: 'Tomato sauce, mozzarella, Italian cooked ham, and sunny farm egg.',
-      ar: 'صلصة طماطم، موزاريلا، لحم كوتو مطبوخ، وبيض.',
     },
     price: '€9,00',
     tags: ['pizza', 'meat'],
@@ -85,11 +79,10 @@ export const pizzaDishes: Dish[] = [
   {
     id: 'piz-7',
     category: 'Pizza & Calzoni',
-    name: { it: 'Braccio di Ferro', en: 'Braccio di Ferro', ar: 'بيتزا براتشو دي فيرو بالسبانخ والريكوتا' },
+    name: { it: 'Braccio di Ferro', en: 'Braccio di Ferro' },
     description: {
       it: 'Pomodoro, mozzarella, spinaci, ricotta e grana.',
       en: 'Tomato sauce, mozzarella, fresh spinach, creamy ricotta, and shaved grana.',
-      ar: 'صلصة طماطم، موزاريلا، سبانخ طازجة، جبن ريكوتا، وغرانا.',
     },
     price: '€9,50',
     tags: ['pizza', 'vegetarian'],
@@ -98,11 +91,10 @@ export const pizzaDishes: Dish[] = [
   {
     id: 'piz-8',
     category: 'Pizza & Calzoni',
-    name: { it: 'Bibo', en: 'Bibo', ar: 'بيتزا بيبو مع سكامورزا وفستق وسبيك' },
+    name: { it: 'Bibo', en: 'Bibo' },
     description: {
       it: 'Pomodoro, mozzarella, scamorza, pistacchio e speck.',
       en: 'Tomato sauce, mozzarella, smoked scamorza, crushed pistachio, and Alto Adige speck.',
-      ar: 'صلصة طماطم، موزاريلا، جبن سكامورزا مدخن، فستق حلبي، وسبيك مدخن.',
     },
     price: '€11,00',
     tags: ['signature', 'pizza', 'meat'],
@@ -112,11 +104,10 @@ export const pizzaDishes: Dish[] = [
   {
     id: 'piz-9',
     category: 'Pizza & Calzoni',
-    name: { it: 'Capricciosa', en: 'Capricciosa', ar: 'بيتزا كابريتشوزا الغنية' },
+    name: { it: 'Capricciosa', en: 'Capricciosa' },
     description: {
       it: 'Pomodoro, mozzarella, funghi, cotto, carciofi, capperi, acciughe e origano.',
       en: 'Tomato sauce, mozzarella, mushrooms, cooked ham, artichokes, capers, anchovies, oregano.',
-      ar: 'صلصة طماطم، موزاريلا، فطر، لحم كوتو، خرشوف، كبر، أنشوفة، وأوريغانو.',
     },
     price: '€10,00',
     tags: ['signature', 'pizza', 'meat'],
@@ -126,11 +117,10 @@ export const pizzaDishes: Dish[] = [
   {
     id: 'piz-10',
     category: 'Pizza & Calzoni',
-    name: { it: 'Carbonara', en: 'Pizza Carbonara', ar: 'بيتزا كاربونارا بالبانشيتا والبيض' },
+    name: { it: 'Carbonara', en: 'Pizza Carbonara' },
     description: {
       it: 'Mozzarella, pancetta, uova e grana.',
       en: 'Mozzarella, crispy cured pancetta, farm eggs, and shaved grana.',
-      ar: 'موزاريلا، بانشيتا مقرمشة، بيض، وجبن غرانا.',
     },
     price: '€9,00',
     tags: ['pizza', 'meat'],
@@ -139,11 +129,10 @@ export const pizzaDishes: Dish[] = [
   {
     id: 'piz-11',
     category: 'Pizza & Calzoni',
-    name: { it: 'Contadina', en: 'Contadina', ar: 'بيتزا كونتادينا بالسجق والفطر' },
+    name: { it: 'Contadina', en: 'Contadina' },
     description: {
       it: 'Pomodoro, mozzarella, salsiccia e funghi champignon.',
       en: 'Tomato sauce, mozzarella, Italian sausage, and champignon mushrooms.',
-      ar: 'صلصة طماطم، موزاريلا، سجق إيطالي، وفطر شامبينيون.',
     },
     price: '€9,00',
     tags: ['pizza', 'meat'],
@@ -152,11 +141,10 @@ export const pizzaDishes: Dish[] = [
   {
     id: 'piz-12',
     category: 'Pizza & Calzoni',
-    name: { it: 'Diavola', en: 'Diavola', ar: 'بيتزا ديافولا بالسلامي الحار' },
+    name: { it: 'Diavola', en: 'Diavola' },
     description: {
       it: 'Pomodoro, mozzarella e salame piccante.',
       en: 'Tomato sauce, mozzarella, and spicy Calabrian salame.',
-      ar: 'صلصة طماطم، موزاريلا، وسلامي كالابريا الحار.',
     },
     price: '€8,00',
     tags: ['signature', 'pizza', 'meat'],
@@ -166,11 +154,10 @@ export const pizzaDishes: Dish[] = [
   {
     id: 'piz-13',
     category: 'Pizza & Calzoni',
-    name: { it: 'Fumè', en: 'Fumè', ar: 'بيتزا فوميه المدخنة' },
+    name: { it: 'Fumè', en: 'Fumè' },
     description: {
       it: 'Mozzarella, trevisana, scamorza e speck.',
       en: 'Mozzarella, Treviso radicchio, smoked scamorza, and cured speck.',
-      ar: 'موزاريلا، هندباء تريفيزو، سكامورزا مدخنة، وسبيك.',
     },
     price: '€8,50',
     tags: ['pizza', 'meat'],
@@ -179,11 +166,10 @@ export const pizzaDishes: Dish[] = [
   {
     id: 'piz-14',
     category: 'Pizza & Calzoni',
-    name: { it: 'Napoli', en: 'Napoli', ar: 'بيتزا نابولي بالأنشوفة' },
+    name: { it: 'Napoli', en: 'Napoli' },
     description: {
       it: 'Pomodoro, mozzarella, acciughe e origano.',
       en: 'Tomato sauce, mozzarella, savory anchovies, and oregano.',
-      ar: 'صلصة طماطم، موزاريلا، أنشوفة، وأوريغانو.',
     },
     price: '€7,00',
     tags: ['pizza', 'seafood'],
@@ -192,11 +178,10 @@ export const pizzaDishes: Dish[] = [
   {
     id: 'piz-15',
     category: 'Pizza & Calzoni',
-    name: { it: "'Nduja", en: "'Nduja", ar: 'بيتزا إندوجا الكالابرية الحارة' },
+    name: { it: "'Nduja", en: "'Nduja" },
     description: {
       it: "Pomodoro, mozzarella e 'nduja.",
       en: "Tomato sauce, mozzarella, and spicy spreadable Calabrian 'nduja.",
-      ar: "صلصة طماطم، موزاريلا، ومعجون 'إندوجا الكالابري الحار.",
     },
     price: '€8,00',
     tags: ['pizza', 'meat'],
@@ -205,11 +190,10 @@ export const pizzaDishes: Dish[] = [
   {
     id: 'piz-16',
     category: 'Pizza & Calzoni',
-    name: { it: 'Ortolana', en: 'Ortolana', ar: 'بيتزا أورتولانا بالخضار المشوية' },
+    name: { it: 'Ortolana', en: 'Ortolana' },
     description: {
       it: 'Pomodoro, mozzarella e verdura alla griglia.',
       en: 'Tomato sauce, mozzarella, and seasonal grilled vegetables.',
-      ar: 'صلصة طماطم، موزاريلا، وتشكيلة خضروات مشوية.',
     },
     price: '€8,00',
     tags: ['pizza', 'vegetarian'],
@@ -219,11 +203,10 @@ export const pizzaDishes: Dish[] = [
   {
     id: 'piz-17',
     category: 'Pizza & Calzoni',
-    name: { it: 'Regina', en: 'Regina', ar: 'بيتزا ريجينا مع اللحم والفطر' },
+    name: { it: 'Regina', en: 'Regina' },
     description: {
       it: 'Pomodoro, mozzarella, cotto e funghi champignon.',
       en: 'Tomato sauce, mozzarella, Italian cooked ham, and champignon mushrooms.',
-      ar: 'صلصة طماطم، موزاريلا، لحم كوتو، وفطر شامبينيون.',
     },
     price: '€8,00',
     tags: ['pizza', 'meat'],
@@ -232,11 +215,10 @@ export const pizzaDishes: Dish[] = [
   {
     id: 'piz-18',
     category: 'Pizza & Calzoni',
-    name: { it: 'Romana', en: 'Romana', ar: 'بيتزا رومانا بالزيتون والكبر والأنشوفة' },
+    name: { it: 'Romana', en: 'Romana' },
     description: {
       it: 'Pomodoro, mozzarella, olive, capperi, acciughe e origano.',
       en: 'Tomato sauce, mozzarella, black olives, capers, anchovies, oregano.',
-      ar: 'صلصة طماطم، موزاريلا، زيتون أسود، كبر، أنشوفة، وأوريغانو.',
     },
     price: '€9,00',
     tags: ['pizza', 'seafood'],
@@ -245,11 +227,10 @@ export const pizzaDishes: Dish[] = [
   {
     id: 'piz-19',
     category: 'Pizza & Calzoni',
-    name: { it: 'Rustica', en: 'Rustica', ar: 'بيتزا روستيكا بالسجق والباذنجان والبصل' },
+    name: { it: 'Rustica', en: 'Rustica' },
     description: {
       it: 'Pomodoro, mozzarella, salsiccia, melanzane e cipolla.',
       en: 'Tomato sauce, mozzarella, Italian sausage, grilled eggplant, and onion.',
-      ar: 'صلصة طماطم، موزاريلا، سجق إيطالي، باذنجان، وبصل.',
     },
     price: '€9,50',
     tags: ['pizza', 'meat'],
@@ -258,11 +239,10 @@ export const pizzaDishes: Dish[] = [
   {
     id: 'piz-20',
     category: 'Pizza & Calzoni',
-    name: { it: 'Patatine', en: 'Pizza con Patatine', ar: 'بيتزا بالبطاطا المقلية المقرمشة' },
+    name: { it: 'Patatine', en: 'Pizza con Patatine' },
     description: {
       it: 'Pomodoro, mozzarella e patatine fritte.',
       en: 'Tomato sauce, mozzarella, and crispy golden French fries.',
-      ar: 'صلصة طماطم، موزاريلا، وبطاطا مقلية مقرمشة.',
     },
     price: '€8,50',
     tags: ['pizza', 'vegetarian'],
@@ -271,11 +251,10 @@ export const pizzaDishes: Dish[] = [
   {
     id: 'piz-21',
     category: 'Pizza & Calzoni',
-    name: { it: 'Parmigiana', en: 'Parmigiana', ar: 'بيتزا بارميجيانا بالباذنجان المقلي' },
+    name: { it: 'Parmigiana', en: 'Parmigiana' },
     description: {
       it: 'Pomodoro, mozzarella, melanzane fritte e grana.',
       en: 'Tomato sauce, mozzarella, golden fried eggplant, and shaved grana.',
-      ar: 'صلصة طماطم، موزاريلا، باذنجان مقلي، وجبن غرانا.',
     },
     price: '€8,50',
     tags: ['pizza', 'vegetarian'],
@@ -284,11 +263,10 @@ export const pizzaDishes: Dish[] = [
   {
     id: 'piz-22',
     category: 'Pizza & Calzoni',
-    name: { it: 'Pugliese', en: 'Pugliese', ar: 'بيتزا بولييزي بالبصل والأوريغانو' },
+    name: { it: 'Pugliese', en: 'Pugliese' },
     description: {
       it: 'Pomodoro, mozzarella, cipolla e origano.',
       en: 'Tomato sauce, mozzarella, sweet sliced onion, and oregano.',
-      ar: 'صلصة طماطم، موزاريلا، بصل، وأوريغانو.',
     },
     price: '€7,50',
     tags: ['pizza', 'vegetarian'],
@@ -297,11 +275,10 @@ export const pizzaDishes: Dish[] = [
   {
     id: 'piz-23',
     category: 'Pizza & Calzoni',
-    name: { it: 'Al Cotto', en: 'Al Cotto', ar: 'بيتزا آل كوتو بلحم الخنزير المطبوخ' },
+    name: { it: 'Al Cotto', en: 'Al Cotto' },
     description: {
       it: 'Pomodoro, mozzarella e cotto.',
       en: 'Tomato sauce, mozzarella, and Italian cooked ham.',
-      ar: 'صلصة طماطم، موزاريلا، ولحم كوتو مطبوخ.',
     },
     price: '€8,00',
     tags: ['pizza', 'meat'],
@@ -310,11 +287,10 @@ export const pizzaDishes: Dish[] = [
   {
     id: 'piz-24',
     category: 'Pizza & Calzoni',
-    name: { it: 'Salsiccia e Friarielli', en: 'Salsiccia & Friarielli', ar: 'بيتزا السجق وفرايريلي نابولي' },
+    name: { it: 'Salsiccia e Friarielli', en: 'Salsiccia & Friarielli' },
     description: {
       it: 'Mozzarella, salsiccia e friarielli.',
       en: 'Fior di latte mozzarella, artisanal sausage, and sautéed Neapolitan friarielli.',
-      ar: 'موزاريلا، سجق إيطالي طازج، وخضار فرايريلي نابوليتانو.',
     },
     price: '€9,50',
     tags: ['signature', 'pizza', 'meat'],
@@ -324,11 +300,10 @@ export const pizzaDishes: Dish[] = [
   {
     id: 'piz-25',
     category: 'Pizza & Calzoni',
-    name: { it: 'Salsiccia e Patatine', en: 'Sausage & Fries', ar: 'بيتزا السجق والبطاطا المقلية' },
+    name: { it: 'Salsiccia e Patatine', en: 'Sausage & Fries' },
     description: {
       it: 'Pomodoro, mozzarella, salsiccia e patatine.',
       en: 'Tomato sauce, mozzarella, sausage crumble, and crispy fries.',
-      ar: 'صلصة طماطم، موزاريلا، سجق إيطالي، وبطاطا مقلية.',
     },
     price: '€9,50',
     tags: ['pizza', 'meat'],
@@ -337,11 +312,10 @@ export const pizzaDishes: Dish[] = [
   {
     id: 'piz-26',
     category: 'Pizza & Calzoni',
-    name: { it: 'Salame e Crescenza', en: 'Salame & Crescenza', ar: 'بيتزا السلامي وجبن الكريشينزا' },
+    name: { it: 'Salame e Crescenza', en: 'Salame & Crescenza' },
     description: {
       it: 'Pomodoro, mozzarella, salame piccante e crescenza.',
       en: 'Tomato sauce, mozzarella, spicy salame, and creamy crescenza cheese.',
-      ar: 'صلصة طماطم، موزاريلا، سلامي حار، وجبن كريشينزا كريمي.',
     },
     price: '€9,00',
     tags: ['pizza', 'meat'],
@@ -350,11 +324,10 @@ export const pizzaDishes: Dish[] = [
   {
     id: 'piz-27',
     category: 'Pizza & Calzoni',
-    name: { it: 'Salame Dolce', en: 'Salame Dolce', ar: 'بيتزا السلامي الحلو' },
+    name: { it: 'Salame Dolce', en: 'Salame Dolce' },
     description: {
       it: 'Pomodoro, mozzarella e salame dolce.',
       en: 'Tomato sauce, mozzarella, and mild Italian sweet salame.',
-      ar: 'صلصة طماطم، موزاريلا، وسلامي حلو غير حار.',
     },
     price: '€8,00',
     tags: ['pizza', 'meat'],
@@ -363,11 +336,10 @@ export const pizzaDishes: Dish[] = [
   {
     id: 'piz-28',
     category: 'Pizza & Calzoni',
-    name: { it: 'Super Diavola', en: 'Super Diavola', ar: 'بيتزا سوبر ديافولا الحارة مع جورجونزولا' },
+    name: { it: 'Super Diavola', en: 'Super Diavola' },
     description: {
       it: 'Pomodoro, mozzarella, salame piccante e zola.',
       en: 'Tomato sauce, mozzarella, spicy salame, and aged gorgonzola cheese.',
-      ar: 'صلصة طماطم، موزاريلا، سلامي حار، وجبن غورغونزولا.',
     },
     price: '€9,00',
     tags: ['pizza', 'meat'],
@@ -376,11 +348,10 @@ export const pizzaDishes: Dish[] = [
   {
     id: 'piz-29',
     category: 'Pizza & Calzoni',
-    name: { it: 'Siciliana', en: 'Siciliana', ar: 'بيتزا صقلية بالزيتون والأنشوفة والكبر' },
+    name: { it: 'Siciliana', en: 'Siciliana' },
     description: {
       it: 'Pomodoro, olive, acciughe, capperi e origano.',
       en: 'Tomato sauce, black olives, savory anchovies, capers, and oregano.',
-      ar: 'صلصة طماطم، زيتون، أنشوفة، كبر، وأوريغانو.',
     },
     price: '€7,50',
     tags: ['pizza', 'seafood'],
@@ -389,11 +360,10 @@ export const pizzaDishes: Dish[] = [
   {
     id: 'piz-30',
     category: 'Pizza & Calzoni',
-    name: { it: 'Tre Fratelli', en: 'Tre Fratelli House Pizza', ar: 'بيتزا تري فراتيلي الخاصة' },
+    name: { it: 'Tre Fratelli', en: 'Tre Fratelli House Pizza' },
     description: {
       it: 'Mozzarella di bufala, crudo, rucola, grana e pomodorini.',
       en: 'Buffalo mozzarella, aged Parma prosciutto crudo, arugula, shaved grana, cherry tomatoes.',
-      ar: 'موزاريلا بافلو، بروشوتو كرودو، جرجير، جبن غرانا، وطماطم كرزية.',
     },
     price: '€12,00',
     tags: ['signature', 'pizza', 'meat'],
@@ -403,11 +373,10 @@ export const pizzaDishes: Dish[] = [
   {
     id: 'piz-31',
     category: 'Pizza & Calzoni',
-    name: { it: 'Valdostana', en: 'Valdostana', ar: 'بيتزا فالدستانا بجبن البري والكرودو' },
+    name: { it: 'Valdostana', en: 'Valdostana' },
     description: {
       it: 'Pomodoro, mozzarella, brie, crudo e grana.',
       en: 'Tomato sauce, mozzarella, French brie, prosciutto crudo, and shaved grana.',
-      ar: 'صلصة طماطم، موزاريلا، جبن بري، بروشوتو كرودو، وجبن غرانا.',
     },
     price: '€10,00',
     tags: ['pizza', 'meat'],
@@ -416,11 +385,10 @@ export const pizzaDishes: Dish[] = [
   {
     id: 'piz-32',
     category: 'Pizza & Calzoni',
-    name: { it: 'Valtellinese', en: 'Valtellinese', ar: 'بيتزا فالتيلينيزي ببريزاولا والجرجير' },
+    name: { it: 'Valtellinese', en: 'Valtellinese' },
     description: {
       it: 'Pomodoro, mozzarella, bresaola, rucola e grana.',
       en: 'Tomato sauce, mozzarella, Valtellina bresaola, fresh arugula, and shaved grana.',
-      ar: 'صلصة طماطم، موزاريلا، بريزاولا معتقة، جرجير، وجبن غرانا.',
     },
     price: '€10,00',
     tags: ['pizza', 'meat'],
@@ -429,11 +397,10 @@ export const pizzaDishes: Dish[] = [
   {
     id: 'piz-33',
     category: 'Pizza & Calzoni',
-    name: { it: 'Zola', en: 'Zola', ar: 'بيتزا زولا بجبن الغورغونزولا' },
+    name: { it: 'Zola', en: 'Zola' },
     description: {
       it: 'Pomodoro, mozzarella e zola.',
       en: 'Tomato sauce, mozzarella, and creamy gorgonzola cheese.',
-      ar: 'صلصة طماطم، موزاريلا، وجبن غورغونزولا إيطالي.',
     },
     price: '€9,00',
     tags: ['pizza', 'vegetarian'],
@@ -442,11 +409,10 @@ export const pizzaDishes: Dish[] = [
   {
     id: 'piz-34',
     category: 'Pizza & Calzoni',
-    name: { it: '4 Stagioni', en: 'Four Seasons', ar: 'بيتزا الفصول الأربعة كواترو ستاجيوني' },
+    name: { it: '4 Stagioni', en: 'Four Seasons' },
     description: {
       it: 'Pomodoro, mozzarella, funghi, carciofi, cotto e olive.',
       en: 'Tomato sauce, mozzarella, mushrooms, artichokes, cooked ham, and olives.',
-      ar: 'صلصة طماطم، موزاريلا، فطر، خرشوف، لحم كوتو، وزيتون.',
     },
     price: '€10,00',
     tags: ['pizza', 'meat'],
@@ -455,11 +421,10 @@ export const pizzaDishes: Dish[] = [
   {
     id: 'piz-35',
     category: 'Pizza & Calzoni',
-    name: { it: '4 Salumi', en: '4 Salumi', ar: 'بيتزا اللحوم الأربعة الإيطالية' },
+    name: { it: '4 Salumi', en: '4 Salumi' },
     description: {
       it: 'Pomodoro, mozzarella, pancetta, salame piccante, salsiccia e wurstel.',
       en: 'Tomato sauce, mozzarella, pancetta, spicy salame, sausage, and würstel.',
-      ar: 'صلصة طماطم، موزاريلا، بانشيتا، سلامي حار، سجق، وفرانكفورتر.',
     },
     price: '€12,00',
     tags: ['pizza', 'meat'],
@@ -468,11 +433,10 @@ export const pizzaDishes: Dish[] = [
   {
     id: 'piz-36',
     category: 'Pizza & Calzoni',
-    name: { it: '4 Formaggi', en: 'Four Cheeses', ar: 'بيتزا الأجبان الأربعة كواترو فورماجي' },
+    name: { it: '4 Formaggi', en: 'Four Cheeses' },
     description: {
       it: 'Mozzarella, zola, grana e brie.',
       en: 'Fior di latte mozzarella, gorgonzola, shaved grana, and soft brie.',
-      ar: 'موزاريلا، غورغونزولا، جبن غرانا، وجبن بري ناعم.',
     },
     price: '€9,50',
     tags: ['signature', 'pizza', 'vegetarian'],
@@ -482,11 +446,10 @@ export const pizzaDishes: Dish[] = [
   {
     id: 'piz-37',
     category: 'Pizza & Calzoni',
-    name: { it: 'Zola e Mele', en: 'Gorgonzola & Apple', ar: 'بيتزا الغورغونزولا والتفاح' },
+    name: { it: 'Zola e Mele', en: 'Gorgonzola & Apple' },
     description: {
       it: 'Mozzarella, zola e mele.',
       en: 'Mozzarella, creamy gorgonzola, and thinly sliced sweet apples.',
-      ar: 'موزاريلا، جبن غورغونزولا، وشرائح تفاح طازجة.',
     },
     price: '€9,00',
     tags: ['pizza', 'vegetarian'],
@@ -495,11 +458,10 @@ export const pizzaDishes: Dish[] = [
   {
     id: 'piz-38',
     category: 'Pizza & Calzoni',
-    name: { it: 'Zola e Pere', en: 'Gorgonzola & Pear', ar: 'بيتزا الغورغونزولا والكمثرى' },
+    name: { it: 'Zola e Pere', en: 'Gorgonzola & Pear' },
     description: {
       it: 'Mozzarella, zola e pere.',
       en: 'Mozzarella, creamy gorgonzola, and ripe sliced pears.',
-      ar: 'موزاريلا، جبن غورغونزولا، وشرائح كمثرى.',
     },
     price: '€9,00',
     tags: ['pizza', 'vegetarian'],
@@ -510,11 +472,10 @@ export const pizzaDishes: Dish[] = [
   {
     id: 'piz-mare-1',
     category: 'Pizza & Calzoni',
-    name: { it: 'Asparagi e Gamberi', en: 'Asparagus & Shrimp Pizza', ar: 'بيتزا الهليون والروبيان' },
+    name: { it: 'Asparagi e Gamberi', en: 'Asparagus & Shrimp Pizza' },
     description: {
       it: 'Pomodoro, mozzarella, asparagi e gamberetti.',
       en: 'Tomato sauce, mozzarella, fresh asparagus, and baby shrimp.',
-      ar: 'صلصة طماطم، موزاريلا، هليون طازج، وروبيان صغير.',
     },
     price: '€10,00',
     tags: ['pizza', 'seafood'],
@@ -523,11 +484,10 @@ export const pizzaDishes: Dish[] = [
   {
     id: 'piz-mare-2',
     category: 'Pizza & Calzoni',
-    name: { it: 'Calamari', en: 'Fried Calamari Pizza', ar: 'بيتزا الكالاماري المقلي المقرمش' },
+    name: { it: 'Calamari', en: 'Fried Calamari Pizza' },
     description: {
       it: 'Pomodoro, mozzarella, calamari fritti.',
       en: 'Tomato sauce, mozzarella, and crispy fried golden calamari rings.',
-      ar: 'صلصة طماطم، موزاريلا، وحلقات كالاماري مقلية ذهبية.',
     },
     price: '€12,00',
     tags: ['pizza', 'seafood'],
@@ -536,11 +496,10 @@ export const pizzaDishes: Dish[] = [
   {
     id: 'piz-mare-3',
     category: 'Pizza & Calzoni',
-    name: { it: 'Frutti di Mare', en: 'Seafood Pizza', ar: 'بيتزا ثمار البحر المشكلة' },
+    name: { it: 'Frutti di Mare', en: 'Seafood Pizza' },
     description: {
       it: 'Pomodoro, mozzarella e misto di frutti di mare.',
       en: 'Tomato sauce, mozzarella, and assorted mixed seafood medley.',
-      ar: 'صلصة طماطم، موزاريلا، وتشكيلة ثمار البحر الطازجة.',
     },
     price: '€14,00',
     tags: ['signature', 'pizza', 'seafood'],
@@ -550,11 +509,10 @@ export const pizzaDishes: Dish[] = [
   {
     id: 'piz-mare-4',
     category: 'Pizza & Calzoni',
-    name: { it: 'Mare e Monti', en: 'Mare e Monti', ar: 'بيتزا ماري إي مونتي (بورشيني وروبيان)' },
+    name: { it: 'Mare e Monti', en: 'Mare e Monti' },
     description: {
       it: 'Pomodoro, mozzarella, porcini e gamberetti.',
       en: 'Tomato sauce, mozzarella, porcini mushrooms, and sweet shrimp.',
-      ar: 'صلصة طماطم، موزاريلا، فطر بورشيني، وروبيان.',
     },
     price: '€12,00',
     tags: ['signature', 'pizza', 'seafood'],
@@ -563,11 +521,10 @@ export const pizzaDishes: Dish[] = [
   {
     id: 'piz-mare-5',
     category: 'Pizza & Calzoni',
-    name: { it: 'Polipina', en: 'Polipina Octopus Pizza', ar: 'بيتزا بولبينا بالأخطبوط والسكامورزا' },
+    name: { it: 'Polipina', en: 'Polipina Octopus Pizza' },
     description: {
       it: 'Mozzarella, polipo, scamorza e rucola.',
       en: 'Mozzarella, tender braised octopus, smoked scamorza, and fresh arugula.',
-      ar: 'موزاريلا، أخطبوط طري، سكامورزا مدخنة، وجرجير.',
     },
     price: '€13,00',
     tags: ['pizza', 'seafood'],
@@ -576,11 +533,10 @@ export const pizzaDishes: Dish[] = [
   {
     id: 'piz-mare-6',
     category: 'Pizza & Calzoni',
-    name: { it: 'Salmone', en: 'Smoked Salmon & Cream', ar: 'بيتزا السلمون المدخن والكريمة' },
+    name: { it: 'Salmone', en: 'Smoked Salmon & Cream' },
     description: {
       it: 'Mozzarella, panna e salmone affumicato.',
       en: 'Mozzarella, delicate sweet cream, and wood-smoked salmon.',
-      ar: 'موزاريلا، كريمة طازجة، وسلمون مدخن.',
     },
     price: '€10,00',
     tags: ['pizza', 'seafood'],
@@ -589,11 +545,10 @@ export const pizzaDishes: Dish[] = [
   {
     id: 'piz-mare-7',
     category: 'Pizza & Calzoni',
-    name: { it: 'Tonno e Cipolla', en: 'Tuna & Red Onion', ar: 'بيتزا التونة والبصل' },
+    name: { it: 'Tonno e Cipolla', en: 'Tuna & Red Onion' },
     description: {
       it: 'Pomodoro, mozzarella, tonno e cipolla.',
       en: 'Tomato sauce, mozzarella, Mediterranean tuna, and sliced sweet onion.',
-      ar: 'صلصة طماطم، موزاريلا، تونة، وبصل حلو.',
     },
     price: '€9,00',
     tags: ['pizza', 'seafood'],
@@ -604,11 +559,10 @@ export const pizzaDishes: Dish[] = [
   {
     id: 'piz-gourmet-1',
     category: 'Pizza & Calzoni',
-    name: { it: 'Burratina', en: 'Burratina Gourmet', ar: 'بيتزا بوراتينا بالبوراتا وبروشوتو كرودو' },
+    name: { it: 'Burratina', en: 'Burratina Gourmet' },
     description: {
       it: 'Pomodoro, pomodori secchi, burrata, crudo e rucola.',
       en: 'Tomato sauce, sun-dried tomatoes, artisanal whole burrata, prosciutto crudo, and fresh arugula.',
-      ar: 'صلصة طماطم، طماطم مجففة، جبن بوراتا، بروشوتو كرودو، وجرجير.',
     },
     price: '€13,00',
     tags: ['signature', 'pizza', 'meat'],
@@ -618,11 +572,10 @@ export const pizzaDishes: Dish[] = [
   {
     id: 'piz-gourmet-2',
     category: 'Pizza & Calzoni',
-    name: { it: 'Bufalina', en: 'Bufalina D.O.P.', ar: 'بيتزا بوفالينا بجبن الموزاريلا البافلو' },
+    name: { it: 'Bufalina', en: 'Bufalina D.O.P.' },
     description: {
       it: 'Pomodoro, bufala e pomodorini.',
       en: 'Tomato sauce, Campanian buffalo mozzarella D.O.P., and sweet cherry tomatoes.',
-      ar: 'صلصة طماطم، جبن موزاريلا بافلو، وطماطم كرزية.',
     },
     price: '€9,50',
     tags: ['signature', 'pizza', 'vegetarian'],
@@ -632,11 +585,10 @@ export const pizzaDishes: Dish[] = [
   {
     id: 'piz-gourmet-3',
     category: 'Pizza & Calzoni',
-    name: { it: 'Fiori di Zucca', en: 'Zucchini Blossoms & Burrata', ar: 'بيتزا أزهار الكوسة والبوراتا والأنشوفة' },
+    name: { it: 'Fiori di Zucca', en: 'Zucchini Blossoms & Burrata' },
     description: {
       it: 'Mozzarella, burrata, fiori di zucca e acciughe.',
       en: 'Mozzarella, creamy burrata heart, zucchini squash blossoms, and savory anchovies.',
-      ar: 'موزاريلا، جبن بوراتا، أزهار الكوسة، وأنشوفة.',
     },
     price: '€11,50',
     tags: ['pizza', 'seafood'],
@@ -645,11 +597,10 @@ export const pizzaDishes: Dish[] = [
   {
     id: 'piz-gourmet-4',
     category: 'Pizza & Calzoni',
-    name: { it: 'Mortadella', en: 'Mortadella & Pistacchio Gourmet', ar: 'بيتزا المرتديلا والبوراتا والفستق الحلبي' },
+    name: { it: 'Mortadella', en: 'Mortadella & Pistacchio Gourmet' },
     description: {
       it: 'Pomodoro, mozzarella, mortadella, burrata e pistacchio.',
       en: 'Tomato sauce, mozzarella, Bologna mortadella, whole creamy burrata, and crushed pistachios.',
-      ar: 'صلصة طماطم، موزاريلا، مرتديلا، جبن بوراتا كامل، وفستق حلبي.',
     },
     price: '€12,00',
     tags: ['signature', 'pizza', 'meat'],
@@ -661,11 +612,10 @@ export const pizzaDishes: Dish[] = [
   {
     id: 'foc-1',
     category: 'Pizza & Calzoni',
-    name: { it: 'Bianca', en: 'Rosemary Focaccia', ar: 'فوكاتشا بيضاء كلاسيكية بإكليل الجبل' },
+    name: { it: 'Bianca', en: 'Rosemary Focaccia' },
     description: {
       it: 'Con rosmarino.',
       en: 'With fresh fragrant rosemary and extra-virgin olive oil.',
-      ar: 'مخبوزة مع إكليل الجبل وزيت الزيتون البكر.',
     },
     price: '€4,00',
     tags: ['pizza', 'vegetarian'],
@@ -675,11 +625,10 @@ export const pizzaDishes: Dish[] = [
   {
     id: 'foc-2',
     category: 'Pizza & Calzoni',
-    name: { it: 'Primavera', en: 'Focaccia Primavera', ar: 'فوكاتشا بريمافيرا بالجرجير والكرودو والغرانا' },
+    name: { it: 'Primavera', en: 'Focaccia Primavera' },
     description: {
       it: 'Rucola, pomodorini, crudo e scaglie di grana.',
       en: 'Fresh wild rocket, cherry tomatoes, Parma prosciutto crudo, and shaved grana.',
-      ar: 'جرجير طازج، طماطم كرزية، بروشوتو كرودو، ورقائق جبن غرانا.',
     },
     price: '€8,00',
     tags: ['pizza', 'meat'],
@@ -688,11 +637,10 @@ export const pizzaDishes: Dish[] = [
   {
     id: 'foc-3',
     category: 'Pizza & Calzoni',
-    name: { it: 'Favolosa', en: 'Focaccia Favolosa', ar: 'فوكاتشا فافولوزا بالبورشيني والكرودو' },
+    name: { it: 'Favolosa', en: 'Focaccia Favolosa' },
     description: {
       it: 'Crudo, pomodorini, porcini e grana.',
       en: 'Prosciutto crudo, cherry tomatoes, sautéed porcini mushrooms, and shaved grana.',
-      ar: 'بروشوتو كرودو، طماطم كرزية، فطر بورشيني، وجبن غرانا.',
     },
     price: '€9,00',
     tags: ['pizza', 'meat'],
@@ -703,11 +651,10 @@ export const pizzaDishes: Dish[] = [
   {
     id: 'calz-1',
     category: 'Pizza & Calzoni',
-    name: { it: 'Normale', en: 'Classic Ham & Mozzarella Calzone', ar: 'كالتزوني كلاسيكي باللحم والموزاريلا' },
+    name: { it: 'Normale', en: 'Classic Ham & Mozzarella Calzone' },
     description: {
       it: 'Pomodoro, mozzarella e cotto.',
       en: 'Folded pizza with tomato sauce, mozzarella, and Italian cooked ham.',
-      ar: 'كالتزوني مخبوز بصلصة الطماطم، موزاريلا، ولحم كوتو مطبوخ.',
     },
     price: '€7,50',
     tags: ['pizza', 'meat'],
@@ -717,11 +664,10 @@ export const pizzaDishes: Dish[] = [
   {
     id: 'calz-2',
     category: 'Pizza & Calzoni',
-    name: { it: 'Farcito', en: 'Stuffed Calzone', ar: 'كالتزوني محشو بالموزاريلا واللحم والفطر والخرشوف' },
+    name: { it: 'Farcito', en: 'Stuffed Calzone' },
     description: {
       it: 'Pomodoro, mozzarella, prosciutto, funghi e carciofi.',
       en: 'Folded pizza with tomato sauce, mozzarella, prosciutto, mushrooms, and artichokes.',
-      ar: 'صلصة طماطم، موزاريلا، بروشوتو، فطر، وخرشوف.',
     },
     price: '€8,50',
     tags: ['pizza', 'meat'],
@@ -730,11 +676,10 @@ export const pizzaDishes: Dish[] = [
   {
     id: 'calz-3',
     category: 'Pizza & Calzoni',
-    name: { it: 'Antico', en: 'Grilled Vegetables Calzone', ar: 'كالتزوني أنتيكو بالخضار المشوية' },
+    name: { it: 'Antico', en: 'Grilled Vegetables Calzone' },
     description: {
       it: 'Pomodoro, mozzarella e verdure grigliate.',
       en: 'Folded pizza with tomato sauce, mozzarella, and seasoned grilled vegetables.',
-      ar: 'صلصة طماطم، موزاريلا، وتشكيلة خضروات مشوية متبلة.',
     },
     price: '€8,50',
     tags: ['pizza', 'vegetarian'],
@@ -748,12 +693,10 @@ export const pizzaDishes: Dish[] = [
     name: {
       it: 'Pizza al Metro',
       en: 'One-Meter Pizza Feast',
-      ar: 'بيتزا المتر العائلية الكبرى (40 × 100 سم)',
     },
     description: {
       it: 'Margherita 40 x 100 cm + bibita grande.',
       en: 'Margherita 40 x 100 cm served with large soft drink bottle.',
-      ar: 'مارغريتا عملاقة 40 × 100 سم + مشروب عائلي كبير.',
     },
     price: '€30,00',
     tags: ['signature', 'pizza'],
@@ -766,12 +709,10 @@ export const pizzaDishes: Dish[] = [
     name: {
       it: 'Giro Pizza',
       en: 'All-You-Can-Eat Giro Pizza',
-      ar: 'جيرو بيتزا: بيتزا بلا حدود + بيرة وسط (حد أدنى 4 أشخاص)',
     },
     description: {
       it: 'Pizza a volontà + birra media (minimo 4 persone).',
       en: 'Unlimited pizzas to the table + medium beer (minimum 4 guests).',
-      ar: 'بيتزا بلا حدود تُقدم ساخنة للطاولة + بيرة وسط (حد أدنى 4 أشخاص).',
     },
     price: '€16,00',
     tags: ['signature', 'pizza'],

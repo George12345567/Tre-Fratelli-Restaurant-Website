@@ -27,7 +27,6 @@ export function HomeMenuScrollCard({
   const cardRef = useRef<HTMLDivElement>(null);
   const shouldReduceMotion = usePrefersReducedMotion();
 
-  const isRtl = locale === 'ar';
   const categoryTitle = getLocalized(config.title, locale);
   const categorySubtitle = getLocalized(config.subtitle, locale);
   const categoryIntro = getLocalized(config.intro, locale);
@@ -41,7 +40,7 @@ export function HomeMenuScrollCard({
     offset: ['start 96%', 'end 8%'],
   });
 
-  const horizontalDir = (isRightColumn !== isRtl ? 1 : -1) * 14;
+  const horizontalDir = (isRightColumn ? 1 : -1) * 14;
   const revealPoint = isRightColumn ? 0.34 : 0.28;
 
   const cardOpacity = useTransform(
@@ -123,7 +122,7 @@ export function HomeMenuScrollCard({
                 </span>
 
                 <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] sm:text-[11px] font-sans font-semibold tracking-wide bg-black/50 [@media(hover:hover)_and_(pointer:fine)]:backdrop-blur-md text-white border border-white/15 shadow-xs">
-                  {itemCount} {locale === 'ar' ? 'صنف' : locale === 'it' ? 'proposte' : 'items'}
+                  {itemCount} {locale === 'it' ? 'proposte' : 'items'}
                 </span>
               </div>
 
@@ -140,9 +139,7 @@ export function HomeMenuScrollCard({
 
                 {/* Circular Action Arrow Pill */}
                 <div
-                  className={`w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/20 [@media(hover:hover)_and_(pointer:fine)]:backdrop-blur-md border border-white/30 flex items-center justify-center shrink-0 group-hover:bg-[var(--palette-italian-red)] group-hover:border-[var(--palette-italian-red)] group-hover:scale-110 transition-all duration-300 shadow-md ${
-                    isRtl ? 'rotate-180' : ''
-                  }`}
+                  className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/20 [@media(hover:hover)_and_(pointer:fine)]:backdrop-blur-md border border-white/30 flex items-center justify-center shrink-0 group-hover:bg-[var(--palette-italian-red)] group-hover:border-[var(--palette-italian-red)] group-hover:scale-110 transition-all duration-300 shadow-md"
                   aria-hidden="true"
                 >
                   <ArrowUpRight size={18} className="text-white transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

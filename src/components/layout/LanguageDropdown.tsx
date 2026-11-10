@@ -13,7 +13,6 @@ interface LanguageDropdownProps {
 }
 
 const languages: Array<{ code: Locale; label: string; native: string }> = [
-  { code: 'ar', label: 'العربية', native: 'العربية' },
   { code: 'en', label: 'English', native: 'English' },
   { code: 'it', label: 'Italiano', native: 'Italiano' },
 ];

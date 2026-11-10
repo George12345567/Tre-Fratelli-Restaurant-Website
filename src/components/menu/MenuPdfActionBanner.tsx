@@ -13,12 +13,11 @@ export function MenuPdfActionBanner({
   onOpenViewer,
 }: MenuPdfActionBannerProps) {
   const pdfUrl = '/menu/tre-fratelli-menu.pdf';
-  const isRtl = locale === 'ar';
 
   return (
     <div
       className="relative overflow-hidden rounded-2xl sm:rounded-3xl bg-gradient-to-br from-[var(--palette-warm-ivory)] via-white to-[var(--palette-stone-beige-light)]/40 border border-[var(--palette-aged-brass)]/30 p-4 sm:p-6 shadow-xs"
-      dir={isRtl ? 'rtl' : 'ltr'}
+      dir="ltr"
     >
       {/* Decorative Subtle Background Stamp */}
       <div
@@ -40,16 +39,12 @@ export function MenuPdfActionBanner({
                 <span>
                   {locale === 'it'
                     ? 'Menù Ufficiale PDF'
-                    : locale === 'ar'
-                    ? 'قائمة الطعام المعتمدة PDF'
                     : 'Official Menu PDF'}
                 </span>
               </span>
               <span className="text-[11px] font-medium text-[var(--palette-espresso)]/60">
                 {locale === 'it'
                   ? '10 Pagine · Alta Risoluzione'
-                  : locale === 'ar'
-                  ? '10 صفحات كاملة عالية الدقة'
                   : '10 Full Pages · High Quality'}
               </span>
             </div>
@@ -57,16 +52,12 @@ export function MenuPdfActionBanner({
             <h3 className="font-serif text-base sm:text-lg font-bold text-[var(--palette-espresso)] leading-snug">
               {locale === 'it'
                 ? 'Sfoglia o Scarica la Carta Completa di Tre Fratelli'
-                : locale === 'ar'
-                ? 'تصفح أو حمّل قائمة طعام Tre Fratelli الرسمية'
                 : 'Browse or Download the Tre Fratelli Menu'}
             </h3>
 
             <p className="text-xs sm:text-sm text-[var(--palette-espresso)]/75 leading-relaxed">
               {locale === 'it'
                 ? 'Consulta l’originale stampato con antipasti, primi al forno, barche di pesce, 38 pizze speciali e la carta dei vini.'
-                : locale === 'ar'
-                ? 'اطّلع على النسخة الأصلية الكاملة شاملة المقبلات، أطباق الفرن، سفن الأسماك الكبرى، 38 نوع بيتزا وقائمة المشروبات والخمور.'
                 : 'Explore the full printed original menu including appetizers, baked pasta, seafood ships, 38 wood-fired pizzas, and wines.'}
             </p>
           </div>
@@ -84,8 +75,6 @@ export function MenuPdfActionBanner({
             <span>
               {locale === 'it'
                 ? 'Visualizza PDF'
-                : locale === 'ar'
-                ? 'عرض المنيو (PDF)'
                 : 'View PDF Menu'}
             </span>
           </button>
@@ -100,8 +89,6 @@ export function MenuPdfActionBanner({
             <span>
               {locale === 'it'
                 ? 'Scarica PDF (6.4 MB)'
-                : locale === 'ar'
-                ? 'تحميل الملف'
                 : 'Download PDF'}
             </span>
           </a>
@@ -114,8 +101,6 @@ export function MenuPdfActionBanner({
             title={
               locale === 'it'
                 ? 'Apri in nuova scheda'
-                : locale === 'ar'
-                ? 'فتح في تبويب مستقل'
                 : 'Open in new tab'
             }
             className="hidden sm:inline-flex p-2.5 rounded-full bg-white border border-[var(--palette-stone-beige)]/70 text-[var(--palette-espresso)]/70 hover:text-[var(--palette-espresso)] hover:bg-stone-50 transition-colors shadow-2xs"

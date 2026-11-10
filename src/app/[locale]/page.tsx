@@ -18,14 +18,12 @@ export default async function HomePage({ params }: PageProps) {
   if (!hasLocale(routing.locales, locale)) notFound();
 
   const t = await getTranslations({ locale });
-  const isRtl = locale === 'ar';
 
   return (
     <main id="main-content" tabIndex={-1} className="focus:outline-none">
       {/* ── 1. Video Hero Section (Full-Screen Side-Aligned Luxury) ── */}
       <HeroSection
         locale={locale}
-        isRtl={isRtl}
         translations={{
           heroEyebrow: t('home.heroEyebrow'),
           heroTitle: t('home.heroTitle'),
@@ -41,7 +39,6 @@ export default async function HomePage({ params }: PageProps) {
       {/* ── 3. About & Restaurant Information (Brand Emblem & Vital Info) ── */}
       <AboutRestaurantSection
         locale={locale}
-        isRtl={isRtl}
         translations={{
           reserveTable: t('home.reserveTable'),
           exploreRestaurant: t('home.exploreRestaurant'),
@@ -69,7 +66,7 @@ export default async function HomePage({ params }: PageProps) {
           >
             <CalendarDays size={18} aria-hidden="true" />
             <span>{t('nav.reserve')}</span>
-            <ArrowRight size={16} className={isRtl ? 'rotate-180' : ''} aria-hidden="true" />
+            <ArrowRight size={16} aria-hidden="true" />
           </Link>
         </div>
       </section>

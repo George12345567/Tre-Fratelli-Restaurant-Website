@@ -14,7 +14,6 @@ const HERO_POSTER_SRC = '/images/hero-poster.webp';
 
 interface Props {
   locale?: string;
-  isRtl: boolean;
   translations: {
     heroEyebrow: string;
     heroTitle: string;
@@ -24,7 +23,7 @@ interface Props {
   };
 }
 
-export function HeroSection({ locale = 'en', isRtl, translations }: Props) {
+export function HeroSection({ locale = 'en', translations }: Props) {
   const sectionRef = useRef<HTMLElement>(null);
   const viewportRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -35,7 +34,7 @@ export function HeroSection({ locale = 'en', isRtl, translations }: Props) {
   // Reach the lower edge before the sticky viewport releases, then hold briefly.
   const textPosition = useTransform(scrollYProgress, [0, 0.88, 1], [0, 1, 1]);
   const progress = useTransform(scrollYProgress, [0, 1], [0.08, 1]);
-  const scrollHint = locale === 'ar' ? 'مرّر لاكتشاف المزيد' : locale === 'it' ? 'Scorri per scoprire' : 'Scroll to discover';
+  const scrollHint = locale === 'it' ? 'Scorri per scoprire' : 'Scroll to discover';
 
   return (
     <section id="home-hero" ref={sectionRef} className={styles.section} aria-labelledby="home-hero-title">
@@ -61,14 +60,14 @@ export function HeroSection({ locale = 'en', isRtl, translations }: Props) {
                 <span className="block text-sm sm:text-base font-medium tracking-wide">{translations.viewMenu}</span>
                 <span aria-hidden="true" className={styles.menuLine} />
               </span>
-              <span className={styles.menuArrow} aria-hidden="true"><ArrowRight size={24} className={isRtl ? 'rotate-180' : ''} /></span>
+              <span className={styles.menuArrow} aria-hidden="true"><ArrowRight size={24} /></span>
             </Link>
             <a href="#home-menu-scroll" className="inline-flex min-h-11 items-center gap-2 text-[10px] sm:text-xs text-white/70 hover:text-white transition-colors">
               <span>{scrollHint}</span><ArrowDown size={13} aria-hidden="true" />
             </a>
           </div>
         </motion.div>
-        <motion.div aria-hidden="true" className="absolute bottom-0 inset-x-0 h-px bg-amber-100/60 z-30" style={{ scaleX: reduceMotion ? 1 : progress, transformOrigin: isRtl ? 'right' : 'left' }} />
+        <motion.div aria-hidden="true" className="absolute bottom-0 inset-x-0 h-px bg-amber-100/60 z-30" style={{ scaleX: reduceMotion ? 1 : progress, transformOrigin: 'left' }} />
       </div>
     </section>
   );

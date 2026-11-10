@@ -30,7 +30,6 @@ export function MenuLightboxModal({
   totalItems,
   categoryLabel,
 }: MenuLightboxModalProps) {
-  const isRtl = locale === 'ar';
 
   useEffect(() => {
     if (!dish) return;
@@ -38,12 +37,10 @@ export function MenuLightboxModal({
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
       if (e.key === 'ArrowLeft') {
-        if (isRtl) onNext?.();
-        else onPrev?.();
+        onPrev?.();
       }
       if (e.key === 'ArrowRight') {
-        if (isRtl) onPrev?.();
-        else onNext?.();
+        onNext?.();
       }
     };
 
@@ -54,17 +51,17 @@ export function MenuLightboxModal({
       document.body.style.overflow = '';
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [dish, onClose, onPrev, onNext, isRtl]);
+  }, [dish, onClose, onPrev, onNext]);
 
   if (!dish || !dish.image) return null;
 
   const localizedName = getLocalized(dish.name, locale);
   const localizedDesc = getLocalized(dish.description, locale);
   const isSignature = dish.tags?.includes('signature');
-  const closeText = locale === 'ar' ? 'إغلاق' : locale === 'it' ? 'Chiudi' : 'Close';
-  const prevText = locale === 'ar' ? 'السابق' : locale === 'it' ? 'Precedente' : 'Previous';
-  const nextText = locale === 'ar' ? 'التالي' : locale === 'it' ? 'Successivo' : 'Next';
-  const signatureText = locale === 'ar' ? 'مميز' : locale === 'it' ? 'Specialità' : 'Signature';
+  const closeText = locale === 'it' ? 'Chiudi' : 'Close';
+  const prevText = locale === 'it' ? 'Precedente' : 'Previous';
+  const nextText = locale === 'it' ? 'Successivo' : 'Next';
+  const signatureText = locale === 'it' ? 'Specialità' : 'Signature';
 
   return (
     <div
@@ -149,7 +146,7 @@ export function MenuLightboxModal({
           {showAllergens && dish.allergens.length > 0 && (
             <div className="pt-2 border-t border-[var(--palette-stone-beige)]/40 flex items-center gap-2 text-[11px] text-[var(--palette-espresso)]/65">
               <span className="font-semibold text-[var(--palette-espresso)]">
-                {locale === 'ar' ? 'مسببات الحساسية:' : locale === 'it' ? 'Allergeni:' : 'Allergens:'}
+                {locale === 'it' ? 'Allergeni:' : 'Allergens:'}
               </span>
               <span>{dish.allergens.join(', ')}</span>
             </div>
@@ -165,7 +162,7 @@ export function MenuLightboxModal({
                   aria-label={prevText}
                   className="inline-flex min-h-11 items-center gap-1.5 px-3.5 py-2 rounded-full bg-white hover:bg-[var(--palette-warm-ivory)] border border-[var(--palette-stone-beige)]/70 text-[var(--palette-espresso)] text-xs font-semibold transition-colors cursor-pointer"
                 >
-                  <ChevronLeft size={15} className={isRtl ? 'rotate-180' : ''} aria-hidden="true" />
+                  <ChevronLeft size={15} aria-hidden="true" />
                   <span>{prevText}</span>
                 </button>
                 <button
@@ -175,7 +172,7 @@ export function MenuLightboxModal({
                   className="inline-flex min-h-11 items-center gap-1.5 px-3.5 py-2 rounded-full bg-white hover:bg-[var(--palette-warm-ivory)] border border-[var(--palette-stone-beige)]/70 text-[var(--palette-espresso)] text-xs font-semibold transition-colors cursor-pointer"
                 >
                   <span>{nextText}</span>
-                  <ChevronRight size={15} className={isRtl ? 'rotate-180' : ''} aria-hidden="true" />
+                  <ChevronRight size={15} aria-hidden="true" />
                 </button>
               </div>
             ) : (

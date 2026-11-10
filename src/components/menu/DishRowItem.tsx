@@ -61,13 +61,6 @@ export function DishRowItem({
           <span className="font-serif text-[14px] sm:text-[16px] font-semibold text-[var(--palette-espresso)] group-hover:text-[var(--palette-italian-red)] transition-colors leading-snug">
             {locale === 'it' ? (
               italianName
-            ) : locale === 'ar' ? (
-              <>
-                <span>{localizedName}</span>
-                <span className="text-[12px] font-sans font-normal text-stone-400 ms-2" dir="ltr">
-                  ({italianName})
-                </span>
-              </>
             ) : (
               <>
                 <span>{italianName}</span>
@@ -84,9 +77,7 @@ export function DishRowItem({
           {isSignature && (
             <span
               title={
-                locale === 'ar'
-                  ? 'طبق الدار المميز'
-                  : locale === 'it'
+                locale === 'it'
                   ? 'Specialità della Casa'
                   : 'House Specialty'
               }
@@ -139,7 +130,7 @@ export function DishRowItem({
               {dish.allergens.length > 0 ? (
                 <div className="flex items-center gap-1.5 flex-wrap">
                   <span className="font-sans font-semibold uppercase tracking-wider text-[10px] text-stone-400">
-                    {locale === 'ar' ? 'مسببات الحساسية:' : locale === 'it' ? 'Allergeni:' : 'Allergens:'}
+                    {locale === 'it' ? 'Allergeni:' : 'Allergens:'}
                   </span>
                   <span className="font-mono text-stone-600 font-bold">
                     {dish.allergens
@@ -166,7 +157,7 @@ export function DishRowItem({
                 >
                   <ZoomIn size={12} />
                   <span>
-                    {locale === 'ar' ? 'عرض صورة الطبق' : locale === 'it' ? 'Vedi foto' : 'View photo'}
+                    {locale === 'it' ? 'Vedi foto' : 'View photo'}
                   </span>
                 </button>
               )}

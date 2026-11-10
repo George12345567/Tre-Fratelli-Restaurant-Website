@@ -39,47 +39,38 @@ const shortWineCategoryLabels: Record<WineCategory, LocalizedText> = {
   sparkling: {
     it: 'Bollicine',
     en: 'Sparkling',
-    ar: 'الفوار والبروسيكو',
   },
   glass: {
     it: 'Al Calice',
     en: 'By the Glass',
-    ar: 'مشروبات بالكأس',
   },
   white: {
     it: 'Bianchi',
     en: 'White Wines',
-    ar: 'النبيذ الأبيض',
   },
   red: {
     it: 'Rossi',
     en: 'Red Wines',
-    ar: 'النبيذ الأحمر',
   },
   rose: {
     it: 'Rosati',
     en: 'Rosé',
-    ar: 'النبيذ الوردي',
   },
   dessert: {
     it: 'Passiti',
     en: 'Dessert Wine',
-    ar: 'نبيذ الحلوى',
   },
   beer: {
     it: 'Birre',
     en: 'Craft Beer',
-    ar: 'البيرة الحرفية',
   },
   coffee: {
     it: 'Caffè & Amari',
     en: 'Coffee & Amari',
-    ar: 'الإسبريسو والهضمية',
   },
   soft: {
     it: 'Bibite',
     en: 'Soft Drinks',
-    ar: 'مشروبات منعشة',
   },
 };
 
@@ -109,7 +100,6 @@ function getWineCategoryIcon(cat: WineCategory) {
 }
 
 export function WineExplorer({ locale }: WineExplorerProps) {
-  const isRtl = locale === 'ar';
 
   const [activeCategory, setActiveCategory] = useState<WineCategory | 'all'>('all');
   const [searchQuery, setSearchQuery] = useState('');
@@ -152,8 +142,7 @@ export function WineExplorer({ locale }: WineExplorerProps) {
             (drink.region && drink.region.toLowerCase().includes(query)) ||
             (drink.pairing &&
               (drink.pairing.it.toLowerCase().includes(query) ||
-                drink.pairing.en.toLowerCase().includes(query) ||
-                drink.pairing.ar.toLowerCase().includes(query))))
+                drink.pairing.en.toLowerCase().includes(query))))
       );
     });
   }, [activeCategory, searchQuery]);
@@ -170,8 +159,7 @@ export function WineExplorer({ locale }: WineExplorerProps) {
         (drink.region && drink.region.toLowerCase().includes(query)) ||
         (drink.pairing &&
           (drink.pairing.it.toLowerCase().includes(query) ||
-            drink.pairing.en.toLowerCase().includes(query) ||
-            drink.pairing.ar.toLowerCase().includes(query)))
+            drink.pairing.en.toLowerCase().includes(query)))
     );
   };
 
@@ -191,7 +179,7 @@ export function WineExplorer({ locale }: WineExplorerProps) {
           <Search
             size={16}
             className={`absolute top-1/2 -translate-y-1/2 text-[var(--palette-espresso)]/50 ${
-              isRtl ? 'right-3.5' : 'left-3.5'
+              'left-3.5'
             }`}
             aria-hidden="true"
           />
@@ -200,14 +188,12 @@ export function WineExplorer({ locale }: WineExplorerProps) {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder={
-              locale === 'ar'
-                ? 'ابحث عن نبيذ، منطقة، بيرة، أو قهوة...'
-                : locale === 'it'
+              locale === 'it'
                 ? 'Cerca un vino, regione, birra o caffè...'
                 : 'Search wines, regions, beers, or coffee...'
             }
             className={`w-full py-2.5 rounded-full border border-[var(--palette-stone-beige)]/70 bg-[var(--palette-warm-ivory)]/40 focus:bg-white text-xs sm:text-sm focus:outline-none focus:ring-1 focus:ring-[var(--palette-aged-brass)] text-[var(--palette-espresso)] transition-all ${
-              isRtl ? 'pr-9 pl-9' : 'pl-9 pr-9'
+              'pl-9 pr-9'
             }`}
           />
           {searchQuery && (
@@ -215,7 +201,7 @@ export function WineExplorer({ locale }: WineExplorerProps) {
               type="button"
               onClick={() => setSearchQuery('')}
               className={`absolute top-1/2 -translate-y-1/2 text-[var(--palette-espresso)]/50 hover:text-black ${
-                isRtl ? 'left-3' : 'right-3'
+                'right-3'
               }`}
               aria-label="Clear search"
             >
@@ -242,7 +228,7 @@ export function WineExplorer({ locale }: WineExplorerProps) {
                 : 'bg-[var(--palette-warm-ivory)] text-[var(--palette-espresso)]/85 hover:bg-[var(--palette-stone-beige-light)]/60'
             }`}
           >
-            {locale === 'ar' ? 'جميع المشروبات' : locale === 'it' ? 'Tutti i Vini' : 'All Drinks'}
+            {locale === 'it' ? 'Tutti i Vini' : 'All Drinks'}
           </button>
 
           {/* 2. Sparkling / Bollicine Shortcut */}
@@ -329,8 +315,6 @@ export function WineExplorer({ locale }: WineExplorerProps) {
               <span>
                 {isOtherCategoryActive
                   ? getLocalized(shortWineCategoryLabels[activeCategory as WineCategory], locale)
-                  : locale === 'ar'
-                  ? 'فهرس القبو'
                   : locale === 'it'
                   ? 'Filtra Cantina'
                   : 'Cellar Index'}
@@ -346,7 +330,7 @@ export function WineExplorer({ locale }: WineExplorerProps) {
             {dropdownOpen && (
               <div className="absolute top-full mt-2 z-40 w-64 sm:w-72 rounded-2xl bg-white/98 backdrop-blur-md border border-[var(--palette-stone-beige)]/70 shadow-xl p-2.5 space-y-1 text-xs animate-in fade-in zoom-in-95 duration-150 right-0 sm:right-auto sm:left-1/2 sm:-translate-x-1/2 rtl:sm:right-1/2 rtl:sm:translate-x-1/2 rtl:right-auto rtl:left-0">
                 <div className="px-2 py-1 text-[11px] font-bold text-[var(--palette-espresso)]/60 uppercase tracking-wider border-b border-[var(--palette-stone-beige)]/30">
-                  {locale === 'ar' ? 'اختر تصنيفاً من القبو' : locale === 'it' ? 'Seleziona Categoria' : 'Select Category'}
+                  {locale === 'it' ? 'Seleziona Categoria' : 'Select Category'}
                 </div>
 
                 <button
@@ -363,7 +347,7 @@ export function WineExplorer({ locale }: WineExplorerProps) {
                 >
                   <div className="flex items-center gap-2">
                     <Wine size={14} className="text-stone-500" />
-                    <span>{locale === 'ar' ? 'جميع المشروبات والقبو' : locale === 'it' ? 'Tutta la Cantina' : 'Full Wine Cellar'}</span>
+                    <span>{locale === 'it' ? 'Tutta la Cantina' : 'Full Wine Cellar'}</span>
                   </div>
                   {activeCategory === 'all' && <Check size={14} className="text-[var(--palette-italian-red)]" />}
                 </button>
@@ -413,25 +397,19 @@ export function WineExplorer({ locale }: WineExplorerProps) {
           </div>
 
           <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-[var(--palette-espresso)] tracking-tight">
-            {locale === 'ar'
-              ? 'قائمة المشروبات وقبو النبيذ'
-              : locale === 'it'
+            {locale === 'it'
               ? 'La Nostra Cantina & Bevande'
               : 'Our Wine Cellar & Drinks Menu'}
           </h2>
 
           <p className="text-xs sm:text-sm text-[var(--palette-espresso)]/75 leading-relaxed font-serif italic">
-            {locale === 'ar'
-              ? 'قبو أُعد بعناية وشغف: نبيذ توسكاني فاخر، فوار فرانشاكورتا، بيرة إيطالية حرفية، وإسبريسو محمص على الحطب.'
-              : locale === 'it'
+            {locale === 'it'
               ? 'Cantina curata con passione: grandi rossi toscani, bollicine Franciacorta, birre artigianali e caffè a legna.'
               : 'Passionate selection: noble Tuscan reds, Franciacorta sparkling, artisanal Italian beers, and wood-roasted espresso.'}
           </p>
 
           <p className="text-[11px] text-[var(--palette-espresso)]/60 pt-1">
-            {locale === 'ar'
-              ? '💡 يمكنك النقر على أي صورة صغيرة لتكبيرها واستعراض التفاصيل.'
-              : locale === 'it'
+            {locale === 'it'
               ? '💡 Clicca su qualsiasi miniatura per ingrandire la foto.'
               : '💡 Click any small photo thumbnail to enlarge and view details.'}
           </p>
@@ -493,7 +471,7 @@ export function WineExplorer({ locale }: WineExplorerProps) {
                           {drink.pairing && (
                             <div className="text-xs text-[var(--palette-espresso)]/80 leading-relaxed font-serif italic pt-0.5">
                               <span className="text-[var(--palette-italian-red)] font-semibold not-italic text-[11px]">
-                                {locale === 'ar' ? 'توافق مع الطبق: ' : locale === 'it' ? 'Abbinamento: ' : 'Pairing: '}
+                                {locale === 'it' ? 'Abbinamento: ' : 'Pairing: '}
                               </span>
                               <span>{getLocalized(drink.pairing, locale)}</span>
                             </div>
@@ -506,9 +484,7 @@ export function WineExplorer({ locale }: WineExplorerProps) {
                             type="button"
                             onClick={() => setActiveModalDrink(drink)}
                             title={
-                              locale === 'ar'
-                                ? 'اضغط لتكبير الصورة'
-                                : locale === 'it'
+                              locale === 'it'
                                 ? 'Clicca per ingrandire'
                                 : 'Click to enlarge photo'
                             }
@@ -536,9 +512,7 @@ export function WineExplorer({ locale }: WineExplorerProps) {
         ) : (
           <div className="text-center py-12 space-y-3">
             <p className="text-sm text-[var(--palette-espresso)]/70">
-              {locale === 'ar'
-                ? 'لم يتم العثور على مشروبات تطابق بحثك.'
-                : locale === 'it'
+              {locale === 'it'
                 ? 'Nessuna bevanda trovata per questa ricerca.'
                 : 'No drinks found matching your search.'}
             </p>
@@ -550,7 +524,7 @@ export function WineExplorer({ locale }: WineExplorerProps) {
               }}
               className="text-xs font-semibold text-[var(--palette-italian-red)] underline underline-offset-2 cursor-pointer"
             >
-              {locale === 'ar' ? 'إعادة ضبط البحث' : locale === 'it' ? 'Mostra tutte le bevande' : 'Reset search'}
+              {locale === 'it' ? 'Mostra tutte le bevande' : 'Reset search'}
             </button>
           </div>
         )}

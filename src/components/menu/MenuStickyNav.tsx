@@ -16,7 +16,7 @@ export type DietaryFilter = 'all' | 'seafood' | 'meat' | 'vegetarian' | 'signatu
 
 interface CategoryTabInfo {
   key: DishCategory | 'all';
-  label: { it: string; en: string; ar: string };
+  label: { it: string; en: string;  };
   count: number;
   icon: React.ReactNode;
 }
@@ -46,35 +46,34 @@ export function MenuStickyNav({
   matchCount,
   categoryTabs,
 }: MenuStickyNavProps) {
-  const isRtl = locale === 'ar';
 
   const dietaryFilters: Array<{
     id: DietaryFilter;
-    label: { it: string; en: string; ar: string };
+    label: { it: string; en: string;  };
     icon?: React.ReactNode;
   }> = [
     {
       id: 'all',
-      label: { it: 'Tutti', en: 'All', ar: 'الكل' },
+      label: { it: 'Tutti', en: 'All' },
     },
     {
       id: 'seafood',
-      label: { it: 'Mare & Pesce', en: 'Seafood', ar: 'مأكولات بحرية' },
+      label: { it: 'Mare & Pesce', en: 'Seafood' },
       icon: <Fish size={12} className="text-sky-600" aria-hidden="true" />,
     },
     {
       id: 'meat',
-      label: { it: 'Terra & Carni', en: 'Meat & Land', ar: 'لحوم ومشاوي' },
+      label: { it: 'Terra & Carni', en: 'Meat & Land' },
       icon: <UtensilsCrossed size={12} className="text-orange-700" aria-hidden="true" />,
     },
     {
       id: 'vegetarian',
-      label: { it: 'Vegetariano', en: 'Vegetarian', ar: 'نباتي' },
+      label: { it: 'Vegetariano', en: 'Vegetarian' },
       icon: <Leaf size={12} className="text-emerald-600" aria-hidden="true" />,
     },
     {
       id: 'signature',
-      label: { it: 'Specialità Casa', en: 'House Specialties', ar: 'أطباق الدار' },
+      label: { it: 'Specialità Casa', en: 'House Specialties' },
       icon: <Sparkles size={12} className="text-amber-600" aria-hidden="true" />,
     },
   ];
@@ -89,7 +88,7 @@ export function MenuStickyNav({
             <Search
               size={15}
               className={`absolute top-1/2 -translate-y-1/2 text-[var(--palette-espresso)]/50 ${
-                isRtl ? 'right-3.5' : 'left-3.5'
+                'left-3.5'
               }`}
               aria-hidden="true"
             />
@@ -98,14 +97,12 @@ export function MenuStickyNav({
               value={searchQuery}
               onChange={(e) => onSearchChange(e.target.value)}
               placeholder={
-                locale === 'ar'
-                  ? 'ابحث عن طبق أو بيتزا أو مكون أو صلصة...'
-                  : locale === 'it'
+                locale === 'it'
                   ? 'Cerca un piatto, pizza, pesce o ingrediente...'
                   : 'Search dish, pizza, seafood, or ingredient...'
               }
               className={`w-full py-2 sm:py-2.5 rounded-full border border-[var(--palette-stone-beige)]/70 bg-[var(--palette-warm-ivory)]/40 focus:bg-white text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[var(--palette-aged-brass)] text-[var(--palette-espresso)] transition-all ${
-                isRtl ? 'pr-9 pl-9' : 'pl-9 pr-9'
+                'pl-9 pr-9'
               }`}
             />
             {searchQuery && (
@@ -113,7 +110,7 @@ export function MenuStickyNav({
                 type="button"
                 onClick={() => onSearchChange('')}
                 className={`absolute top-1/2 -translate-y-1/2 text-[var(--palette-espresso)]/50 hover:text-black ${
-                  isRtl ? 'left-3' : 'right-3'
+                  'right-3'
                 }`}
                 aria-label="Clear search"
               >
@@ -129,8 +126,6 @@ export function MenuStickyNav({
               <span className="text-[11px] font-bold px-2.5 py-1 rounded-full bg-stone-100 text-[var(--palette-espresso)]">
                 {locale === 'it'
                   ? `${matchCount} risultati`
-                  : locale === 'ar'
-                  ? `${matchCount} نتيجة`
                   : `${matchCount} matches`}
               </span>
             )}
@@ -145,8 +140,6 @@ export function MenuStickyNav({
               <span>
                 {locale === 'it'
                   ? 'Guida Allergeni [1-14]'
-                  : locale === 'ar'
-                  ? 'دليل الحساسية [1-14]'
                   : 'Allergen Guide [1-14]'}
               </span>
             </button>
@@ -179,8 +172,6 @@ export function MenuStickyNav({
                 <span>
                   {locale === 'it'
                     ? tab.label.it
-                    : locale === 'ar'
-                    ? tab.label.ar
                     : tab.label.en}
                 </span>
                 <span
@@ -198,7 +189,7 @@ export function MenuStickyNav({
         {/* Third Line: Dietary / Flavor Quick Filter Chips */}
         <div className="flex items-center gap-1.5 overflow-x-auto pt-1 border-t border-[var(--palette-stone-beige)]/30 no-scrollbar">
           <span className="text-[10px] uppercase font-bold text-[var(--palette-espresso)]/50 shrink-0 pe-1">
-            {locale === 'it' ? 'Filtra:' : locale === 'ar' ? 'تصفية:' : 'Filter:'}
+            {locale === 'it' ? 'Filtra:' : 'Filter:'}
           </span>
           {dietaryFilters.map((flt) => {
             const isSelected = activeDietary === flt.id;
@@ -217,8 +208,6 @@ export function MenuStickyNav({
                 <span>
                   {locale === 'it'
                     ? flt.label.it
-                    : locale === 'ar'
-                    ? flt.label.ar
                     : flt.label.en}
                 </span>
               </button>

@@ -1,20 +1,20 @@
 import type { LocalizedText } from './types';
 
 export const eventsEditorial = {
-  eyebrow: { it: 'Tre Fratelli · Musica & momenti insieme', en: 'Tre Fratelli · Music & good company', ar: 'تري فراتيلي · موسيقى ولمة حلوة' },
-  title: { it: 'Le serate belle si fanno insieme.', en: 'Good nights are better together.', ar: 'السهرات تحلى بوجودكم.' },
-  intro: { it: 'Il sabato si canta, ci si ritrova a tavola e si festeggia. E nelle grandi feste italiane, c’è un motivo in più per stare insieme.', en: 'Saturday brings karaoke, dinner and a reason to get together. Italy’s favourite holidays give us even more occasions to celebrate.', ar: 'يوم السبت نغني ونتعشى ونحتفل معاً. ومع الأعياد المعروفة في إيطاليا، نجد دائماً مناسبة جديدة للمة والفرح.' },
-  all: { it: 'Tutti i momenti', en: 'All occasions', ar: 'كل المناسبات' },
-  music: { it: 'Musica & sabato sera', en: 'Music & Saturday nights', ar: 'الموسيقى وسهرات السبت' },
-  seasonal: { it: 'Feste italiane', en: 'Italian holidays', ar: 'الأعياد في إيطاليا' },
-  celebration: { it: 'Le vostre occasioni', en: 'Your celebrations', ar: 'مناسباتكم الخاصة' },
-  programme: { it: 'Scegli il tuo prossimo momento.', en: 'Find your next reason to get together.', ar: 'اختاروا مناسبتكم القادمة.' },
-  notice: { it: 'Date, orari, menù e disponibilità si confermano con il ristorante. Qui trovi le nostre occasioni ricorrenti, non un calendario di prenotazioni confermate.', en: 'Confirm dates, times, menus and availability with the restaurant. These are our recurring occasions, rather than a calendar of confirmed bookings.', ar: 'هذه مناسباتنا المتكررة؛ لتأكيد موعد كل حفلة ووقتها والقائمة والأماكن المتاحة، تواصلوا معنا قبل الحجز.' },
-  reserve: { it: 'Organizziamo la tua serata', en: 'Plan your evening with us', ar: 'رتّبوا سهرتكم معنا' },
-  call: { it: 'Chiedi il programma', en: 'Ask about the programme', ar: 'اسألوا عن برنامج الحفلات' },
-  contactKicker: { it: 'Le vostre occasioni, insieme a noi', en: 'Your occasion, shared with us', ar: 'لمناسباتكم ولمّتكم' },
-  contactTitle: { it: 'La prossima bella serata? Organizziamola insieme.', en: 'Let’s make an evening of it.', ar: 'خلّونا نرتّب سهرة على ذوقكم.' },
-  contactCopy: { it: 'Una cena tra amici o una festa da ricordare: raccontaci la tua idea. Scegliamo insieme il giorno, il menù e i dettagli della serata.', en: 'Dinner with friends or a celebration to remember: tell us what you have in mind. We will plan the date, menu and details together.', ar: 'عشاء مع الأصدقاء أو حفلة لمناسبة غالية؟ احكوا لنا فكرتكم، ونرتّب معاً اليوم والقائمة وتفاصيل السهرة.' },
+  eyebrow: { it: 'Tre Fratelli · Musica & momenti insieme', en: 'Tre Fratelli · Music & good company' },
+  title: { it: 'Le serate belle si fanno insieme.', en: 'Good nights are better together.' },
+  intro: { it: 'Il sabato si canta, ci si ritrova a tavola e si festeggia. E nelle grandi feste italiane, c’è un motivo in più per stare insieme.', en: 'Saturday brings karaoke, dinner and a reason to get together. Italy’s favourite holidays give us even more occasions to celebrate.' },
+  all: { it: 'Tutti i momenti', en: 'All occasions' },
+  music: { it: 'Musica & sabato sera', en: 'Music & Saturday nights' },
+  seasonal: { it: 'Feste italiane', en: 'Italian holidays' },
+  celebration: { it: 'Le vostre occasioni', en: 'Your celebrations' },
+  programme: { it: 'Scegli il tuo prossimo momento.', en: 'Find your next reason to get together.' },
+  notice: { it: 'Date, orari, menù e disponibilità si confermano con il ristorante. Qui trovi le nostre occasioni ricorrenti, non un calendario di prenotazioni confermate.', en: 'Confirm dates, times, menus and availability with the restaurant. These are our recurring occasions, rather than a calendar of confirmed bookings.' },
+  reserve: { it: 'Organizziamo la tua serata', en: 'Plan your evening with us' },
+  call: { it: 'Chiedi il programma', en: 'Ask about the programme' },
+  contactKicker: { it: 'Le vostre occasioni, insieme a noi', en: 'Your occasion, shared with us' },
+  contactTitle: { it: 'La prossima bella serata? Organizziamola insieme.', en: 'Let’s make an evening of it.' },
+  contactCopy: { it: 'Una cena tra amici o una festa da ricordare: raccontaci la tua idea. Scegliamo insieme il giorno, il menù e i dettagli della serata.', en: 'Dinner with friends or a celebration to remember: tell us what you have in mind. We will plan the date, menu and details together.' },
 } satisfies Record<string, LocalizedText>;
 
 // Recurring occasions supplied by the restaurant; no invented dates or packages.
@@ -27,20 +27,20 @@ export const recurringEvents: {
 }[] = [
   {
     id: 'saturday', type: 'music',
-    title: { it: 'Ogni sabato sera: Serata Karaoke.', en: 'Every Saturday night: Karaoke party.', ar: 'كل ليلة سبت: حفلة كاريوكي وموسيقى.' },
-    copy: { it: 'Ogni sabato sera cena, musica e karaoke: scegli la tua canzone, porta gli amici e goditi la serata nei nostri ampi spazi con 400 posti e parcheggio privato.', en: 'Every Saturday night brings dinner, music and karaoke: choose a song, bring your friends and enjoy the evening in our spacious 400-seat dining hall with private parking.', ar: 'كل ليلة سبت عشاء وموسيقى وحفلة كاريوكي: اختاروا أغنيتكم، واجمعوا أصحابكم، واستمتعوا بالسهرة في صالاتنا الواسعة (400 كرسي) مع جراج خاص بالمطعم.' },
-    schedule: { it: 'Ogni sabato sera · Prenotazione consigliata', en: 'Every Saturday evening · Booking recommended', ar: 'كل ليلة سبت · يُنصح بالحجز المسبق' },
+    title: { it: 'Ogni sabato sera: Serata Karaoke.', en: 'Every Saturday night: Karaoke party.' },
+    copy: { it: 'Ogni sabato sera cena, musica e karaoke: scegli la tua canzone, porta gli amici e goditi la serata nei nostri ampi spazi con 400 posti e parcheggio privato.', en: 'Every Saturday night brings dinner, music and karaoke: choose a song, bring your friends and enjoy the evening in our spacious 400-seat dining hall with private parking.' },
+    schedule: { it: 'Ogni sabato sera · Prenotazione consigliata', en: 'Every Saturday evening · Booking recommended' },
   },
   {
     id: 'holidays', type: 'seasonal',
-    title: { it: 'Le feste italiane, a tavola con noi.', en: 'Italian holidays, around our table.', ar: 'أعياد إيطاليا، على مائدتنا.' },
-    copy: { it: 'Natale, Capodanno, Pasqua, Ferragosto e le altre ricorrenze più amate: organizziamo momenti di festa per ritrovarci. Il programma e le proposte di ogni occasione si confermano di volta in volta.', en: 'Christmas, New Year, Easter, Ferragosto and other favourite occasions: we celebrate with good food and good company. Each holiday’s programme and menu are confirmed separately.', ar: 'الكريسماس ورأس السنة وعيد الفصح وفيراغوستو وغيرها من المناسبات المعروفة: نحتفل بأكل نحبه وصحبة حلوة. برنامج كل مناسبة وقائمتها يتأكدان على حدة.' },
-    schedule: { it: 'Durante le festività · Dettagli su richiesta', en: 'Holiday celebrations · Ask for details', ar: 'في الأعياد والمناسبات · التفاصيل بالاستفسار' },
+    title: { it: 'Le feste italiane, a tavola con noi.', en: 'Italian holidays, around our table.' },
+    copy: { it: 'Natale, Capodanno, Pasqua, Ferragosto e le altre ricorrenze più amate: organizziamo momenti di festa per ritrovarci. Il programma e le proposte di ogni occasione si confermano di volta in volta.', en: 'Christmas, New Year, Easter, Ferragosto and other favourite occasions: we celebrate with good food and good company. Each holiday’s programme and menu are confirmed separately.' },
+    schedule: { it: 'Durante le festività · Dettagli su richiesta', en: 'Holiday celebrations · Ask for details' },
   },
   {
     id: 'private', type: 'celebration',
-    title: { it: 'La vostra festa, il vostro ritmo.', en: 'Your celebration, your kind of evening.', ar: 'حفلتكم، على ذوقكم.' },
-    copy: { it: 'Compleanni, lauree, ricorrenze e cene tra colleghi. Raccontaci quante persone siete e come immagini la serata: concordiamo insieme menù, spazi e possibilità di intrattenimento.', en: 'Birthdays, graduations, anniversaries and dinners with colleagues. Tell us your group size and what you have in mind; we will discuss menus, seating and entertainment options together.', ar: 'أعياد ميلاد وتخرج وذكريات سنوية وعشاء مع الزملاء. أخبرونا بعدد الضيوف وشكل السهرة التي تتمنونها، ونرتب معاً القائمة والجلسات وخيارات الترفيه.' },
-    schedule: { it: 'Su prenotazione · Da organizzare insieme', en: 'By arrangement · Let’s plan together', ar: 'بالحجز المسبق · نرتبها معاً' },
+    title: { it: 'La vostra festa, il vostro ritmo.', en: 'Your celebration, your kind of evening.' },
+    copy: { it: 'Compleanni, lauree, ricorrenze e cene tra colleghi. Raccontaci quante persone siete e come immagini la serata: concordiamo insieme menù, spazi e possibilità di intrattenimento.', en: 'Birthdays, graduations, anniversaries and dinners with colleagues. Tell us your group size and what you have in mind; we will discuss menus, seating and entertainment options together.' },
+    schedule: { it: 'Su prenotazione · Da organizzare insieme', en: 'By arrangement · Let’s plan together' },
   },
 ];

@@ -9,23 +9,17 @@ export function HomeMenuScrollHeader({ locale }: { locale: Locale }) {
   const reduceMotion = usePrefersReducedMotion();
 
   const sectionEyebrow =
-    locale === 'ar'
-      ? 'فنون الطهي الإيطالي الأصيل'
-      : locale === 'it'
+    locale === 'it'
       ? 'Tradizione & Maestria Culinaria'
       : 'Authentic Italian Culinary Arts';
 
   const sectionTitle =
-    locale === 'ar'
-      ? 'قائمة طعام تري فراتيلي'
-      : locale === 'it'
+    locale === 'it'
       ? 'Il Nostro Menù'
       : 'Our Culinary Menu';
 
   const sectionIntro =
-    locale === 'ar'
-      ? 'من خيرات الأرض الإيطالية والمشاوي العريقة، إلى الباستا الطازجة والبيتزا النابولية وخمور القبو المعتقة: اختر قسماً لاكتشاف أطباقنا الحقيقية.'
-      : locale === 'it'
+    locale === 'it'
       ? 'Dalla terra alla brace viva, dalla pasta all’uovo trafilata al bronzo ai grandi dolci e ai vini di cantina: seleziona un capitolo per scoprire le nostre creazioni.'
       : 'From rustic cured meats to wood-fired grills, fresh bronze-cut pasta, signature pizzas, and fine cellar labels: choose a chapter to explore.';
 

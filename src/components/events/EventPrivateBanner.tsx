@@ -3,15 +3,8 @@
 import { PartyPopper, Phone, ArrowRight, ShieldCheck } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
-import type { Locale } from '@/i18n/routing';
-
-interface EventPrivateBannerProps {
-  locale: Locale;
-}
-
-export function EventPrivateBanner({ locale }: EventPrivateBannerProps) {
+export function EventPrivateBanner() {
   const t = useTranslations();
-  const isRtl = locale === 'ar';
 
   return (
     <section className="my-14 sm:my-16 rounded-3xl p-6 sm:p-10 border border-[var(--palette-aged-brass)]/40 bg-gradient-to-br from-amber-50/70 via-[var(--palette-warm-ivory)] to-white shadow-lg relative overflow-hidden">
@@ -48,7 +41,7 @@ export function EventPrivateBanner({ locale }: EventPrivateBannerProps) {
             className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[var(--palette-espresso)] hover:bg-black text-white text-xs sm:text-sm font-semibold transition-all shadow-md cursor-pointer"
           >
             <span>{t('news.privateEvents.cta')}</span>
-            <ArrowRight size={14} className={isRtl ? 'rotate-180' : ''} aria-hidden="true" />
+            <ArrowRight size={14} aria-hidden="true" />
           </Link>
 
           <a

@@ -18,7 +18,7 @@ export function WineMenu({ locale }: { locale: Locale }) {
 
   return (
     <div className="max-w-4xl mx-auto space-y-8 sm:space-y-10">
-      <h1 className="sr-only">{locale === 'ar' ? 'قائمة المشروبات' : locale === 'it' ? 'Vini e Bevande' : 'Wines and Drinks'}</h1>
+      <h1 className="sr-only">{locale === 'it' ? 'Vini e Bevande' : 'Wines and Drinks'}</h1>
       {sections.map((section) => (
         <section key={section.id} id={section.id} aria-labelledby={`${section.id}-title`} className="scroll-mt-28">
           <h2 id={`${section.id}-title`} className="mb-3 font-serif text-base sm:text-lg font-bold uppercase tracking-[0.1em] text-[var(--palette-italian-red)]">

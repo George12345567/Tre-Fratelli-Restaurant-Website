@@ -10,7 +10,6 @@ import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
 
 interface Props {
   locale: string;
-  isRtl: boolean;
   translations: {
     reserveTable: string;
     exploreRestaurant: string;
@@ -18,9 +17,8 @@ interface Props {
 }
 
 // Every passage follows its own position in the viewport; no scroll state or timers.
-function StoryPassage({ children, isRtl, className = '' }: {
+function StoryPassage({ children, className = '' }: {
   children: ReactNode;
-  isRtl: boolean;
   className?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -38,7 +36,7 @@ function StoryPassage({ children, isRtl, className = '' }: {
       <motion.div
         aria-hidden="true"
         className="mt-5 h-px bg-[var(--palette-aged-brass)]/25"
-        style={{ scaleX: reduceMotion ? 1 : scaleX, transformOrigin: isRtl ? 'right' : 'left' }}
+        style={{ scaleX: reduceMotion ? 1 : scaleX, transformOrigin: 'left' }}
       />
     </div>
   );
@@ -46,7 +44,6 @@ function StoryPassage({ children, isRtl, className = '' }: {
 
 export function AboutRestaurantSection({
   locale,
-  isRtl,
   translations,
 }: Props) {
   return (
@@ -61,7 +58,7 @@ export function AboutRestaurantSection({
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
           {/* ── 1. The Official Logo Emblem (Compact & Unclipped) ── */}
           <div className="lg:col-span-4 lg:sticky lg:top-28 flex flex-col items-center justify-center shrink-0">
-            <StoryPassage isRtl={isRtl} className="relative max-w-[140px] sm:max-w-[200px] lg:max-w-[270px] w-full">
+            <StoryPassage  className="relative max-w-[140px] sm:max-w-[200px] lg:max-w-[270px] w-full">
               {/* Keep the original brand image at its natural aspect ratio. */}
               <div className="relative">
                 <img
@@ -87,7 +84,7 @@ export function AboutRestaurantSection({
 
           {/* ── 2. The Culinary Process & Meat Provenance (Pure Text, No Cards) ── */}
           <div className="lg:col-span-8 text-start">
-            <StoryPassage isRtl={isRtl}>
+            <StoryPassage >
               <p className="text-[10px] sm:text-xs tracking-[0.16em] uppercase font-semibold text-[var(--palette-italian-red)]">
                 {getLocalized(kitchenStory.eyebrow, locale)}
               </p>
@@ -102,7 +99,7 @@ export function AboutRestaurantSection({
             <ol className="mt-6 sm:mt-8 space-y-6 sm:space-y-8">
               {kitchenStorySteps.map((step, index) => (
                 <li key={step.id}>
-                  <StoryPassage isRtl={isRtl}>
+                  <StoryPassage >
                     <div className="flex items-start gap-4 sm:gap-6">
                       <span aria-hidden="true" className="font-serif text-3xl sm:text-4xl leading-none text-[var(--palette-aged-brass)]/65 tabular-nums">
                         {String(index + 1).padStart(2, '0')}
@@ -121,7 +118,7 @@ export function AboutRestaurantSection({
               ))}
             </ol>
 
-            <StoryPassage isRtl={isRtl} className="mt-7">
+            <StoryPassage  className="mt-7">
               <p className="font-serif italic text-sm text-[var(--palette-aged-brass)]">
                 {getLocalized(kitchenStory.signature, locale)}
               </p>
@@ -136,7 +133,7 @@ export function AboutRestaurantSection({
                 <span>{translations.reserveTable}</span>
                 <ArrowRight
                   size={13}
-                  className={`transition-transform duration-200 ${isRtl ? 'rotate-180' : ''}`}
+                  className="transition-transform duration-200"
                   aria-hidden="true"
                 />
               </Link>
@@ -148,7 +145,7 @@ export function AboutRestaurantSection({
                 <span>{translations.exploreRestaurant}</span>
                 <ArrowRight
                   size={13}
-                  className={`transition-transform duration-200 ${isRtl ? 'rotate-180' : ''}`}
+                  className="transition-transform duration-200"
                   aria-hidden="true"
                 />
               </Link>

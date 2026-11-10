@@ -17,7 +17,6 @@ import { RestaurantReveal } from './RestaurantReveal';
 export function RestaurantVisitSection({ locale }: { locale: Locale }) {
   const text = (key: keyof typeof restaurantEditorial) =>
     getLocalized(restaurantEditorial[key], locale);
-  const arrow = locale === 'ar' ? 'rotate-180' : '';
 
   return (
     <section
@@ -79,7 +78,7 @@ export function RestaurantVisitSection({ locale }: { locale: Locale }) {
                   >
                     <span>{text('reserve')}</span>
                     <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-[var(--palette-warm-ivory)]/15 transition-transform duration-200 group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5">
-                      <ArrowRight size={14} className={arrow} aria-hidden="true" />
+                      <ArrowRight size={14} aria-hidden="true" />
                     </span>
                   </Link>
 
@@ -150,7 +149,7 @@ export function RestaurantVisitSection({ locale }: { locale: Locale }) {
                     </div>
                   </div>
                   <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[var(--palette-aged-brass)]/35 text-[var(--palette-espresso)]/70 group-hover:border-[var(--palette-italian-red)] group-hover:text-[var(--palette-italian-red)] transition-colors">
-                    <ArrowRight size={14} className={arrow} aria-hidden="true" />
+                    <ArrowRight size={14} aria-hidden="true" />
                   </span>
                 </a>
               </div>

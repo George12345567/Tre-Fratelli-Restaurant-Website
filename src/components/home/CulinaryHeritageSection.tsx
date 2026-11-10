@@ -6,7 +6,6 @@ import { Link } from '@/i18n/navigation';
 
 interface Props {
   locale: string;
-  isRtl: boolean;
   translations: {
     ourPhilosophy: string;
     philosophyTitle: string;
@@ -23,7 +22,6 @@ interface Props {
 
 export function CulinaryHeritageSection({
   locale,
-  isRtl,
   translations,
 }: Props) {
   const [activeSlide, setActiveSlide] = useState(0);
@@ -33,81 +31,69 @@ export function CulinaryHeritageSection({
     {
       id: 'marco-pasta',
       brother: 'Marco Fratelli',
-      role: locale === 'it' ? 'Il Pastaio' : locale === 'ar' ? 'صانع الباستا الحرفي' : 'The Pasta Artisan',
+      role: locale === 'it' ? 'Il Pastaio' : 'The Pasta Artisan',
       spaceName:
         locale === 'it'
           ? 'La Spianatoia & Il Laboratorio'
-          : locale === 'ar'
-          ? 'ركن وعجن الباستا الصباحي'
           : 'The Morning Pasta Counter',
       craftTitle: translations.pastaStory,
       quote:
         locale === 'it'
           ? 'L anima della pasta nasce nella ruvidità del bronzo e nel calore delle mani.'
-          : locale === 'ar'
-          ? 'روح الباستا الحقيقية تولد في خشونة البرونز ودفء الأيدي التي تعجنها.'
           : 'The soul of fresh pasta is born in bronze friction and the warmth of patient hands.',
       image: 'https://images.unsplash.com/photo-1551218808-94e220e084d2?auto=format&fit=crop&q=80&w=1000',
       icon: Utensils,
       badgeBg: 'bg-[var(--palette-aged-brass)]/90',
       pills: [
-        locale === 'it' ? 'Semola 100% Italiana' : locale === 'ar' ? 'قمح إيطالي 100%' : '100% Italian Wheat',
-        locale === 'it' ? 'Trafilatura al Bronzo' : locale === 'ar' ? 'سحب بقوالب البرونز' : 'Bronze-Extruded',
-        locale === 'it' ? 'Tirata a Mano Ogni Giorno' : locale === 'ar' ? 'عجن يدوي يومياً' : 'Hand-Rolled Daily',
+        locale === 'it' ? 'Semola 100% Italiana' : '100% Italian Wheat',
+        locale === 'it' ? 'Trafilatura al Bronzo' : 'Bronze-Extruded',
+        locale === 'it' ? 'Tirata a Mano Ogni Giorno' : 'Hand-Rolled Daily',
       ],
       link: '/restaurant',
     },
     {
       id: 'matteo-fire',
       brother: 'Matteo Fratelli',
-      role: locale === 'it' ? 'Il Mastro Fornaio' : locale === 'ar' ? 'سيد اللهب وفرن الحطب' : 'Master of the Hearth',
+      role: locale === 'it' ? 'Il Mastro Fornaio' : 'Master of the Hearth',
       spaceName:
         locale === 'it'
           ? 'Il Fuoco del Forno a Legna'
-          : locale === 'ar'
-          ? 'فرن الحطب البركاني المتقد'
           : 'The Volcanic Beechwood Hearth',
       craftTitle: translations.pizzeriaHighlight,
       quote:
         locale === 'it'
           ? 'Il fuoco non è solo calore: è respiro, tempo e legno secco di faggio.'
-          : locale === 'ar'
-          ? 'النار ليست مجرد حرارة، بل هي صبر وتوقيت وخشب زان متقد.'
           : 'Fire is not merely heat; it is breath, patience, and seasoned beechwood embers.',
       image: 'https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?auto=format&fit=crop&q=80&w=1000',
       icon: Flame,
       badgeBg: 'bg-[var(--palette-italian-red)]/90',
       pills: [
-        locale === 'it' ? 'Forno a Legna a 450°C' : locale === 'ar' ? 'فرن حطب 450 مئوية' : '450°C Beechwood Oven',
-        locale === 'it' ? '48h Lievito Madre' : locale === 'ar' ? 'تخمير طبيعي 48 ساعة' : '48h Slow Fermentation',
-        locale === 'it' ? 'Cornicione Alveolato' : locale === 'ar' ? 'أطراف مقرمشة هوائية' : 'Airy Neapolitan Crust',
+        locale === 'it' ? 'Forno a Legna a 450°C' : '450°C Beechwood Oven',
+        locale === 'it' ? '48h Lievito Madre' : '48h Slow Fermentation',
+        locale === 'it' ? 'Cornicione Alveolato' : 'Airy Neapolitan Crust',
       ],
       link: '/pizzeria',
     },
     {
       id: 'luca-cellar',
       brother: 'Luca Fratelli',
-      role: locale === 'it' ? 'Il Sommelier' : locale === 'ar' ? 'الساقي وخبير القبو' : 'The Sommelier',
+      role: locale === 'it' ? 'Il Sommelier' : 'The Sommelier',
       spaceName:
         locale === 'it'
           ? 'La Sala Principale delle Botti'
-          : locale === 'ar'
-          ? 'قاعة البراميل الأثرية والقبو'
           : 'The Historic Cellar & Vault Hall',
       craftTitle: translations.winePairings,
       quote:
         locale === 'it'
           ? 'Un grande vino non accompagna il piatto: ne risveglia la poesia nascosta.'
-          : locale === 'ar'
-          ? 'النبيذ العظيم لا يرافق الطبق فحسب، بل يوقظ أسراره ونكهاته الخفية.'
           : 'A rare wine does not merely accompany food; it unlocks its hidden terroir poetry.',
       image: '/images/hero/restaurant-table-ambiance.webp',
       icon: Wine,
       badgeBg: 'bg-[var(--palette-olive-green)]/90',
       pills: [
-        locale === 'it' ? '350+ Etichette Italiane' : locale === 'ar' ? '350+ صنف إيطالي معتمد' : '350+ Curated Labels',
-        locale === 'it' ? 'Vitigni Autoctoni Rari' : locale === 'ar' ? 'سلالات أعناب نادرة' : 'Indigenous Varietals',
-        locale === 'it' ? 'Abbinamenti Sartoriali' : locale === 'ar' ? 'مواءمة خاصة لكل طبق' : 'Artisanal Pairings',
+        locale === 'it' ? '350+ Etichette Italiane' : '350+ Curated Labels',
+        locale === 'it' ? 'Vitigni Autoctoni Rari' : 'Indigenous Varietals',
+        locale === 'it' ? 'Abbinamenti Sartoriali' : 'Artisanal Pairings',
       ],
       link: '/wine-drinks',
     },
@@ -128,7 +114,7 @@ export function CulinaryHeritageSection({
     if (!carouselRef.current) return;
     const container = carouselRef.current;
     const itemWidth = container.offsetWidth * 0.84;
-    const targetScroll = isRtl ? -index * itemWidth : index * itemWidth;
+    const targetScroll = index * itemWidth;
     container.scrollTo({ left: targetScroll, behavior: 'smooth' });
     setActiveSlide(index);
   };
@@ -150,8 +136,6 @@ export function CulinaryHeritageSection({
             <span className="text-[11px] sm:text-xs font-semibold tracking-[0.25em] uppercase text-[var(--palette-italian-red)]">
               {locale === 'it'
                 ? 'Artigiani & Spazi di Famiglia'
-                : locale === 'ar'
-                ? 'حِرف الإخوة وأجواء المطعم'
                 : 'Living Craft & Authentic Spaces'}
             </span>
             <span className="w-8 h-px bg-[var(--palette-aged-brass)]/40" aria-hidden="true" />
@@ -161,8 +145,6 @@ export function CulinaryHeritageSection({
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight text-[var(--palette-espresso)] leading-[1.15]">
             {locale === 'it'
               ? "L'Anima di Tre Fratelli"
-              : locale === 'ar'
-              ? 'روح تري فراتيلي: الحرفة والمكان'
               : 'The Soul of Tre Fratelli'}
           </h2>
 
@@ -170,8 +152,6 @@ export function CulinaryHeritageSection({
           <p className="font-serif italic text-base sm:text-lg text-[var(--palette-espresso)]/85 max-w-2xl mx-auto leading-relaxed">
             {locale === 'it'
               ? 'Dalle mani di Marco alla fiamma di Matteo e alla cantina di Luca: tre mestieri che si fondono nelle nostre sale storiche.'
-              : locale === 'ar'
-              ? 'من خيوط باستا ماركو إلى لهب ماتيو وقبو لوكا العتيق: ثلاثة حِرف تتناغم داخل قاعاتنا التاريخية.'
               : 'From Marco’s pasta hands to Matteo’s fire and Luca’s cellar: three crafts living inside our historic halls.'}
           </p>
         </div>
@@ -254,9 +234,7 @@ export function CulinaryHeritageSection({
                         <span>{translations.exploreRestaurant}</span>
                         <ArrowRight
                           size={12}
-                          className={`transition-transform duration-200 group-hover/link:translate-x-0.5 ${
-                            isRtl ? 'rotate-180 group-hover/link:-translate-x-0.5' : ''
-                          }`}
+                          className="transition-transform duration-200 group-hover/link:translate-x-0.5"
                           aria-hidden="true"
                         />
                       </Link>
@@ -290,7 +268,7 @@ export function CulinaryHeritageSection({
           <div className="relative aspect-[16/8] sm:aspect-[21/8] lg:aspect-[28/9] min-h-[220px] w-full overflow-hidden">
             <img
               src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=1400"
-              alt={locale === 'it' ? 'La Corte Giardino Estiva' : locale === 'ar' ? 'شرفة الحديقة الصيفية' : 'The Courtyard Garden Terrace'}
+              alt={locale === 'it' ? 'La Corte Giardino Estiva' : 'The Courtyard Garden Terrace'}
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
               loading="lazy"
             />
@@ -304,13 +282,11 @@ export function CulinaryHeritageSection({
                   <span>
                     {locale === 'it'
                       ? 'Lo Spazio Aperto'
-                      : locale === 'ar'
-                      ? 'الفناء الصيفي المفتوح'
                       : 'The Open-Air Garden'}
                   </span>
                 </span>
                 <span className="text-[11px] text-white/75 font-medium hidden sm:inline">
-                  {locale === 'it' ? 'Cene sotto le stelle' : locale === 'ar' ? 'سهرات تحت النجوم' : 'Dining Under the Stars'}
+                  {locale === 'it' ? 'Cene sotto le stelle' : 'Dining Under the Stars'}
                 </span>
               </div>
 
@@ -319,15 +295,11 @@ export function CulinaryHeritageSection({
                   <h3 className="font-serif text-xl sm:text-2xl lg:text-3xl font-bold text-white leading-tight">
                     {locale === 'it'
                       ? 'La Corte Giardino Estiva'
-                      : locale === 'ar'
-                      ? 'شرفة الحديقة والفناء الصيفي'
                       : 'The Courtyard Garden Terrace'}
                   </h3>
                   <p className="text-xs sm:text-sm text-white/85 leading-relaxed font-light">
                     {locale === 'it'
                       ? 'Un oasi riservata tra piante di limone e gelsomino dove le creazioni dei tre fratelli si uniscono per cene indimenticabili sotto le stelle.'
-                      : locale === 'ar'
-                      ? 'واحة هادئة محاطة بأشجار الليمون والياسمين، تلتقي فيها إبداعات الإخوة الثلاثة لتستمتعوا بعشاء ساحر في الهواء الطلق.'
                       : 'A private retreat framed by fragrant lemon trees and jasmine, where all culinary crafts unite beneath summer stars.'}
                   </p>
                 </div>
@@ -341,9 +313,7 @@ export function CulinaryHeritageSection({
                     <span>{translations.exploreRestaurant}</span>
                     <ArrowRight
                       size={12}
-                      className={`transition-transform duration-200 group-hover/btn:translate-x-0.5 ${
-                        isRtl ? 'rotate-180 group-hover/btn:-translate-x-0.5' : ''
-                      }`}
+                      className="transition-transform duration-200 group-hover/btn:translate-x-0.5"
                       aria-hidden="true"
                     />
                   </Link>

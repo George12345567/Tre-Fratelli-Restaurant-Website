@@ -193,8 +193,6 @@ export function CategoryPageView({ slug, locale }: CategoryPageViewProps) {
           <p className="text-[11px] sm:text-[12px] text-stone-500 font-serif italic leading-relaxed">
             {locale === 'it'
               ? 'Le informazioni relative agli ingredienti, stato fisico e allergeni sono disponibili rivolgendosi al personale di servizio. Le immagini hanno il solo scopo di illustrare il prodotto.'
-              : locale === 'ar'
-              ? 'تتوفر المعلومات المتعلقة بالمكونات والحالة الفيزيائية ومسببات الحساسية لدى طاقم الخدمة. الصور لغرض التوضيح فقط.'
               : 'Information regarding ingredients, physical state, and allergens is available from our serving staff. Images are for illustrative purposes only.'}
           </p>
         </div>

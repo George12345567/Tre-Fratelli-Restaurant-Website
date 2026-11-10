@@ -7,7 +7,6 @@ import type { HomeCategoryItem } from '@/data/homeCategoryShowcase';
 interface MenuCategoryHeroCardProps {
   category: HomeCategoryItem;
   locale: string;
-  isRtl: boolean;
   activeMode: 'food' | 'wine';
   onOpenPdfModal?: () => void;
 }
@@ -15,12 +14,11 @@ interface MenuCategoryHeroCardProps {
 export function MenuCategoryHeroCard({
   category,
   locale,
-  isRtl,
   activeMode,
   onOpenPdfModal,
 }: MenuCategoryHeroCardProps) {
-  const getLoc = (obj: { it: string; en: string; ar: string }) => {
-    return locale === 'ar' ? obj.ar : locale === 'en' ? obj.en : obj.it;
+  const getLoc = (obj: { it: string; en: string;  }) => {
+    return locale === 'en' ? obj.en : obj.it;
   };
 
   return (
@@ -60,13 +58,9 @@ export function MenuCategoryHeroCard({
               {activeMode === 'food'
                 ? locale === 'it'
                   ? 'Specialità della Cucina'
-                  : locale === 'ar'
-                  ? 'من إبداعات المطبخ'
                   : 'Kitchen Special'
                 : locale === 'it'
                 ? 'Dalla Nostra Cantina'
-                : locale === 'ar'
-                ? 'من قبو المشروبات'
                 : 'From the Cellar'}
             </span>
             <p className="font-serif text-lg sm:text-xl font-bold text-white drop-shadow-md">
@@ -85,13 +79,9 @@ export function MenuCategoryHeroCard({
                 {activeMode === 'food'
                   ? locale === 'it'
                     ? 'Autenticità & Materia Prima'
-                    : locale === 'ar'
-                    ? 'أصالة المكونات الإيطالية'
                     : 'Authentic Provenance'
                   : locale === 'it'
                   ? 'Selezione D.O.C.G. & Territorio'
-                  : locale === 'ar'
-                  ? 'أعرق المزارع الإيطالية'
                   : 'Curated Italian Terroirs'}
               </span>
             </div>
@@ -111,15 +101,11 @@ export function MenuCategoryHeroCard({
               <span className="text-[11px] font-bold uppercase tracking-wider text-[var(--palette-espresso)]/75">
                 {locale === 'it'
                   ? 'Specialità in Evidenza:'
-                  : locale === 'ar'
-                  ? 'أبرز الأطباق والمختارات:'
                   : 'Signature Selections:'}
               </span>
               <span className="text-[10px] text-[var(--palette-aged-brass)] font-semibold">
                 {locale === 'it'
                   ? 'Menu 3 Fratelli'
-                  : locale === 'ar'
-                  ? 'قائمة تري فراتيلي'
                   : 'Tre Fratelli Menu'}
               </span>
             </div>
@@ -161,8 +147,6 @@ export function MenuCategoryHeroCard({
                 <span>
                   {locale === 'it'
                     ? 'Sfoglia PDF Ufficiale'
-                    : locale === 'ar'
-                    ? 'تصفح ملف PDF الرسمي'
                     : 'Browse Official PDF'}
                 </span>
               </button>
@@ -178,20 +162,14 @@ export function MenuCategoryHeroCard({
                 {activeMode === 'food'
                   ? locale === 'it'
                     ? 'Apri Questa Sezione nel Menù'
-                    : locale === 'ar'
-                    ? 'عرض هذا القسم في القائمة'
                     : 'View in Full Menu'
                   : locale === 'it'
                   ? 'Esplora la Carta dei Vini'
-                  : locale === 'ar'
-                  ? 'عرض قائمة المشروبات'
                   : 'View Cellar List'}
               </span>
               <ArrowRight
                 size={14}
-                className={`transition-transform duration-200 group-hover/btn:translate-x-1 ${
-                  isRtl ? 'rotate-180 group-hover/btn:-translate-x-1' : ''
-                }`}
+                className="transition-transform duration-200 group-hover/btn:translate-x-1"
                 aria-hidden="true"
               />
             </Link>
