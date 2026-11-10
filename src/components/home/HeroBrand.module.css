@@ -1,0 +1,91 @@
+.brand {
+  position: relative;
+  display: block;
+  width: clamp(12rem, 46vw, 15rem);
+  margin: 0 auto 1.25rem;
+  padding: .5rem .75rem;
+  border: 1px solid #d6b875;
+  border-radius: 1rem;
+  background: #fffdf7;
+  box-shadow: 0 8px 32px rgb(0 0 0 / 22%), 0 0 0 4px rgb(214 184 117 / 12%);
+  cursor: zoom-in;
+}
+
+.brand:focus-visible { outline: 2px solid white; outline-offset: 7px; }
+.logo { display: block; width: 100%; height: auto; }
+.expand {
+  position: absolute;
+  bottom: .4rem;
+  inset-inline-end: .4rem;
+  display: grid;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  background: #2b1f1a;
+  color: #ead5a8;
+}
+
+.viewer {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  height: 100dvh;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: #17120f;
+  color: #fffdf7;
+}
+.viewer[open] { display: flex; flex-direction: column; }
+.viewer::backdrop { background: #17120f; }
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-shrink: 0;
+  padding: max(1rem, env(safe-area-inset-top)) max(1rem, env(safe-area-inset-right)) 1rem max(1rem, env(safe-area-inset-left));
+  border-bottom: 1px solid rgb(214 184 117 / 20%);
+}
+.toolbar h2 { font-family: var(--font-serif), Georgia, serif; font-size: 1rem; }
+.toolbar h2 span { color: #d6b875; }
+.controls { display: flex; gap: .5rem; }
+.controls button {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid rgb(214 184 117 / 35%);
+  border-radius: 50%;
+  cursor: pointer;
+}
+.controls button:focus-visible { outline: 2px solid #d6b875; outline-offset: 3px; }
+.controls button:hover { background: rgb(214 184 117 / 12%); }
+.stage {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding: clamp(1rem, 4vw, 3rem);
+  padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  direction: ltr;
+}
+.artwork { flex-shrink: 0; width: 100%; height: 100%; margin: auto; }
+.original { display: block; width: 100%; height: 100%; object-fit: contain; }
+.zoomed { width: max(160%, 60rem); height: auto; }
+.zoomed .original { height: auto; }
+
+@media (min-width: 640px) {
+  .brand { width: min(clamp(15rem, 24vw, 20rem), 28svh); margin-bottom: 1.5rem; }
+}
+@media (max-width: 450px) { .toolbar h2 span { display: none; } }
+@media (max-height: 700px) {
+  .brand { width: 10rem; margin-bottom: .75rem; padding: .25rem .5rem; }
+}
+@media (max-height: 500px) and (orientation: landscape) {
+  .brand { width: 7rem; margin-bottom: .5rem; }
+}

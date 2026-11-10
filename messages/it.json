@@ -28,6 +28,10 @@
     "reserve": "Prenota un Tavolo"
   },
   "home": {
+    "heroLogoOpen": "Visualizza il logo Tre Fratelli a schermo intero",
+    "heroLogoClose": "Chiudi il logo",
+    "heroLogoZoomIn": "Ingrandisci il logo",
+    "heroLogoZoomOut": "Adatta il logo allo schermo",
     "heroEyebrow": "Tre Fratelli · Milano",
     "heroTitle": "Il Gusto Autentico della Cucina Italiana.",
     "heroCopy": "Pasta fresca fatta a mano, pizza a legna e il calore di una vera tavola di famiglia.",
