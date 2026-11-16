@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import { Download, ExternalLink, FileText, X } from 'lucide-react';
+import { getMenuPdfConfig } from '@/config/site';
 import type { Locale } from '@/i18n/routing';
 
 interface MenuPdfViewerModalProps {
@@ -16,7 +17,8 @@ export function MenuPdfViewerModal({
   locale,
 }: MenuPdfViewerModalProps) {
   const dialogRef = useRef<HTMLDivElement>(null);
-  const pdfUrl = '/menu/tre-fratelli-menu.pdf';
+  const pdfConfig = getMenuPdfConfig(locale);
+  const pdfUrl = pdfConfig.url;
 
   useEffect(() => {
     if (!isOpen) return;
@@ -104,7 +106,7 @@ export function MenuPdfViewerModal({
             {/* Direct Download Button */}
             <a
               href={pdfUrl}
-              download="Tre-Fratelli-Menu.pdf"
+              download={pdfConfig.downloadName}
               className="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 rounded-full text-xs font-semibold bg-[var(--palette-italian-red)] text-white hover:bg-[var(--palette-italian-red-dark)] transition-colors shadow-xs"
               title={locale === 'it' ? 'Scarica PDF' : 'Download PDF'}
             >
@@ -141,7 +143,7 @@ export function MenuPdfViewerModal({
             </p>
             <a
               href={pdfUrl}
-              download="Tre-Fratelli-Menu.pdf"
+              download={pdfConfig.downloadName}
               className="px-4 py-2 rounded-full bg-[var(--palette-italian-red)] text-white text-xs font-bold"
             >
               {locale === 'it' ? 'Scarica il Menù PDF' : 'Download Menu PDF'}
@@ -157,7 +159,7 @@ export function MenuPdfViewerModal({
               : 'Tip: you can zoom and flip through all 10 pages directly within the viewer.'}
           </span>
           <span className="font-semibold text-[var(--palette-espresso)]">
-            PDF · 6.37 MB
+            PDF · {pdfConfig.sizeLabelExact}
           </span>
         </div>
       </div>

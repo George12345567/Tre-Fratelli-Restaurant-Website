@@ -210,21 +210,18 @@ export type CategoryData = FoodCategoryData | DrinkCategoryData;
 export function getCategoryData(slug: MenuCategorySlug): CategoryData {
   switch (slug) {
     case 'antipasti': {
-      // Combines Antipasti (28) and Raw Seafood (6) = 34 dishes
+      // Matches PDF Page 2: Antipasti di Terra (17) and Antipasti di Mare (17) = 34 dishes
       const antiDishes = menuDishes.filter(
         (d) => d.category === 'Antipasti' || d.category === 'Raw Seafood'
       );
       const terraDishes = antiDishes.filter((d) => d.id.startsWith('anti-terra'));
-      const mareDishes = antiDishes.filter(
-        (d) => d.category === 'Antipasti' && !d.id.startsWith('anti-terra')
-      );
-      const rawDishes = antiDishes.filter((d) => d.category === 'Raw Seafood');
+      const mareDishes = antiDishes.filter((d) => d.id.startsWith('anti-mare'));
 
       const subSections: MenuSubSection[] = [
         {
           id: 'anti-terra',
           title: {
-            it: 'Antipasti di Terra & Tradizione',
+            it: 'Antipasti di Terra',
             en: 'Antipasti di Terra (Land & Tradition)',
           },
           subtitle: {
@@ -236,30 +233,14 @@ export function getCategoryData(slug: MenuCategorySlug): CategoryData {
         {
           id: 'anti-mare',
           title: {
-            it: 'Antipasti di Mare & Tradizione Marina',
-            en: 'Seafood Starters & Coastal Tradition',
+            it: 'Antipasti di Mare',
+            en: 'Antipasti di Mare (Seafood Starters)',
           },
           subtitle: {
-            it: 'Zuppa di pesce ricca, impepata di cozze, polpo con patate e bruschette di mare.',
-            en: 'Rich seafood soup, peppered mussels, tender octopus with potatoes, and seafood crostini.',
+            it: 'Zuppa di pesce ricca, carpacci, crudité di pesce, impepata di cozze e ostriche.',
+            en: 'Rich seafood soup, carpaccios, raw seafood plateau, peppered mussels, and fresh oysters.',
           },
           dishes: mareDishes,
-        },
-        {
-          id: 'raw-crudite',
-          title: {
-            it: 'Crudité di Mare, Ostriche & Tartare Fresche',
-            en: 'Raw Bar, Fresh Oysters & Seafood Tartare',
-          },
-          subtitle: {
-            it: 'Pescato crudo freschissimo servito su ghiaccio: ostriche, gamberi rossi di Mazara e carpacci marinati.',
-            en: 'Pristine raw seafood on ice: shucked oysters, Mazara red prawns, and citrus-cured carpaccios.',
-          },
-          badge: {
-            it: 'Pescato Freschissimo',
-            en: 'Pristine Raw Bar',
-          },
-          dishes: rawDishes,
         },
       ];
 
@@ -316,68 +297,28 @@ export function getCategoryData(slug: MenuCategorySlug): CategoryData {
     }
 
     case 'bevande': {
-      // 19 drinks: soft (4), glass (3), beer (10), coffee (2)
+      // 21 drinks in exact PDF Page 10 order
       const drinks = drinksData.filter(
         (d) =>
           d.category === 'soft' ||
           d.category === 'glass' ||
           d.category === 'beer' ||
-          d.category === 'coffee'
+          d.category === 'coffee' ||
+          d.category === 'aperitivo'
       );
-
-      const softs = drinks.filter((d) => d.category === 'soft');
-      const houseWines = drinks.filter((d) => d.category === 'glass');
-      const beers = drinks.filter((d) => d.category === 'beer');
-      const coffees = drinks.filter((d) => d.category === 'coffee');
 
       const subSections: DrinkSubSection[] = [
         {
-          id: 'bev-soft',
+          id: 'bev-all',
           title: {
-            it: 'Bibite & Acqua Minerale',
-            en: 'Soft Drinks & Mineral Water',
+            it: 'Bevande',
+            en: 'Beverages & Drinks',
           },
           subtitle: {
-            it: 'In vetro, lattina da 33 cl e acqua minerale naturale o frizzante.',
-            en: 'Glass bottles, 33 cl cans, still and sparkling mineral water.',
+            it: 'Bibite, acqua, caffè, vino della casa, birre alla spina e in bottiglia, amari e aperitivi.',
+            en: 'Soft drinks, water, espresso, house wine, draft & bottled beers, amari, and aperitifs.',
           },
-          drinks: softs,
-        },
-        {
-          id: 'bev-house-wine',
-          title: {
-            it: 'Vino della Casa',
-            en: 'House Wine',
-          },
-          subtitle: {
-            it: 'Rosso o Bianco in caraffa da 1/4 L, 1/2 L e 1 Litro.',
-            en: 'Red or White by the carafe: 1/4 L, 1/2 L, and 1 Litre.',
-          },
-          drinks: houseWines,
-        },
-        {
-          id: 'bev-beer',
-          title: {
-            it: 'Birre alla Spina & in Bottiglia',
-            en: 'Draft & Bottled Beers',
-          },
-          subtitle: {
-            it: 'Bionda e rossa alla spina, Menabrea, Moretti, Weissbier, Ichnusa e Franziskaner.',
-            en: 'Blonde and red draft, Menabrea, Moretti, Weissbier, Ichnusa, and Franziskaner.',
-          },
-          drinks: beers,
-        },
-        {
-          id: 'bev-coffee',
-          title: {
-            it: 'Caffetteria & Amari',
-            en: 'Coffee & Digestivi',
-          },
-          subtitle: {
-            it: 'Caffè espresso e amari tradizionali per fine pasto.',
-            en: 'Espresso coffee and traditional after-dinner Italian amari.',
-          },
-          drinks: coffees,
+          drinks,
         },
       ];
 
@@ -389,7 +330,7 @@ export function getCategoryData(slug: MenuCategorySlug): CategoryData {
     }
 
     case 'carta-vini': {
-      // 24 wines: sparkling (2), white (9), red (13)
+      // 22 wines in exact PDF Page 9 section order: Vini Bianchi, Vini Rossi, Spumanti
       const drinks = drinksData.filter(
         (d) =>
           d.category === 'sparkling' ||
@@ -397,23 +338,11 @@ export function getCategoryData(slug: MenuCategorySlug): CategoryData {
           d.category === 'red'
       );
 
-      const sparkling = drinks.filter((d) => d.category === 'sparkling');
       const white = drinks.filter((d) => d.category === 'white');
       const red = drinks.filter((d) => d.category === 'red');
+      const sparkling = drinks.filter((d) => d.category === 'sparkling');
 
       const subSections: DrinkSubSection[] = [
-        {
-          id: 'vin-sparkling',
-          title: {
-            it: 'Spumanti',
-            en: 'Sparkling Wines',
-          },
-          subtitle: {
-            it: 'Valdobbiadene Bortolomiol e Spumante Rosé Vigneti Puglia.',
-            en: 'Valdobbiadene Bortolomiol and Spumante Rosé Vigneti Puglia.',
-          },
-          drinks: sparkling,
-        },
         {
           id: 'vin-white',
           title: {
@@ -433,10 +362,22 @@ export function getCategoryData(slug: MenuCategorySlug): CategoryData {
             en: 'Red Wines',
           },
           subtitle: {
-            it: 'Chianti Riserva, Valpolicella, Barbera, Primitivo, Aglianico, Taurasi e grandi classici.',
-            en: 'Chianti Riserva, Valpolicella, Barbera, Primitivo, Aglianico, Taurasi, and regional classics.',
+            it: 'Chianti Riserva, Valpolicella, Barbera, Primitivo, Aglianico, Barolo e Amarone di Valpolicella.',
+            en: 'Chianti Riserva, Valpolicella, Barbera, Primitivo, Aglianico, Barolo, and Amarone di Valpolicella.',
           },
           drinks: red,
+        },
+        {
+          id: 'vin-sparkling',
+          title: {
+            it: 'Spumanti',
+            en: 'Sparkling Wines',
+          },
+          subtitle: {
+            it: 'Valdobbiadene Bortolomiol e Spumante Rosé Vigneti Puglia.',
+            en: 'Valdobbiadene Bortolomiol and Spumante Rosé Vigneti Puglia.',
+          },
+          drinks: sparkling,
         },
       ];
 

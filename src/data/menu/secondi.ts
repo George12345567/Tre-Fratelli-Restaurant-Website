@@ -10,7 +10,7 @@ export const secondiDishes: Dish[] = [
       en: 'Grand Shellfish & Crustacean Boat',
     },
     description: {
-      it: 'Gamberoni alla griglia, scampi alla griglia, astice alla griglia, orata alla griglia, salmone alla griglia, capesante gratinate, di cozze impepate, fritto misto, alici fritte.',
+      it: 'Gamberoni alla griglia, scampi alla griglia, astice alla griglia, orata alla griglia, salmone alla griglia, capesante gratinate, cozze impepate, fritto misto, alici fritte.',
       en: 'Grilled king prawns, grilled scampi, grilled lobster, grilled sea bream, grilled salmon, gratinéed scallops, peppered mussels, crispy fritto misto, and fried anchovies.',
     },
     price: '€150,00',
@@ -42,7 +42,7 @@ export const secondiDishes: Dish[] = [
       en: 'Grand Crispy Fried Boat & Grill',
     },
     description: {
-      it: 'Calamari fritti, gamberetti fritti, scampi fritti, gamberoni fritti, di cozze impepate, seppia alla griglia, astice alla griglia.',
+      it: 'Calamari fritti, gamberetti fritti, scampi fritti, gamberoni fritti, cozze impepate, seppia alla griglia, astice alla griglia.',
       en: 'Fried calamari, fried shrimp, fried scampi, fried king prawns, peppered mussels, grilled cuttlefish, and grilled lobster.',
     },
     price: '€70,00',
@@ -543,7 +543,7 @@ export const secondiDishes: Dish[] = [
     id: 'sec-pesce-18',
     category: 'Secondi Piatti',
     name: {
-      it: 'Gamberoni Fritti con Salsa Agredolce',
+      it: 'Gamberoni Fritti con Salsa Agrodolce',
       en: 'Crispy Fried King Prawns with Sweet & Sour Sauce',
     },
     description: { it: '', en: '' },

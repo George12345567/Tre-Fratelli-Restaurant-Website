@@ -2,7 +2,7 @@
 
 import { Sparkles, ZoomIn } from 'lucide-react';
 import type { Dish } from '@/data/types';
-import { getLocalized } from '@/data/types';
+import { formatMenuPrice, getLocalized } from '@/data/types';
 import type { Locale } from '@/i18n/routing';
 
 interface DishCardProps {
@@ -45,7 +45,7 @@ export function DishCard({ dish, locale, onOpenLightbox }: DishCardProps) {
 
           <div className="text-end shrink-0">
             <span className="font-serif text-sm sm:text-base font-extrabold text-[var(--palette-italian-red)] tracking-tight block">
-              {dish.price}
+              {formatMenuPrice(dish.price, locale)}
             </span>
           </div>
         </div>

@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { ChevronDown, Sparkles, ZoomIn } from 'lucide-react';
 import type { Dish } from '@/data/types';
-import { getLocalized } from '@/data/types';
+import { formatMenuPrice, getLocalized } from '@/data/types';
 import type { Locale } from '@/i18n/routing';
 
 interface DishRowItemProps {
@@ -103,7 +103,7 @@ export function DishRowItem({
         {/* Right / Left (in RTL): Price */}
         <div className="shrink-0 text-end">
           <span className="font-serif text-[14px] sm:text-[16px] font-bold text-[var(--palette-italian-red)] tracking-tight">
-            {dish.price}
+            {formatMenuPrice(dish.price, locale)}
           </span>
         </div>
       </div>

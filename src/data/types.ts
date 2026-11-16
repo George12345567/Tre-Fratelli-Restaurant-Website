@@ -43,7 +43,8 @@ export type WineCategory =
   | 'dessert'
   | 'beer'
   | 'soft'
-  | 'coffee';
+  | 'coffee'
+  | 'aperitivo';
 
 export interface Drink {
   id: string;
@@ -101,4 +102,11 @@ export function getLocalized(text: LocalizedText, locale: string): string {
     return text[locale] || text.it || text.en || '';
   }
   return text.it || text.en || '';
+}
+
+export function formatMenuPrice(price: string, locale: string): string {
+  if (locale === 'en') {
+    return price.replace(/\bcad\.$/i, 'each');
+  }
+  return price;
 }

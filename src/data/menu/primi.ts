@@ -214,7 +214,7 @@ export const primiDishes: Dish[] = [
     id: 'primi-mare-4',
     category: 'Primi Piatti',
     name: {
-      it: 'Ravioli di Pesce / Ravioli Ripieni',
+      it: 'Ravioli di Pesce',
       en: 'Handmade Seafood Ravioli',
     },
     description: { it: '', en: '' },
@@ -353,7 +353,7 @@ export const primiDishes: Dish[] = [
       en: 'Risotto with Scallops, Zucchini Blossoms, Tomatoes & Pistachio',
     },
     description: { it: '', en: '' },
-    price: '€17,00',
+    price: '€15,00',
     tags: ['seafood'],
     allergens: ['2 - Crostacei', '8 - Frutta a guscio', '14 - Molluschi'],
   },

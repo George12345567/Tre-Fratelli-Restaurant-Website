@@ -6,6 +6,30 @@ export interface EditorialPhoto {
   };
 }
 
+const seafoodStartersGallery: EditorialPhoto[] = [
+  {
+    src: '/images/dishes/raw-seafood/crudo-di-mare-misto.webp',
+    caption: {
+      it: 'Gran Crudo di Mare Misto con Scampi & Gamberi Rossi',
+      en: 'Grand Mixed Raw Seafood Platter with Langoustines & Red Prawns',
+    },
+  },
+  {
+    src: '/images/dishes/raw-seafood/plateau-ostriche-fine-de-claire.webp',
+    caption: {
+      it: 'Plateau di Ostriche Fine de Claire su Ghiaccio',
+      en: 'Plateau of Fine de Claire Oysters on Shaved Ice',
+    },
+  },
+  {
+    src: '/images/dishes/raw-seafood/gran-plateau-reale-mare.webp',
+    caption: {
+      it: 'Gran Plateau Reale dei Tre Fratelli con Frutti di Mare',
+      en: 'Tre Fratelli Royal Seafood Plateau on Ice',
+    },
+  },
+];
+
 export const subsectionEditorialGalleries: Record<string, EditorialPhoto[]> = {
   // ── Antipasti di Terra ──
   'anti-terra': [
@@ -32,30 +56,9 @@ export const subsectionEditorialGalleries: Record<string, EditorialPhoto[]> = {
     },
   ],
 
-  // ── Crudité di Mare ──
-  'raw-crudite': [
-    {
-      src: '/images/dishes/raw-seafood/crudo-di-mare-misto.webp',
-      caption: {
-        it: 'Gran Crudo di Mare Misto con Scampi & Gamberi Rossi',
-        en: 'Grand Mixed Raw Seafood Platter with Langoustines & Red Prawns',
-      },
-    },
-    {
-      src: '/images/dishes/raw-seafood/plateau-ostriche-fine-de-claire.webp',
-      caption: {
-        it: 'Plateau di Ostriche Fine de Claire su Ghiaccio',
-        en: 'Plateau of Fine de Claire Oysters on Shaved Ice',
-      },
-    },
-    {
-      src: '/images/dishes/raw-seafood/gran-plateau-reale-mare.webp',
-      caption: {
-        it: 'Gran Plateau Reale dei Tre Fratelli con Frutti di Mare',
-        en: 'Tre Fratelli Royal Seafood Plateau on Ice',
-      },
-    },
-  ],
+  // ── Antipasti di Mare & Crudité ──
+  'anti-mare': seafoodStartersGallery,
+  'raw-crudite': seafoodStartersGallery,
 
   // ── Primi di Mare ──
   'primi-mare': [

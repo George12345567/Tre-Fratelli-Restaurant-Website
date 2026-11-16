@@ -31,6 +31,7 @@ const orderedWineCategories: WineCategory[] = [
   'rose',
   'dessert',
   'beer',
+  'aperitivo',
   'coffee',
   'soft',
 ];
@@ -63,6 +64,10 @@ const shortWineCategoryLabels: Record<WineCategory, LocalizedText> = {
   beer: {
     it: 'Birre',
     en: 'Craft Beer',
+  },
+  aperitivo: {
+    it: 'Aperitivi',
+    en: 'Aperitifs',
   },
   coffee: {
     it: 'Caffè & Amari',

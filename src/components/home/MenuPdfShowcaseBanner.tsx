@@ -1,6 +1,7 @@
 'use client';
 
 import { Download, Eye, FileText, Sparkles } from 'lucide-react';
+import { getMenuPdfConfig } from '@/config/site';
 
 interface MenuPdfShowcaseBannerProps {
   locale: string;
@@ -11,7 +12,8 @@ export function MenuPdfShowcaseBanner({
   locale,
   onOpenPdfModal,
 }: MenuPdfShowcaseBannerProps) {
-  const pdfUrl = '/menu/tre-fratelli-menu.pdf';
+  const pdfConfig = getMenuPdfConfig(locale);
+  const pdfUrl = pdfConfig.url;
 
   return (
     <div className="mt-8 relative overflow-hidden rounded-3xl bg-gradient-to-r from-[var(--palette-espresso)] via-[var(--palette-espresso-light)] to-[var(--palette-espresso)] text-white p-6 sm:p-8 border border-[var(--palette-aged-brass)]/40 shadow-xl">
@@ -72,7 +74,7 @@ export function MenuPdfShowcaseBanner({
 
           <a
             href={pdfUrl}
-            download="Tre-Fratelli-Menu.pdf"
+            download={pdfConfig.downloadName}
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs sm:text-sm font-bold border border-white/20 transition-all cursor-pointer"
           >
             <Download size={15} />

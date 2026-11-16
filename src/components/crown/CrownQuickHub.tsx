@@ -13,6 +13,7 @@ import {
 import { Link } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/routing';
 import { LanguageDropdown } from '@/components/layout/LanguageDropdown';
+import { getMenuPdfConfig } from '@/config/site';
 import { restaurantOfficialInfo } from '@/data/restaurantDetails';
 
 interface CrownQuickHubProps {
@@ -22,6 +23,7 @@ interface CrownQuickHubProps {
 export function CrownQuickHub({ locale }: CrownQuickHubProps) {
   const [isOpen, setIsOpen] = useState(false);
   const hubRef = useRef<HTMLDivElement>(null);
+  const pdfConfig = getMenuPdfConfig(locale);
 
   // Close on outside click or Escape key
   useEffect(() => {
@@ -158,8 +160,8 @@ export function CrownQuickHub({ locale }: CrownQuickHubProps) {
 
             {/* 1.5. Official menu PDF */}
             <a
-              href="/menu/tre-fratelli-menu.pdf"
-              download="Tre-Fratelli-Menu.pdf"
+              href={pdfConfig.url}
+              download={pdfConfig.downloadName}
               onClick={() => setIsOpen(false)}
               className="group flex items-center justify-between p-2.5 rounded-2xl bg-[var(--palette-warm-ivory)]/80 hover:bg-white border border-[var(--palette-aged-brass)]/30 shadow-2xs hover:shadow-xs transition-all duration-200"
             >
@@ -174,7 +176,9 @@ export function CrownQuickHub({ locale }: CrownQuickHubProps) {
                       : 'Download PDF Menu'}
                   </span>
                   <span className="text-[10px] text-[var(--palette-espresso)]/60 block truncate">
-                    {locale === 'it' ? '10 pagine · Originale (6.4 MB)' : '10 pages · Official (6.4 MB)'}
+                    {locale === 'it'
+                      ? `10 pagine · Originale (${pdfConfig.sizeLabelShort})`
+                      : `10 pages · Official (${pdfConfig.sizeLabelShort})`}
                   </span>
                 </div>
               </div>

@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import Image from 'next/image';
 import { X, ChevronLeft, ChevronRight, Sparkles } from 'lucide-react';
 import type { Dish } from '@/data/types';
-import { getLocalized } from '@/data/types';
+import { formatMenuPrice, getLocalized } from '@/data/types';
 import type { Locale } from '@/i18n/routing';
 
 interface MenuLightboxModalProps {
@@ -114,7 +114,7 @@ export function MenuLightboxModal({
           {/* Bottom-Start Price Pill */}
           <div className="absolute bottom-3.5 start-4 z-10">
             <span className="inline-block px-3.5 py-1 rounded-full bg-[var(--palette-italian-red)] text-white font-serif text-sm sm:text-base font-extrabold tabular-nums shadow-md border border-white/20">
-              {dish.price}
+              {formatMenuPrice(dish.price, locale)}
             </span>
           </div>
         </div>

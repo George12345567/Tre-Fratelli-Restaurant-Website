@@ -10,6 +10,7 @@ import {
   Download,
 } from 'lucide-react';
 import type { Locale } from '@/i18n/routing';
+import { getMenuPdfConfig } from '@/config/site';
 import { restaurantSchedule } from '@/data/restaurantSchedule';
 import { restaurantOfficialInfo } from '@/data/restaurantDetails';
 import { getLocalized } from '@/data/types';
@@ -21,6 +22,7 @@ interface FooterProps {
 export async function Footer({ locale }: FooterProps) {
   const t = await getTranslations({ locale });
   const googleMapsUrl = restaurantOfficialInfo.googleMapsUrl;
+  const pdfConfig = getMenuPdfConfig(locale);
 
   return (
     <footer
@@ -107,8 +109,8 @@ export async function Footer({ locale }: FooterProps) {
             {t('nav.reserve')}
           </Link>
           <a
-            href="/menu/tre-fratelli-menu.pdf"
-            download="Tre-Fratelli-Menu.pdf"
+            href={pdfConfig.url}
+            download={pdfConfig.downloadName}
             className="min-h-7 min-w-0 inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-[var(--palette-italian-red)]/25 border border-[var(--palette-italian-red)]/45 text-[var(--palette-warm-ivory)] hover:text-white transition-colors font-bold"
           >
             <Download size={10} aria-hidden="true" />
@@ -319,15 +321,15 @@ export async function Footer({ locale }: FooterProps) {
               </li>
               <li className="pt-2">
                 <a
-                  href="/menu/tre-fratelli-menu.pdf"
-                  download="Tre-Fratelli-Menu.pdf"
+                  href={pdfConfig.url}
+                  download={pdfConfig.downloadName}
                   className="min-h-9 min-w-0 px-3.5 py-2 rounded-xl bg-[var(--palette-aged-brass)]/12 hover:bg-[var(--palette-aged-brass)]/22 border border-[var(--palette-aged-brass)]/35 text-[var(--palette-aged-brass)] hover:text-white transition-all inline-flex items-center gap-2 font-semibold"
                 >
                   <Download size={13} className="shrink-0" aria-hidden="true" />
                   <span>
                     {locale === 'it'
-                      ? 'Scarica Menù PDF (6.4 MB)'
-                      : 'Download PDF Menu (6.4 MB)'}
+                      ? `Scarica Menù PDF (${pdfConfig.sizeLabelShort})`
+                      : `Download PDF Menu (${pdfConfig.sizeLabelShort})`}
                   </span>
                 </a>
               </li>

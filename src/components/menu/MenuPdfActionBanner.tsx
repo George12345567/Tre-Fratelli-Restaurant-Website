@@ -1,6 +1,7 @@
 'use client';
 
 import { Download, ExternalLink, Eye, FileText, Sparkles } from 'lucide-react';
+import { getMenuPdfConfig } from '@/config/site';
 import type { Locale } from '@/i18n/routing';
 
 interface MenuPdfActionBannerProps {
@@ -12,7 +13,8 @@ export function MenuPdfActionBanner({
   locale,
   onOpenViewer,
 }: MenuPdfActionBannerProps) {
-  const pdfUrl = '/menu/tre-fratelli-menu.pdf';
+  const pdfConfig = getMenuPdfConfig(locale);
+  const pdfUrl = pdfConfig.url;
 
   return (
     <div
@@ -82,14 +84,14 @@ export function MenuPdfActionBanner({
           {/* 2. Direct Download Link */}
           <a
             href={pdfUrl}
-            download="Tre-Fratelli-Menu.pdf"
+            download={pdfConfig.downloadName}
             className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full text-xs sm:text-sm font-semibold bg-white border border-[var(--palette-stone-beige)]/80 text-[var(--palette-espresso)] hover:bg-stone-50 active:scale-98 transition-all shadow-2xs"
           >
             <Download size={15} aria-hidden="true" />
             <span>
               {locale === 'it'
-                ? 'Scarica PDF (6.4 MB)'
-                : 'Download PDF'}
+                ? `Scarica PDF (${pdfConfig.sizeLabelShort})`
+                : `Download PDF (${pdfConfig.sizeLabelShort})`}
             </span>
           </a>
 
