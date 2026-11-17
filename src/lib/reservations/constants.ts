@@ -95,3 +95,17 @@ export function formatReservationDate(dateIso: string, locale: Locale): string {
     month: 'short',
   }).format(date);
 }
+
+export function formatReservationDateLong(dateIso: string, locale: Locale): string {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(dateIso)) return dateIso;
+  const [year, month, day] = dateIso.split('-').map(Number);
+  const date = new Date(Date.UTC(year, month - 1, day));
+  const formatted = new Intl.DateTimeFormat(locale === 'it' ? 'it-IT' : 'en-GB', {
+    timeZone: 'UTC',
+    weekday: 'long',
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  }).format(date);
+  return formatted.charAt(0).toUpperCase() + formatted.slice(1);
+}

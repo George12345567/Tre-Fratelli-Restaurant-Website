@@ -2,6 +2,7 @@ import { restaurantOfficialInfo } from '@/data/restaurantDetails';
 import {
   format12h,
   formatReservationDate,
+  formatReservationDateLong,
   getOccasionLabel,
   RESTAURANT_TIMEZONE,
 } from './constants';
@@ -140,24 +141,83 @@ export function renderLumosSubtleFooter(): string {
     </table>`;
 }
 
-function renderTranslateButtonsRow(translatableSummary: string): string {
-  const encoded = encodeURIComponent(translatableSummary);
-  const urlArabic = `https://translate.google.com/?sl=auto&tl=ar&text=${encoded}`;
-  const urlEnglish = `https://translate.google.com/?sl=auto&tl=en&text=${encoded}`;
-  const urlItalian = `https://translate.google.com/?sl=auto&tl=it&text=${encoded}`;
+function buildStructuredTranslatePayloads(
+  reservation: ValidatedReservation,
+  referenceId: string,
+): { italianSource: string; englishSource: string } {
+  const dateLongIt = formatReservationDateLong(reservation.date, 'it');
+  const dateLongEn = formatReservationDateLong(reservation.date, 'en');
+  const time12 = format12h(reservation.time);
+  const serviceIt = reservation.service === 'lunch' ? 'Pranzo' : 'Cena';
+  const serviceEn = reservation.service === 'lunch' ? 'Lunch' : 'Dinner';
+  const occasionIt = getOccasionLabel(reservation.occasion, 'it');
+  const occasionEn = getOccasionLabel(reservation.occasion, 'en');
+  const cleanNotes = reservation.notes?.trim();
+
+  const italianSource = [
+    `=== TRE FRATELLI · RIEPILOGO PRENOTAZIONE ===`,
+    `Codice Riferimento: ${referenceId}`,
+    ``,
+    `[ DETTAGLI PRINCIPALI DELLA PRENOTAZIONE ]`,
+    `• Data: ${dateLongIt} (${reservation.date})`,
+    `• Orario e Servizio: ${reservation.time} (${time12}) — ${serviceIt}`,
+    `• Numero di Ospiti: ${reservation.guests} Ospiti`,
+    `• Occasione / Motivo: ${occasionIt}`,
+    `• Richieste Particolari / Allergie: ${cleanNotes || 'Nessuna richiesta particolare'}`,
+    ``,
+    `[ DATI DELL'OSPITE ]`,
+    `• Nome e Cognome: ${reservation.name}`,
+    `• Telefono: ${reservation.phone}`,
+    `• Email: ${reservation.email || 'Non indicata'}`,
+  ].join('\n');
+
+  const englishSource = [
+    `=== TRE FRATELLI · RESERVATION SUMMARY ===`,
+    `Reference Code: ${referenceId}`,
+    ``,
+    `[ MAIN RESERVATION DETAILS ]`,
+    `• Date: ${dateLongEn} (${reservation.date})`,
+    `• Time & Service: ${reservation.time} (${time12}) — ${serviceEn}`,
+    `• Number of Guests: ${reservation.guests} Guests`,
+    `• Occasion / Reason: ${occasionEn}`,
+    `• Special Requests / Allergies: ${cleanNotes || 'No special requests'}`,
+    ``,
+    `[ GUEST CONTACT DETAILS ]`,
+    `• Full Name: ${reservation.name}`,
+    `• Phone: ${reservation.phone}`,
+    `• Email: ${reservation.email || 'Not provided'}`,
+  ].join('\n');
+
+  return { italianSource, englishSource };
+}
+
+function renderTranslateButtonsRow(
+  reservation: ValidatedReservation,
+  referenceId: string,
+): string {
+  const { italianSource, englishSource } = buildStructuredTranslatePayloads(
+    reservation,
+    referenceId,
+  );
+  const encodedIt = encodeURIComponent(italianSource);
+  const encodedEn = encodeURIComponent(englishSource);
+
+  const urlArabic = `https://translate.google.com/?sl=auto&tl=ar&text=${encodedIt}&op=translate`;
+  const urlEnglish = `https://translate.google.com/?sl=auto&tl=en&text=${encodedIt}&op=translate`;
+  const urlItalian = `https://translate.google.com/?sl=auto&tl=it&text=${encodedEn}&op=translate`;
 
   const pillStyle =
-    'display:inline-block;padding:6px 12px;margin:0 4px 4px 0;border-radius:999px;background:#FAF6EF;border:1px solid #D6C3A3;color:#2B1F1A;font-size:11px;font-weight:700;text-decoration:none;';
+    'display:inline-block;padding:7px 12px;margin:3px 5px 2px 0;border-radius:999px;background:#FFFFFF;border:1px solid #C8AE86;color:#2B1F1A;font-size:11.5px;font-weight:700;text-decoration:none;';
 
   return `
-          <div style="margin-top:14px;padding:10px 14px;background:#FCF9F4;border:1px solid #E8D9C0;border-radius:12px;">
-            <div style="font-size:10px;text-transform:uppercase;letter-spacing:0.08em;color:#6B5A4E;font-weight:700;margin-bottom:6px;">
-              Instant Translation (1-Click Google Translate)
+          <div style="margin-top:16px;padding:12px 16px;background:#FAF6EF;border:1px solid #DECBB0;border-radius:14px;">
+            <div style="font-size:10.5px;text-transform:uppercase;letter-spacing:0.08em;color:#7A2E2A;font-weight:700;margin-bottom:6px;">
+              Google Translate · Traduzione Organizzata con 1 Clic
             </div>
             <div>
-              <a href="${escapeHtml(urlArabic)}" target="_blank" rel="noopener noreferrer" style="${pillStyle}">Translate to Arabic</a>
-              <a href="${escapeHtml(urlEnglish)}" target="_blank" rel="noopener noreferrer" style="${pillStyle}">Translate to English</a>
-              <a href="${escapeHtml(urlItalian)}" target="_blank" rel="noopener noreferrer" style="${pillStyle}">Translate to Italian</a>
+              <a href="${escapeHtml(urlArabic)}" target="_blank" rel="noopener noreferrer" style="${pillStyle}">🌐 Translate to Arabic</a>
+              <a href="${escapeHtml(urlEnglish)}" target="_blank" rel="noopener noreferrer" style="${pillStyle}">🌐 Translate to English</a>
+              <a href="${escapeHtml(urlItalian)}" target="_blank" rel="noopener noreferrer" style="${pillStyle}">🌐 Translate to Italian</a>
             </div>
           </div>`;
 }
@@ -167,38 +227,25 @@ export function buildRestaurantNotificationEmail(
   referenceId: string,
   options?: { useCidLogo?: boolean },
 ): RenderedEmailContent {
-  const dateLabelIt = formatReservationDate(reservation.date, 'it');
+  const dateShortIt = formatReservationDate(reservation.date, 'it');
+  const dateLongIt = formatReservationDateLong(reservation.date, 'it');
+  const dateLongEn = formatReservationDateLong(reservation.date, 'en');
   const time12 = format12h(reservation.time);
-  const serviceLabel = reservation.service === 'lunch' ? 'Pranzo (Lunch)' : 'Cena (Dinner)';
-  const occasionLabel = getOccasionLabel(reservation.occasion, 'it');
+  const serviceLabel = reservation.service === 'lunch' ? 'Pranzo · Lunch' : 'Cena · Dinner';
+  const occasionIt = getOccasionLabel(reservation.occasion, 'it');
+  const occasionEn = getOccasionLabel(reservation.occasion, 'en');
   const submittedAt = formatRomeTimestamp();
   const telHref = sanitizeTelHref(reservation.phone);
 
-  const subject = `[Tre Fratelli] Nuova Prenotazione · ${reservation.guests} Ospiti · ${dateLabelIt} ${reservation.time} — ${reservation.name}`;
+  const subject = `[Tre Fratelli] Nuova Prenotazione · ${reservation.guests} Ospiti · ${dateShortIt} ${reservation.time} — ${reservation.name}`;
 
-  const translatableSummary = [
-    `Tre Fratelli Reservation (${referenceId})`,
-    `Guest: ${reservation.name}`,
-    `Phone: ${reservation.phone}`,
-    `Date: ${dateLabelIt} (${reservation.date})`,
-    `Time: ${reservation.time} (${time12}) - ${serviceLabel}`,
-    `Guests: ${reservation.guests}`,
-    `Occasion: ${occasionLabel}`,
-    `Notes / Allergies: ${reservation.notes || 'None'}`,
-  ].join('\n');
-
-  const notesHtml = reservation.notes
-    ? `
-            <tr>
-              <td colspan="2" style="padding:12px 16px;border-top:1px solid #F1E9DC;background:#FCF9F4;border-left:3px solid #B08A57;">
-                <div style="font-size:10px;text-transform:uppercase;letter-spacing:0.08em;color:#B08A57;font-weight:700;margin-bottom:4px;">Note / Allergie · Special Requests</div>
-                <div style="font-size:13.5px;line-height:1.5;color:#2B1F1A;white-space:pre-line;">${escapeHtml(reservation.notes)}</div>
-              </td>
-            </tr>`
-    : '';
+  const cleanNotes = reservation.notes?.trim();
+  const notesDisplayHtml = cleanNotes
+    ? `<div style="font-size:15px;font-weight:700;line-height:1.55;color:#2B1F1A;white-space:pre-line;">${escapeHtml(cleanNotes)}</div>`
+    : `<div style="font-size:13.5px;color:#6B5A4E;font-style:italic;">Nessuna richiesta particolare o allergia segnalata · None</div>`;
 
   const emailCellHtml = reservation.email
-    ? `<a href="mailto:${escapeHtml(reservation.email)}" style="color:#7A2E2A;text-decoration:none;font-weight:600;">${escapeHtml(reservation.email)}</a>`
+    ? `<a href="mailto:${escapeHtml(reservation.email)}" style="color:#7A2E2A;text-decoration:none;font-weight:700;">${escapeHtml(reservation.email)}</a>`
     : '<span style="color:#6B5A4E;">Non indicata</span>';
 
   const html = `<!doctype html>
@@ -218,52 +265,85 @@ export function buildRestaurantNotificationEmail(
         useCidLogo: Boolean(options?.useCidLogo),
       })}
       <tr>
-        <td style="padding:20px 28px 8px;">
-          <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="background:#FAF6EF;border:1px solid #E8D9C0;border-radius:14px;">
+        <td style="padding:22px 26px 24px;">
+          <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="border:2px solid #D6C3A3;border-radius:16px;overflow:hidden;background:#FFFFFF;">
             <tr>
-              <td style="width:34%;padding:13px 15px;vertical-align:top;">
-                <div style="font-size:10px;text-transform:uppercase;letter-spacing:0.08em;color:#6B5A4E;font-weight:700;">Data · Date</div>
-                <div style="font-size:15px;font-weight:700;color:#2B1F1A;margin-top:3px;">${escapeHtml(dateLabelIt)}</div>
-                <div style="font-size:11px;color:#6B5A4E;margin-top:1px;">${escapeHtml(reservation.date)}</div>
-              </td>
-              <td style="width:34%;padding:13px 15px;border-left:1px solid #E8D9C0;vertical-align:top;">
-                <div style="font-size:10px;text-transform:uppercase;letter-spacing:0.08em;color:#6B5A4E;font-weight:700;">Orario · Time</div>
-                <div style="font-size:15px;font-weight:700;color:#7A2E2A;margin-top:3px;">${escapeHtml(reservation.time)} (${escapeHtml(time12)})</div>
-                <div style="font-size:11px;color:#6B5A4E;margin-top:1px;">${escapeHtml(serviceLabel)}</div>
-              </td>
-              <td style="width:32%;padding:13px 15px;border-left:1px solid #E8D9C0;vertical-align:top;">
-                <div style="font-size:10px;text-transform:uppercase;letter-spacing:0.08em;color:#6B5A4E;font-weight:700;">Ospiti · Guests</div>
-                <div style="font-size:15px;font-weight:700;color:#2B1F1A;margin-top:3px;">${escapeHtml(reservation.guests)} Ospiti</div>
-                <div style="font-size:11px;color:#6B5A4E;margin-top:1px;">Lingua: ${escapeHtml(reservation.locale.toUpperCase())}</div>
+              <td colspan="2" style="padding:12px 18px;background:#FAF6EF;border-bottom:2px solid #D6C3A3;">
+                <span style="font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:#7A2E2A;font-weight:800;">
+                  Dettagli Principali della Prenotazione · Main Booking Details
+                </span>
               </td>
             </tr>
-          </table>
-        </td>
-      </tr>
-      <tr>
-        <td style="padding:12px 28px 22px;">
-          <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="border:1px solid #E8D9C0;border-radius:14px;overflow:hidden;background:#FFFFFF;">
             <tr>
-              <td style="padding:12px 16px;font-size:12px;color:#6B5A4E;font-weight:700;width:36%;">Ospite · Guest</td>
-              <td style="padding:12px 16px;font-size:15px;font-weight:700;color:#2B1F1A;">${escapeHtml(reservation.name)}</td>
+              <td style="padding:15px 18px;width:36%;font-size:12px;text-transform:uppercase;letter-spacing:0.05em;color:#6B5A4E;font-weight:700;vertical-align:middle;background:#FCF9F4;">
+                Data · Date
+              </td>
+              <td style="padding:15px 18px;vertical-align:middle;background:#FCF9F4;">
+                <div style="font-size:17px;font-weight:800;color:#2B1F1A;line-height:1.3;">${escapeHtml(dateLongIt)}</div>
+                <div style="font-size:12px;color:#6B5A4E;margin-top:2px;">${escapeHtml(dateLongEn)} &nbsp;·&nbsp; ${escapeHtml(reservation.date)}</div>
+              </td>
             </tr>
             <tr>
-              <td style="padding:12px 16px;border-top:1px solid #F1E9DC;font-size:12px;color:#6B5A4E;font-weight:700;">Telefono · Phone</td>
-              <td style="padding:12px 16px;border-top:1px solid #F1E9DC;font-size:15px;font-weight:700;">
+              <td style="padding:15px 18px;border-top:1px solid #EADBC6;font-size:12px;text-transform:uppercase;letter-spacing:0.05em;color:#6B5A4E;font-weight:700;vertical-align:middle;background:#FDF7F5;">
+                Orario e Servizio · Time
+              </td>
+              <td style="padding:15px 18px;border-top:1px solid #EADBC6;vertical-align:middle;background:#FDF7F5;">
+                <span style="font-size:19px;font-weight:800;color:#7A2E2A;vertical-align:middle;">${escapeHtml(reservation.time)} (${escapeHtml(time12)})</span>
+                <span style="display:inline-block;margin-left:8px;padding:3px 10px;border-radius:999px;background:#FFFFFF;border:1px solid #E2C5C2;color:#7A2E2A;font-size:11.5px;font-weight:700;vertical-align:middle;">${escapeHtml(serviceLabel)}</span>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:15px 18px;border-top:1px solid #EADBC6;font-size:12px;text-transform:uppercase;letter-spacing:0.05em;color:#6B5A4E;font-weight:700;vertical-align:middle;background:#FCF9F4;">
+                Ospiti · Guests
+              </td>
+              <td style="padding:15px 18px;border-top:1px solid #EADBC6;vertical-align:middle;background:#FCF9F4;">
+                <span style="font-size:17px;font-weight:800;color:#2B1F1A;">${escapeHtml(reservation.guests)} Ospiti</span>
+                <span style="font-size:13px;color:#6B5A4E;font-weight:600;"> &nbsp;(${escapeHtml(reservation.guests)} Guests)</span>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:15px 18px;border-top:1px solid #EADBC6;font-size:12px;text-transform:uppercase;letter-spacing:0.05em;color:#6B5A4E;font-weight:700;vertical-align:middle;background:#FFFFFF;">
+                Occasione · Reason
+              </td>
+              <td style="padding:15px 18px;border-top:1px solid #EADBC6;vertical-align:middle;background:#FFFFFF;">
+                <div style="font-size:16px;font-weight:800;color:#7A2E2A;">${escapeHtml(occasionIt)}</div>
+                <div style="font-size:12px;color:#6B5A4E;margin-top:2px;">${escapeHtml(occasionEn)}</div>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" style="padding:15px 18px;border-top:1px solid #EADBC6;background:#FCF9F4;border-left:4px solid #B08A57;">
+                <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:#B08A57;font-weight:800;margin-bottom:5px;">
+                  Richieste Particolari / Allergie · Special Requests &amp; Notes
+                </div>
+                ${notesDisplayHtml}
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" style="padding:10px 18px;background:#FAF6EF;border-top:2px solid #D6C3A3;border-bottom:1px solid #E8D9C0;">
+                <span style="font-size:10.5px;text-transform:uppercase;letter-spacing:0.1em;color:#6B5A4E;font-weight:800;">
+                  Dati dell&rsquo;Ospite · Guest Contact Information
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:13px 18px;font-size:12px;color:#6B5A4E;font-weight:700;">Ospite · Full Name</td>
+              <td style="padding:13px 18px;font-size:16px;font-weight:800;color:#2B1F1A;">${escapeHtml(reservation.name)}</td>
+            </tr>
+            <tr>
+              <td style="padding:13px 18px;border-top:1px solid #F1E9DC;font-size:12px;color:#6B5A4E;font-weight:700;">Telefono · Phone</td>
+              <td style="padding:13px 18px;border-top:1px solid #F1E9DC;font-size:16px;font-weight:800;">
                 <a href="tel:${escapeHtml(telHref)}" style="color:#7A2E2A;text-decoration:none;white-space:nowrap;">${escapeHtml(reservation.phone)}</a>
               </td>
             </tr>
             <tr>
-              <td style="padding:12px 16px;border-top:1px solid #F1E9DC;font-size:12px;color:#6B5A4E;font-weight:700;">Email</td>
-              <td style="padding:12px 16px;border-top:1px solid #F1E9DC;font-size:14px;">${emailCellHtml}</td>
+              <td style="padding:13px 18px;border-top:1px solid #F1E9DC;font-size:12px;color:#6B5A4E;font-weight:700;">Email &amp; Lingua</td>
+              <td style="padding:13px 18px;border-top:1px solid #F1E9DC;font-size:14px;">
+                ${emailCellHtml}
+                <span style="font-size:12px;color:#6B5A4E;"> &nbsp;·&nbsp; Lingua: ${escapeHtml(reservation.locale.toUpperCase())}</span>
+              </td>
             </tr>
-            <tr>
-              <td style="padding:12px 16px;border-top:1px solid #F1E9DC;font-size:12px;color:#6B5A4E;font-weight:700;">Occasione · Occasion</td>
-              <td style="padding:12px 16px;border-top:1px solid #F1E9DC;font-size:14px;font-weight:600;color:#2B1F1A;">${escapeHtml(occasionLabel)}</td>
-            </tr>
-            ${notesHtml}
           </table>
-          ${renderTranslateButtonsRow(translatableSummary)}
+          ${renderTranslateButtonsRow(reservation, referenceId)}
           <div style="margin-top:14px;font-size:12px;line-height:1.5;color:#6B5A4E;">
             Ricevuta il ${escapeHtml(submittedAt)} (Milano).${reservation.email ? ' Rispondi direttamente a questa email per confermare al cliente.' : ''}
           </div>
@@ -277,17 +357,20 @@ export function buildRestaurantNotificationEmail(
 
   const text = [
     `TRE FRATELLI — NUOVA PRENOTAZIONE TAVOLO (${referenceId})`,
-    `--------------------------------------------------`,
-    `Data / Date: ${dateLabelIt} (${reservation.date})`,
-    `Servizio & Orario / Time: ${serviceLabel} - ${reservation.time} (${time12})`,
-    `Ospiti / Guests: ${reservation.guests}`,
-    `Nome / Guest: ${reservation.name}`,
-    `Telefono / Phone: ${reservation.phone}`,
-    `Email: ${reservation.email || 'Non indicata'}`,
-    `Occasione / Occasion: ${occasionLabel}`,
-    `Note / Allergie: ${reservation.notes || 'Nessuna'}`,
-    `Lingua sito: ${reservation.locale.toUpperCase()}`,
-    `Inviata il: ${submittedAt} (Europe/Rome)`,
+    `==================================================`,
+    `DETTAGLI PRINCIPALI DELLA PRENOTAZIONE:`,
+    `• Data / Date: ${dateLongIt} (${reservation.date})`,
+    `• Orario e Servizio / Time: ${reservation.time} (${time12}) — ${serviceLabel}`,
+    `• Ospiti / Guests: ${reservation.guests} Ospiti`,
+    `• Occasione / Reason: ${occasionIt} (${occasionEn})`,
+    `• Richieste Particolari / Allergie: ${cleanNotes || 'Nessuna'}`,
+    ``,
+    `DATI DELL'OSPITE:`,
+    `• Nome / Guest: ${reservation.name}`,
+    `• Telefono / Phone: ${reservation.phone}`,
+    `• Email: ${reservation.email || 'Non indicata'}`,
+    `• Lingua sito: ${reservation.locale.toUpperCase()}`,
+    `• Inviata il: ${submittedAt} (Europe/Rome)`,
     '',
     `--`,
     `Tre Fratelli · ${restaurantOfficialInfo.address}`,
@@ -304,7 +387,7 @@ export function buildGuestAcknowledgementEmail(
   options?: { useCidLogo?: boolean },
 ): RenderedEmailContent {
   const isItalian = reservation.locale === 'it';
-  const dateLabel = formatReservationDate(reservation.date, reservation.locale);
+  const dateLabelLong = formatReservationDateLong(reservation.date, reservation.locale);
   const time12 = format12h(reservation.time);
   const occasionLabel = getOccasionLabel(reservation.occasion, reservation.locale);
   const serviceLabel = isItalian
@@ -333,14 +416,12 @@ export function buildGuestAcknowledgementEmail(
     ? 'Hai bisogno di modificare l’orario o aggiungere dettagli? Chiamaci direttamente al'
     : 'Need to update your booking or share urgent details? Call us directly at';
 
-  const notesRow = reservation.notes
-    ? `
-            <tr>
-              <td style="padding:11px 16px;border-top:1px solid #E8D9C0;font-size:13px;background:#FCF9F4;">
-                <strong style="color:#B08A57;">${isItalian ? 'Note' : 'Notes'}:</strong> ${escapeHtml(reservation.notes)}
-              </td>
-            </tr>`
-    : '';
+  const cleanNotes = reservation.notes?.trim();
+  const notesDisplay = cleanNotes
+    ? escapeHtml(cleanNotes)
+    : isItalian
+      ? 'Nessuna richiesta particolare indicata'
+      : 'No special requests indicated';
 
   const html = `<!doctype html>
 <html lang="${reservation.locale}">
@@ -359,31 +440,64 @@ export function buildGuestAcknowledgementEmail(
         useCidLogo: Boolean(options?.useCidLogo),
       })}
       <tr>
-        <td style="padding:22px 28px;font-size:14px;line-height:1.65;color:#2B1F1A;">
+        <td style="padding:22px 26px;font-size:14px;line-height:1.65;color:#2B1F1A;">
           <p style="margin:0 0 18px;">${escapeHtml(intro)}</p>
-          <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="background:#FAF6EF;border:1px solid #E8D9C0;border-radius:14px;overflow:hidden;">
+          <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="border:2px solid #D6C3A3;border-radius:16px;overflow:hidden;background:#FFFFFF;">
             <tr>
-              <td style="padding:11px 16px;font-size:13px;">
-                <strong style="color:#6B5A4E;">${isItalian ? 'Data' : 'Date'}:</strong> ${escapeHtml(dateLabel)} (${escapeHtml(reservation.date)})
+              <td colspan="2" style="padding:11px 18px;background:#FAF6EF;border-bottom:2px solid #D6C3A3;font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:#7A2E2A;font-weight:800;">
+                ${isItalian ? 'Dettagli Principali della Prenotazione' : 'Main Reservation Details'} · ${escapeHtml(referenceId)}
               </td>
             </tr>
             <tr>
-              <td style="padding:11px 16px;border-top:1px solid #E8D9C0;font-size:13px;">
-                <strong style="color:#6B5A4E;">${isItalian ? 'Orario e Servizio' : 'Service & Time'}:</strong> ${escapeHtml(serviceLabel)} · <span style="color:#7A2E2A;font-weight:700;">${escapeHtml(reservation.time)} (${escapeHtml(time12)})</span>
+              <td style="padding:13px 18px;width:36%;font-size:12px;color:#6B5A4E;font-weight:700;background:#FCF9F4;">
+                ${isItalian ? 'Data' : 'Date'}
+              </td>
+              <td style="padding:13px 18px;font-size:16px;font-weight:800;color:#2B1F1A;background:#FCF9F4;">
+                ${escapeHtml(dateLabelLong)} <span style="font-size:12px;font-weight:500;color:#6B5A4E;">(${escapeHtml(reservation.date)})</span>
               </td>
             </tr>
             <tr>
-              <td style="padding:11px 16px;border-top:1px solid #E8D9C0;font-size:13px;">
-                <strong style="color:#6B5A4E;">${isItalian ? 'Ospiti' : 'Guests'}:</strong> ${escapeHtml(guestsText)}
+              <td style="padding:13px 18px;border-top:1px solid #EADBC6;font-size:12px;color:#6B5A4E;font-weight:700;background:#FDF7F5;">
+                ${isItalian ? 'Orario e Servizio' : 'Time & Service'}
+              </td>
+              <td style="padding:13px 18px;border-top:1px solid #EADBC6;font-size:17px;font-weight:800;color:#7A2E2A;background:#FDF7F5;">
+                ${escapeHtml(reservation.time)} (${escapeHtml(time12)}) &nbsp;·&nbsp; ${escapeHtml(serviceLabel)}
               </td>
             </tr>
             <tr>
-              <td style="padding:11px 16px;border-top:1px solid #E8D9C0;font-size:13px;">
-                <strong style="color:#6B5A4E;">${isItalian ? 'Occasione' : 'Occasion'}:</strong> ${escapeHtml(occasionLabel)}
+              <td style="padding:13px 18px;border-top:1px solid #EADBC6;font-size:12px;color:#6B5A4E;font-weight:700;background:#FCF9F4;">
+                ${isItalian ? 'Ospiti' : 'Guests'}
+              </td>
+              <td style="padding:13px 18px;border-top:1px solid #EADBC6;font-size:16px;font-weight:800;color:#2B1F1A;background:#FCF9F4;">
+                ${escapeHtml(guestsText)}
               </td>
             </tr>
-            ${notesRow}
+            <tr>
+              <td style="padding:13px 18px;border-top:1px solid #EADBC6;font-size:12px;color:#6B5A4E;font-weight:700;">
+                ${isItalian ? 'Occasione' : 'Occasion'}
+              </td>
+              <td style="padding:13px 18px;border-top:1px solid #EADBC6;font-size:15px;font-weight:700;color:#7A2E2A;">
+                ${escapeHtml(occasionLabel)}
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:13px 18px;border-top:1px solid #EADBC6;font-size:12px;color:#6B5A4E;font-weight:700;background:#FCF9F4;">
+                ${isItalian ? 'Richieste / Allergie' : 'Special Requests'}
+              </td>
+              <td style="padding:13px 18px;border-top:1px solid #EADBC6;font-size:14px;font-weight:600;color:#2B1F1A;background:#FCF9F4;">
+                ${notesDisplay}
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:12px 18px;border-top:1px solid #EADBC6;font-size:12px;color:#6B5A4E;font-weight:700;">
+                ${isItalian ? 'Ospite e Telefono' : 'Guest & Phone'}
+              </td>
+              <td style="padding:12px 18px;border-top:1px solid #EADBC6;font-size:14px;font-weight:700;color:#2B1F1A;">
+                ${escapeHtml(reservation.name)} &nbsp;·&nbsp; <span style="color:#7A2E2A;">${escapeHtml(reservation.phone)}</span>
+              </td>
+            </tr>
           </table>
+          ${renderTranslateButtonsRow(reservation, referenceId)}
           <p style="margin:18px 0 0;font-size:13px;color:#6B5A4E;">
             ${escapeHtml(urgentHelp)}
             <a href="tel:${escapeHtml(restaurantOfficialInfo.phone)}" style="color:#7A2E2A;text-decoration:none;font-weight:700;white-space:nowrap;">${escapeHtml(restaurantOfficialInfo.phoneDisplay)}</a>.
@@ -402,11 +516,12 @@ export function buildGuestAcknowledgementEmail(
     '',
     intro,
     '',
-    `${isItalian ? 'Data' : 'Date'}: ${dateLabel} (${reservation.date})`,
-    `${isItalian ? 'Orario' : 'Time'}: ${serviceLabel} · ${reservation.time} (${time12})`,
+    `${isItalian ? 'Data' : 'Date'}: ${dateLabelLong} (${reservation.date})`,
+    `${isItalian ? 'Orario e Servizio' : 'Time & Service'}: ${reservation.time} (${time12}) · ${serviceLabel}`,
     `${isItalian ? 'Ospiti' : 'Guests'}: ${guestsText}`,
     `${isItalian ? 'Occasione' : 'Occasion'}: ${occasionLabel}`,
-    ...(reservation.notes ? [`${isItalian ? 'Note' : 'Notes'}: ${reservation.notes}`] : []),
+    `${isItalian ? 'Richieste / Allergie' : 'Special Requests'}: ${cleanNotes || (isItalian ? 'Nessuna' : 'None')}`,
+    `${isItalian ? 'Ospite' : 'Guest'}: ${reservation.name} (${reservation.phone})`,
     '',
     `${urgentHelp} ${restaurantOfficialInfo.phoneDisplay}`,
     '',
