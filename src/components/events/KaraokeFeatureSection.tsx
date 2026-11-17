@@ -3,6 +3,7 @@
 import { Mic2, Music, Users, Car, Sparkles, ArrowRight, Phone } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
+import { restaurantOfficialInfo } from '@/data/restaurantDetails';
 export function KaraokeFeatureSection() {
   const t = useTranslations();
 
@@ -96,11 +97,11 @@ export function KaraokeFeatureSection() {
             </Link>
 
             <a
-              href="tel:+390236557693"
+              href={`tel:${restaurantOfficialInfo.phone}`}
               className="w-full inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full border border-white/20 hover:border-white/40 bg-white/5 hover:bg-white/10 text-white text-xs font-medium transition-all"
             >
               <Phone size={13} aria-hidden="true" />
-              <span>+39 02 3655 7693 · {t('news.callInquire')}</span>
+              <span>{restaurantOfficialInfo.phoneDisplay} · {t('news.callInquire')}</span>
             </a>
           </div>
         </div>

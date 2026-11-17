@@ -3,6 +3,7 @@
 import { PartyPopper, Phone, ArrowRight, ShieldCheck } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
+import { restaurantOfficialInfo } from '@/data/restaurantDetails';
 export function EventPrivateBanner() {
   const t = useTranslations();
 
@@ -45,7 +46,7 @@ export function EventPrivateBanner() {
           </Link>
 
           <a
-            href="tel:+390236557693"
+            href={`tel:${restaurantOfficialInfo.phone}`}
             className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full border border-stone-300 hover:border-stone-400 bg-white text-[var(--palette-espresso)] text-xs font-semibold transition-all shadow-xs"
           >
             <Phone size={13} aria-hidden="true" />

@@ -17,8 +17,8 @@ export interface AmenityPillar {
 }
 
 export const restaurantOfficialInfo = {
-  phone: '+390236557693',
-  phoneDisplay: '+39 02 3655 7693',
+  phone: '+393917692836',
+  phoneDisplay: '+39 391 769 2836',
   address: 'Viale Leonardo da Vinci, 97, 20090 Trezzano sul Naviglio (MI), Italia',
   cityRegion: {
     it: 'Trezzano sul Naviglio (Milano), Lombardia',

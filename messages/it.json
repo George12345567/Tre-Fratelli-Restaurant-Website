@@ -189,7 +189,7 @@
     },
     "contacts": {
       "title": "Contatto Diretto",
-      "phone": "+39 02 3655 7693"
+      "phone": "+39 391 769 2836"
     },
     "form": {
       "title": "Prenota il Tuo Tavolo Online",
@@ -225,7 +225,14 @@
       "next": "Continua",
       "prev": "Indietro",
       "submit": "Invia Richiesta di Prenotazione",
+      "submitting": "Invio in corso...",
       "validation": "Compila correttamente tutti i campi obbligatori.",
+      "submitError": "Impossibile inviare la richiesta al momento. Riprova o chiamaci direttamente.",
+      "serviceUnavailable": "La prenotazione online è momentaneamente non disponibile. Chiamaci direttamente per riservare il tuo tavolo:",
+      "rateLimited": "Troppe richieste in poco tempo. Attendi qualche minuto o chiamaci direttamente.",
+      "referenceLabel": "Riferimento",
+      "statusPending": "In Attesa di Conferma",
+      "guestsUnit": "Ospiti",
       "successTitle": "Richiesta Ricevuta con Successo!",
       "successMessage": "Grazie! Abbiamo ricevuto la tua richiesta di prenotazione. Il nostro maître vi contatterà al più presto via telefono o email per la conferma.",
       "newBooking": "Effettua un'Altra Prenotazione"

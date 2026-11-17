@@ -134,11 +134,11 @@ export async function Footer({ locale }: FooterProps) {
 
           {/* Direct Phone */}
           <a
-            href="tel:+390236557693"
+            href={`tel:${restaurantOfficialInfo.phone}`}
             className="min-h-9 min-w-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.08] hover:bg-white/[0.16] text-white text-[11px] font-semibold border border-[var(--palette-aged-brass)]/30 transition-all font-mono"
           >
             <Phone size={11} className="text-[var(--palette-aged-brass)] shrink-0" aria-hidden="true" />
-            <bdi dir="ltr">+39 02 3655 7693</bdi>
+            <bdi dir="ltr">{restaurantOfficialInfo.phoneDisplay}</bdi>
           </a>
         </div>
 
@@ -410,14 +410,14 @@ export async function Footer({ locale }: FooterProps) {
 
               {/* Direct Phone */}
               <a
-                href="tel:+390236557693"
+                href={`tel:${restaurantOfficialInfo.phone}`}
                 className="min-h-0 min-w-0 flex items-center gap-2.5 p-2 rounded-xl bg-white/[0.03] hover:bg-white/[0.07] border border-white/8 hover:text-white transition-colors"
               >
                 <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-[var(--palette-aged-brass)]/15 text-[var(--palette-aged-brass)]">
                   <Phone size={13} aria-hidden="true" />
                 </span>
                 <bdi dir="ltr" className="font-mono font-semibold text-white">
-                  +39 02 3655 7693
+                  {restaurantOfficialInfo.phoneDisplay}
                 </bdi>
               </a>
 

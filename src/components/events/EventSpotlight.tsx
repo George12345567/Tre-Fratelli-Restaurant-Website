@@ -5,6 +5,7 @@ import { Link } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
 import type { NewsPost } from '@/data/types';
 import { getLocalized } from '@/data/types';
+import { restaurantOfficialInfo } from '@/data/restaurantDetails';
 import type { Locale } from '@/i18n/routing';
 
 interface EventSpotlightProps {
@@ -111,9 +112,9 @@ export function EventSpotlight({ event, locale }: EventSpotlightProps) {
           </Link>
 
           <a
-            href="tel:+390236557693"
+            href={`tel:${restaurantOfficialInfo.phone}`}
             className="inline-flex items-center justify-center gap-1.5 px-4 py-3 rounded-full border border-stone-300 hover:border-stone-400 bg-stone-50/80 text-[var(--palette-espresso)] text-xs font-semibold transition-all shadow-xs"
-            title="+39 02 3655 7693"
+            title={restaurantOfficialInfo.phoneDisplay}
           >
             <Phone size={13} aria-hidden="true" />
             <span className="hidden sm:inline">{t('news.callInquire')}</span>

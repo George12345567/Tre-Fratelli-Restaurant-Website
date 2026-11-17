@@ -75,11 +75,11 @@ export default async function LocationPage({ params }: PageProps) {
                     Telefono
                   </strong>
                   <a
-                    href={`tel:${t('location.contacts.phone')}`}
+                    href={`tel:${restaurantOfficialInfo.phone}`}
                     className="inline-flex items-center gap-2 text-sm sm:text-base font-bold text-[var(--palette-italian-red)] hover:underline font-mono"
                     dir="ltr"
                   >
-                    {t('location.contacts.phone')}
+                    {restaurantOfficialInfo.phoneDisplay}
                   </a>
                 </div>
               </div>
@@ -115,11 +115,11 @@ export default async function LocationPage({ params }: PageProps) {
               </p>
               <div className="pt-1 flex items-center justify-end text-[11px]">
                 <a
-                  href="tel:+390236557693"
+                  href={`tel:${restaurantOfficialInfo.phone}`}
                   className="font-bold text-[var(--palette-italian-red)] hover:underline font-mono"
                   dir="ltr"
                 >
-                  +39 02 3655 7693
+                  {restaurantOfficialInfo.phoneDisplay}
                 </a>
               </div>
             </div>

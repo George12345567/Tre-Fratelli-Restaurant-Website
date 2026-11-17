@@ -189,7 +189,7 @@
     },
     "contacts": {
       "title": "Direct Contact",
-      "phone": "+39 02 3655 7693"
+      "phone": "+39 391 769 2836"
     },
     "form": {
       "title": "Book Your Table Online",
@@ -225,7 +225,14 @@
       "next": "Continue",
       "prev": "Back",
       "submit": "Confirm Reservation Request",
+      "submitting": "Sending Request...",
       "validation": "Please provide all required information correctly.",
+      "submitError": "We could not send your request right now. Please try again or call us directly.",
+      "serviceUnavailable": "Online booking is temporarily unavailable. Please call us directly to reserve your table:",
+      "rateLimited": "Too many requests in a short time. Please wait a few minutes or call us directly.",
+      "referenceLabel": "Reference",
+      "statusPending": "Pending Confirmation",
+      "guestsUnit": "Guests",
       "successTitle": "Reservation Received!",
       "successMessage": "Grazie! Your reservation request has been received. Our maître d' will confirm your table shortly via phone or email.",
       "newBooking": "Make Another Reservation"

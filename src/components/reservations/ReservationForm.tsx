@@ -4,7 +4,6 @@ import { useState, useMemo } from 'react';
 import { useTranslations } from 'next-intl';
 import {
   CalendarDays,
-  CheckCircle2,
   AlertCircle,
   ArrowRight,
   ArrowLeft,
@@ -17,10 +16,23 @@ import {
   Sun,
   Moon,
   Check,
+  Loader2,
 } from 'lucide-react';
 import type { Locale } from '@/i18n/routing';
 import { isMonday, restaurantSchedule } from '@/data/restaurantSchedule';
+import { restaurantOfficialInfo } from '@/data/restaurantDetails';
 import { getLocalized } from '@/data/types';
+import {
+  DINNER_SLOTS,
+  GUEST_PRESETS,
+  LUNCH_SLOTS,
+  format12h,
+  formatReservationDate,
+  getRomeDateIso,
+  type ReservationService,
+} from '@/lib/reservations/constants';
+import { postReservationRequest } from '@/lib/reservations/client';
+import { ReservationVoucher } from './ReservationVoucher';
 
 interface ReservationFormProps {
   locale: Locale;
@@ -30,57 +42,35 @@ type FormFields = {
   date: string;
   guests: string;
   time: string;
-  service: 'lunch' | 'dinner';
+  service: ReservationService;
   name: string;
   phone: string;
   email: string;
   occasion: string;
   notes: string;
+  tf_rsv_check: string;
 };
 
-const guestPresets = ['1', '2', '3', '4', '5', '6', '7', '8+'];
-
-const lunchSlots = ['12:00', '12:30', '13:00', '13:30', '14:00', '14:30'];
-const dinnerSlots = [
-  '18:30',
-  '19:00',
-  '19:30',
-  '20:00',
-  '20:30',
-  '21:00',
-  '21:30',
-  '22:00',
-  '22:30',
-];
-
-function format12h(time24: string): string {
-  const [hStr, mStr] = time24.split(':');
-  const h = parseInt(hStr, 10);
-  const period = h >= 12 ? 'PM' : 'AM';
-  const h12 = h % 12 || 12;
-  return `${h12}:${mStr} ${period}`;
-}
+const guestPresets = GUEST_PRESETS;
+const lunchSlots = LUNCH_SLOTS;
+const dinnerSlots = DINNER_SLOTS;
 
 export function ReservationForm({ locale }: ReservationFormProps) {
   const t = useTranslations();
 
   const [step, setStep] = useState(0);
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [referenceId, setReferenceId] = useState('');
+  const [showPhoneFallback, setShowPhoneFallback] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [nameError, setNameError] = useState('');
   const [phoneError, setPhoneError] = useState('');
   const [emailError, setEmailError] = useState('');
 
-  // Default to tomorrow's date
-  const tomorrowIso = useMemo(() => {
-    const d = new Date();
-    d.setDate(d.getDate() + 1);
-    return d.toISOString().split('T')[0];
-  }, []);
-
-  const todayIso = useMemo(() => {
-    return new Date().toISOString().split('T')[0];
-  }, []);
+  // Default to tomorrow's date in the restaurant's Rome timezone
+  const tomorrowIso = useMemo(() => getRomeDateIso(1), []);
+  const todayIso = useMemo(() => getRomeDateIso(0), []);
 
   const [formData, setFormData] = useState<FormFields>(() => ({
     date: tomorrowIso,
@@ -92,6 +82,7 @@ export function ReservationForm({ locale }: ReservationFormProps) {
     email: '',
     occasion: 'none',
     notes: '',
+    tf_rsv_check: '',
   }));
 
   const updateField = (field: keyof FormFields, value: string) => {
@@ -102,6 +93,7 @@ export function ReservationForm({ locale }: ReservationFormProps) {
       return { ...prev, [field]: value };
     });
     setErrorMessage('');
+    setShowPhoneFallback(false);
     if (field === 'name') setNameError('');
     if (field === 'phone') setPhoneError('');
     if (field === 'email') setEmailError('');
@@ -116,13 +108,7 @@ export function ReservationForm({ locale }: ReservationFormProps) {
   const formattedDate = useMemo(() => {
     if (!formData.date) return '';
     try {
-      const [year, month, day] = formData.date.split('-').map(Number);
-      const d = new Date(year, month - 1, day);
-      return new Intl.DateTimeFormat(locale === 'it' ? 'it-IT' : 'en-GB', {
-        weekday: 'short',
-        day: 'numeric',
-        month: 'short',
-      }).format(d);
+      return formatReservationDate(formData.date, locale);
     } catch {
       return formData.date;
     }
@@ -130,7 +116,11 @@ export function ReservationForm({ locale }: ReservationFormProps) {
 
   const validateStep = (currentStep: number): boolean => {
     setErrorMessage('');
-    if (isMonday(formData.date) && (formData.service === 'dinner' || !lunchSlots.includes(formData.time))) {
+    setShowPhoneFallback(false);
+    if (
+      isMonday(formData.date) &&
+      (formData.service === 'dinner' || !(lunchSlots as readonly string[]).includes(formData.time))
+    ) {
       setErrorMessage(getLocalized(restaurantSchedule.mondayNotice, locale));
       return false;
     }
@@ -189,115 +179,81 @@ export function ReservationForm({ locale }: ReservationFormProps) {
     setStep((prev) => Math.max(prev - 1, 0));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const resetForm = () => {
+    setSubmitted(false);
+    setReferenceId('');
+    setErrorMessage('');
+    setShowPhoneFallback(false);
+    setStep(0);
+    setFormData({
+      date: tomorrowIso,
+      guests: '2',
+      service: isMonday(tomorrowIso) ? 'lunch' : 'dinner',
+      time: isMonday(tomorrowIso) ? '13:00' : '20:30',
+      name: '',
+      phone: '',
+      email: '',
+      occasion: 'none',
+      notes: '',
+      tf_rsv_check: '',
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (validateStep(2)) {
+    if (isSubmitting || !validateStep(2)) return;
+
+    setIsSubmitting(true);
+    setErrorMessage('');
+    setShowPhoneFallback(false);
+
+    try {
+      const result = await postReservationRequest({ ...formData, locale });
+
+      if (!result.ok) {
+        if (result.code === 'RATE_LIMITED') {
+          setErrorMessage(t('location.form.rateLimited'));
+          setShowPhoneFallback(true);
+        } else if (result.code === 'SERVICE_NOT_CONFIGURED') {
+          setErrorMessage(t('location.form.serviceUnavailable'));
+          setShowPhoneFallback(true);
+        } else if (result.code === 'MONDAY_DINNER_CLOSED') {
+          setErrorMessage(getLocalized(restaurantSchedule.mondayNotice, locale));
+        } else if (result.code.startsWith('INVALID_')) {
+          setErrorMessage(t('location.form.validation'));
+        } else {
+          setErrorMessage(t('location.form.submitError'));
+          setShowPhoneFallback(true);
+        }
+        return;
+      }
+
+      setReferenceId(result.referenceId);
       setSubmitted(true);
+    } catch {
+      setErrorMessage(t('location.form.submitError'));
+      setShowPhoneFallback(true);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   if (submitted) {
     return (
-      <div className="bg-white rounded-3xl p-6 sm:p-10 border border-[var(--palette-stone-beige)]/60 shadow-xl text-center space-y-6 animate-fade-in">
-        <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto shadow-xs">
-          <CheckCircle2 size={36} aria-hidden="true" />
-        </div>
-
-        <div className="space-y-2">
-          <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[var(--palette-espresso)]">
-            {t('location.form.successTitle')}
-          </h3>
-          <p className="text-xs sm:text-sm text-[var(--palette-espresso)]/80 max-w-md mx-auto leading-relaxed">
-            {t('location.form.successMessage')}
-          </p>
-        </div>
-
-        {/* Voucher Preview Card */}
-        <div className="bg-gradient-to-br from-[var(--palette-warm-ivory)]/70 to-white p-5 sm:p-6 rounded-2xl border border-[var(--palette-aged-brass)]/40 max-w-md mx-auto text-start space-y-3 shadow-xs">
-          <div className="flex items-center justify-between pb-3 border-b border-black/5">
-            <span className="font-serif text-xs font-bold uppercase tracking-wider text-[var(--palette-aged-brass)]">
-              Tre Fratelli · Voucher
-            </span>
-            <span className="font-mono text-[11px] text-emerald-700 font-bold bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
-              In Attesa di Conferma
-            </span>
-          </div>
-
-          <div className="grid grid-cols-2 gap-3 text-xs sm:text-sm text-[var(--palette-espresso)]">
-            <div>
-              <span className="text-[10px] text-stone-500 uppercase block font-semibold">
-                {t('location.form.name')}
-              </span>
-              <strong className="block truncate">{formData.name}</strong>
-            </div>
-
-            <div>
-              <span className="text-[10px] text-stone-500 uppercase block font-semibold">
-                {t('location.form.phone')}
-              </span>
-              <strong className="block font-mono text-[var(--palette-italian-red)] truncate" dir="ltr">
-                {formData.phone}
-              </strong>
-            </div>
-
-            <div>
-              <span className="text-[10px] text-stone-500 uppercase block font-semibold">
-                {t('location.form.date')}
-              </span>
-              <strong className="block">{formattedDate} ({formData.date})</strong>
-            </div>
-
-            <div>
-              <span className="text-[10px] text-stone-500 uppercase block font-semibold">
-                {t('location.form.time')} &amp; {t('location.form.guests')}
-              </span>
-              <strong className="block">
-                {formData.time} ({format12h(formData.time)}) · {formData.guests} {locale === 'it' ? 'Ospiti' : 'Guests'}
-              </strong>
-            </div>
-          </div>
-
-          {formData.email && (
-            <div className="text-xs text-stone-600">
-              <span className="text-[10px] uppercase font-semibold text-stone-400 block">
-                {t('location.form.email')}:
-              </span>
-              <span>{formData.email}</span>
-            </div>
-          )}
-
-          {formData.notes && (
-            <div className="pt-2 border-t border-black/5 text-xs text-stone-600">
-              <span className="text-[10px] uppercase font-semibold text-stone-400 block">
-                {t('location.form.notes')}:
-              </span>
-              <p className="italic">{formData.notes}</p>
-            </div>
-          )}
-        </div>
-
-        <button
-          type="button"
-          onClick={() => {
-            setSubmitted(false);
-            setStep(0);
-            setFormData({
-              date: tomorrowIso,
-              guests: '2',
-              service: isMonday(tomorrowIso) ? 'lunch' : 'dinner',
-              time: isMonday(tomorrowIso) ? '13:00' : '20:30',
-              name: '',
-              phone: '',
-              email: '',
-              occasion: 'none',
-              notes: '',
-            });
-          }}
-          className="px-6 py-2.5 rounded-full bg-[var(--palette-espresso)] hover:bg-black text-white text-xs font-semibold shadow-xs transition-all cursor-pointer"
-        >
-          {t('location.form.newBooking')}
-        </button>
-      </div>
+      <ReservationVoucher
+        details={{
+          referenceId,
+          name: formData.name,
+          phone: formData.phone,
+          email: formData.email,
+          date: formData.date,
+          formattedDate,
+          time: formData.time,
+          guests: formData.guests,
+          notes: formData.notes,
+        }}
+        onReset={resetForm}
+      />
     );
   }
 
@@ -366,9 +322,26 @@ export function ReservationForm({ locale }: ReservationFormProps) {
 
       {/* General Error Alert */}
       {errorMessage && (
-        <div className="p-3.5 rounded-2xl bg-red-50 border border-red-200 text-red-700 text-xs flex items-center gap-2.5 animate-shake">
-          <AlertCircle size={16} className="shrink-0" />
-          <span className="font-medium">{errorMessage}</span>
+        <div
+          role="alert"
+          className="p-3.5 rounded-2xl bg-red-50 border border-red-200 text-red-700 text-xs space-y-1.5 animate-shake"
+        >
+          <div className="flex items-center gap-2.5">
+            <AlertCircle size={16} className="shrink-0" />
+            <span className="font-medium">{errorMessage}</span>
+          </div>
+          {showPhoneFallback && (
+            <div className="ps-6">
+              <a
+                href={`tel:${restaurantOfficialInfo.phone}`}
+                className="inline-flex items-center gap-1.5 font-mono font-bold text-[var(--palette-italian-red)] hover:underline"
+                dir="ltr"
+              >
+                <Phone size={12} aria-hidden="true" />
+                <span>{restaurantOfficialInfo.phoneDisplay}</span>
+              </a>
+            </div>
+          )}
         </div>
       )}
 
@@ -708,6 +681,21 @@ export function ReservationForm({ locale }: ReservationFormProps) {
               className="w-full py-2.5 px-3 rounded-xl border border-stone-300 bg-stone-50/60 text-xs font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-[var(--palette-aged-brass)]"
             />
           </div>
+          {/* Hidden anti-bot trap (kept display:none and non-autofillable so browser autofill never fills it) */}
+          <input
+            type="text"
+            name="tf_rsv_check"
+            tabIndex={-1}
+            autoComplete="new-password"
+            aria-hidden="true"
+            data-lpignore="true"
+            data-1p-ignore="true"
+            data-bwignore="true"
+            data-form-type="other"
+            value={formData.tf_rsv_check}
+            onChange={(e) => updateField('tf_rsv_check', e.target.value)}
+            className="hidden"
+          />
         </div>
       )}
 
@@ -717,7 +705,8 @@ export function ReservationForm({ locale }: ReservationFormProps) {
           <button
             type="button"
             onClick={handlePrev}
-            className="inline-flex items-center gap-1.5 px-5 py-3 rounded-full border border-stone-300 hover:bg-stone-100 text-xs font-bold text-[var(--palette-espresso)] transition-all cursor-pointer active:scale-95"
+            disabled={isSubmitting}
+            className="inline-flex items-center gap-1.5 px-5 py-3 rounded-full border border-stone-300 hover:bg-stone-100 text-xs font-bold text-[var(--palette-espresso)] transition-all cursor-pointer active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <ArrowLeft size={14} />
             <span>{t('location.form.prev')}</span>
@@ -738,10 +727,17 @@ export function ReservationForm({ locale }: ReservationFormProps) {
         ) : (
           <button
             type="submit"
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-gradient-to-r from-[var(--palette-italian-red)] to-[var(--palette-italian-red-dark)] hover:brightness-105 text-white text-xs sm:text-sm font-bold transition-all shadow-lg active:scale-95 cursor-pointer border border-white/20"
+            disabled={isSubmitting}
+            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-gradient-to-r from-[var(--palette-italian-red)] to-[var(--palette-italian-red-dark)] hover:brightness-105 text-white text-xs sm:text-sm font-bold transition-all shadow-lg active:scale-95 cursor-pointer border border-white/20 disabled:opacity-60 disabled:cursor-not-allowed"
           >
-            <Sparkles size={16} />
-            <span>{t('location.form.submit')}</span>
+            {isSubmitting ? (
+              <Loader2 size={16} className="animate-spin" aria-hidden="true" />
+            ) : (
+              <Sparkles size={16} aria-hidden="true" />
+            )}
+            <span>
+              {isSubmitting ? t('location.form.submitting') : t('location.form.submit')}
+            </span>
           </button>
         )}
       </div>
