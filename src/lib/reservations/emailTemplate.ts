@@ -116,6 +116,8 @@ export function renderRestaurantSignature(locale: 'it' | 'en'): string {
             ${escapeHtml(restaurantOfficialInfo.address)}<br />
             <a href="tel:${escapeHtml(restaurantOfficialInfo.phone)}" style="color:#7A2E2A;text-decoration:none;font-weight:700;white-space:nowrap;">${escapeHtml(restaurantOfficialInfo.phoneDisplay)}</a>
             &nbsp;·&nbsp;
+            <a href="mailto:${escapeHtml(restaurantOfficialInfo.email)}" style="color:#7A2E2A;text-decoration:none;font-weight:600;white-space:nowrap;">${escapeHtml(restaurantOfficialInfo.email)}</a>
+            &nbsp;·&nbsp;
             <a href="${escapeHtml(restaurantOfficialInfo.googleMapsUrl)}" style="color:#2B1F1A;text-decoration:underline;">Google Maps</a>
             &nbsp;·&nbsp;
             <span style="color:#6B5A4E;">${escapeHtml(hoursSummary)}</span>${websiteLink}

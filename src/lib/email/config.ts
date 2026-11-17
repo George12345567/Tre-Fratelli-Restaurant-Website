@@ -1,3 +1,4 @@
+import { restaurantOfficialInfo } from '@/data/restaurantDetails';
 import type {
   EmailAddress,
   EmailProviderCredentials,
@@ -24,11 +25,19 @@ function readEnv(name: string): string {
 }
 
 function parseAddressList(raw: string, fallbackName: string): EmailAddress[] {
-  return raw
-    .split(',')
-    .map((entry) => entry.trim())
-    .filter((entry) => SIMPLE_EMAIL_REGEX.test(entry))
-    .map((email) => ({ email, name: fallbackName }));
+  const seen = new Set<string>();
+  const result: EmailAddress[] = [];
+
+  for (const part of raw.split(',')) {
+    const email = part.trim();
+    if (!SIMPLE_EMAIL_REGEX.test(email)) continue;
+    const lower = email.toLowerCase();
+    if (seen.has(lower)) continue;
+    seen.add(lower);
+    result.push({ email, name: fallbackName });
+  }
+
+  return result;
 }
 
 function resolveZeptoRegion(): ZeptoMailRegion {
@@ -162,7 +171,14 @@ export function getReservationDeliveryConfig(): ReservationDeliveryConfig {
   const toName = readEnv('RESERVATION_TO_NAME') || 'Tre Fratelli Prenotazioni';
   const fromName = readEnv('RESERVATION_FROM_NAME') || 'Tre Fratelli Ristorante';
 
-  const rawTo = readEnv('RESERVATION_TO_EMAIL') || smtpFallbackEmail;
+  const envTo = readEnv('RESERVATION_TO_EMAIL');
+  const includeOfficialInbox =
+    readEnv('RESERVATION_DISABLE_RESTAURANT_INBOX').toLowerCase() !== 'true';
+  const combinedTo = [
+    ...(includeOfficialInbox ? [restaurantOfficialInfo.email] : []),
+    ...(envTo ? [envTo] : []),
+  ].join(',');
+  const rawTo = combinedTo || smtpFallbackEmail;
   const to = parseAddressList(rawTo, toName);
 
   const fromEmail = readEnv('RESERVATION_FROM_EMAIL') || smtpFallbackEmail;
