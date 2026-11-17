@@ -4,6 +4,7 @@ import { hasLocale } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing, type Locale } from '@/i18n/routing';
+import { buildPageMetadata } from '@/lib/seo/metadata';
 import { ReservationForm } from '@/components/reservations/ReservationForm';
 import { restaurantOfficialInfo } from '@/data/restaurantDetails';
 import { MapPin, Phone, Clock } from 'lucide-react';
@@ -16,10 +17,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
   const t = await getTranslations({ locale });
-  return {
+  return buildPageMetadata({
+    locale: locale as Locale,
+    pathname: '/location',
     title: t('meta.locationTitle'),
     description: t('location.subtitle'),
-  };
+  });
 }
 
 export default async function LocationPage({ params }: PageProps) {

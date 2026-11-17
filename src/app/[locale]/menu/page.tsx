@@ -3,7 +3,7 @@ import { hasLocale } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing, type Locale } from '@/i18n/routing';
-import { siteConfig } from '@/config/site';
+import { buildPageMetadata } from '@/lib/seo/metadata';
 import { MainMenuCategoriesGrid } from '@/components/menu/MainMenuCategoriesGrid';
 
 interface PageProps {
@@ -15,18 +15,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!hasLocale(routing.locales, locale)) notFound();
   const t = await getTranslations({ locale });
 
-  return {
-    metadataBase: siteConfig.metadataBase,
+  return buildPageMetadata({
+    locale: locale as Locale,
+    pathname: '/menu',
     title: t('meta.menuTitle'),
     description: t('home.menuCardCopy'),
-    alternates: {
-      canonical: `/${locale}/menu`,
-      languages: {
-        ...Object.fromEntries(routing.locales.map((code) => [code, `/${code}/menu`])),
-        'x-default': `/${routing.defaultLocale}/menu`,
-      },
-    },
-  };
+  });
 }
 
 export default async function MenuPage({ params }: PageProps) {

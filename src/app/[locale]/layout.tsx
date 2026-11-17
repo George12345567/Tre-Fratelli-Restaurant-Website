@@ -4,8 +4,9 @@ import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations, getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing, type Locale } from "@/i18n/routing";
-import { siteConfig } from "@/config/site";
 import { playfairDisplay, montserrat } from "@/lib/fonts";
+import { buildPageMetadata } from "@/lib/seo/metadata";
+import { RestaurantJsonLd } from "@/components/seo/RestaurantJsonLd";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { CrownQuickHub } from "@/components/crown/CrownQuickHub";
@@ -20,6 +21,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
+  themeColor: "#FAF6EF",
 };
 
 export function generateStaticParams() {
@@ -31,18 +33,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!hasLocale(routing.locales, locale)) notFound();
   const t = await getTranslations({ locale, namespace: "meta" });
 
-  return {
-    metadataBase: siteConfig.metadataBase,
+  return buildPageMetadata({
+    locale: locale as Locale,
     title: t("title"),
     description: t("description"),
-    alternates: {
-      canonical: `/${locale}`,
-      languages: {
-        ...Object.fromEntries(routing.locales.map((code) => [code, `/${code}`])),
-        "x-default": `/${routing.defaultLocale}`,
-      },
-    },
-  };
+  });
 }
 
 export default async function LocaleLayout({ children, params }: Props) {
@@ -62,6 +57,7 @@ export default async function LocaleLayout({ children, params }: Props) {
         className="flex min-h-screen flex-col bg-[var(--palette-warm-ivory)] text-[var(--palette-espresso)] antialiased"
         suppressHydrationWarning
       >
+        <RestaurantJsonLd locale={locale as Locale} />
         <a href="#main-content" className="skip-link">{t("skipToContent")}</a>
         <NextIntlClientProvider messages={messages} locale={locale}>
           <Navbar locale={locale as Locale} />

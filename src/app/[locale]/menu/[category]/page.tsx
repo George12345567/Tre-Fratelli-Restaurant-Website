@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { hasLocale } from 'next-intl';
 import { notFound, redirect } from 'next/navigation';
 import { routing, type Locale } from '@/i18n/routing';
-import { siteConfig } from '@/config/site';
+import { buildPageMetadata } from '@/lib/seo/metadata';
 import {
   type MenuCategorySlug,
   mainMenuCategoryConfigs,
@@ -37,20 +37,12 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
   const categoryTitle = getLocalized(config.title, locale as Locale);
   const categoryIntro = getLocalized(config.intro, locale as Locale);
 
-  return {
-    metadataBase: siteConfig.metadataBase,
+  return buildPageMetadata({
+    locale: locale as Locale,
+    pathname: `/menu/${category}`,
     title: `${categoryTitle} — Tre Fratelli Menù`,
     description: categoryIntro,
-    alternates: {
-      canonical: `/${locale}/menu/${category}`,
-      languages: {
-        ...Object.fromEntries(
-          routing.locales.map((code) => [code, `/${code}/menu/${category}`])
-        ),
-        'x-default': `/${routing.defaultLocale}/menu/${category}`,
-      },
-    },
-  };
+  });
 }
 
 export default async function CategoryPage({ params }: CategoryPageProps) {

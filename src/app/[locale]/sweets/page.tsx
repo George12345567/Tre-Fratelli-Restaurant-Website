@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 import { hasLocale } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
-import { routing } from '@/i18n/routing';
+import { routing, type Locale } from '@/i18n/routing';
+import { buildPageMetadata } from '@/lib/seo/metadata';
 import { SweetsMenu } from '@/components/menu/SweetsMenu';
 
 interface PageProps { params: Promise<{ locale: string }> }
@@ -11,16 +12,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
   const t = await getTranslations({ locale });
-  return {
+  return buildPageMetadata({
+    locale: locale as Locale,
+    pathname: '/sweets',
     title: t('meta.sweetsTitle'),
-    alternates: {
-      canonical: `/${locale}/sweets`,
-      languages: {
-        ...Object.fromEntries(routing.locales.map((code) => [code, `/${code}/sweets`])),
-        'x-default': `/${routing.defaultLocale}/sweets`,
-      },
-    },
-  };
+    description: t('meta.description'),
+  });
 }
 
 export default async function SweetsPage({ params }: PageProps) {

@@ -1,8 +1,29 @@
-// Set the real public origin before publishing; do not invent a restaurant domain.
-const origin = process.env.SITE_URL;
+const CANONICAL_PRODUCTION_ORIGIN = 'https://www.ristorantetrefratelli.it';
+
+function resolveSiteOrigin(): string {
+  const raw = process.env.SITE_URL?.trim();
+  if (!raw) return CANONICAL_PRODUCTION_ORIGIN;
+  try {
+    const parsed = new URL(raw);
+    const isLocal =
+      parsed.hostname === 'localhost' ||
+      parsed.hostname === '127.0.0.1' ||
+      parsed.hostname.endsWith('.local');
+    if (isLocal && process.env.NODE_ENV === 'production') {
+      return CANONICAL_PRODUCTION_ORIGIN;
+    }
+    return parsed.origin;
+  } catch {
+    return CANONICAL_PRODUCTION_ORIGIN;
+  }
+}
+
+const resolvedOrigin = resolveSiteOrigin();
 
 export const siteConfig = {
-  metadataBase: origin ? new URL(origin) : undefined,
+  url: resolvedOrigin,
+  canonicalOrigin: CANONICAL_PRODUCTION_ORIGIN,
+  metadataBase: new URL(resolvedOrigin),
 } as const;
 
 export interface MenuPdfAssetConfig {

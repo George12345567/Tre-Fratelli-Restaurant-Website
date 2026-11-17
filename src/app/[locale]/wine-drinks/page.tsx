@@ -3,6 +3,7 @@ import { hasLocale } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing, type Locale } from '@/i18n/routing';
+import { buildPageMetadata } from '@/lib/seo/metadata';
 import { WineMenu } from '@/components/wine/WineMenu';
 
 interface PageProps {
@@ -13,17 +14,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
   const t = await getTranslations({ locale });
-  return {
+  return buildPageMetadata({
+    locale: locale as Locale,
+    pathname: '/wine-drinks',
     title: t('meta.wineTitle'),
     description: t('wine.curatedCopy'),
-    alternates: {
-      canonical: `/${locale}/wine-drinks`,
-      languages: {
-        ...Object.fromEntries(routing.locales.map((code) => [code, `/${code}/wine-drinks`])),
-        'x-default': `/${routing.defaultLocale}/wine-drinks`,
-      },
-    },
-  };
+  });
 }
 
 export default async function WineDrinksPage({ params }: PageProps) {
